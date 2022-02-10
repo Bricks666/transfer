@@ -3,6 +3,7 @@ route {
   Component: ComponentType;
   path: string;
   isAuthRoute?: boolean
+  isAdminOnly?: boolean
 }
 */
 
@@ -11,6 +12,8 @@ import {
 	ProfilePage,
 	RegistrationPage,
 	TransactionsPage,
+	CategoriesPage,
+	SamplesPage,
 } from "../pages";
 
 export const routes = [
@@ -31,5 +34,17 @@ export const routes = [
 		Component: ProfilePage,
 		path: "/profile",
 		isAuthRoute: true,
+	},
+	{
+		Component: CategoriesPage,
+		path: "/categories",
+		isAuthRoute: true,
+		isAdminOnly: true,
+	},
+	{
+		Component: SamplesPage,
+		path: "/samples",
+		isAuthRoute: true,
+		isAdminOnly: true,
 	},
 ];

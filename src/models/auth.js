@@ -130,7 +130,7 @@ export const loginThunk = (address) => {
 
 			const intervalId = setInterval(async () => {
 				const balance = await getBalanceApi(address);
-				dispatch(setBalanceAC(balance));
+				dispatch(setBalanceAC(balance / 10 ** 18));
 			}, 500);
 
 			dispatch(setIntervalIdAC(intervalId));

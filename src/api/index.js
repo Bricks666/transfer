@@ -9,3 +9,4 @@ export {
 	sendTransactionApi,
 } from "./transactions";
 export { addCategoryApi, getCategoriesApi } from "./categories";
+export { addSampleApi, getSamplesApi } from "./samples";

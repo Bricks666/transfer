@@ -12,3 +12,8 @@ export { useOthersAddresses } from "./useOthersAddresses";
 export { useCategories } from "./useCategories";
 export { useCategoriesMap } from "./useCategoriesMap";
 export { useBalance } from "./useBalance";
+export { useIsAdmin } from "./useIsAdmin";
+export { useCategoriesLoading } from "./useCategoriesLoading";
+export { useSamples } from "./useSamples";
+export { useSamplesLoading } from "./useSamplesLoading";
+export { useMappedSamples } from "./useMappedSample";

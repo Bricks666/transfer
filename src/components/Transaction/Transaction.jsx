@@ -5,7 +5,7 @@ export const Transaction = ({
 	count,
 	status,
 	description,
-	category,
+	categoryName,
 	children,
 }) => {
 	return (
@@ -18,7 +18,7 @@ export const Transaction = ({
 				<dt>Receiver</dt>
 				<dd>{receiver}</dd>
 				<dt>Category</dt>
-				<dd>{category}</dd>
+				<dd>{categoryName}</dd>
 				<dt>Count</dt>
 				<dd>{count}</dd>
 				<dt>Description</dt>

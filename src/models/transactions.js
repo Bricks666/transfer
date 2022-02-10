@@ -158,7 +158,7 @@ export const sendTransactionThunk = (
 		try {
 			const { address } = getState().auth;
 			debugger;
-			const transaction = await sendTransactionApi(
+			await sendTransactionApi(
 				address,
 				receiver,
 				value,
@@ -166,8 +166,6 @@ export const sendTransactionThunk = (
 				description,
 				category
 			);
-
-			dispatch(addSendTransactionAC(toValidTransaction(transaction)));
 		} catch (e) {
 			console.log(e);
 		}

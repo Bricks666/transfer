@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { useEffect, useMemo } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { loadTransactionThunk } from "../models/transactions";
 import { useCategoriesMap } from ".";
@@ -15,5 +15,8 @@ export const useReceivedTransactions = () => {
 		}
 	}, [transactions.length, dispatch]);
 
-	return mapTransactions(transactions, categoriesMap);
+	return useMemo(
+		() => mapTransactions(transactions, categoriesMap),
+		[transactions, categoriesMap]
+	);
 };

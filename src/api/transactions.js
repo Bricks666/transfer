@@ -14,12 +14,12 @@ export const sendTransactionApi = async (
 ) => {
 	return await contract.methods
 		.transferTo(receiver, keyword, description, category)
-		.send({ from: sender, value });
+		.send({ from: sender, value: value * 10 ** 18 });
 };
 
-export const getTransaction = async(id) => {
-  return await contract.methods.money_transfer
-}
+export const getTransaction = async (id) => {
+	return await contract.methods.money_transfer;
+};
 
 export const acceptTransactionApi = async (sender, transactionId, keyword) => {
 	return await contract.methods

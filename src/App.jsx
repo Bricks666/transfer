@@ -3,6 +3,7 @@ import { AuthRoute } from "./components/AuthRoute";
 import { routes } from "./routes";
 import { useInit } from "./hooks";
 import { Header } from "./components/Header";
+import { AdminRoute } from "./components/AdminRoute";
 
 export const App = () => {
 	const isInit = useInit();
@@ -20,17 +21,20 @@ export const App = () => {
 			</Routes>
 
 			<Routes>
-				{routes.map(({ Component, path, isAuthRoute }) => (
+				{routes.map(({ Component, path, isAuthRoute, isAdminOnly }) => (
 					<Route
 						path={path}
 						element={
-							isAuthRoute ? (
+							(isAdminOnly && (
+								<AdminRoute>
+									<Component />
+								</AdminRoute>
+							)) ||
+							(isAuthRoute && (
 								<AuthRoute>
 									<Component />
 								</AuthRoute>
-							) : (
-								<Component />
-							)
+							)) || <Component />
 						}
 						key={path}
 					/>

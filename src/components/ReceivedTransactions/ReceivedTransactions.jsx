@@ -5,7 +5,7 @@ import { useReceivedTransactions, useTransactionLoading } from "../../hooks";
 export const ReceivedTransactions = () => {
 	const transactions = useReceivedTransactions();
 	const isLoading = useTransactionLoading();
-
+  console.log(transactions)
 	return (
 		<FriendlyList
 			items={transactions}

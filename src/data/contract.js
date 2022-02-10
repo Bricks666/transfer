@@ -1,4 +1,4 @@
-export const address = "0x05904DA0eB86b2b31A9c73Ed19350e58Ab9f2c3e";
+export const address = "0x7C9e3Ce6f4d7e03EBEf1Ee412BB90486DA467Ac6";
 export const abi = [
 	{
 		inputs: [],
@@ -118,19 +118,6 @@ export const abi = [
 		type: "function",
 	},
 	{
-		inputs: [],
-		name: "category_count",
-		outputs: [
-			{
-				internalType: "uint256",
-				name: "",
-				type: "uint256",
-			},
-		],
-		stateMutability: "view",
-		type: "function",
-	},
-	{
 		inputs: [
 			{
 				internalType: "uint256",
@@ -145,12 +132,12 @@ export const abi = [
 	},
 	{
 		inputs: [],
-		name: "count_transfer",
+		name: "get_categories",
 		outputs: [
 			{
-				internalType: "uint256",
+				internalType: "string[]",
 				name: "",
-				type: "uint256",
+				type: "string[]",
 			},
 		],
 		stateMutability: "view",
@@ -158,12 +145,59 @@ export const abi = [
 	},
 	{
 		inputs: [],
-		name: "get_count_category",
+		name: "get_transfers",
 		outputs: [
 			{
-				internalType: "uint256",
+				components: [
+					{
+						internalType: "uint256",
+						name: "transfer_num",
+						type: "uint256",
+					},
+					{
+						internalType: "uint256",
+						name: "time_transaction",
+						type: "uint256",
+					},
+					{
+						internalType: "address payable",
+						name: "owner_address",
+						type: "address",
+					},
+					{
+						internalType: "uint256",
+						name: "id_category",
+						type: "uint256",
+					},
+					{
+						internalType: "bytes32",
+						name: "keyword",
+						type: "bytes32",
+					},
+					{
+						internalType: "address payable",
+						name: "recipient_address",
+						type: "address",
+					},
+					{
+						internalType: "uint256",
+						name: "count",
+						type: "uint256",
+					},
+					{
+						internalType: "bool",
+						name: "status",
+						type: "bool",
+					},
+					{
+						internalType: "string",
+						name: "description",
+						type: "string",
+					},
+				],
+				internalType: "struct Transfer.Money_transfer[]",
 				name: "",
-				type: "uint256",
+				type: "tuple[]",
 			},
 		],
 		stateMutability: "view",
@@ -230,11 +264,6 @@ export const abi = [
 				internalType: "string",
 				name: "description",
 				type: "string",
-			},
-			{
-				internalType: "bool",
-				name: "cancel",
-				type: "bool",
 			},
 		],
 		stateMutability: "view",
@@ -337,7 +366,60 @@ export const abi = [
 			},
 		],
 		name: "transferTo",
-		outputs: [],
+		outputs: [
+			{
+				components: [
+					{
+						internalType: "uint256",
+						name: "transfer_num",
+						type: "uint256",
+					},
+					{
+						internalType: "uint256",
+						name: "time_transaction",
+						type: "uint256",
+					},
+					{
+						internalType: "address payable",
+						name: "owner_address",
+						type: "address",
+					},
+					{
+						internalType: "uint256",
+						name: "id_category",
+						type: "uint256",
+					},
+					{
+						internalType: "bytes32",
+						name: "keyword",
+						type: "bytes32",
+					},
+					{
+						internalType: "address payable",
+						name: "recipient_address",
+						type: "address",
+					},
+					{
+						internalType: "uint256",
+						name: "count",
+						type: "uint256",
+					},
+					{
+						internalType: "bool",
+						name: "status",
+						type: "bool",
+					},
+					{
+						internalType: "string",
+						name: "description",
+						type: "string",
+					},
+				],
+				internalType: "struct Transfer.Money_transfer",
+				name: "",
+				type: "tuple",
+			},
+		],
 		stateMutability: "payable",
 		type: "function",
 	},

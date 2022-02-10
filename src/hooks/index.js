@@ -5,3 +5,7 @@ export { useAddresses } from "./useAddresses";
 export { useField } from "./useField";
 export { useUserLoading } from "./useUserLoading";
 export { useUserInfo } from "./userUserInfo";
+export { useSendedTransactions } from "./useSendedTransactions";
+export { useReceivedTransactions } from "./useReceivedTransactions";
+export { useTransactionLoading } from "./useTransactionLoading";
+export { useOthersAddresses } from "./useOthersAddresses";

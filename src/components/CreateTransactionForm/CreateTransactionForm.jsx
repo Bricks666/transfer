@@ -41,7 +41,7 @@ export const CreateTransactionForm = () => {
 
 	const onSampleSelect = useCallback(
 		(evt) => {
-			debugger;
+
 			const value = JSON.parse(evt.target.value);
 			if (!value) {
 				reset();

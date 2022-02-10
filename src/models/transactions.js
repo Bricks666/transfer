@@ -131,7 +131,7 @@ export const loadTransactionThunk = () => {
 	return async (dispatch, getState) => {
 		try {
 			const { address } = getState().auth;
-			debugger;
+
 			dispatch(toggleLoadingAC(true));
 			const invalidTransactions = await getTransactionsApi();
 			const transactions = invalidTransactions.map(toValidTransaction);
@@ -157,7 +157,7 @@ export const sendTransactionThunk = (
 	return async (dispatch, getState) => {
 		try {
 			const { address } = getState().auth;
-			debugger;
+
 			await sendTransactionApi(
 				address,
 				receiver,

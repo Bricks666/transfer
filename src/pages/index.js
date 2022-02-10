@@ -4,3 +4,4 @@ export { TransactionsPage } from "./TransactionsPage";
 export { ProfilePage } from "./ProfilePage";
 export { CategoriesPage } from "./CategoriesPage";
 export { SamplesPage } from "./SamplesPage";
+export { OffersPage } from "./OffersPage";

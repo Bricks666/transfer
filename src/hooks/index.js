@@ -17,3 +17,5 @@ export { useCategoriesLoading } from "./useCategoriesLoading";
 export { useSamples } from "./useSamples";
 export { useSamplesLoading } from "./useSamplesLoading";
 export { useMappedSamples } from "./useMappedSample";
+export { useUsers } from "./useUsers";
+export { useUsersLoading } from "./useUsersLoading";

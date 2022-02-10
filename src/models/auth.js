@@ -104,14 +104,14 @@ export const registrationThunk = (address) => {
 	return async (dispatch) => {
 		try {
 			await unlockApi(address);
-			debugger;
+
 
 			await registrationApi(address);
 			dispatch(setAddressAC(address));
 
 			return true;
 		} catch (e) {
-			debugger;
+
 
 			console.log(e);
 

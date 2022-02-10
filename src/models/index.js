@@ -8,6 +8,7 @@ import { userReducer } from "./user";
 import { transactionsReducer } from "./transactions";
 import { categoriesReducer } from "./categories";
 import { samplesReducer } from "./samples";
+import { usersReducer } from "./users";
 
 const rootReducer = combineReducers({
 	core: coreReducer,
@@ -17,6 +18,7 @@ const rootReducer = combineReducers({
 	transactions: transactionsReducer,
 	categories: categoriesReducer,
 	samples: samplesReducer,
+	users: usersReducer,
 });
 
 export const store = createStore(

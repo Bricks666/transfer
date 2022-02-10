@@ -1,4 +1,4 @@
-import { Route, Routes } from "react-router-dom";
+import { Navigate, Route, Routes } from "react-router-dom";
 import { TransactionNavigation } from "../components/TransactionNavigation";
 import { SendedTransactions } from "../components/SendedTransactions";
 import { CreateTransactionForm } from "../components/CreateTransactionForm";
@@ -22,6 +22,7 @@ export const TransactionsPage = () => {
 					}
 				/>
 				<Route path="received" element={<ReceivedTransactions />} />
+				<Route path="*" element={<Navigate to="sended" replace={true} />} />
 			</Routes>
 		</main>
 	);

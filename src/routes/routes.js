@@ -14,6 +14,7 @@ import {
 	TransactionsPage,
 	CategoriesPage,
 	SamplesPage,
+	OffersPage,
 } from "../pages";
 
 export const routes = [
@@ -44,6 +45,12 @@ export const routes = [
 	{
 		Component: SamplesPage,
 		path: "/samples",
+		isAuthRoute: true,
+		isAdminOnly: true,
+	},
+	{
+		Component: OffersPage,
+		path: "/offers/*",
 		isAuthRoute: true,
 		isAdminOnly: true,
 	},

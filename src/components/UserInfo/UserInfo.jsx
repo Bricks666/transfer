@@ -1,21 +1,12 @@
-import { Loading } from "../Loading";
-
-import { useUserInfo, useUserLoading } from "../../hooks";
 import { getUserRole } from "../../utils";
-import { Balance } from "../Balance";
 
-export const UserInfo = () => {
-	const { login, user, admin, onOffer } = useUserInfo();
-	const isLoading = useUserLoading();
-
+export const UserInfo = ({ login, user, admin, onOffer, children }) => {
 	return (
 		<section>
 			<h3>Info</h3>
-			<Loading isLoading={isLoading}>
-				<p>{`Login: ${login}`}</p>
-				<p>{`Your role: ${getUserRole(user, admin, onOffer)}`}</p>
-				<Balance />
-			</Loading>
+			<p>{`Login: ${login}`}</p>
+			<p>{`Your role: ${getUserRole(user, admin, onOffer)}`}</p>
+			{children}
 		</section>
 	);
 };

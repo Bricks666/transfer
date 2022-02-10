@@ -18,10 +18,19 @@ export const Navigation = () => {
 		<nav>
 			<List items={navigation} Card={NavigationItem} indexedBy="to">
 				<OnlyAdmin>
-					<NavigationItem to="/categories" label="Categories" />
+					<li>
+						<NavigationItem to="/categories" label="Categories" />
+					</li>
 				</OnlyAdmin>
 				<OnlyAdmin>
-					<NavigationItem to="/samples" label="Samples" />
+					<li>
+						<NavigationItem to="/samples" label="Samples" />
+					</li>
+				</OnlyAdmin>
+				<OnlyAdmin>
+					<li>
+						<NavigationItem to="/offers" label="Users and votes" />
+					</li>
 				</OnlyAdmin>
 			</List>
 		</nav>

@@ -1,4 +1,4 @@
-export const address = "0xF7D37C23Ba9215De1532BF2Cf226A351c37C8362";
+export const address = "0x18863002bb0E7C372D7004be97Fed33E06d93328";
 export const abi = [
 	{
 		inputs: [],
@@ -228,6 +228,19 @@ export const abi = [
 				internalType: "struct Transfer.Money_transfer[]",
 				name: "",
 				type: "tuple[]",
+			},
+		],
+		stateMutability: "view",
+		type: "function",
+	},
+	{
+		inputs: [],
+		name: "get_user_addresses",
+		outputs: [
+			{
+				internalType: "address[]",
+				name: "",
+				type: "address[]",
 			},
 		],
 		stateMutability: "view",

@@ -7,7 +7,6 @@ export let web3 = null;
 export const initApi = () => {
 	web3 = new Web3("ws://localhost:8545");
 	contract = new web3.eth.Contract(abi, address);
-	console.log(web3, contract);
 };
 
 export const unlockApi = async (address) => {

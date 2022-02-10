@@ -6,7 +6,12 @@ route {
 }
 */
 
-import { LoginPage, RegistrationPage, TransactionsPage } from "../pages";
+import {
+	LoginPage,
+	ProfilePage,
+	RegistrationPage,
+	TransactionsPage,
+} from "../pages";
 
 export const routes = [
 	{
@@ -19,7 +24,12 @@ export const routes = [
 	},
 	{
 		Component: TransactionsPage,
-		path: "/",
+		path: "/*",
+		isAuthRoute: true,
+	},
+	{
+		Component: ProfilePage,
+		path: "/profile",
 		isAuthRoute: true,
 	},
 ];

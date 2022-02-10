@@ -1,9 +1,8 @@
 import { useMemo } from "react";
-import { useSelector } from "react-redux";
-import { useAddresses } from ".";
+import { useAddresses, useAuthAddress } from ".";
 
 export const useOthersAddresses = () => {
-	const authAddress = useSelector((state) => state.auth.address);
+	const authAddress = useAuthAddress();
 	const addresses = useAddresses();
 
 	return useMemo(

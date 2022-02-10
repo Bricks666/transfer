@@ -1,10 +1,11 @@
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import { useAuthAddress } from ".";
 import { loadUserThunk } from "../models/user";
 
 export const useUserInfo = () => {
 	const user = useSelector((state) => state.user.info);
-	const authAddress = useSelector((state) => state.auth.address);
+	const authAddress = useAuthAddress();
 
 	const dispatch = useDispatch();
 

@@ -39,6 +39,7 @@ export const authReducer = (state = initialState, action) => {
 			};
 		}
 		case LOGOUT: {
+      debugger
 			clearInterval(state.intervalId);
 			return {
 				...state,

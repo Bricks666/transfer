@@ -6,3 +6,4 @@ export { toValidTransaction } from "./toValidTransaction";
 export { mapTransactions } from "./mapTransactions";
 export { toValidSample } from "./toValidSample";
 export { mapSamples } from "./mapSamples";
+export { toValidVote } from "./toValidVote";

@@ -11,3 +11,4 @@ export {
 export { addCategoryApi, getCategoriesApi } from "./categories";
 export { addSampleApi, getSamplesApi } from "./samples";
 export { getUsersApi, setUserOnOfferApi } from "./users";
+export { getVotesApi, voteAgainstApi, voteForApi } from "./votes";

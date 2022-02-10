@@ -1,4 +1,4 @@
-export const address = "0x18863002bb0E7C372D7004be97Fed33E06d93328";
+export const address = "0xFbE07caa24FF541b6da86d9c235bfB72Bb3F5Ec2";
 export const abi = [
 	{
 		inputs: [],
@@ -138,6 +138,46 @@ export const abi = [
 				internalType: "string[]",
 				name: "",
 				type: "string[]",
+			},
+		],
+		stateMutability: "view",
+		type: "function",
+	},
+	{
+		inputs: [],
+		name: "get_offers",
+		outputs: [
+			{
+				components: [
+					{
+						internalType: "uint256",
+						name: "id",
+						type: "uint256",
+					},
+					{
+						internalType: "address",
+						name: "admin_request",
+						type: "address",
+					},
+					{
+						internalType: "address[]",
+						name: "admin_address",
+						type: "address[]",
+					},
+					{
+						internalType: "address",
+						name: "admin_against",
+						type: "address",
+					},
+					{
+						internalType: "bool",
+						name: "finished",
+						type: "bool",
+					},
+				],
+				internalType: "struct Transfer.AdminReg[]",
+				name: "",
+				type: "tuple[]",
 			},
 		],
 		stateMutability: "view",
@@ -323,6 +363,11 @@ export const abi = [
 		name: "offer_admin",
 		outputs: [
 			{
+				internalType: "uint256",
+				name: "id",
+				type: "uint256",
+			},
+			{
 				internalType: "address",
 				name: "admin_request",
 				type: "address",
@@ -336,19 +381,6 @@ export const abi = [
 				internalType: "bool",
 				name: "finished",
 				type: "bool",
-			},
-		],
-		stateMutability: "view",
-		type: "function",
-	},
-	{
-		inputs: [],
-		name: "offer_count",
-		outputs: [
-			{
-				internalType: "uint256",
-				name: "",
-				type: "uint256",
 			},
 		],
 		stateMutability: "view",

@@ -19,3 +19,6 @@ export { useSamplesLoading } from "./useSamplesLoading";
 export { useMappedSamples } from "./useMappedSample";
 export { useUsers } from "./useUsers";
 export { useUsersLoading } from "./useUsersLoading";
+export { useVotes } from "./useVotes";
+export { useAuthAddress } from "./useAuthAddress";
+export { useVotesLoading } from "./useVotesLoading";

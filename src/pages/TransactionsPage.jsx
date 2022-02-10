@@ -3,12 +3,14 @@ import { TransactionNavigation } from "../components/TransactionNavigation";
 import { SendedTransactions } from "../components/SendedTransactions";
 import { CreateTransactionForm } from "../components/CreateTransactionForm";
 import { ReceivedTransactions } from "../components/ReceivedTransactions";
+import { Balance } from "../components/Balance";
 
 export const TransactionsPage = () => {
 	return (
 		<main>
 			<h2>Transactions</h2>
 			<TransactionNavigation />
+			<Balance />
 			<Routes>
 				<Route
 					path="sended"

@@ -2,7 +2,7 @@ import { Navigate, Route, Routes } from "react-router-dom";
 import { AuthRoute } from "./components/AuthRoute";
 import { routes } from "./routes";
 import { useInit } from "./hooks";
-import { Navigation } from "./components/Navigation";
+import { Header } from "./components/Header";
 
 export const App = () => {
 	const isInit = useInit();
@@ -16,7 +16,7 @@ export const App = () => {
 			<Routes>
 				<Route path="/login" />
 				<Route path="/registration" />
-				<Route path="*" element={<Navigation />} />
+				<Route path="*" element={<Header />} />
 			</Routes>
 
 			<Routes>

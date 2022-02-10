@@ -9,12 +9,17 @@ export const sendTransactionApi = async (
 	receiver,
 	value,
 	keyword,
-	description
+	description,
+	category
 ) => {
 	return await contract.methods
-		.transferTo(receiver, keyword, description)
+		.transferTo(receiver, keyword, description, category)
 		.send({ from: sender, value });
 };
+
+export const getTransaction = async(id) => {
+  return await contract.methods.money_transfer
+}
 
 export const acceptTransactionApi = async (sender, transactionId, keyword) => {
 	return await contract.methods

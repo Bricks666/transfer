@@ -1,9 +1,12 @@
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import { useCategoriesMap } from ".";
 import { loadTransactionThunk } from "../models/transactions";
+import { mapTransactions } from "../utils";
 
 export const useSendedTransactions = () => {
 	const transactions = useSelector((state) => state.transactions.sended);
+	const categoriesMap = useCategoriesMap();
 	const dispatch = useDispatch();
 
 	useEffect(() => {
@@ -12,5 +15,5 @@ export const useSendedTransactions = () => {
 		}
 	}, [transactions.length, dispatch]);
 
-	return transactions;
+	return mapTransactions(transactions, categoriesMap);
 };

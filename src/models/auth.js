@@ -4,14 +4,24 @@ state {
   address: string | null;
 }
 */
-import { lockApi, loginApi, registrationApi, unlockApi } from "../api";
+import {
+	getBalanceApi,
+	lockApi,
+	loginApi,
+	registrationApi,
+	unlockApi,
+} from "../api";
 export const SET_ADDRESS = "transfer/auth/SET_ADDRESS";
 export const LOGIN = "transfer/auth/LOGIN";
 export const LOGOUT = "transfer/auth/LOGOUT";
+export const SET_BALANCE = "transfer/auth/SET_BALANCE";
+export const SET_INTERVAL_ID = "transfer/auth/SET_INTERVAL_ID";
 
 const initialState = {
 	isLogin: false,
 	address: null,
+	balance: 0,
+	intervalId: null,
 };
 
 export const authReducer = (state = initialState, action) => {
@@ -29,9 +39,20 @@ export const authReducer = (state = initialState, action) => {
 			};
 		}
 		case LOGOUT: {
+			clearInterval(state.intervalId);
 			return {
 				...state,
 				isLogin: false,
+				intervalId: null,
+			};
+		}
+		case SET_BALANCE: {
+			return { ...state, balance: action.payload.balance };
+		}
+		case SET_INTERVAL_ID: {
+			return {
+				...state,
+				intervalId: action.payload.intervalId,
 			};
 		}
 		default: {
@@ -58,6 +79,24 @@ export const loginAC = () => {
 export const logoutAC = () => {
 	return {
 		type: LOGOUT,
+	};
+};
+
+export const setBalanceAC = (balance) => {
+	return {
+		type: SET_BALANCE,
+		payload: {
+			balance,
+		},
+	};
+};
+
+export const setIntervalIdAC = (intervalId) => {
+	return {
+		type: SET_INTERVAL_ID,
+		payload: {
+			intervalId,
+		},
 	};
 };
 
@@ -88,6 +127,14 @@ export const loginThunk = (address) => {
 			await loginApi(address);
 			dispatch(setAddressAC(address));
 			dispatch(loginAC());
+
+			const intervalId = setInterval(async () => {
+				const balance = await getBalanceApi(address);
+				dispatch(setBalanceAC(balance));
+			}, 500);
+
+			dispatch(setIntervalIdAC(intervalId));
+
 			return true;
 		} catch (e) {
 			console.log(e);

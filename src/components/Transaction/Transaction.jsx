@@ -1,6 +1,5 @@
 export const Transaction = ({
 	id,
-	time,
 	sender,
 	receiver,
 	count,
@@ -26,8 +25,6 @@ export const Transaction = ({
 				<dd>{description}</dd>
 				<dt>Status</dt>
 				<dd>{status ? "Finish" : "Pending"}</dd>
-				<dt>Time</dt>
-				<dd>{time}</dd>
 			</dl>
 			{children}
 		</article>

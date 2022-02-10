@@ -7,7 +7,6 @@ state: {
 
 Transaction {
   id: number;
-  time: number;(timestamp)
   sender: string;
   receiver: string;
   count: number;
@@ -148,7 +147,13 @@ export const loadTransactionThunk = () => {
 	};
 };
 
-export const sendTransactionThunk = (receiver, value, keyword, description) => {
+export const sendTransactionThunk = (
+	receiver,
+	value,
+	keyword,
+	description,
+	category
+) => {
 	return async (dispatch, getState) => {
 		try {
 			const { address } = getState().auth;
@@ -158,7 +163,8 @@ export const sendTransactionThunk = (receiver, value, keyword, description) => {
 				receiver,
 				value,
 				keyword,
-				description
+				description,
+				category
 			);
 
 			dispatch(addSendTransactionAC(toValidTransaction(transaction)));

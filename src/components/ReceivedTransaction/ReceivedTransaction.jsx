@@ -1,5 +1,5 @@
-import { Transaction } from "../Transaction";
-import { AcceptTransactionForm } from "../AcceptTransactionForm";
+import { Transaction } from '../Transaction';
+import { AcceptTransactionForm } from '../AcceptTransactionForm';
 
 export const ReceivedTransaction = ({ id, status, ...props }) => {
 	return (

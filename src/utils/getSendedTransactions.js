@@ -1,3 +1,3 @@
 export const getSendedTransactions = (address, transactions) => {
-  return transactions.filter(transaction => transaction.sender === address)
-}
+	return transactions.filter((transaction) => transaction.sender === address);
+};

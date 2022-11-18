@@ -1,5 +1,5 @@
-import { SamplesList } from "../components/SamplesList";
-import { CreateSampleForm } from "../components/CreateSampleForm";
+import { SamplesList } from '../components/SamplesList';
+import { CreateSampleForm } from '../components/CreateSampleForm';
 
 export const SamplesPage = () => {
 	return (

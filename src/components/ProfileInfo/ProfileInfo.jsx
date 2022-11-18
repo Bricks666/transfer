@@ -1,7 +1,7 @@
-import { useUserInfo, useUserLoading } from "../../hooks";
-import { Loading } from "../Loading";
-import { UserInfo } from "../UserInfo";
-import { Balance } from "../Balance";
+import { useUserInfo, useUserLoading } from '../../hooks';
+import { Loading } from '../Loading';
+import { UserInfo } from '../UserInfo';
+import { Balance } from '../Balance';
 
 export const ProfileInfo = () => {
 	const info = useUserInfo();

@@ -1,8 +1,8 @@
-import { useCallback } from "react";
-import { useDispatch } from "react-redux";
-import { useNavigate } from "react-router-dom";
-import { useAddresses, useField, useLocationState } from "../../hooks";
-import { loginThunk } from "../../models/auth";
+import { useCallback } from 'react';
+import { useDispatch } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
+import { useAddresses, useField, useLocationState } from '../../hooks';
+import { loginThunk } from '../../models/auth';
 
 export const LoginForm = () => {
 	const addresses = useAddresses();
@@ -16,7 +16,7 @@ export const LoginForm = () => {
 			evt.preventDefault();
 			const isLogin = await dispatch(loginThunk(address));
 			if (isLogin) {
-				const to = state || "/";
+				const to = state || '/';
 				navigate(to, { replace: true });
 			}
 		},

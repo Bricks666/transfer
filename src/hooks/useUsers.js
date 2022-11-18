@@ -1,6 +1,6 @@
-import { useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { loadUsersThunk } from "../models/users";
+import { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { loadUsersThunk } from '../models/users';
 
 export const useUsers = () => {
 	const users = useSelector((state) => state.users.list);

@@ -1,1 +1,1 @@
-export { OnlyAdmin } from "./OnlyAdmin";
+export { OnlyAdmin } from './OnlyAdmin';

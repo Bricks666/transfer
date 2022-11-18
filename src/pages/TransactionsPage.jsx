@@ -1,9 +1,9 @@
-import { Navigate, Route, Routes } from "react-router-dom";
-import { TransactionNavigation } from "../components/TransactionNavigation";
-import { SendedTransactions } from "../components/SendedTransactions";
-import { CreateTransactionForm } from "../components/CreateTransactionForm";
-import { ReceivedTransactions } from "../components/ReceivedTransactions";
-import { Balance } from "../components/Balance";
+import { Navigate, Route, Routes } from 'react-router-dom';
+import { TransactionNavigation } from '../components/TransactionNavigation';
+import { SendedTransactions } from '../components/SendedTransactions';
+import { CreateTransactionForm } from '../components/CreateTransactionForm';
+import { ReceivedTransactions } from '../components/ReceivedTransactions';
+import { Balance } from '../components/Balance';
 
 export const TransactionsPage = () => {
 	return (
@@ -13,7 +13,7 @@ export const TransactionsPage = () => {
 			<Balance />
 			<Routes>
 				<Route
-					path="sended"
+					path='sended'
 					element={
 						<>
 							<CreateTransactionForm />
@@ -21,8 +21,8 @@ export const TransactionsPage = () => {
 						</>
 					}
 				/>
-				<Route path="received" element={<ReceivedTransactions />} />
-				<Route path="*" element={<Navigate to="sended" replace={true} />} />
+				<Route path='received' element={<ReceivedTransactions />} />
+				<Route path='*' element={<Navigate to='sended' replace={true} />} />
 			</Routes>
 		</main>
 	);

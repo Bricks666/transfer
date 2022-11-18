@@ -1,5 +1,5 @@
-import { UserInfo } from "../UserInfo";
-import { useSetOnOffer } from "./useSetOnOffer";
+import { UserInfo } from '../UserInfo';
+import { useSetOnOffer } from './useSetOnOffer';
 
 export const User = ({ admin, onOffer, login, ...props }) => {
 	console.log(login);

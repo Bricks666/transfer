@@ -1,9 +1,9 @@
-import { Navigate, Route, Routes } from "react-router-dom";
-import { AuthRoute } from "./components/AuthRoute";
-import { routes } from "./routes";
-import { useInit } from "./hooks";
-import { Header } from "./components/Header";
-import { AdminRoute } from "./components/AdminRoute";
+import { Navigate, Route, Routes } from 'react-router-dom';
+import { AuthRoute } from './components/AuthRoute';
+import { routes } from './routes';
+import { useInit } from './hooks';
+import { Header } from './components/Header';
+import { AdminRoute } from './components/AdminRoute';
 
 export const App = () => {
 	const isInit = useInit();
@@ -15,9 +15,9 @@ export const App = () => {
 	return (
 		<div>
 			<Routes>
-				<Route path="/login" />
-				<Route path="/registration" />
-				<Route path="*" element={<Header />} />
+				<Route path='/login' />
+				<Route path='/registration' />
+				<Route path='*' element={<Header />} />
 			</Routes>
 
 			<Routes>
@@ -39,7 +39,7 @@ export const App = () => {
 						key={path}
 					/>
 				))}
-				<Route path="*" element={<Navigate to="/" />} />
+				<Route path='*' element={<Navigate to='/' />} />
 			</Routes>
 		</div>
 	);

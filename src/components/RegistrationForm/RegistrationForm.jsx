@@ -1,8 +1,8 @@
-import { useCallback } from "react";
-import { useDispatch } from "react-redux";
-import { useNavigate } from "react-router-dom";
-import { useAddresses, useField } from "../../hooks";
-import { registrationThunk } from "../../models/auth";
+import { useCallback } from 'react';
+import { useDispatch } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
+import { useAddresses, useField } from '../../hooks';
+import { registrationThunk } from '../../models/auth';
 
 export const RegistrationForm = () => {
 	const addresses = useAddresses();
@@ -16,7 +16,7 @@ export const RegistrationForm = () => {
 			const isSuccess = await dispatch(registrationThunk(address));
 
 			if (isSuccess) {
-				navigate("/login", { replace: true });
+				navigate('/login', { replace: true });
 				return;
 			} else {
 				onChange({ target: { value: 0 } });

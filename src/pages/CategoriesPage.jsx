@@ -1,5 +1,5 @@
-import { CreateCategoryForm } from "../components/CreateCategoryForm";
-import { CategoriesList } from "../components/CategoriesList";
+import { CreateCategoryForm } from '../components/CreateCategoryForm';
+import { CategoriesList } from '../components/CategoriesList';
 
 export const CategoriesPage = () => {
 	return (

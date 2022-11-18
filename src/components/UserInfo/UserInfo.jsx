@@ -1,4 +1,4 @@
-import { getUserRole } from "../../utils";
+import { getUserRole } from '../../utils';
 
 export const UserInfo = ({ login, user, admin, onOffer, children }) => {
 	return (

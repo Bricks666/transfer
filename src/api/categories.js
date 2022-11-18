@@ -1,4 +1,4 @@
-import { contract } from ".";
+import { contract } from '.';
 
 export const getCategoriesApi = async () => {
 	return await contract.methods.get_categories().call();

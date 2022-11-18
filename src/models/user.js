@@ -9,11 +9,11 @@ state: {
   isLoading: boolean
 }
 */
-import { getUserApi } from "../api";
-import { toValidUser } from "../utils";
+import { getUserApi } from '../api';
+import { toValidUser } from '../utils';
 
-export const SET_USER = "transfer/user/SET_USER";
-export const TOGGLE_LOADING = "transfer/user/TOGGLE_LOADING";
+export const SET_USER = 'transfer/user/SET_USER';
+export const TOGGLE_LOADING = 'transfer/user/TOGGLE_LOADING';
 
 const initialState = {
 	info: {

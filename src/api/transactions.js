@@ -1,4 +1,4 @@
-import { contract } from ".";
+import { contract } from '.';
 
 export const getTransactionsApi = async () => {
 	return await contract.methods.get_transfers().call();

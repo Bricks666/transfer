@@ -1,5 +1,5 @@
-import { useCategories, useCategoriesLoading } from "../../hooks";
-import { Loading } from "../Loading";
+import { useCategories, useCategoriesLoading } from '../../hooks';
+import { Loading } from '../Loading';
 
 export const CategoriesList = () => {
 	const categories = useCategories();

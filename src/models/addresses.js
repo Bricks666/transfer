@@ -1,6 +1,6 @@
-import { loadAddressesApi } from "../api";
+import { loadAddressesApi } from '../api';
 
-export const SET_ADDRESSES = "transfer/addresses/SET_ADDRESSES";
+export const SET_ADDRESSES = 'transfer/addresses/SET_ADDRESSES';
 
 export const addressesReducer = (state = [], action) => {
 	switch (action.type) {

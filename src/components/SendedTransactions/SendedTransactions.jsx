@@ -1,6 +1,6 @@
-import { FriendlyList } from "../FriendlyList";
-import { useSendedTransactions, useTransactionLoading } from "../../hooks";
-import { SendedTransaction } from "../SendedTransaction";
+import { FriendlyList } from '../FriendlyList';
+import { useSendedTransactions, useTransactionLoading } from '../../hooks';
+import { SendedTransaction } from '../SendedTransaction';
 
 export const SendedTransactions = () => {
 	const transactions = useSendedTransactions();
@@ -10,7 +10,7 @@ export const SendedTransactions = () => {
 		<FriendlyList
 			items={transactions}
 			Card={SendedTransaction}
-			indexedBy="id"
+			indexedBy='id'
 			isLoading={isLoading}
 			emptyLabel="You haven't had any transactions"
 		/>

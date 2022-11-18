@@ -15,42 +15,42 @@ import {
 	CategoriesPage,
 	SamplesPage,
 	OffersPage,
-} from "../pages";
+} from '../pages';
 
 export const routes = [
 	{
 		Component: LoginPage,
-		path: "/login",
+		path: '/login',
 	},
 	{
 		Component: RegistrationPage,
-		path: "/registration",
+		path: '/registration',
 	},
 	{
 		Component: TransactionsPage,
-		path: "/*",
+		path: '/*',
 		isAuthRoute: true,
 	},
 	{
 		Component: ProfilePage,
-		path: "/profile",
+		path: '/profile',
 		isAuthRoute: true,
 	},
 	{
 		Component: CategoriesPage,
-		path: "/categories",
+		path: '/categories',
 		isAuthRoute: true,
 		isAdminOnly: true,
 	},
 	{
 		Component: SamplesPage,
-		path: "/samples",
+		path: '/samples',
 		isAuthRoute: true,
 		isAdminOnly: true,
 	},
 	{
 		Component: OffersPage,
-		path: "/offers/*",
+		path: '/offers/*',
 		isAuthRoute: true,
 		isAdminOnly: true,
 	},

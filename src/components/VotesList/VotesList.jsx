@@ -1,6 +1,6 @@
-import { FriendlyList } from "../FriendlyList";
-import { Vote } from "../Vote";
-import { useVotes, useVotesLoading } from "../../hooks";
+import { FriendlyList } from '../FriendlyList';
+import { Vote } from '../Vote';
+import { useVotes, useVotesLoading } from '../../hooks';
 
 export const VotesList = () => {
 	const votes = useVotes();
@@ -10,7 +10,7 @@ export const VotesList = () => {
 		<FriendlyList
 			items={votes}
 			Card={Vote}
-			indexedBy="id"
+			indexedBy='id'
 			isLoading={isLoading}
 			emptyLabel="There haven't been votes by now"
 		/>

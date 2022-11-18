@@ -1,6 +1,6 @@
-import { useCallback } from "react";
-import { useDispatch } from "react-redux";
-import { voteAgainstThunk, voteForThunk } from "../../models/votes";
+import { useCallback } from 'react';
+import { useDispatch } from 'react-redux';
+import { voteAgainstThunk, voteForThunk } from '../../models/votes';
 
 export const useVote = (voteId) => {
 	const dispatch = useDispatch();

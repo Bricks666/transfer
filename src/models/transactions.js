@@ -21,18 +21,18 @@ import {
 	cancelTransactionApi,
 	getTransactionsApi,
 	sendTransactionApi,
-} from "../api";
+} from '../api';
 import {
 	getReceivedTransactions,
 	getSendedTransactions,
 	toValidTransaction,
-} from "../utils";
+} from '../utils';
 
-export const SET_TRANSACTIONS = "transfer/transactions/SET_TRANSACTIONS";
-export const TOGGLE_LOADING = "transfer/transactions/TOGGLE_LOADING";
+export const SET_TRANSACTIONS = 'transfer/transactions/SET_TRANSACTIONS';
+export const TOGGLE_LOADING = 'transfer/transactions/TOGGLE_LOADING';
 export const ADD_SEND_TRANSACTION =
-	"transfer/transactions/ADD_SEND_TRANSACTION";
-export const CHANGE_STATUS = "transfer/transactions/CHANGE_STATUS";
+	'transfer/transactions/ADD_SEND_TRANSACTION';
+export const CHANGE_STATUS = 'transfer/transactions/CHANGE_STATUS';
 
 const initialState = {
 	isLoading: false,

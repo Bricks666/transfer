@@ -1,1 +1,1 @@
-export { OffersNavigation } from "./OffersNavigation";
+export { OffersNavigation } from './OffersNavigation';

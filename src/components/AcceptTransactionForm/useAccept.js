@@ -1,6 +1,6 @@
-import { useCallback } from "react";
-import { useDispatch } from "react-redux";
-import { acceptTransactionThunk } from "../../models/transactions";
+import { useCallback } from 'react';
+import { useDispatch } from 'react-redux';
+import { acceptTransactionThunk } from '../../models/transactions';
 
 export const useAccept = (id, keyword) => {
 	const dispatch = useDispatch();

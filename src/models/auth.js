@@ -10,12 +10,12 @@ import {
 	loginApi,
 	registrationApi,
 	unlockApi,
-} from "../api";
-export const SET_ADDRESS = "transfer/auth/SET_ADDRESS";
-export const LOGIN = "transfer/auth/LOGIN";
-export const LOGOUT = "transfer/auth/LOGOUT";
-export const SET_BALANCE = "transfer/auth/SET_BALANCE";
-export const SET_INTERVAL_ID = "transfer/auth/SET_INTERVAL_ID";
+} from '../api';
+export const SET_ADDRESS = 'transfer/auth/SET_ADDRESS';
+export const LOGIN = 'transfer/auth/LOGIN';
+export const LOGOUT = 'transfer/auth/LOGOUT';
+export const SET_BALANCE = 'transfer/auth/SET_BALANCE';
+export const SET_INTERVAL_ID = 'transfer/auth/SET_INTERVAL_ID';
 
 const initialState = {
 	isLogin: false,
@@ -39,7 +39,7 @@ export const authReducer = (state = initialState, action) => {
 			};
 		}
 		case LOGOUT: {
-      debugger
+			debugger;
 			clearInterval(state.intervalId);
 			return {
 				...state,
@@ -106,14 +106,11 @@ export const registrationThunk = (address) => {
 		try {
 			await unlockApi(address);
 
-
 			await registrationApi(address);
 			dispatch(setAddressAC(address));
 
 			return true;
 		} catch (e) {
-
-
 			console.log(e);
 
 			return false;

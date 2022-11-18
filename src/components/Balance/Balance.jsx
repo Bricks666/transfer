@@ -1,4 +1,4 @@
-import { useBalance } from "../../hooks";
+import { useBalance } from '../../hooks';
 
 export const Balance = () => {
 	const balance = useBalance();

@@ -1,4 +1,4 @@
-import { useUserInfo } from ".";
+import { useUserInfo } from '.';
 
 export const useIsAdmin = () => {
 	const { admin } = useUserInfo();

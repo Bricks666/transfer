@@ -1,5 +1,5 @@
-import { useMemo } from "react";
-import { useAddresses, useAuthAddress } from ".";
+import { useMemo } from 'react';
+import { useAddresses, useAuthAddress } from '.';
 
 export const useOthersAddresses = () => {
 	const authAddress = useAuthAddress();

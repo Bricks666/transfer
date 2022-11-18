@@ -3,9 +3,9 @@ state {
   isInitialling: boolean;
 }
 */
-import { initApi } from "../api";
+import { initApi } from '../api';
 
-export const TOGGLE_INIT = "transfer/core/TOGGLE_INIT";
+export const TOGGLE_INIT = 'transfer/core/TOGGLE_INIT';
 
 const initialState = {
 	isInitialling: true,

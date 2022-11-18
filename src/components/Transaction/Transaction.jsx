@@ -24,7 +24,7 @@ export const Transaction = ({
 				<dt>Description</dt>
 				<dd>{description}</dd>
 				<dt>Status</dt>
-				<dd>{status ? "Finish" : "Pending"}</dd>
+				<dd>{status ? 'Finish' : 'Pending'}</dd>
 			</dl>
 			{children}
 		</article>

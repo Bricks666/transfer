@@ -1,4 +1,4 @@
-import { contract } from ".";
+import { contract } from '.';
 
 const getUserAddresses = async () => {
 	return await contract.methods.get_user_addresses().call();

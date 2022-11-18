@@ -3,24 +3,25 @@
 	"version": "0.1.0",
 	"private": true,
 	"dependencies": {
-		"@testing-library/jest-dom": "^5.16.2",
-		"@testing-library/react": "^12.1.2",
-		"@testing-library/user-event": "^13.5.0",
-		"react": "^17.0.2",
-		"react-dom": "^17.0.2",
-		"react-redux": "^7.2.6",
-		"react-router-dom": "^6.2.1",
-		"react-scripts": "5.0.0",
-		"redux": "^4.1.2",
-		"redux-thunk": "^2.4.1",
-		"web-vitals": "^2.1.4",
-		"web3": "^1.7.0"
+		"react": "^18.2.0",
+		"react-dom": "^18.2.0",
+		"react-redux": "^8.0.5",
+		"react-router-dom": "^6.4.3",
+		"redux": "^4.2.0",
+		"redux-thunk": "^2.4.2",
+		"web3": "^1.8.1"
 	},
 	"scripts": {
-		"start": "react-app-rewired start",
-		"build": "react-app-rewired build",
-		"test": "react-app-rewired test",
-		"eject": "react-scripts eject"
+		"dev": "vite --host",
+		"build": "tsc && vite build",
+		"preview": "vite preview",
+		"lint": "eslint --ext .tsx,.ts src",
+		"lint:fix": "eslint --ext .tsx,.ts src --fix",
+		"prettier": "prettier --write --config ./.prettierrc src",
+		"gen:component": "generate-react component",
+		"gen:page": "generate-react component --type=page",
+		"prepare": "husky install",
+		"gen:css-types": "tcm src"
 	},
 	"eslintConfig": {
 		"extends": [
@@ -41,16 +42,25 @@
 		]
 	},
 	"devDependencies": {
-		"@redux-devtools/extension": "^3.2.2",
-		"assert": "^2.0.0",
-		"buffer": "^6.0.3",
-		"crypto-browserify": "^3.12.0",
-		"https-browserify": "^1.0.0",
-		"os-browserify": "^0.3.0",
-		"process": "^0.11.10",
-		"react-app-rewired": "^2.1.11",
-		"stream-browserify": "^3.0.0",
-		"stream-http": "^3.2.0",
-		"url": "^0.11.0"
+		"@rollup/plugin-babel": "^6.0.2",
+		"@types/react": "^18.0.25",
+		"@types/react-dom": "^18.0.9",
+		"@types/react-redux": "^7.1.24",
+		"@types/react-router-dom": "^5.3.3",
+		"@typescript-eslint/eslint-plugin": "^5.43.0",
+		"@typescript-eslint/parser": "^5.43.0",
+		"@vitejs/plugin-react": "^2.2.0",
+		"eslint": "^8.27.0",
+		"eslint-config-airbnb": "^19.0.4",
+		"eslint-config-prettier": "^8.5.0",
+		"eslint-plugin-import": "^2.26.0",
+		"eslint-plugin-sonarjs": "^0.16.0",
+		"generate-react-cli": "^8.0.1",
+		"husky": "^8.0.2",
+		"prettier": "^2.7.1",
+		"typed-css-modules": "^0.7.2",
+		"typescript": "^4.9.3",
+		"vite": "^3.2.4",
+		"vite-tsconfig-paths": "^3.5.2"
 	}
 }

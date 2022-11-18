@@ -1,5 +1,5 @@
-import { Loading } from "../Loading";
-import { List } from "../List";
+import { Loading } from '../Loading';
+import { List } from '../List';
 
 export const FriendlyList = ({
 	isLoading,

@@ -1,6 +1,6 @@
-import { useMemo } from "react";
-import { useSamples, useCategoriesMap } from ".";
-import { mapSamples } from "../utils";
+import { useMemo } from 'react';
+import { useSamples, useCategoriesMap } from '.';
+import { mapSamples } from '../utils';
 
 export const useMappedSamples = () => {
 	const samples = useSamples();

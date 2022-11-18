@@ -1,12 +1,12 @@
-import { useCallback } from "react";
-import { useDispatch } from "react-redux";
+import { useCallback } from 'react';
+import { useDispatch } from 'react-redux';
 import {
 	useCategories,
 	useField,
 	useOthersAddresses,
 	useSamples,
-} from "../../hooks";
-import { sendTransactionThunk } from "../../models/transactions";
+} from '../../hooks';
+import { sendTransactionThunk } from '../../models/transactions';
 
 export const CreateTransactionForm = () => {
 	const users = useOthersAddresses();
@@ -14,8 +14,8 @@ export const CreateTransactionForm = () => {
 	const samples = useSamples();
 	const [receiver, setReceiver] = useField(0);
 	const [value, setValue] = useField(0);
-	const [keyword, setKeyword] = useField("");
-	const [description, setDescription] = useField("");
+	const [keyword, setKeyword] = useField('');
+	const [description, setDescription] = useField('');
 	const [category, setCategory] = useField(-1);
 	const [sample, setSample] = useField();
 	const dispatch = useDispatch();
@@ -25,8 +25,8 @@ export const CreateTransactionForm = () => {
 
 	const reset = useCallback(() => {
 		setReceiver({ target: { value: 0 } });
-		setDescription({ target: { value: "" } });
-		setKeyword({ target: { value: "" } });
+		setDescription({ target: { value: '' } });
+		setKeyword({ target: { value: '' } });
 		setValue({ target: { value: 0 } });
 		setCategory({ target: { value: -1 } });
 		setSample({ target: { value: 0 } });
@@ -41,7 +41,6 @@ export const CreateTransactionForm = () => {
 
 	const onSampleSelect = useCallback(
 		(evt) => {
-
 			const value = JSON.parse(evt.target.value);
 			if (!value) {
 				reset();
@@ -68,7 +67,7 @@ export const CreateTransactionForm = () => {
 
 	return (
 		<form onSubmit={onSubmit}>
-			<select placeholder="receiver" value={receiver} onChange={setReceiver}>
+			<select placeholder='receiver' value={receiver} onChange={setReceiver}>
 				<option value={0} />
 				{users.map((user) => (
 					<option value={user} key={user}>
@@ -77,19 +76,18 @@ export const CreateTransactionForm = () => {
 				))}
 			</select>
 			<input
-				type="number"
+				type='number'
 				min={0}
 				value={value}
 				onChange={setValue}
 				disabled={!!sample}
 			/>
-			<input placeholder="keyword" value={keyword} onChange={setKeyword} />
+			<input placeholder='keyword' value={keyword} onChange={setKeyword} />
 			<select
-				placeholder="category"
+				placeholder='category'
 				value={category}
 				onChange={setCategory}
-				disabled={!!sample}
-			>
+				disabled={!!sample}>
 				<option />
 				{categories.map((category, index) => (
 					<option value={index} key={index}>
@@ -97,7 +95,7 @@ export const CreateTransactionForm = () => {
 					</option>
 				))}
 			</select>
-			<select placeholder="samples" value={sample} onChange={onSampleSelect}>
+			<select placeholder='samples' value={sample} onChange={onSampleSelect}>
 				<option value={0} />
 				{samples.map(({ name }, i) => {
 					return (
@@ -108,7 +106,7 @@ export const CreateTransactionForm = () => {
 				})}
 			</select>
 			<textarea
-				placeholder="description"
+				placeholder='description'
 				value={description}
 				onChange={setDescription}
 			/>

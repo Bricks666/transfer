@@ -1,6 +1,6 @@
-import Web3 from "web3";
-import { useAuthAddress } from "../../hooks";
-import { useVote } from "./useVote";
+import Web3 from 'web3';
+import { useAuthAddress } from '../../hooks';
+import { useVote } from './useVote';
 
 export const Vote = ({ candidate, voters, against, isFinish, id }) => {
 	const address = useAuthAddress();
@@ -8,7 +8,8 @@ export const Vote = ({ candidate, voters, against, isFinish, id }) => {
 
 	const { voteFor, voteAgainst } = useVote(id);
 
-	const againstLabel = Web3.utils.hexToNumberString(against) !== "0" || "nobody";
+	const againstLabel =
+		Web3.utils.hexToNumberString(against) !== '0' || 'nobody';
 
 	return (
 		<div>
@@ -23,7 +24,7 @@ export const Vote = ({ candidate, voters, against, isFinish, id }) => {
 					</ul>
 				</dd>
 				<dt>Against:</dt> <dd>{againstLabel}</dd>
-				<dt>Status:</dt> <dd>{isFinish ? "Finished" : "Pending"}</dd>
+				<dt>Status:</dt> <dd>{isFinish ? 'Finished' : 'Pending'}</dd>
 			</dl>
 			{mayToVote && (
 				<>

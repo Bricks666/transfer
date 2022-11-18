@@ -1,1 +1,1 @@
-export {SendedTransactions} from "./SendedTransactions"
+export { SendedTransactions } from './SendedTransactions';

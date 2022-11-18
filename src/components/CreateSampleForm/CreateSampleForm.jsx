@@ -1,17 +1,17 @@
-import { useCallback } from "react";
-import { useDispatch } from "react-redux";
-import { useCategories, useField } from "../../hooks";
-import { addSampleThunk } from "../../models/samples";
+import { useCallback } from 'react';
+import { useDispatch } from 'react-redux';
+import { useCategories, useField } from '../../hooks';
+import { addSampleThunk } from '../../models/samples';
 
 export const CreateSampleForm = () => {
 	const categories = useCategories();
-	const [name, setName] = useField("");
+	const [name, setName] = useField('');
 	const [moneyCount, setMoneyCount] = useField(0);
 	const [category, setCategory] = useField(-1);
 	const dispatch = useDispatch();
 
 	const reset = useCallback(() => {
-		setName({ target: { value: "" } });
+		setName({ target: { value: '' } });
 		setMoneyCount({ target: { value: 0 } });
 		setCategory({ target: { value: -1 } });
 	}, [setName, setMoneyCount, setCategory]);
@@ -27,8 +27,8 @@ export const CreateSampleForm = () => {
 
 	return (
 		<form onSubmit={onSubmit}>
-			<input placeholder="Sample name" value={name} onChange={setName} />
-			<select placeholder="Category" value={category} onChange={setCategory}>
+			<input placeholder='Sample name' value={name} onChange={setName} />
+			<select placeholder='Category' value={category} onChange={setCategory}>
 				<option value={-1} />
 				{categories.map((category, i) => (
 					<option value={i} key={i}>
@@ -37,8 +37,8 @@ export const CreateSampleForm = () => {
 				))}
 			</select>
 			<input
-				placeholder="Money count"
-				type="number"
+				placeholder='Money count'
+				type='number'
 				min={0}
 				value={moneyCount}
 				onChange={setMoneyCount}

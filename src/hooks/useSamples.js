@@ -1,6 +1,6 @@
-import { useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { loadSamplesThunk } from "../models/samples";
+import { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { loadSamplesThunk } from '../models/samples';
 
 export const useSamples = () => {
 	const samples = useSelector((state) => state.samples.list);

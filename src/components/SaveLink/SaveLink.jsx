@@ -1,5 +1,5 @@
-import { Link, useLocation } from "react-router-dom";
-import { useLocationState } from "../../hooks/useLocationState";
+import { Link, useLocation } from 'react-router-dom';
+import { useLocationState } from '../../hooks/useLocationState';
 
 export const SaveLink = ({ to, children }) => {
 	const location = useLocation();

@@ -1,4 +1,4 @@
-import { useIsAdmin } from "../../hooks";
+import { useIsAdmin } from '../../hooks';
 
 export const OnlyAdmin = ({ children }) => {
 	const isAdmin = useIsAdmin();

@@ -5,12 +5,12 @@ state {
 }
 */
 
-import { getUsersApi, setUserOnOfferApi } from "../api";
-import { toValidUser } from "../utils";
+import { getUsersApi, setUserOnOfferApi } from '../api';
+import { toValidUser } from '../utils';
 
-export const SET_USERS = "transfer/users/SET_USERS";
-export const TOGGLE_LOADING = "transfer/users/TOGGLE_LOADING";
-export const SET_ON_OFFER = "transfer/users/SET_ON_OFFER";
+export const SET_USERS = 'transfer/users/SET_USERS';
+export const TOGGLE_LOADING = 'transfer/users/TOGGLE_LOADING';
+export const SET_ON_OFFER = 'transfer/users/SET_ON_OFFER';
 
 const initialState = {
 	isLoading: false,

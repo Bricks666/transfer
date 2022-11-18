@@ -1,6 +1,6 @@
-import { Navigation } from "../Navigation";
-import { useIsLogin } from "../../hooks";
-import { useLogout } from "./useLogout";
+import { Navigation } from '../Navigation';
+import { useIsLogin } from '../../hooks';
+import { useLogout } from './useLogout';
 
 export const Header = () => {
 	const isLogin = useIsLogin();

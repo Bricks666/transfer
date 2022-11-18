@@ -13,12 +13,12 @@ Vote {
 }
 */
 
-import { getVotesApi, voteAgainstApi, voteForApi } from "../api";
-import { toValidVote } from "../utils";
+import { getVotesApi, voteAgainstApi, voteForApi } from '../api';
+import { toValidVote } from '../utils';
 
-export const SET_VOTES = "transfer/votes/SET_VOTES";
-export const TOGGLE_LOADING = "transfer/votes/TOGGLE_LOADING";
-export const VOTE = "transfer/votes/VOTE";
+export const SET_VOTES = 'transfer/votes/SET_VOTES';
+export const TOGGLE_LOADING = 'transfer/votes/TOGGLE_LOADING';
+export const VOTE = 'transfer/votes/VOTE';
 
 const initialState = {
 	isLoading: false,
@@ -97,7 +97,7 @@ export const loadVotesThunk = () => {
 		try {
 			dispatch(toggleLoadingAC(true));
 			const votes = await getVotesApi();
-      debugger;
+			debugger;
 			dispatch(setVotesAC(votes.map(toValidVote)));
 		} catch (e) {
 			console.log(e);
@@ -123,7 +123,7 @@ export const voteAgainstThunk = (voteId) => {
 	return async (dispatch, getState) => {
 		try {
 			const { address } = getState().auth;
-      debugger;
+			debugger;
 			await voteAgainstApi(address, voteId);
 			dispatch(voteAC(voteId, address, true));
 		} catch (e) {

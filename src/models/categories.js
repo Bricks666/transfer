@@ -5,11 +5,11 @@ state: {
 }
 */
 
-import { addCategoryApi, getCategoriesApi } from "../api";
+import { addCategoryApi, getCategoriesApi } from '../api';
 
-export const SET_CATEGORIES = "transfer/categories/SET_CATEGORIES";
-export const TOGGLE_LOADING = "transfer/categories/TOGGLE_LOADING";
-export const ADD_CATEGORY = "transfer/categories/ADD_CATEGORY";
+export const SET_CATEGORIES = 'transfer/categories/SET_CATEGORIES';
+export const TOGGLE_LOADING = 'transfer/categories/TOGGLE_LOADING';
+export const ADD_CATEGORY = 'transfer/categories/ADD_CATEGORY';
 
 const initialState = {
 	isLoading: false,

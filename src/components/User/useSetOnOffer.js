@@ -1,6 +1,6 @@
-import { useCallback } from "react";
-import { useDispatch } from "react-redux";
-import { setOnOfferThunk } from "../../models/users";
+import { useCallback } from 'react';
+import { useDispatch } from 'react-redux';
+import { setOnOfferThunk } from '../../models/users';
 
 export const useSetOnOffer = (login) => {
 	const dispatch = useDispatch();

@@ -1,5 +1,5 @@
-import { Transaction } from "../Transaction";
-import { useCancel } from "./useCancel";
+import { Transaction } from '../Transaction';
+import { useCancel } from './useCancel';
 
 export const SendedTransaction = ({ id, status, ...props }) => {
 	const onClick = useCancel(id);

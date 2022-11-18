@@ -11,11 +11,11 @@ Sample {
 }
 */
 
-import { addSampleApi, getSamplesApi } from "../api";
-import { toValidSample } from "../utils";
+import { addSampleApi, getSamplesApi } from '../api';
+import { toValidSample } from '../utils';
 
-export const SET_SAMPLES = "transfer/samples/SET_SAMPLES";
-export const TOGGLE_LOADING = "transfer/samples/TOGGLE_LOADING";
+export const SET_SAMPLES = 'transfer/samples/SET_SAMPLES';
+export const TOGGLE_LOADING = 'transfer/samples/TOGGLE_LOADING';
 
 const initialState = {
 	isLoading: false,

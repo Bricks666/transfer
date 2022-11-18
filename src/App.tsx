@@ -4,6 +4,7 @@ import { routes } from './routes';
 import { useInit } from './hooks';
 import { Header } from './components/Header';
 import { AdminRoute } from './components/AdminRoute';
+import './models/init';
 
 export const App = () => {
 	const isInit = useInit();

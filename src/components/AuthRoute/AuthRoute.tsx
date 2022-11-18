@@ -6,7 +6,7 @@ export const AuthRoute = ({ children }) => {
 	const isLogin = useIsLogin();
 
 	if (!isLogin) {
-		return <Navigate to='/login' state={location} replace={true} />;
+		return <Navigate to='/login' state={location} replace />;
 	}
 
 	return children;

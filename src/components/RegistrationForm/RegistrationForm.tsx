@@ -17,7 +17,6 @@ export const RegistrationForm = () => {
 
 			if (isSuccess) {
 				navigate('/login', { replace: true });
-				return;
 			} else {
 				onChange({ target: { value: 0 } });
 			}

@@ -6,7 +6,7 @@ export const AdminRoute = ({ children }) => {
 	const isAdmin = useIsAdmin();
 
 	if (!isAdmin) {
-		return <Navigate to='/' replace={true} />;
+		return <Navigate to='/' replace />;
 	}
 
 	return <AuthRoute>{children}</AuthRoute>;

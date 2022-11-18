@@ -22,7 +22,7 @@ export const TransactionsPage = () => {
 					}
 				/>
 				<Route path='received' element={<ReceivedTransactions />} />
-				<Route path='*' element={<Navigate to='sended' replace={true} />} />
+				<Route path='*' element={<Navigate to='sended' replace />} />
 			</Routes>
 		</main>
 	);

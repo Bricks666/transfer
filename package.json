@@ -3,12 +3,14 @@
 	"version": "0.1.0",
 	"private": true,
 	"dependencies": {
+		"@farfetched/core": "^0.3.4",
+		"@farfetched/react": "^0.2.1",
+		"effector": "^22.4.0",
+		"effector-react": "^22.3.4",
 		"react": "^18.2.0",
 		"react-dom": "^18.2.0",
 		"react-redux": "^8.0.5",
 		"react-router-dom": "^6.4.3",
-		"redux": "^4.2.0",
-		"redux-thunk": "^2.4.2",
 		"web3": "^1.8.1"
 	},
 	"scripts": {
@@ -50,9 +52,11 @@
 		"@typescript-eslint/eslint-plugin": "^5.43.0",
 		"@typescript-eslint/parser": "^5.43.0",
 		"@vitejs/plugin-react": "^2.2.0",
+		"effector-logger": "^0.13.4",
 		"eslint": "^8.27.0",
 		"eslint-config-airbnb": "^19.0.4",
 		"eslint-config-prettier": "^8.5.0",
+		"eslint-plugin-effector": "^0.10.3",
 		"eslint-plugin-import": "^2.26.0",
 		"eslint-plugin-sonarjs": "^0.16.0",
 		"generate-react-cli": "^8.0.1",

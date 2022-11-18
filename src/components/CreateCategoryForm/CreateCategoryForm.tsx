@@ -21,7 +21,7 @@ export const CreateCategoryForm = () => {
 			<input
 				value={categoryName}
 				onChange={setCategoryName}
-				placeholder={'category name'}
+				placeholder='category name'
 			/>
 			<button>Create category</button>
 		</form>

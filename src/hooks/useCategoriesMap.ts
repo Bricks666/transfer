@@ -1,5 +1,5 @@
 import { useMemo } from 'react';
-import { useCategories } from './';
+import { useCategories } from '.';
 
 export const useCategoriesMap = () => {
 	const categories = useCategories();

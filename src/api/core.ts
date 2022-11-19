@@ -1,18 +1,29 @@
 import Web3 from 'web3';
-import { abi, address } from '../data';
+import { abi } from '@/data';
+import { Address } from '@/types';
 
-export let contract = null;
-export let web3 = null;
+export const web3 = new Web3(import.meta.env.VITE_API_PROVIDER);
+export const contract = new web3.eth.Contract(
+	abi,
+	import.meta.env.VITE_API_CONTRACT
+);
 
-export const initApi = () => {
-	web3 = new Web3('ws://localhost:8545');
-	contract = new web3.eth.Contract(abi, address);
+export const getBalance = (address: Address): Promise<string> => {
+	return web3.eth.getBalance(address);
 };
 
-export const unlockApi = async (address) => {
-	await web3.eth.personal.unlockAccount(address, '0000', 0);
+export const getAddresses = (): Promise<Address[]> => {
+	return web3.eth.getAccounts();
 };
 
-export const lockApi = async (address) => {
-	await web3.eth.personal.lockAccount(address);
+export const unlock = (
+	address: Address,
+	password = '0000',
+	duration = 0
+): Promise<boolean> => {
+	return web3.eth.personal.unlockAccount(address, password, duration);
+};
+
+export const lock = (address: Address): Promise<boolean> => {
+	return web3.eth.personal.lockAccount(address);
 };

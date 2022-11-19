@@ -1,6 +1,5 @@
-export { registrationApi, loginApi, getBalanceApi } from './auth';
-export { contract, web3, initApi, lockApi, unlockApi } from './core';
-export { loadAddressesApi } from './addresses';
+export * as core from './core';
+export * as auth from './auth';
 export { getUserApi } from './user';
 export {
 	getTransactionsApi,

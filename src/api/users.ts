@@ -1,7 +1,7 @@
 import { contract } from '.';
 
 const getUserAddresses = async () => {
-	return await contract.methods.get_user_addresses().call();
+	return contract.methods.get_user_addresses().call();
 };
 
 export const getUsersApi = async () => {
@@ -11,9 +11,9 @@ export const getUsersApi = async () => {
 		users.push(contract.methods.user(address).call())
 	);
 
-	return await Promise.all(users);
+	return Promise.all(users);
 };
 
 export const setUserOnOfferApi = async (sender, login) => {
-	return await contract.methods.add_offer_admin(login).send({ from: sender });
+	return contract.methods.add_offer_admin(login).send({ from: sender });
 };

@@ -1,13 +1,10 @@
-import { contract, web3 } from '.';
+import { Address } from '@/types';
+import { contract } from './core';
 
-export const registrationApi = async (address) => {
-	return await contract.methods.reg_user().send({ from: address });
+export const registration = (address: Address) => {
+	return contract.methods.reg_user().send({ from: address });
 };
 
-export const loginApi = async (address) => {
-	return await contract.methods.login_user().call({ from: address });
-};
-
-export const getBalanceApi = async (address) => {
-	return await web3.eth.getBalance(address);
+export const login = (address: Address) => {
+	return contract.methods.login_user().call({ from: address });
 };

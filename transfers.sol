@@ -1,264 +1,419 @@
 pragma solidity ^0.8.13;
 pragma abicoder v2;
 
-contract Transfer {
-    struct User {
-        address login; //логин - адрес в сети
-        bool user;
-        bool admin;
-        bool on_offer;
-    }
+contract Shared {
+	enum Status {
+		pending,
+		accept,
+		cancel
+	}
 
-    struct Money_transfer {
-        uint256 transfer_num;
-        uint256 time_transaction;
-        address payable owner_address;
-        uint256 id_category;
-        bytes32 keyword;
-        address payable recipient_address;
-        uint256 count;
-        bool status;
-        string description;
-    }
-
-    struct Sample {
-        string name_sample;
-        uint256 id_category;
-        uint256 count; // сколько денег
-    }
-
-    struct AdminReg {
-        uint256 id;
-        address admin_request;
-        address[] admin_address;
-        address admin_against;
-        bool finished;
-    }
-
-    address[] user_address;
-    string[] public category;
-    Money_transfer[] public money_transfer;
-    uint256 public admin_count;
-    Sample[] public sample;
-    AdminReg[] public offer_admin;
-
-    mapping(address => User) public user;
-
-    constructor() {
-        user[0xc97E2f334315eb44ea6a14A51C4Ca83b74888FF6] = User(
-            0xc97E2f334315eb44ea6a14A51C4Ca83b74888FF6,
-            true,
-            true,
-            true
-        );
-        category.push("Personal transfer");
-        category.push("Rent pay");
-        category.push("Personal repayment");
-        sample.push(Sample("present10", 0, 10));
-        sample.push(Sample("present10", 0, 30));
-        sample.push(Sample("present10", 0, 50));
-        sample.push(Sample("rent70", 1, 70));
-        sample.push(Sample("rent90", 1, 90));
-        sample.push(Sample("debtrepayment", 2, 100));
-        admin_count = 1;
-        user_address.push(0xc97E2f334315eb44ea6a14A51C4Ca83b74888FF6);
-    }
-
-    function get_categories() public view returns (string[] memory) {
-        return (category);
-    }
-
-    function get_transfers() external view returns (Money_transfer[] memory) {
-        return money_transfer;
-    }
-
-    function get_samples() external view returns (Sample[] memory) {
-        return sample;
-    }
-
-    function get_user_addresses() external view returns (address[] memory) {
-        return user_address;
-    }
-
-    function get_offers() external view returns (AdminReg[] memory) {
-        return offer_admin;
-    }
-
-    function reg_user() public {
-        require(user[msg.sender].login == address(0));
-        user[msg.sender] = User(msg.sender, true, false, false);
-        user_address.push(msg.sender);
-    }
-
-    function login_user() public view {
-        require(user[msg.sender].login != address(0));
-    }
-
-    function transferTo(
-        address payable recipient_address,
-        string memory keyword,
-        string memory description,
-        uint256 category_id
-    ) public payable returns (Money_transfer memory) {
-        require(
-            user[recipient_address].user == true,
-            "The user is not registered"
-        );
-        require(user[msg.sender].user == true, "You are not a user");
-        require(recipient_address != msg.sender, "Use different address");
-        require(msg.value > 0, "You have not a money");
-        money_transfer.push(
-            Money_transfer(
-                money_transfer.length,
-                0,
-                msg.sender,
-                category_id,
-                keccak256(abi.encodePacked(keyword)),
-                recipient_address,
-                msg.value,
-                false,
-                description
-            )
-        );
-        return money_transfer[money_transfer.length - 1];
-    }
-
-    function cancel_transfer(uint256 transfer_num) public {
-        require(user[msg.sender].user == true, "You are not registered");
-        require(
-            money_transfer[transfer_num].owner_address != address(0),
-            "Please, check transfer_num"
-        );
-        require(
-            money_transfer[transfer_num].owner_address == msg.sender,
-            "You are not owner"
-        );
-        require(
-            money_transfer[transfer_num].status == false,
-            "The transfer has been already finished"
-        );
-        money_transfer[transfer_num].owner_address.transfer(
-            money_transfer[transfer_num].count
-        );
-        money_transfer[transfer_num].status = true;
-    }
-
-    function acc_transfer(uint256 transfer_num, string memory keyword) public {
-        require(
-            money_transfer[transfer_num].recipient_address == msg.sender,
-            "You are not recipient"
-        );
-        require(
-            money_transfer[transfer_num].status == false,
-            "The transfer has been already finished"
-        );
-        if (
-            keccak256(abi.encodePacked(keyword)) !=
-            money_transfer[transfer_num].keyword
-        ) {
-            money_transfer[transfer_num].owner_address.transfer(
-                money_transfer[transfer_num].count
-            );
-        } else {
-            msg.sender.transfer(money_transfer[transfer_num].count);
-        }
-        money_transfer[transfer_num].time_transaction = block.timestamp;
-        money_transfer[transfer_num].status = true;
-    }
-
-    // function use_sample(string memory name_sample, address payable recipient_address, string memory keyword, string memory description, uint payment_comission) public payable{ // payment_comission - кто оплачивает комиссию - 0 - отправитель . 1 - получатель
-    //     require(user[recipient_address].user == true, "The user is not registered");
-    //     require(user[msg.sender].user == true, "You are not a user");
-    //     require(msg.sender.balance > 0, "You have not a money");
-    //     require(recipient_address != msg.sender, "Use different address");
-    //     require(msg.value == sample[name_sample].count, "Check value");
-    //     money_transfer.push(Money_transfer(money_transfer.length, 0 ,msg.sender, sample[name_sample].id_category, keccak256(abi.encodePacked(keyword)), recipient_address, sample[name_sample].count, false, description));
-    //     if (payment_comission == 0) {
-    //         if (sample[name_sample].count >= 10) {
-    //         0xe5f0332CA42459333149b67aF2d0E486D03F8a83.transfer(sample[name_sample].count/100);
-    //         }
-    //         else {
-    //         0xe5f0332CA42459333149b67aF2d0E486D03F8a83.transfer(1);
-    //         }
-    //     }
-    // }
-
-    function add_sample(
-        string memory name_sample,
-        uint256 id_category,
-        uint256 count
-    ) public {
-        require(user[msg.sender].admin == true, "You are not admin");
-        sample.push(Sample(name_sample, id_category, count));
-    }
-
-    function add_category(string memory name_category) public {
-        require(user[msg.sender].admin == true, "You are not admin");
-        category.push(name_category);
-    }
-
-    modifier CheckVote(uint256 id_offer) {
-        bool value = false;
-        for (
-            uint256 i = 0;
-            i < offer_admin[id_offer].admin_address.length;
-            i++
-        ) {
-            if (offer_admin[id_offer].admin_address[i] == msg.sender) {
-                value = true;
-                break;
-            }
-        }
-        require(value == false, "Is voised");
-        _;
-    }
-
-    function check_offer(uint256 id_offer) public {
-        if (offer_admin[id_offer].admin_address.length == admin_count) {
-            offer_admin[id_offer].finished = true;
-            user[offer_admin[id_offer].admin_request].admin = true;
-            admin_count += 1;
-        }
-    }
-
-    function add_offer_admin(address address_user) public {
-        require(user[address_user].user == true, "The user is not registered");
-        require(user[msg.sender].admin == true, "You are not admin");
-        require(user[address_user].admin == false, "The user is admin");
-        require(user[address_user].on_offer == false, "The user is on offer");
-
-        address[] memory addressArray;
-        uint256 offer_id = offer_admin.length;
-        offer_admin.push(
-            AdminReg(offer_id, address_user, addressArray, address(0), false)
-        );
-        offer_admin[offer_id].admin_address.push(msg.sender);
-        check_offer(offer_id);
-        user[address_user].on_offer = true;
-    }
-
-    function vote_for(uint256 id_offer) public CheckVote(id_offer) {
-        require(
-            user[offer_admin[id_offer].admin_request].user == true,
-            "The user is not registered"
-        );
-        require(user[msg.sender].admin == true, "You are not admin");
-        require(
-            offer_admin[id_offer].finished == false,
-            "The offer is finished"
-        );
-        offer_admin[id_offer].admin_address.push(msg.sender);
-        check_offer(id_offer);
-    }
-
-    function vote_against(uint256 id_offer) public CheckVote(id_offer) {
-        require(user[msg.sender].admin == true, "You are not admin");
-        require(
-            offer_admin[id_offer].finished == false,
-            "The offer is finished"
-        );
-        offer_admin[id_offer].admin_against = msg.sender;
-        offer_admin[id_offer].finished = true;
-        user[offer_admin[id_offer].admin_request].on_offer = false;
-    }
+	function hash(string memory str) internal pure returns (bytes32) {
+		return keccak256(abi.encodePacked(str));
+	}
 }
+
+contract Users is Shared {
+	enum Roles {
+		user,
+		admin
+	}
+
+	struct User {
+		address login;
+		bytes32 password;
+		Roles role;
+	}
+
+	uint256 admin_count;
+	address[] user_address;
+	mapping(address => User) users;
+
+	event NewUser(address login);
+	event ChangeRole(address indexed login, Roles role);
+
+	modifier is_reg(address login) {
+		require(users[login].login != address(0), 'You have not registered yet');
+		_;
+	}
+
+	modifier is_not_reg(address login) {
+		require(users[login].login == address(0), 'You have already registered');
+		_;
+	}
+
+	modifier role_guard(address login, Roles role) {
+		require(users[login].role == role, 'Your role is not allowed');
+		_;
+	}
+
+	constructor() {
+		_create_user(
+			0xc97E2f334315eb44ea6a14A51C4Ca83b74888FF6,
+			hash('password'),
+			Roles.admin
+		);
+	}
+
+	function get_user_addresses() external view returns (address[] memory) {
+		return user_address;
+	}
+
+	function get_user(address login)
+		external
+		view
+		is_reg(login)
+		returns (User memory)
+	{
+		return users[login];
+	}
+
+	function reg_user(bytes32 password) external is_not_reg(msg.sender) {
+		_create_user(msg.sender, password, Roles.user);
+	}
+
+	function login_user(bytes32 password)
+		external
+		view
+		is_reg(msg.sender)
+		returns (User memory)
+	{
+		require(users[msg.sender].password != password, 'Password is incorrect');
+		return users[msg.sender];
+	}
+
+	function _create_user(
+		address login,
+		bytes32 password,
+		Roles role
+	) private returns (User memory) {
+		users[login] = User({ login: login, password: password, role: role });
+		user_address.push(login);
+		if (role == Roles.admin) {
+			admin_count += 1;
+		}
+		emit NewUser(login);
+	}
+
+	function _change_role(address login, Roles role) internal {
+		users[login].role = role;
+		if (role == Roles.admin) {
+			admin_count += 1;
+		}
+		emit ChangeRole(login, role);
+	}
+}
+
+contract Categories is Users {
+	string[] categories;
+
+	event NewCategory(string name);
+
+	constructor() {
+		_create_category('Personal transfer');
+		_create_category('Rent pay');
+		_create_category('Personal repayment');
+	}
+
+	function get_categories() external view returns (string[] memory) {
+		return categories;
+	}
+
+	function create_category(string memory name)
+		external
+		role_guard(msg.sender, Roles.admin)
+	{
+		_create_category(name);
+	}
+
+	function _create_category(string memory name)
+		private
+		returns (string memory)
+	{
+		categories.push(name);
+		emit NewCategory(name);
+	}
+}
+
+contract Samples is Users {
+	struct Sample {
+		uint256 id;
+		string name;
+		uint256 category_id;
+		uint256 money;
+	}
+
+	Sample[] samples;
+
+	event NewSample(Sample sample);
+
+	constructor() {
+		_create_sample('present10', 0, 10);
+		_create_sample('present10', 0, 30);
+		_create_sample('present10', 0, 50);
+		_create_sample('rent70', 1, 70);
+		_create_sample('rent90', 1, 90);
+		_create_sample('debtrepayment', 2, 100);
+	}
+
+	function get_samples() external view returns (Sample[] memory) {
+		return samples;
+	}
+
+	function create_sample(
+		string memory name,
+		uint256 category_id,
+		uint256 money
+	) external role_guard(msg.sender, Roles.admin) {
+		_create_sample(name, category_id, money);
+	}
+
+	function _create_sample(
+		string memory name,
+		uint256 category_id,
+		uint256 money
+	) private {
+		uint256 id = samples.length;
+		Sample memory sample = Sample({
+			id: id,
+			name: name,
+			category_id: category_id,
+			money: money
+		});
+		samples.push(sample);
+		emit NewSample(sample);
+	}
+}
+
+contract Transfers is Users {
+	struct Transfer {
+		uint256 id;
+		address payable sender;
+		address payable receiver;
+		uint256 category_id;
+		uint256 money;
+		string description;
+		bytes32 keyword;
+		Status status;
+		uint256 sended_at;
+		uint256 finished_at;
+	}
+
+	Transfer[] transfers;
+
+	event NewTransfer(Transfer transfer);
+	event ChangeTransferStatus(
+		address indexed sender,
+		address indexed receiver,
+		uint256 id
+	);
+
+	modifier is_sender(uint256 id, address caller) {
+		require(transfers[id].sender == caller, 'You are not a sender');
+		_;
+	}
+
+	modifier is_receiver(uint256 id, address caller) {
+		require(transfers[id].receiver == caller, 'You are not a receiver');
+		_;
+	}
+
+	modifier is_not_finished_transfer(uint256 id) {
+		require(
+			transfers[id].status == Status.pending,
+			'Transfer has already been finished'
+		);
+		_;
+	}
+
+	function get_transfers() external view returns (Transfer[] memory) {
+		return transfers;
+	}
+
+	function create_transfer(
+		address payable receiver,
+		uint256 category_id,
+		bytes32 keyword,
+		string memory description
+	) external payable is_reg(receiver) returns (Transfer memory) {
+		require(receiver != msg.sender, 'Use different address');
+		require(msg.value > 0, 'You have not a money');
+		return
+			_create_transfer(
+				payable(msg.sender),
+				receiver,
+				category_id,
+				msg.value,
+				description,
+				keyword
+			);
+	}
+
+	function accept_transfer(uint256 id, bytes32 keyword)
+		external
+		is_reg(msg.sender)
+		is_receiver(id, msg.sender)
+		is_not_finished_transfer(id)
+	{
+		if (keyword == transfers[id].keyword) {
+			transfers[id].receiver.transfer(transfers[id].money);
+			_finish_transfer(id, Status.accept);
+		} else {
+			transfers[id].sender.transfer(transfers[id].money);
+			_finish_transfer(id, Status.cancel);
+		}
+	}
+
+	function cancel_transfer(uint256 id)
+		external
+		is_reg(msg.sender)
+		is_sender(id, msg.sender)
+		is_not_finished_transfer(id)
+	{
+		transfers[id].sender.transfer(transfers[id].money);
+		_finish_transfer(id, Status.cancel);
+	}
+
+	function _create_transfer(
+		address payable sender,
+		address payable receiver,
+		uint256 category_id,
+		uint256 money,
+		string memory description,
+		bytes32 keyword
+	) private returns (Transfer memory) {
+		uint256 id = transfers.length;
+		Transfer memory transfer = Transfer({
+			id: id,
+			sender: sender,
+			receiver: receiver,
+			category_id: category_id,
+			money: money,
+			description: description,
+			keyword: keyword,
+			status: Status.pending,
+			sended_at: block.timestamp,
+			finished_at: 0
+		});
+		transfers.push(transfer);
+		emit NewTransfer(transfer);
+		return transfer;
+	}
+
+	function _finish_transfer(uint256 id, Status status) private {
+		Transfer memory transfer = transfers[id];
+		transfers[id].status = status;
+		transfers[id].finished_at = block.timestamp;
+		emit ChangeTransferStatus(transfer.sender, transfer.receiver, id);
+	}
+}
+
+contract Requests is Users {
+	struct Request {
+		uint256 id;
+		address candidate;
+		address[] accept_voter;
+		address cancel_voter;
+		Status status;
+	}
+
+	Request[] requests;
+	mapping(address => bool) users_on_request;
+
+	event NewRequest(Request request);
+	event ChangeRequestStatus(uint256 indexed id, Status status);
+
+	modifier is_not_on_request(address login) {
+		require(!users_on_request[login], 'User is already on request');
+		_;
+	}
+
+	modifier is_not_finished_request(uint256 id) {
+		require(
+			requests[id].status == Status.pending,
+			'This requests has already been finished'
+		);
+		_;
+	}
+
+	modifier is_not_vote(uint256 id) {
+		bool flag = true;
+		address[] memory accept_voter = requests[id].accept_voter;
+		for (uint256 i = 0; i < accept_voter.length; i++) {
+			if (accept_voter[i] == msg.sender) {
+				flag = false;
+				break;
+			}
+		}
+		require(flag, 'You have already vote');
+		_;
+	}
+
+	function get_requests() external view returns (Request[] memory) {
+		return requests;
+	}
+
+	function create_requests(address candidate)
+		external
+		role_guard(msg.sender, Roles.admin)
+		is_reg(candidate)
+		role_guard(candidate, Roles.user)
+		is_not_on_request(candidate)
+	{
+		Request memory request = _create_request(candidate);
+		_check_request(request.id);
+	}
+
+	function accept_request(uint256 id)
+		external
+		role_guard(msg.sender, Roles.admin)
+		is_not_finished_request(id)
+		is_not_vote(id)
+	{
+		requests[id].accept_voter.push(msg.sender);
+		_check_request(id);
+	}
+
+	function cancel_vote(uint256 id)
+		external
+		role_guard(msg.sender, Roles.admin)
+		is_not_finished_request(id)
+		is_not_vote(id)
+	{
+		requests[id].cancel_voter = msg.sender;
+		_check_request(id);
+	}
+
+	function _create_request(address candidate) private returns (Request memory) {
+		uint256 id = requests.length;
+		address[] memory addressArray;
+		Request memory request = Request({
+			id: id,
+			candidate: candidate,
+			accept_voter: addressArray,
+			cancel_voter: address(0),
+			status: Status.pending
+		});
+		requests.push(request);
+		users_on_request[candidate] = true;
+		emit NewRequest(request);
+	}
+
+	function _check_request(uint256 id) private {
+		if (requests[id].cancel_voter != address(0)) {
+			return _finish_request(id, Status.cancel);
+		}
+		if (requests[id].accept_voter.length == admin_count) {
+			return _finish_request(id, Status.accept);
+		}
+	}
+
+	function _finish_request(uint256 id, Status status) private {
+		requests[id].status = status;
+		_change_role(requests[id].candidate, Roles.admin);
+		users_on_request[requests[id].candidate] = false;
+		emit ChangeRequestStatus(id, status);
+	}
+}
+
+contract Total is Shared, Users, Categories, Samples, Transfers, Requests {}

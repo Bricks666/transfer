@@ -1,19 +1,10 @@
-import { contract } from '.';
+import { Address } from '@/types';
+import { contract } from './core';
 
-const getUserAddresses = async () => {
+export const getAddresses = () => {
 	return contract.methods.get_user_addresses().call();
 };
 
-export const getUsersApi = async () => {
-	const users = [];
-	const addresses = await getUserAddresses();
-	addresses.forEach((address) =>
-		users.push(contract.methods.user(address).call())
-	);
-
-	return Promise.all(users);
-};
-
-export const setUserOnOfferApi = async (sender, login) => {
-	return contract.methods.add_offer_admin(login).send({ from: sender });
+export const getOne = (address: Address) => {
+	return contract.methods.get_user(address).call();
 };

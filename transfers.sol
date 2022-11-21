@@ -230,6 +230,10 @@ contract Transfers is Users {
 		return transfers;
 	}
 
+	function get_transfer(uint256 id) external view returns (Transfer memory) {
+		return transfers[id];
+	}
+
 	function create_transfer(
 		address payable receiver,
 		uint256 category_id,
@@ -374,7 +378,7 @@ contract Requests is Users {
 		_check_request(id);
 	}
 
-	function cancel_vote(uint256 id)
+	function cancel_request(uint256 id)
 		external
 		role_guard(msg.sender, Roles.admin)
 		is_not_finished_request(id)

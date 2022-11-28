@@ -1,49 +1,24 @@
-import { useCallback } from 'react';
-import { useDispatch } from 'react-redux';
-import { useCategories, useField } from '../../hooks';
-import { addSampleThunk } from '../../models/samples';
+import { useMutation } from '@farfetched/react';
+import { useCategories, useForm } from '@/hooks';
+import { samplesModel } from '@/models';
 
 export const CreateSampleForm = () => {
-	const categories = useCategories();
-	const [name, setName] = useField('');
-	const [moneyCount, setMoneyCount] = useField(0);
-	const [category, setCategory] = useField(-1);
-	const dispatch = useDispatch();
-
-	const reset = useCallback(() => {
-		setName({ target: { value: '' } });
-		setMoneyCount({ target: { value: 0 } });
-		setCategory({ target: { value: -1 } });
-	}, [setName, setMoneyCount, setCategory]);
-
-	const onSubmit = useCallback(
-		async (evt) => {
-			evt.preventDefault();
-			await dispatch(addSampleThunk(name, category, moneyCount));
-			reset();
-		},
-		[reset, dispatch, name, category, moneyCount]
-	);
+	const { data: categories } = useCategories();
+	const create = useMutation(samplesModel.addMutation);
+	const { onSubmit } = useForm(create.start);
 
 	return (
 		<form onSubmit={onSubmit}>
-			<input placeholder='Sample name' value={name} onChange={setName} />
-			<select placeholder='Category' value={category} onChange={setCategory}>
-				<option value={-1} />
-				{categories.map((category, i) => (
+			<input placeholder='Sample name' required />
+			<select placeholder='Category' required>
+				{categories!.map((category, i) => (
 					<option value={i} key={i}>
 						{category}
 					</option>
 				))}
 			</select>
-			<input
-				placeholder='Money count'
-				type='number'
-				min={0}
-				value={moneyCount}
-				onChange={setMoneyCount}
-			/>
-			<button>Create sample</button>
+			<input placeholder='Money count' type='number' min={0} required />
+			<button type='submit'>Create sample</button>
 		</form>
 	);
 };

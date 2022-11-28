@@ -1,20 +1,13 @@
-import { Address } from '@/types';
+import { Sample, CreateSampleParams } from '@/models';
 import { contract } from './core';
 
-export const getAll = () => {
+export const getAll = (): Promise<Sample[]> => {
 	return contract.methods.get_samples().call();
 };
 
-export interface CreateSampleParams {
-	readonly sender: Address;
-	readonly name: string;
-	readonly categoryId: number;
-	readonly money: number;
-}
-
 export const create = (params: CreateSampleParams) => {
-	const { categoryId, money, name, sender } = params;
+	const { category_id, money, name, sender } = params;
 	return contract.methods
-		.create_sample(name, categoryId, money)
+		.create_sample(name, category_id, money)
 		.send({ from: sender });
 };

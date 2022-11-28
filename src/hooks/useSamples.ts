@@ -1,16 +1,8 @@
-import { useEffect } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import { loadSamplesThunk } from '../models/samples';
+import { useQuery } from '@farfetched/react';
+import { useGate } from 'effector-react';
+import { samplesModel } from '@/models';
 
 export const useSamples = () => {
-	const samples = useSelector((state) => state.samples.list);
-	const dispatch = useDispatch();
-
-	useEffect(() => {
-		if (!samples.length) {
-			dispatch(loadSamplesThunk());
-		}
-	}, [dispatch, samples.length]);
-
-	return samples;
+	useGate(samplesModel.SampleGate);
+	return useQuery(samplesModel.getAllQuery);
 };

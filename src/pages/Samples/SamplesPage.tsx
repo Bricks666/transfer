@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { MainLayout } from '@/layouts';
 import { CommonProps } from '@/types';
-import { SamplesList } from '@/components/SamplesList';
+import { SampleList } from '@/components/SampleList';
 import { CreateSampleForm } from '@/components/CreateSampleForm';
 
 export interface SamplesPageProps extends CommonProps {}
@@ -12,7 +12,7 @@ const SamplesPage: React.FC<SamplesPageProps> = React.memo(
 			<MainLayout>
 				<h2>Samples Page</h2>
 				<CreateSampleForm />
-				<SamplesList />
+				<SampleList />
 			</MainLayout>
 		);
 	}

@@ -1,7 +1,15 @@
-import { useUserInfo } from '.';
+import { useStoreMap } from 'effector-react';
+import { Roles } from '@/models';
+import { $authUser } from '@/models/auth/units';
 
 export const useIsAdmin = () => {
-	const { admin } = useUserInfo();
-
-	return admin;
+	return useStoreMap({
+		store: $authUser,
+		fn: (user) => {
+			debugger;
+			return !!user && user.role == Roles.admin;
+		},
+		keys: [],
+		defaultValue: false,
+	});
 };

@@ -1,16 +1,8 @@
-import { useEffect } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import { loadAddressesThunk } from '../models/addresses';
+import { useGate } from 'effector-react';
+import { useQuery } from '@farfetched/react';
+import { addressesModel } from '@/models';
 
 export const useAddresses = () => {
-	const addresses = useSelector((state) => state.addresses);
-	const dispatch = useDispatch();
-
-	useEffect(() => {
-		if (!addresses.length) {
-			dispatch(loadAddressesThunk());
-		}
-	}, [dispatch, addresses.length]);
-
-	return addresses;
+	useGate(addressesModel.AddressesGate);
+	return useQuery(addressesModel.getAllQuery);
 };

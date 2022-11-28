@@ -1,10 +1,8 @@
 export { useLocationState } from './useLocationState';
-export { useInit } from './useInit';
 export { useIsLogin } from './useIsLogin';
 export { useAddresses } from './useAddresses';
 export { useField } from './useField';
 export { useUserLoading } from './useUserLoading';
-export { useUserInfo } from './userUserInfo';
 export { useSendedTransactions } from './useSendedTransactions';
 export { useReceivedTransactions } from './useReceivedTransactions';
 export { useTransactionLoading } from './useTransactionLoading';
@@ -22,3 +20,4 @@ export { useUsersLoading } from './useUsersLoading';
 export { useVotes } from './useVotes';
 export { useAuthAddress } from './useAuthAddress';
 export { useVotesLoading } from './useVotesLoading';
+export { useForm } from './useForm';

@@ -1,8 +1,10 @@
+import * as React from 'react';
 import { Navigate } from 'react-router-dom';
-import { useIsAdmin } from '../../hooks';
+import { useIsAdmin } from '@/hooks';
 import { AuthRoute } from '../AuthRoute';
 
-export const AdminRoute = ({ children }) => {
+export const AdminRoute: React.FC<React.PropsWithChildren> = (props) => {
+	const { children } = props;
 	const isAdmin = useIsAdmin();
 
 	if (!isAdmin) {

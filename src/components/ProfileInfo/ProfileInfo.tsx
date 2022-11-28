@@ -1,18 +1,15 @@
-import { useUserInfo, useUserLoading } from '../../hooks';
-import { Loading } from '../Loading';
+import * as React from 'react';
+import { useUnit } from 'effector-react';
+import { authModel } from '@/models';
 import { UserInfo } from '../UserInfo';
 import { Balance } from '../Balance';
 
-export const ProfileInfo = () => {
-	const info = useUserInfo();
-	const isLoading = useUserLoading();
-
+export const ProfileInfo: React.FC = () => {
+	const info = useUnit(authModel.$authUser);
 	return (
 		<div>
-			<Loading isLoading={isLoading}>
-				<UserInfo {...info} />
-				<Balance />
-			</Loading>
+			<UserInfo {...info!} />
+			<Balance />
 		</div>
 	);
 };

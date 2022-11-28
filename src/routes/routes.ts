@@ -1,23 +1,21 @@
-/*
-route {
-  Component: ComponentType;
-  path: string;
-  isAuthRoute?: boolean
-  isAdminOnly?: boolean
+import * as React from 'react';
+
+const LoginPage = React.lazy(() => import('@/pages/Login'));
+const RegistrationPage = React.lazy(() => import('@/pages/Registration'));
+const TransfersPage = React.lazy(() => import('@/pages/Transfers'));
+const ProfilePage = React.lazy(() => import('@/pages/Profile'));
+const CategoriesPage = React.lazy(() => import('@/pages/Categories'));
+const SamplesPage = React.lazy(() => import('@/pages/Samples'));
+const OffersPage = React.lazy(() => import('@/pages/Offers'));
+
+interface Route {
+	readonly Component: React.ComponentType;
+	readonly path: string;
+	readonly isAuthRoute?: boolean;
+	readonly isAdminOnly?: boolean;
 }
-*/
 
-import {
-	LoginPage,
-	ProfilePage,
-	RegistrationPage,
-	TransactionsPage,
-	CategoriesPage,
-	SamplesPage,
-	OffersPage,
-} from '../pages';
-
-export const routes = [
+export const routes: Route[] = [
 	{
 		Component: LoginPage,
 		path: '/login',
@@ -27,7 +25,7 @@ export const routes = [
 		path: '/registration',
 	},
 	{
-		Component: TransactionsPage,
+		Component: TransfersPage,
 		path: '/*',
 		isAuthRoute: true,
 	},

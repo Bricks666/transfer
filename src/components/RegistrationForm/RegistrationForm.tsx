@@ -1,40 +1,26 @@
-import { useCallback } from 'react';
-import { useDispatch } from 'react-redux';
-import { useNavigate } from 'react-router-dom';
-import { useAddresses, useField } from '../../hooks';
-import { registrationThunk } from '../../models/auth';
+import * as React from 'react';
+import { useMutation } from '@farfetched/react';
+import { authModel } from '@/models';
+import { useAddresses, useForm } from '@/hooks';
 
-export const RegistrationForm = () => {
-	const addresses = useAddresses();
-	const [address, onChange] = useField(0);
-	const dispatch = useDispatch();
-	const navigate = useNavigate();
+export const RegistrationForm: React.FC = React.memo(
+	function RegistrationForm() {
+		const { data: addresses } = useAddresses();
+		const registration = useMutation(authModel.registrationMutation);
+		const { onSubmit } = useForm(registration.start);
 
-	const onSubmit = useCallback(
-		async (evt) => {
-			evt.preventDefault();
-			const isSuccess = await dispatch(registrationThunk(address));
-
-			if (isSuccess) {
-				navigate('/login', { replace: true });
-			} else {
-				onChange({ target: { value: 0 } });
-			}
-		},
-		[dispatch, onChange, navigate, address]
-	);
-
-	return (
-		<form onSubmit={onSubmit}>
-			<select value={address} onChange={onChange}>
-				<option value={0} />
-				{addresses.map((address) => (
-					<option value={address} key={address}>
-						{address}
-					</option>
-				))}
-			</select>
-			<button>Registration</button>
-		</form>
-	);
-};
+		return (
+			<form onSubmit={onSubmit}>
+				<select name='address' required>
+					{addresses!.map((address) => (
+						<option value={address} key={address}>
+							{address}
+						</option>
+					))}
+				</select>
+				<input name='password' type='password' />
+				<button type='submit'>Registration</button>
+			</form>
+		);
+	}
+);

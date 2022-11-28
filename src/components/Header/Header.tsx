@@ -1,15 +1,19 @@
+import { useUnit } from 'effector-react';
+import { authModel } from '@/models';
 import { Navigation } from '../Navigation';
-import { useIsLogin } from '../../hooks';
-import { useLogout } from './useLogout';
 
 export const Header = () => {
-	const isLogin = useIsLogin();
-	const onClick = useLogout();
+	const isAuth = useUnit(authModel.$isAuth);
+	const logout = useUnit(authModel.logoutFx);
 
 	return (
 		<header>
 			<Navigation />
-			{isLogin && <button onClick={onClick}>Logout</button>}
+			{isAuth ? (
+				<button type='button' onClick={logout}>
+					Logout
+				</button>
+			) : null}
 		</header>
 	);
 };

@@ -1,8 +1,8 @@
 import * as React from 'react';
+import { Link } from 'react-router-dom';
 import { MainLayout } from '@/layouts';
 import { CommonProps } from '@/types';
 import { RegistrationForm } from '@/components/RegistrationForm';
-import { SaveLink } from '@/components/SaveLink';
 
 export interface RegistrationPageProps extends CommonProps {}
 
@@ -12,7 +12,7 @@ const RegistrationPage: React.FC<RegistrationPageProps> = React.memo(
 			<MainLayout>
 				<h2>Registration Page</h2>
 				<RegistrationForm />
-				<SaveLink to='/login'>Login</SaveLink>
+				<Link to='/login'>Login</Link>
 			</MainLayout>
 		);
 	}

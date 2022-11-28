@@ -2,10 +2,10 @@ import * as React from 'react';
 import { Navigate, Route, Routes } from 'react-router-dom';
 import { MainLayout } from '@/layouts';
 import { CommonProps } from '@/types';
-import { TransactionNavigation } from '@/components/TransactionNavigation';
-import { SendedTransactions } from '@/components/SendedTransactions';
-import { CreateTransactionForm } from '@/components/CreateTransactionForm';
-import { ReceivedTransactions } from '@/components/ReceivedTransactions';
+import { TransfersNavigation } from '@/components/TransfersNavigation';
+import { SendedTransferList } from '@/components/SendedTransferList';
+import { CreateTransferForm } from '@/components/CreateTransferForm';
+import { ReceivedTransferList } from '@/components/ReceivedTransferList';
 import { Balance } from '@/components/Balance';
 
 export interface TransfersPageProps extends CommonProps {}
@@ -15,19 +15,19 @@ const TransfersPage: React.FC<TransfersPageProps> = React.memo(
 		return (
 			<MainLayout>
 				<h2>Transactions</h2>
-				<TransactionNavigation />
+				<TransfersNavigation />
 				<Balance />
 				<Routes>
 					<Route
 						path='sended'
 						element={
 							<>
-								<CreateTransactionForm />
-								<SendedTransactions />
+								<CreateTransferForm />
+								<SendedTransferList />
 							</>
 						}
 					/>
-					<Route path='received' element={<ReceivedTransactions />} />
+					<Route path='received' element={<ReceivedTransferList />} />
 					<Route path='*' element={<Navigate to='sended' replace />} />
 				</Routes>
 			</MainLayout>

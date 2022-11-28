@@ -1,5 +1,11 @@
-import { useSelector } from 'react-redux';
+import { useStoreMap } from 'effector-react';
+import { authModel } from '@/models';
 
 export const useAuthAddress = () => {
-	return useSelector((state) => state.auth.address);
+	return useStoreMap({
+		store: authModel.$authUser,
+		fn: (user) => user?.login,
+		keys: [],
+		defaultValue: null,
+	});
 };

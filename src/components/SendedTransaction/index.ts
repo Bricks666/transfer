@@ -1,1 +1,0 @@
-export { SendedTransaction } from './SendedTransaction';

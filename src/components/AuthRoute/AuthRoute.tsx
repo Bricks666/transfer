@@ -1,13 +1,15 @@
-import { Navigate, useLocation } from 'react-router-dom';
-import { useIsLogin } from '../../hooks';
+import * as React from 'react';
+import { useUnit } from 'effector-react';
+import { Navigate } from 'react-router-dom';
+import { authModel } from '@/models';
 
-export const AuthRoute = ({ children }) => {
-	const location = useLocation();
-	const isLogin = useIsLogin();
+export const AuthRoute: React.FC<React.PropsWithChildren> = (props) => {
+	const { children } = props;
+	const isAuth = useUnit(authModel.$isAuth);
 
-	if (!isLogin) {
-		return <Navigate to='/login' state={location} replace />;
+	if (!isAuth) {
+		return <Navigate to='/login' replace />;
 	}
 
-	return children;
+	return children as React.ReactElement;
 };

@@ -1,1 +1,0 @@
-export { AcceptTransactionForm } from './AcceptTransactionForm';

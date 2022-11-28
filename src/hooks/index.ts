@@ -1,10 +1,8 @@
-export { useLocationState } from './useLocationState';
-export { useIsLogin } from './useIsLogin';
 export { useAddresses } from './useAddresses';
 export { useField } from './useField';
 export { useUserLoading } from './useUserLoading';
-export { useSendedTransactions } from './useSendedTransactions';
-export { useReceivedTransactions } from './useReceivedTransactions';
+export { useSendedTransfers } from './useSendedTransfers';
+export { useReceivedTransfers } from './useReceivedTransfers';
 export { useTransactionLoading } from './useTransactionLoading';
 export { useOthersAddresses } from './useOthersAddresses';
 export { useCategories } from './useCategories';

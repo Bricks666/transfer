@@ -1,4 +1,4 @@
-export const List = ({ Card, items, indexedBy, children }) => {
+export const List = ({ Card, items, indexedBy, children = null }) => {
 	return (
 		<ul>
 			{items.map((item) => (

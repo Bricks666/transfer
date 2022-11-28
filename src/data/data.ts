@@ -1,0 +1,441 @@
+import { AbiItem } from 'web3-utils';
+
+export const address = '0x8bbfaE84449338961964205224546F76b04035f2';
+export const abi: AbiItem[] = [
+	{
+		anonymous: false,
+		inputs: [
+			{ indexed: true, internalType: 'uint256', name: 'id', type: 'uint256' },
+			{
+				indexed: false,
+				internalType: 'enum Shared.Status',
+				name: 'status',
+				type: 'uint8',
+			},
+		],
+		name: 'ChangeRequestStatus',
+		type: 'event',
+		signature:
+			'0x6a151900d11c7edbc6c35b2eb7e4c5427fa2a408c6edeb0266849bd55558023d',
+	},
+	{
+		anonymous: false,
+		inputs: [
+			{
+				indexed: true,
+				internalType: 'address',
+				name: 'login',
+				type: 'address',
+			},
+			{
+				indexed: false,
+				internalType: 'enum Users.Roles',
+				name: 'role',
+				type: 'uint8',
+			},
+		],
+		name: 'ChangeRole',
+		type: 'event',
+		signature:
+			'0x6b4fd2ad24748431faf8cb62f7c7b2c32f03130144bcdc66c5898a9fd63a6d10',
+	},
+	{
+		anonymous: false,
+		inputs: [
+			{
+				indexed: true,
+				internalType: 'address',
+				name: 'sender',
+				type: 'address',
+			},
+			{
+				indexed: true,
+				internalType: 'address',
+				name: 'receiver',
+				type: 'address',
+			},
+			{ indexed: false, internalType: 'uint256', name: 'id', type: 'uint256' },
+		],
+		name: 'ChangeTransferStatus',
+		type: 'event',
+		signature:
+			'0x347d8064eb72efd3b960be2a8e03c63bf51f97842345b88de713961d7144961b',
+	},
+	{
+		anonymous: false,
+		inputs: [
+			{ indexed: false, internalType: 'string', name: 'name', type: 'string' },
+		],
+		name: 'NewCategory',
+		type: 'event',
+		signature:
+			'0xb451ac0dcba38f6df1cb27b5d40f815659eb210a29f1628ced3186836ee2fa1c',
+	},
+	{
+		anonymous: false,
+		inputs: [
+			{
+				components: [
+					{ internalType: 'uint256', name: 'id', type: 'uint256' },
+					{ internalType: 'address', name: 'candidate', type: 'address' },
+					{
+						internalType: 'address[]',
+						name: 'accept_voter',
+						type: 'address[]',
+					},
+					{ internalType: 'address', name: 'cancel_voter', type: 'address' },
+					{ internalType: 'enum Shared.Status', name: 'status', type: 'uint8' },
+				],
+				indexed: false,
+				internalType: 'struct Requests.Request',
+				name: 'request',
+				type: 'tuple',
+			},
+		],
+		name: 'NewRequest',
+		type: 'event',
+		signature:
+			'0x9c40b10f435115128a15d6d6cc8bc5674cfe3eb6e24aacea943ba7cb7f36cdc1',
+	},
+	{
+		anonymous: false,
+		inputs: [
+			{
+				components: [
+					{ internalType: 'uint256', name: 'id', type: 'uint256' },
+					{ internalType: 'string', name: 'name', type: 'string' },
+					{ internalType: 'uint256', name: 'category_id', type: 'uint256' },
+					{ internalType: 'uint256', name: 'money', type: 'uint256' },
+				],
+				indexed: false,
+				internalType: 'struct Samples.Sample',
+				name: 'sample',
+				type: 'tuple',
+			},
+		],
+		name: 'NewSample',
+		type: 'event',
+		signature:
+			'0xec4d7271b344b70b9019eb34dcac4b14c811e829eca28c9d1e1c96f83b4f4797',
+	},
+	{
+		anonymous: false,
+		inputs: [
+			{
+				components: [
+					{ internalType: 'uint256', name: 'id', type: 'uint256' },
+					{ internalType: 'address payable', name: 'sender', type: 'address' },
+					{
+						internalType: 'address payable',
+						name: 'receiver',
+						type: 'address',
+					},
+					{ internalType: 'uint256', name: 'category_id', type: 'uint256' },
+					{ internalType: 'uint256', name: 'money', type: 'uint256' },
+					{ internalType: 'string', name: 'description', type: 'string' },
+					{ internalType: 'bytes32', name: 'keyword', type: 'bytes32' },
+					{ internalType: 'enum Shared.Status', name: 'status', type: 'uint8' },
+					{ internalType: 'uint256', name: 'sended_at', type: 'uint256' },
+					{ internalType: 'uint256', name: 'finished_at', type: 'uint256' },
+				],
+				indexed: false,
+				internalType: 'struct Transfers.Transfer',
+				name: 'transfer',
+				type: 'tuple',
+			},
+		],
+		name: 'NewTransfer',
+		type: 'event',
+		signature:
+			'0x3b9ed3de56ff3d9333a3a32ddb324369ec986a85529e65318af1af1ecc581dd6',
+	},
+	{
+		anonymous: false,
+		inputs: [
+			{
+				indexed: false,
+				internalType: 'address',
+				name: 'login',
+				type: 'address',
+			},
+		],
+		name: 'NewUser',
+		type: 'event',
+		signature:
+			'0x7ee9b70bf129b91a237044ce07c93c79f5562b96b53c04f7edaf7c9d6711f3d8',
+	},
+	{
+		inputs: [{ internalType: 'uint256', name: 'id', type: 'uint256' }],
+		name: 'accept_request',
+		outputs: [],
+		stateMutability: 'nonpayable',
+		type: 'function',
+		signature: '0x9c315b23',
+	},
+	{
+		inputs: [
+			{ internalType: 'uint256', name: 'id', type: 'uint256' },
+			{ internalType: 'bytes32', name: 'keyword', type: 'bytes32' },
+		],
+		name: 'accept_transfer',
+		outputs: [],
+		stateMutability: 'nonpayable',
+		type: 'function',
+		signature: '0xdb845bce',
+	},
+	{
+		inputs: [{ internalType: 'uint256', name: 'id', type: 'uint256' }],
+		name: 'cancel_request',
+		outputs: [],
+		stateMutability: 'nonpayable',
+		type: 'function',
+		signature: '0x72583e49',
+	},
+	{
+		inputs: [{ internalType: 'uint256', name: 'id', type: 'uint256' }],
+		name: 'cancel_transfer',
+		outputs: [],
+		stateMutability: 'nonpayable',
+		type: 'function',
+		signature: '0xdbf9c80a',
+	},
+	{
+		inputs: [{ internalType: 'string', name: 'name', type: 'string' }],
+		name: 'create_category',
+		outputs: [],
+		stateMutability: 'nonpayable',
+		type: 'function',
+		signature: '0x3effbb6a',
+	},
+	{
+		inputs: [{ internalType: 'address', name: 'candidate', type: 'address' }],
+		name: 'create_requests',
+		outputs: [],
+		stateMutability: 'nonpayable',
+		type: 'function',
+		signature: '0x59beb01c',
+	},
+	{
+		inputs: [
+			{ internalType: 'string', name: 'name', type: 'string' },
+			{ internalType: 'uint256', name: 'category_id', type: 'uint256' },
+			{ internalType: 'uint256', name: 'money', type: 'uint256' },
+		],
+		name: 'create_sample',
+		outputs: [],
+		stateMutability: 'nonpayable',
+		type: 'function',
+		signature: '0xd3fce6c1',
+	},
+	{
+		inputs: [
+			{ internalType: 'address payable', name: 'receiver', type: 'address' },
+			{ internalType: 'uint256', name: 'category_id', type: 'uint256' },
+			{ internalType: 'bytes32', name: 'keyword', type: 'bytes32' },
+			{ internalType: 'string', name: 'description', type: 'string' },
+		],
+		name: 'create_transfer',
+		outputs: [
+			{
+				components: [
+					{ internalType: 'uint256', name: 'id', type: 'uint256' },
+					{ internalType: 'address payable', name: 'sender', type: 'address' },
+					{
+						internalType: 'address payable',
+						name: 'receiver',
+						type: 'address',
+					},
+					{ internalType: 'uint256', name: 'category_id', type: 'uint256' },
+					{ internalType: 'uint256', name: 'money', type: 'uint256' },
+					{ internalType: 'string', name: 'description', type: 'string' },
+					{ internalType: 'bytes32', name: 'keyword', type: 'bytes32' },
+					{ internalType: 'enum Shared.Status', name: 'status', type: 'uint8' },
+					{ internalType: 'uint256', name: 'sended_at', type: 'uint256' },
+					{ internalType: 'uint256', name: 'finished_at', type: 'uint256' },
+				],
+				internalType: 'struct Transfers.Transfer',
+				name: '',
+				type: 'tuple',
+			},
+		],
+		stateMutability: 'payable',
+		type: 'function',
+		payable: true,
+		signature: '0x0e0ee410',
+	},
+	{
+		inputs: [],
+		name: 'get_categories',
+		outputs: [{ internalType: 'string[]', name: '', type: 'string[]' }],
+		stateMutability: 'view',
+		type: 'function',
+		constant: true,
+		signature: '0xfd4ec427',
+	},
+	{
+		inputs: [],
+		name: 'get_requests',
+		outputs: [
+			{
+				components: [
+					{ internalType: 'uint256', name: 'id', type: 'uint256' },
+					{ internalType: 'address', name: 'candidate', type: 'address' },
+					{
+						internalType: 'address[]',
+						name: 'accept_voter',
+						type: 'address[]',
+					},
+					{ internalType: 'address', name: 'cancel_voter', type: 'address' },
+					{ internalType: 'enum Shared.Status', name: 'status', type: 'uint8' },
+				],
+				internalType: 'struct Requests.Request[]',
+				name: '',
+				type: 'tuple[]',
+			},
+		],
+		stateMutability: 'view',
+		type: 'function',
+		constant: true,
+		signature: '0x455bfbf2',
+	},
+	{
+		inputs: [],
+		name: 'get_samples',
+		outputs: [
+			{
+				components: [
+					{ internalType: 'uint256', name: 'id', type: 'uint256' },
+					{ internalType: 'string', name: 'name', type: 'string' },
+					{ internalType: 'uint256', name: 'category_id', type: 'uint256' },
+					{ internalType: 'uint256', name: 'money', type: 'uint256' },
+				],
+				internalType: 'struct Samples.Sample[]',
+				name: '',
+				type: 'tuple[]',
+			},
+		],
+		stateMutability: 'view',
+		type: 'function',
+		constant: true,
+		signature: '0x9fa8bf96',
+	},
+	{
+		inputs: [{ internalType: 'uint256', name: 'id', type: 'uint256' }],
+		name: 'get_transfer',
+		outputs: [
+			{
+				components: [
+					{ internalType: 'uint256', name: 'id', type: 'uint256' },
+					{ internalType: 'address payable', name: 'sender', type: 'address' },
+					{
+						internalType: 'address payable',
+						name: 'receiver',
+						type: 'address',
+					},
+					{ internalType: 'uint256', name: 'category_id', type: 'uint256' },
+					{ internalType: 'uint256', name: 'money', type: 'uint256' },
+					{ internalType: 'string', name: 'description', type: 'string' },
+					{ internalType: 'bytes32', name: 'keyword', type: 'bytes32' },
+					{ internalType: 'enum Shared.Status', name: 'status', type: 'uint8' },
+					{ internalType: 'uint256', name: 'sended_at', type: 'uint256' },
+					{ internalType: 'uint256', name: 'finished_at', type: 'uint256' },
+				],
+				internalType: 'struct Transfers.Transfer',
+				name: '',
+				type: 'tuple',
+			},
+		],
+		stateMutability: 'view',
+		type: 'function',
+		constant: true,
+		signature: '0xb4422571',
+	},
+	{
+		inputs: [],
+		name: 'get_transfers',
+		outputs: [
+			{
+				components: [
+					{ internalType: 'uint256', name: 'id', type: 'uint256' },
+					{ internalType: 'address payable', name: 'sender', type: 'address' },
+					{
+						internalType: 'address payable',
+						name: 'receiver',
+						type: 'address',
+					},
+					{ internalType: 'uint256', name: 'category_id', type: 'uint256' },
+					{ internalType: 'uint256', name: 'money', type: 'uint256' },
+					{ internalType: 'string', name: 'description', type: 'string' },
+					{ internalType: 'bytes32', name: 'keyword', type: 'bytes32' },
+					{ internalType: 'enum Shared.Status', name: 'status', type: 'uint8' },
+					{ internalType: 'uint256', name: 'sended_at', type: 'uint256' },
+					{ internalType: 'uint256', name: 'finished_at', type: 'uint256' },
+				],
+				internalType: 'struct Transfers.Transfer[]',
+				name: '',
+				type: 'tuple[]',
+			},
+		],
+		stateMutability: 'view',
+		type: 'function',
+		constant: true,
+		signature: '0x8607d56d',
+	},
+	{
+		inputs: [{ internalType: 'address', name: 'login', type: 'address' }],
+		name: 'get_user',
+		outputs: [
+			{
+				components: [
+					{ internalType: 'address', name: 'login', type: 'address' },
+					{ internalType: 'bytes32', name: 'password', type: 'bytes32' },
+					{ internalType: 'enum Users.Roles', name: 'role', type: 'uint8' },
+				],
+				internalType: 'struct Users.User',
+				name: '',
+				type: 'tuple',
+			},
+		],
+		stateMutability: 'view',
+		type: 'function',
+		constant: true,
+		signature: '0x71ad7221',
+	},
+	{
+		inputs: [],
+		name: 'get_user_addresses',
+		outputs: [{ internalType: 'address[]', name: '', type: 'address[]' }],
+		stateMutability: 'view',
+		type: 'function',
+		constant: true,
+		signature: '0xc202a913',
+	},
+	{
+		inputs: [{ internalType: 'bytes32', name: 'password', type: 'bytes32' }],
+		name: 'login_user',
+		outputs: [
+			{
+				components: [
+					{ internalType: 'address', name: 'login', type: 'address' },
+					{ internalType: 'bytes32', name: 'password', type: 'bytes32' },
+					{ internalType: 'enum Users.Roles', name: 'role', type: 'uint8' },
+				],
+				internalType: 'struct Users.User',
+				name: '',
+				type: 'tuple',
+			},
+		],
+		stateMutability: 'view',
+		type: 'function',
+		constant: true,
+		signature: '0xfc75d51b',
+	},
+	{
+		inputs: [{ internalType: 'bytes32', name: 'password', type: 'bytes32' }],
+		name: 'reg_user',
+		outputs: [],
+		stateMutability: 'nonpayable',
+		type: 'function',
+		signature: '0x7ebadc5a',
+	},
+];

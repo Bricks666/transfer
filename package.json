@@ -2,6 +2,7 @@
 	"name": "transfer",
 	"version": "0.1.0",
 	"private": true,
+	"type": "module",
 	"dependencies": {
 		"@farfetched/core": "^0.3.4",
 		"@farfetched/react": "^0.2.1",
@@ -46,6 +47,7 @@
 	},
 	"devDependencies": {
 		"@rollup/plugin-babel": "^6.0.2",
+		"@types/node": "^18.11.9",
 		"@types/react": "^18.0.25",
 		"@types/react-dom": "^18.0.9",
 		"@types/react-redux": "^7.1.24",

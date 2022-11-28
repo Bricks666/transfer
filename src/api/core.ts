@@ -1,12 +1,9 @@
 import Web3 from 'web3';
-import { abi } from '@/data';
+import { abi, address } from '@/data';
 import { Address } from '@/types';
 
 export const web3 = new Web3(import.meta.env.VITE_API_PROVIDER);
-export const contract = new web3.eth.Contract(
-	abi,
-	import.meta.env.VITE_API_CONTRACT
-);
+export const contract = new web3.eth.Contract(abi, address);
 
 export const getBalance = (address: Address): Promise<string> => {
 	return web3.eth.getBalance(address);

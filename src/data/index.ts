@@ -1,1 +1,1 @@
-export { abi } from './abi';
+export { abi, address } from './data';

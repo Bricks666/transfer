@@ -11,6 +11,8 @@
 # production
 /build
 bin
+geth
+keystore
 
 # misc
 .DS_Store

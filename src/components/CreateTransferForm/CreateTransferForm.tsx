@@ -14,7 +14,7 @@ export interface CreateTransferFormProps extends CommonProps {}
 export const CreateTransferForm: React.FC<CreateTransferFormProps> = React.memo(
 	function CreateTransferForm() {
 		const { data: addresses } = useAddresses();
-		const categories = useCategories();
+		const { data: categories } = useCategories();
 		const create = useMutation(transfersModel.addMutation);
 		const { onSubmit } = useForm(create.start);
 		/* const samples = useSamples(); */
@@ -50,7 +50,7 @@ export const CreateTransferForm: React.FC<CreateTransferFormProps> = React.memo(
 				<input name='money' type='number' min={0} required />
 				<input name='keyword' placeholder='keyword' required />
 				<select name='category_id' placeholder='category' required>
-					{categories.map((category, index) => (
+					{categories!.map((category, index) => (
 						<option value={index} key={index}>
 							{category}
 						</option>

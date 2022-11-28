@@ -1,14 +1,9 @@
-import { Address } from '@/types';
+import { CreateCategoryParams } from '@/models';
 import { contract } from './core';
 
-export const getAll = () => {
+export const getAll = (): Promise<string[]> => {
 	return contract.methods.get_categories().call();
 };
-
-export interface CreateCategoryParams {
-	readonly sender: Address;
-	readonly name: string;
-}
 
 export const create = (params: CreateCategoryParams) => {
 	const { name, sender } = params;

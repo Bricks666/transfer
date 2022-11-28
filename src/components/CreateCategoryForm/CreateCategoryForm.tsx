@@ -1,29 +1,24 @@
-import { useCallback } from 'react';
-import { useDispatch } from 'react-redux';
-import { useField } from '../../hooks';
-import { addCategoryThunk } from '../../models/categories';
+import * as React from 'react';
+import { useMutation } from '@farfetched/react';
+import { categoriesModel } from '@/models';
+import { useForm } from '@/hooks';
 
-export const CreateCategoryForm = () => {
-	const [categoryName, setCategoryName] = useField('');
-	const dispatch = useDispatch();
+export const CreateCategoryForm: React.FC = React.memo(
+	function CreateCategoryForm() {
+		const create = useMutation(categoriesModel.addMutation);
+		const { onSubmit } = useForm(create.start);
 
-	const onSubmit = useCallback(
-		async (evt) => {
-			evt.preventDefault();
-			await dispatch(addCategoryThunk(categoryName));
-			setCategoryName({ target: { value: '' } });
-		},
-		[dispatch, setCategoryName, categoryName]
-	);
-
-	return (
-		<form onSubmit={onSubmit}>
-			<input
-				value={categoryName}
-				onChange={setCategoryName}
-				placeholder='category name'
-			/>
-			<button>Create category</button>
-		</form>
-	);
-};
+		return (
+			<form onSubmit={onSubmit}>
+				<input
+					name='name'
+					placeholder='category name'
+					minLength={6}
+					maxLength={32}
+					required
+				/>
+				<button type='submit'>Create category</button>
+			</form>
+		);
+	}
+);

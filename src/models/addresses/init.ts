@@ -1,7 +1,15 @@
+import { sample } from 'effector';
 import { cache } from '@farfetched/core';
 import { coreApi } from '@/api';
-import { getAllFx, getAllQuery } from './units';
+import { AddressesGate, getAllFx, getAllQuery } from './units';
 
 getAllFx.use(coreApi.getAddresses);
 
-cache(getAllQuery);
+sample({
+	clock: AddressesGate.open,
+	target: getAllQuery.start,
+});
+
+cache(getAllQuery, {
+	staleAfter: '15min',
+});

@@ -3,3 +3,8 @@ export enum Status {
 	accept,
 	cancel,
 }
+
+export enum Roles {
+	user,
+	admin,
+}

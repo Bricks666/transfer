@@ -6,7 +6,7 @@ const TransfersPage = React.lazy(() => import('@/pages/Transfers'));
 const ProfilePage = React.lazy(() => import('@/pages/Profile'));
 const CategoriesPage = React.lazy(() => import('@/pages/Categories'));
 const SamplesPage = React.lazy(() => import('@/pages/Samples'));
-const OffersPage = React.lazy(() => import('@/pages/Offers'));
+const RequestsPage = React.lazy(() => import('@/pages/Requests'));
 
 interface Route {
 	readonly Component: React.ComponentType;
@@ -47,8 +47,8 @@ export const routes: Route[] = [
 		isAdminOnly: true,
 	},
 	{
-		Component: OffersPage,
-		path: '/offers/*',
+		Component: RequestsPage,
+		path: '/requests/*',
 		isAuthRoute: true,
 		isAdminOnly: true,
 	},

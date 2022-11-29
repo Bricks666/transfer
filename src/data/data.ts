@@ -1,6 +1,6 @@
 import { AbiItem } from 'web3-utils';
 
-export const address = '0x8bbfaE84449338961964205224546F76b04035f2';
+export const address = '0x2E29C97b4B8495E6F6baB319896c86B6Bc5CEA7D';
 export const abi: AbiItem[] = [
 	{
 		anonymous: false,
@@ -392,7 +392,7 @@ export const abi: AbiItem[] = [
 					{ internalType: 'enum Users.Roles', name: 'role', type: 'uint8' },
 				],
 				internalType: 'struct Users.User',
-				name: '',
+				name: 'user',
 				type: 'tuple',
 			},
 		],
@@ -403,16 +403,27 @@ export const abi: AbiItem[] = [
 	},
 	{
 		inputs: [],
-		name: 'get_user_addresses',
-		outputs: [{ internalType: 'address[]', name: '', type: 'address[]' }],
+		name: 'get_users',
+		outputs: [
+			{
+				components: [
+					{ internalType: 'address', name: 'login', type: 'address' },
+					{ internalType: 'bytes32', name: 'password', type: 'bytes32' },
+					{ internalType: 'enum Users.Roles', name: 'role', type: 'uint8' },
+				],
+				internalType: 'struct Users.User[]',
+				name: 'users',
+				type: 'tuple[]',
+			},
+		],
 		stateMutability: 'view',
 		type: 'function',
 		constant: true,
-		signature: '0xc202a913',
+		signature: '0xed66aa1b',
 	},
 	{
 		inputs: [{ internalType: 'bytes32', name: 'password', type: 'bytes32' }],
-		name: 'login_user',
+		name: 'login',
 		outputs: [
 			{
 				components: [
@@ -421,21 +432,32 @@ export const abi: AbiItem[] = [
 					{ internalType: 'enum Users.Roles', name: 'role', type: 'uint8' },
 				],
 				internalType: 'struct Users.User',
-				name: '',
+				name: 'user',
 				type: 'tuple',
 			},
 		],
 		stateMutability: 'view',
 		type: 'function',
 		constant: true,
-		signature: '0xfc75d51b',
+		signature: '0x879281c4',
 	},
 	{
 		inputs: [{ internalType: 'bytes32', name: 'password', type: 'bytes32' }],
-		name: 'reg_user',
-		outputs: [],
+		name: 'registration',
+		outputs: [
+			{
+				components: [
+					{ internalType: 'address', name: 'login', type: 'address' },
+					{ internalType: 'bytes32', name: 'password', type: 'bytes32' },
+					{ internalType: 'enum Users.Roles', name: 'role', type: 'uint8' },
+				],
+				internalType: 'struct Users.User',
+				name: 'user',
+				type: 'tuple',
+			},
+		],
 		stateMutability: 'nonpayable',
 		type: 'function',
-		signature: '0x7ebadc5a',
+		signature: '0x8a2be940',
 	},
 ];

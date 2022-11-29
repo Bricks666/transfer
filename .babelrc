@@ -2,6 +2,12 @@
 	"presets": ["@babel/env", "@babel/typescript", "@babel/react"],
 	"plugins": [
 		[
+			"effector/babel-plugin",
+			{
+				"factories": ["@farfetched/core"]
+			}
+		],
+		[
 			"effector-logger/babel-plugin",
 			{
 				"inspector": true,

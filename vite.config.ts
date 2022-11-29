@@ -17,6 +17,9 @@ export default defineConfig({
 			'@': path.resolve(__dirname, 'src'),
 		},
 	},
+	define: {
+		global: 'globalThis',
+	},
 	css: {
 		devSourcemap: true,
 	},
@@ -24,11 +27,9 @@ export default defineConfig({
 		react(),
 		babel({
 			babelrc: true,
-			configFile: './.babelrc',
+			configFile: true,
 			babelHelpers: 'bundled',
-			browserslistConfigFile: true,
 			extensions: ['.ts', '.tsx'],
-			exclude: /node_modules/,
 		}),
 		splitVendorChunkPlugin(),
 	],

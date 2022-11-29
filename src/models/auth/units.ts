@@ -1,14 +1,29 @@
 import { combine, createDomain } from 'effector-logger';
 import { createMutation } from '@farfetched/core';
 import { AuthParams } from '@/api/auth';
-import { Address } from '@/types';
+import { Address, Roles } from '@/types';
 import { Auth } from './types';
 
 const domain = createDomain();
 
-export const $authUser = domain.store<Auth | null>(null);
+export const $address = domain.store<Address | null>(null);
+export const $role = domain.store<Roles | null>(null);
 export const $balance = domain.store<number>(0);
-export const $isAuth = combine($authUser, (user) => !!user);
+export const $isAuth = combine($address, (address) => !!address);
+export const $user = combine<Address | null, Roles | null, Auth | null>(
+	$address,
+	$role,
+	(login, role) => {
+		if (login === null || role === null) {
+			return null;
+		}
+
+		return {
+			login,
+			role,
+		};
+	}
+);
 
 export const loginFx = domain.effect<AuthParams, Auth>();
 export const registrationFx = domain.effect<AuthParams, unknown>();

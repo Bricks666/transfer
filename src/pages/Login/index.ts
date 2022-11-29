@@ -1,1 +1,1 @@
-export { default, LoginPageProps } from './LoginPage';
+export { default, type LoginPageProps } from './LoginPage';

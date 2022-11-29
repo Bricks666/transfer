@@ -3,7 +3,7 @@ import { authModel, transfersModel } from '@/models';
 
 export const useReceivedTransfers = () => {
 	useGate(transfersModel.TransfersGate);
-	const user = useUnit(authModel.$authUser);
+	const address = useUnit(authModel.$address);
 	return useStoreMap({
 		store: transfersModel.getAllQuery.$data,
 		fn: (state, [login]) => {
@@ -12,7 +12,7 @@ export const useReceivedTransfers = () => {
 			}
 			return state.filter((transfer) => transfer.sender === login);
 		},
-		keys: [user?.login],
+		keys: [address],
 		defaultValue: [],
 	});
 };

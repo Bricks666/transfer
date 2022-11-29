@@ -8,7 +8,6 @@ const __dirname = dirname(__filename);
 
 const deploy = async () => {
 	const web3 = new Web3('http://127.0.0.1:8545');
-
 	/**
 	 * @type {Record<string, any>}
 	 */

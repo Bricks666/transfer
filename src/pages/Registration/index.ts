@@ -1,1 +1,1 @@
-export { default, RegistrationPageProps } from './RegistrationPage';
+export { default, type RegistrationPageProps } from './RegistrationPage';

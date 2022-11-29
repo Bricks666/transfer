@@ -1,13 +1,12 @@
 import { useStoreMap } from 'effector-react';
-import { Roles } from '@/models';
-import { $authUser } from '@/models/auth/units';
+import { Roles } from '@/types';
+import { authModel } from '@/models';
 
 export const useIsAdmin = () => {
 	return useStoreMap({
-		store: $authUser,
-		fn: (user) => {
-			debugger;
-			return !!user && user.role == Roles.admin;
+		store: authModel.$role,
+		fn: (role) => {
+			return role === Roles.admin;
 		},
 		keys: [],
 		defaultValue: false,

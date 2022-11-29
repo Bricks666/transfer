@@ -1,1 +1,0 @@
-export { VotesList } from './VotesList';

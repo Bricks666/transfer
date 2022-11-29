@@ -1,14 +1,8 @@
-import { useEffect } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import { loadUsersThunk } from '../models/users';
+import { useQuery } from '@farfetched/react';
+import { useGate } from 'effector-react';
+import { usersModel } from '@/models';
 
 export const useUsers = () => {
-	const users = useSelector((state) => state.users.list);
-	const dispatch = useDispatch();
-
-	useEffect(() => {
-		dispatch(loadUsersThunk());
-	}, [dispatch]);
-
-	return users;
+	useGate(usersModel.UsersGate);
+	return useQuery(usersModel.getAllQuery);
 };

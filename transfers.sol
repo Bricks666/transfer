@@ -26,24 +26,30 @@ contract Users is Shared {
 	}
 
 	uint256 admin_count;
-	address[] user_address;
-	mapping(address => User) users;
+	User[] users;
+	mapping(address => uint256) user_ids;
 
 	event NewUser(address login);
 	event ChangeRole(address indexed login, Roles role);
 
 	modifier is_reg(address login) {
-		require(users[login].login != address(0), 'You have not registered yet');
+		require(
+			users[user_ids[login]].login != address(0),
+			'You have not registered yet'
+		);
 		_;
 	}
 
 	modifier is_not_reg(address login) {
-		require(users[login].login == address(0), 'You have already registered');
+		require(
+			users[user_ids[login]].login == address(0),
+			'You have already registered'
+		);
 		_;
 	}
 
 	modifier role_guard(address login, Roles role) {
-		require(users[login].role == role, 'Your role is not allowed');
+		require(users[user_ids[login]].role == role, 'Your role is not allowed');
 		_;
 	}
 
@@ -55,40 +61,47 @@ contract Users is Shared {
 		);
 	}
 
-	function get_user_addresses() external view returns (address[] memory) {
-		return user_address;
+	function get_users() external view returns (User[] memory users) {
+		return users;
 	}
 
 	function get_user(address login)
 		external
 		view
 		is_reg(login)
-		returns (User memory)
+		returns (User memory user)
 	{
-		return users[login];
+		return users[user_ids[login]];
 	}
 
-	function reg_user(bytes32 password) external is_not_reg(msg.sender) {
-		_create_user(msg.sender, password, Roles.user);
+	function registration(bytes32 password)
+		external
+		is_not_reg(msg.sender)
+		returns (User memory user)
+	{
+		return _create_user(msg.sender, password, Roles.user);
 	}
 
-	function login_user(bytes32 password)
+	function login(bytes32 password)
 		external
 		view
 		is_reg(msg.sender)
-		returns (User memory)
+		returns (User memory user)
 	{
-		require(users[msg.sender].password != password, 'Password is incorrect');
-		return users[msg.sender];
+		require(
+			users[user_ids[msg.sender]].password != password,
+			'Password is incorrect'
+		);
+		return users[user_ids[msg.sender]];
 	}
 
 	function _create_user(
 		address login,
 		bytes32 password,
 		Roles role
-	) private returns (User memory) {
-		users[login] = User({ login: login, password: password, role: role });
-		user_address.push(login);
+	) private returns (User memory user) {
+		users.push(User({ login: login, password: password, role: role }));
+		user_ids[login] = users.length - 1;
 		if (role == Roles.admin) {
 			admin_count += 1;
 		}
@@ -96,7 +109,7 @@ contract Users is Shared {
 	}
 
 	function _change_role(address login, Roles role) internal {
-		users[login].role = role;
+		users[user_ids[login]].role = role;
 		if (role == Roles.admin) {
 			admin_count += 1;
 		}
@@ -357,7 +370,7 @@ contract Requests is Users {
 		return requests;
 	}
 
-	function create_requests(address candidate)
+	function create_request(address candidate)
 		external
 		role_guard(msg.sender, Roles.admin)
 		is_reg(candidate)

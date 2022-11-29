@@ -1,7 +1,6 @@
 import { attach, Effect, Store } from 'effector';
 import { Address } from '@/types';
-import { $authUser } from './units';
-import { Auth } from './types';
+import { $address } from './units';
 
 export interface WithSender {
 	readonly sender: Address;
@@ -12,15 +11,15 @@ export const attachWithSender = <Params extends WithSender, Done, Fail = Error>(
 ) => {
 	return attach<
 		Omit<Params, keyof WithSender>,
-		Store<Auth | null>,
+		Store<Address | null>,
 		Effect<Params, Done, Fail>
 	>({
-		source: $authUser,
+		source: $address,
 		effect,
-		mapParams: (params, user) =>
+		mapParams: (params, address) =>
 			({
 				...params,
-				sender: user?.login ?? '',
+				sender: address ?? '',
 			} as Params),
 	});
 };

@@ -1,10 +1,11 @@
 import { sample } from 'effector';
-import { interval } from 'patronum';
+import { interval, spread } from 'patronum';
 import { authApi, coreApi } from '@/api';
 import {
-	$authUser,
+	$address,
 	$balance,
 	$isAuth,
+	$role,
 	fetchBalanceFx,
 	loginFx,
 	loginMutation,
@@ -31,20 +32,29 @@ export const fetchBalance = interval({
 sample({
 	clock: loginMutation.finished.success,
 	fn: ({ data }) => data,
-	target: $authUser,
+	target: spread({
+		targets: {
+			address: $address,
+			role: $role,
+		},
+	}),
 });
 
 sample({
 	clock: logoutFx.done,
-	fn: () => null,
-	target: $authUser,
+	fn: () => ({ address: null, role: null }),
+	target: spread({
+		targets: {
+			address: $address,
+			role: $role,
+		},
+	}),
 });
 
 sample({
 	clock: fetchBalance.tick,
-	source: $authUser,
+	source: $address,
 	filter: Boolean,
-	fn: (user) => user.login,
 	target: fetchBalanceFx,
 });
 

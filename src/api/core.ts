@@ -10,6 +10,7 @@ export const getBalance = (address: Address): Promise<string> => {
 };
 
 export const getAddresses = (): Promise<Address[]> => {
+	console.log('get');
 	return web3.eth.getAccounts();
 };
 

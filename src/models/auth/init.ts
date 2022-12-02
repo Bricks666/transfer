@@ -18,7 +18,7 @@ loginFx.use(authApi.login);
 registrationFx.use(authApi.registration);
 
 export const fetchBalance = interval({
-	timeout: 500,
+	timeout: 3000,
 	start: sample({
 		clock: $isAuth,
 		filter: Boolean,
@@ -34,7 +34,7 @@ sample({
 	fn: ({ data }) => data,
 	target: spread({
 		targets: {
-			address: $address,
+			login: $address,
 			role: $role,
 		},
 	}),
@@ -42,10 +42,10 @@ sample({
 
 sample({
 	clock: logoutFx.done,
-	fn: () => ({ address: null, role: null }),
+	fn: () => ({ login: null, role: null }),
 	target: spread({
 		targets: {
-			address: $address,
+			login: $address,
 			role: $role,
 		},
 	}),

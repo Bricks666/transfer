@@ -1,7 +1,7 @@
-import { AbiItem } from 'web3-utils';
-
-export const address = '0x2E29C97b4B8495E6F6baB319896c86B6Bc5CEA7D';
-export const abi: AbiItem[] = [
+/* eslint-disable comma-dangle */
+/* eslint-disable sonarjs/no-duplicate-string */
+export const address = '0x42e70d862523f8044eeC199700d4579C25Aeb3d2';
+export const abi: any[] = [
 	{
 		anonymous: false,
 		inputs: [
@@ -209,11 +209,11 @@ export const abi: AbiItem[] = [
 	},
 	{
 		inputs: [{ internalType: 'address', name: 'candidate', type: 'address' }],
-		name: 'create_requests',
+		name: 'create_request',
 		outputs: [],
 		stateMutability: 'nonpayable',
 		type: 'function',
-		signature: '0x59beb01c',
+		signature: '0x496f169e',
 	},
 	{
 		inputs: [
@@ -422,6 +422,15 @@ export const abi: AbiItem[] = [
 		signature: '0xed66aa1b',
 	},
 	{
+		inputs: [{ internalType: 'string', name: 'str', type: 'string' }],
+		name: 'hash',
+		outputs: [{ internalType: 'bytes32', name: '', type: 'bytes32' }],
+		stateMutability: 'pure',
+		type: 'function',
+		constant: true,
+		signature: '0xb411ee94',
+	},
+	{
 		inputs: [{ internalType: 'bytes32', name: 'password', type: 'bytes32' }],
 		name: 'login',
 		outputs: [
@@ -459,5 +468,14 @@ export const abi: AbiItem[] = [
 		stateMutability: 'nonpayable',
 		type: 'function',
 		signature: '0x8a2be940',
+	},
+	{
+		inputs: [{ internalType: 'address', name: '', type: 'address' }],
+		name: 'user_ids',
+		outputs: [{ internalType: 'uint256', name: '', type: 'uint256' }],
+		stateMutability: 'view',
+		type: 'function',
+		constant: true,
+		signature: '0xcdcb030f',
 	},
 ];

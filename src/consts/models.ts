@@ -1,5 +1,4 @@
-import { Roles } from '@/models';
-import { Status } from '@/types';
+import { Status, Roles } from '@/types';
 
 export const statusNames = {
 	[Status.pending]: 'Ожидание',

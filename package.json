@@ -10,9 +10,12 @@
 		"effector": "^22.4.0",
 		"effector-react": "^22.3.4",
 		"patronum": "^1.12.3",
+		"process": "^0.11.10",
 		"react": "^18.2.0",
 		"react-dom": "^18.2.0",
 		"react-router-dom": "^6.4.3",
+		"readable-stream": "^4.2.0",
+		"util": "^0.12.5",
 		"web3": "^1.8.1",
 		"web3-utils": "^1.8.1"
 	},
@@ -27,12 +30,6 @@
 		"gen:page": "generate-react component --type=page",
 		"prepare": "husky install",
 		"gen:css-types": "tcm src"
-	},
-	"eslintConfig": {
-		"extends": [
-			"react-app",
-			"react-app/jest"
-		]
 	},
 	"browserslist": {
 		"production": [
@@ -61,6 +58,7 @@
 		"@typescript-eslint/eslint-plugin": "^5.43.0",
 		"@typescript-eslint/parser": "^5.43.0",
 		"@vitejs/plugin-react": "^2.2.0",
+		"browserify-zlib": "^0.2.0",
 		"effector-logger": "^0.13.4",
 		"eslint": "^8.27.0",
 		"eslint-config-airbnb": "^19.0.4",
@@ -70,7 +68,9 @@
 		"eslint-plugin-sonarjs": "^0.16.0",
 		"generate-react-cli": "^8.0.1",
 		"husky": "^8.0.2",
+		"lint-staged": "^13.0.4",
 		"prettier": "^2.7.1",
+		"stream-browserify": "^3.0.0",
 		"typed-css-modules": "^0.7.2",
 		"typescript": "^4.9.3",
 		"vite": "^3.2.4",

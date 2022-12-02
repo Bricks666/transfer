@@ -8,7 +8,7 @@ contract Shared {
 		cancel
 	}
 
-	function hash(string memory str) internal pure returns (bytes32) {
+	function hash(string memory str) public pure returns (bytes32) {
 		return keccak256(abi.encodePacked(str));
 	}
 }
@@ -27,24 +27,20 @@ contract Users is Shared {
 
 	uint256 admin_count;
 	User[] users;
-	mapping(address => uint256) user_ids;
+	mapping(address => uint256) public user_ids;
 
 	event NewUser(address login);
 	event ChangeRole(address indexed login, Roles role);
 
 	modifier is_reg(address login) {
-		require(
-			users[user_ids[login]].login != address(0),
-			'You have not registered yet'
-		);
+		uint256 id = user_ids[login];
+		require(users[id].login == login, 'You have not registered yet');
 		_;
 	}
 
 	modifier is_not_reg(address login) {
-		require(
-			users[user_ids[login]].login == address(0),
-			'You have already registered'
-		);
+		uint256 id = user_ids[login];
+		require(users[id].login != login, 'You have already registered');
 		_;
 	}
 
@@ -55,7 +51,7 @@ contract Users is Shared {
 
 	constructor() {
 		_create_user(
-			0xc97E2f334315eb44ea6a14A51C4Ca83b74888FF6,
+			0xbC4619cA22f213aEdF256A5f89891D57c2f54F48,
 			hash('password'),
 			Roles.admin
 		);
@@ -89,7 +85,7 @@ contract Users is Shared {
 		returns (User memory user)
 	{
 		require(
-			users[user_ids[msg.sender]].password != password,
+			users[user_ids[msg.sender]].password == password,
 			'Password is incorrect'
 		);
 		return users[user_ids[msg.sender]];

@@ -15,10 +15,10 @@ export default defineConfig({
 	resolve: {
 		alias: {
 			'@': path.resolve(__dirname, 'src'),
+			process: 'process/browser',
+			zlib: 'browserify-zlib',
+			util: 'util',
 		},
-	},
-	define: {
-		global: 'globalThis',
 	},
 	css: {
 		devSourcemap: true,

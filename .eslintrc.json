@@ -91,7 +91,9 @@
 
 		/* TS */
 		"@typescript-eslint/no-unused-vars": ["error"],
-		"@typescript-eslint/no-empty-interface": ["off"]
+		"@typescript-eslint/no-empty-interface": ["off"],
+		/* SONAR */
+		"sonarjs/no-duplicate-string": "warn"
 	},
 	"ignorePatterns": ["templates/**/*", "*.css.d.ts", "configs/*", "*.js"]
 }

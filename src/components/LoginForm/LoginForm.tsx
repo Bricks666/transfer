@@ -10,7 +10,7 @@ export const LoginForm: React.FC = React.memo(function LoginForm() {
 
 	return (
 		<form onSubmit={onSubmit}>
-			<select name='password' required>
+			<select name='address' required>
 				{addresses!.map((address) => (
 					<option value={address} key={address}>
 						{address}

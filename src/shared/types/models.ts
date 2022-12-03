@@ -1,3 +1,7 @@
+/**
+ * TODO Может стоит вынести в слой entities
+ */
+
 export enum Status {
 	pending,
 	accept,

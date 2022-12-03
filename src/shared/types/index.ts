@@ -1,3 +1,3 @@
 export * from './web3';
-export * from './common';
+export * from './ui';
 export * from './models';

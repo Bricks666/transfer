@@ -1,13 +1,13 @@
 import { cache } from '@farfetched/core';
 import { sample } from 'effector';
-import { transfersApi } from '@/shared/shared/api';
+import { transfersApi } from '@/shared/api';
 import {
 	acceptFx,
 	addFx,
 	cancelFx,
 	getAllFx,
 	getAllQuery,
-	TransfersGate,
+	TransfersGate
 } from './units';
 
 getAllFx.use(transfersApi.getAll);

@@ -1,6 +1,6 @@
-import { User } from '@/shared/models';
 import { Address } from '@/shared/types';
-import { contract } from './core';
+import { contract } from '../core';
+import { User } from './types';
 
 export const getAll = (): Promise<User[]> => {
 	return contract.methods.get_users().call();

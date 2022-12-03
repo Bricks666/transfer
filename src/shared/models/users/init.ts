@@ -1,6 +1,6 @@
 import { sample } from 'effector';
 import { cache } from '@farfetched/core';
-import { usersApi } from '@/shared/shared/api';
+import { usersApi } from '@/shared/api';
 import { getAllFx, getAllQuery, UsersGate } from './units';
 
 getAllFx.use(usersApi.getAll);

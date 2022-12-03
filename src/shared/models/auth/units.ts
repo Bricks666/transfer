@@ -1,6 +1,6 @@
 import { combine, createDomain } from 'effector-logger';
 import { createMutation } from '@farfetched/core';
-import { AuthParams } from '@/shared/shared/api/auth';
+import { AuthParams } from '@/shared/api/auth';
 import { Address, Roles } from '@/shared/types';
 import { Auth } from './types';
 

@@ -1,6 +1,6 @@
 import { sample } from 'effector';
 import { interval, spread } from 'patronum';
-import { authApi, coreApi } from '@/shared/shared/api';
+import { authApi, coreApi } from '@/shared/api';
 import {
 	$address,
 	$balance,
@@ -10,7 +10,7 @@ import {
 	loginFx,
 	loginMutation,
 	logoutFx,
-	registrationFx,
+	registrationFx
 } from './units';
 
 fetchBalanceFx.use(coreApi.getBalance);
@@ -31,7 +31,7 @@ export const fetchBalance = interval({
 
 sample({
 	clock: loginMutation.finished.success,
-	fn: ({ data }) => ({ login: data.login, role: Number(data.role) }),
+	fn: ({ data, }) => ({ login: data.login, role: Number(data.role), }),
 	target: spread({
 		targets: {
 			login: $address,
@@ -42,7 +42,7 @@ sample({
 
 sample({
 	clock: logoutFx.done,
-	fn: () => ({ login: null, role: null }),
+	fn: () => ({ login: null, role: null, }),
 	target: spread({
 		targets: {
 			login: $address,

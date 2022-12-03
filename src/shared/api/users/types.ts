@@ -1,6 +1,6 @@
 import { Address, Roles } from '@/shared/types';
 
-export interface Auth {
+export interface User {
 	readonly login: Address;
 	readonly role: Roles;
 }

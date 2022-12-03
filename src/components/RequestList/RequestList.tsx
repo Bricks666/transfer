@@ -9,7 +9,7 @@ export const RequestList: React.FC = () => {
 	return (
 		<FriendlyList
 			items={requests}
-			Card={RequestCard}
+			Component={RequestCard}
 			indexedBy='id'
 			isLoading={pending}
 			emptyLabel="There haven't been votes by now"

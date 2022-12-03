@@ -1,6 +1,5 @@
 export { useAddresses } from './useAddresses';
-export { useSendedTransfers } from './useSendedTransfers';
-export { useReceivedTransfers } from './useReceivedTransfers';
+export { useTransfers } from './useTransfers';
 export { useCategories } from './useCategories';
 export { useIsAdmin } from './useIsAdmin';
 export { useSamples } from './useSamples';

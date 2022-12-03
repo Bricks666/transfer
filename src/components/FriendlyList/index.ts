@@ -1,1 +1,1 @@
-export { FriendlyList } from './FriendlyList';
+export { FriendlyList, type FriendlyListProps } from './FriendlyList';

@@ -1,1 +1,1 @@
-export { default, ProfilePageProps } from './ProfilePage';
+export { default, type ProfilePageProps } from './ProfilePage';

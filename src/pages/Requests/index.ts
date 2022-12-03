@@ -1,1 +1,1 @@
-export { default, RequestsPageProps } from './RequestsPage';
+export { default, type RequestsPageProps } from './RequestsPage';

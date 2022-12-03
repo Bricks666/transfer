@@ -1,1 +1,1 @@
-export { default, TransfersPageProps } from './TransfersPage';
+export { default, type TransfersPageProps } from './TransfersPage';

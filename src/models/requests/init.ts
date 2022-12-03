@@ -1,10 +1,25 @@
+import { sample } from 'effector';
 import { cache } from '@farfetched/core';
 import { requestsApi } from '@/api';
-import { acceptFx, addFx, cancelFx, getAllFx, getAllQuery } from './units';
+import {
+	acceptFx,
+	addFx,
+	cancelFx,
+	getAllFx,
+	getAllQuery,
+	RequestsGate,
+} from './units';
 
 getAllFx.use(requestsApi.getAll);
 addFx.use(requestsApi.create);
 acceptFx.use(requestsApi.accept);
 cancelFx.use(requestsApi.cancel);
 
-cache(getAllQuery);
+sample({
+	clock: RequestsGate.open,
+	target: getAllQuery.start,
+});
+
+cache(getAllQuery, {
+	staleAfter: '15min',
+});

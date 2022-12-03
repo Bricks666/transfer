@@ -9,7 +9,7 @@ export const SampleList: React.FC = () => {
 	return (
 		<FriendlyList
 			items={samples}
-			Card={SampleCard}
+			Component={SampleCard}
 			indexedBy='name'
 			isLoading={pending}
 			emptyLabel="There aren't any samples"

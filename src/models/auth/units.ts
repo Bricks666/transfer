@@ -8,7 +8,7 @@ const domain = createDomain();
 
 export const $address = domain.store<Address | null>(null);
 export const $role = domain.store<Roles | null>(null);
-export const $balance = domain.store<number>(0);
+export const $balance = domain.store<string>('0');
 export const $isAuth = combine($address, (address) => !!address);
 export const $user = combine<Address | null, Roles | null, Auth | null>(
 	$address,

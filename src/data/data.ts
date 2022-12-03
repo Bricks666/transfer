@@ -1,7 +1,7 @@
-/* eslint-disable comma-dangle */
-/* eslint-disable sonarjs/no-duplicate-string */
-export const address = '0x42e70d862523f8044eeC199700d4579C25Aeb3d2';
-export const abi: any[] = [
+import { AbiItem } from 'web3-utils';
+
+export const address = '0x8bbfaE84449338961964205224546F76b04035f2';
+export const abi: AbiItem[] = [
 	{
 		anonymous: false,
 		inputs: [

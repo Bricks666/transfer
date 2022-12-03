@@ -1,4 +1,4 @@
 export {
 	AcceptTransferForm,
-	AcceptTransferFormProps,
+	type AcceptTransferFormProps,
 } from './AcceptTransferForm';

@@ -1,1 +1,1 @@
-export { UserCard, UserCardProps } from './UserCard';
+export { UserCard, type UserCardProps } from './UserCard';

@@ -1,6 +1,5 @@
 import * as React from 'react';
-import { Roles } from '@/models';
-import { Address, CommonProps } from '@/types';
+import { Address, CommonProps, Roles } from '@/types';
 import { roleNames } from '@/consts';
 
 export interface UserInfoProps extends CommonProps {

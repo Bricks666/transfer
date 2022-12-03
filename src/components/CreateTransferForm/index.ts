@@ -1,4 +1,4 @@
 export {
 	CreateTransferForm,
-	CreateTransferFormProps,
+	type CreateTransferFormProps,
 } from './CreateTransferForm';

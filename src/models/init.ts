@@ -5,3 +5,4 @@ import './samples/init';
 import './transfers/init';
 import './users/init';
 import './requests/init';
+import './routing/init';

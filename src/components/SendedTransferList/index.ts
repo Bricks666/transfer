@@ -1,1 +1,0 @@
-export { SendedTransferList } from './SendedTransferList';

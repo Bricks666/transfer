@@ -31,7 +31,7 @@ export const fetchBalance = interval({
 
 sample({
 	clock: loginMutation.finished.success,
-	fn: ({ data }) => data,
+	fn: ({ data }) => ({ login: data.login, role: Number(data.role) }),
 	target: spread({
 		targets: {
 			login: $address,
@@ -60,7 +60,6 @@ sample({
 
 sample({
 	clock: fetchBalanceFx.doneData,
-	fn: Number,
 	target: $balance,
 });
 

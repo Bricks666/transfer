@@ -12,7 +12,7 @@ export const UsersList: React.FC<UsersListProps> = () => {
 	return (
 		<FriendlyList
 			items={users}
-			Card={UserCard}
+			Component={UserCard}
 			indexedBy='login'
 			isLoading={pending}
 		/>

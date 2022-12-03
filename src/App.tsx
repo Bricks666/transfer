@@ -1,11 +1,15 @@
 import * as React from 'react';
-import { AppRoutes } from './components/AppRoutes';
-import './models/init';
+import { createBrowserHistory } from 'history';
+import { Pages } from '@/pages';
+import '@/models/init';
+import { routingModel } from './models';
+
+routingModel.router.setHistory(createBrowserHistory());
 
 export const App: React.FC = () => {
 	return (
 		<React.Suspense fallback='Loading...'>
-			<AppRoutes />
+			<Pages />
 		</React.Suspense>
 	);
 };

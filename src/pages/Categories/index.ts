@@ -1,1 +1,1 @@
-export { default, CategoriesPageProps } from './CategoriesPage';
+export { default, type CategoriesPageProps } from './CategoriesPage';

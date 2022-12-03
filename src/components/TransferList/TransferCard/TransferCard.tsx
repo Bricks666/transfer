@@ -16,7 +16,7 @@ export const TransferCard: React.FC<TransferCardProps> = React.memo(
 		const {
 			id,
 			status,
-			category_id,
+			category_id: categoryId,
 			description,
 			money,
 			receiver,
@@ -44,7 +44,7 @@ export const TransferCard: React.FC<TransferCardProps> = React.memo(
 					<dt>Receiver</dt>
 					<dd>{receiver}</dd>
 					<dt>Category</dt>
-					<dd>{category_id}</dd>
+					<dd>{categoryId}</dd>
 					<dt>Count</dt>
 					<dd>{money}</dd>
 					<dt>Description</dt>

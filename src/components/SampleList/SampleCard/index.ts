@@ -1,1 +1,1 @@
-export { SampleCard, SampleCardProps } from './SampleCard';
+export { SampleCard, type SampleCardProps } from './SampleCard';

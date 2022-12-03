@@ -1,38 +1,49 @@
+import * as React from 'react';
+import { useUnit } from 'effector-react';
+import { Link, LinkProps } from 'atomic-router-react';
+import { authModel, routingModel } from '@/models';
 import { List } from '../List';
-import { NavigationItem } from '../NavigationItem';
 import { OnlyAdmin } from '../OnlyAdmin';
 
-const navigation = [
-	{
-		to: '/',
-		label: 'Transactions',
-	},
-	{
-		to: '/profile',
-		label: 'Profile',
-	},
-];
-
-export const Navigation = () => {
+export const Navigation: React.FC = () => {
+	const address = useUnit(authModel.$address);
+	const navigation: LinkProps<any>[] = React.useMemo(
+		() => [
+			{
+				to: routingModel.transfersRoute,
+				children: 'Transfers',
+			},
+			{
+				to: routingModel.profileRoute,
+				params: { address },
+				children: 'Profile',
+			},
+		],
+		[address]
+	);
 	return (
 		<nav>
-			<List items={navigation} Card={NavigationItem} indexedBy='to'>
-				<OnlyAdmin>
-					<li>
-						<NavigationItem to='/categories' label='Categories' />
-					</li>
-				</OnlyAdmin>
-				<OnlyAdmin>
-					<li>
-						<NavigationItem to='/samples' label='Samples' />
-					</li>
-				</OnlyAdmin>
-				<OnlyAdmin>
-					<li>
-						<NavigationItem to='/offers' label='Users and votes' />
-					</li>
-				</OnlyAdmin>
-			</List>
+			<List items={navigation} Component={Link} indexedBy='children' />
+			<OnlyAdmin>
+				<li>
+					<Link to={routingModel.categoriesRoute}>Categories</Link>
+				</li>
+			</OnlyAdmin>
+			<OnlyAdmin>
+				<li>
+					<Link to={routingModel.samplesRoute}>Samples</Link>
+				</li>
+			</OnlyAdmin>
+			<OnlyAdmin>
+				<li>
+					<Link to={routingModel.requestsRoute}>Requests</Link>
+				</li>
+			</OnlyAdmin>
+			<OnlyAdmin>
+				<li>
+					<Link to={routingModel.usersRoute}>Users</Link>
+				</li>
+			</OnlyAdmin>
 		</nav>
 	);
 };

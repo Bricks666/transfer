@@ -18,6 +18,6 @@ export const addMutation = createMutation({
 	effect: attachWithSender(addFx),
 });
 
-export const SampleGate = createGate({
+export const SamplesGate = createGate({
 	domain,
 });

@@ -1,1 +1,1 @@
-export { default, SamplesPageProps } from './SamplesPage';
+export { default, type SamplesPageProps } from './SamplesPage';

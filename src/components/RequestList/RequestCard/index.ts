@@ -1,1 +1,1 @@
-export { RequestCard, RequestCardProps } from './RequestCard';
+export { RequestCard, type RequestCardProps } from './RequestCard';

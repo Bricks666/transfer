@@ -1,16 +1,13 @@
 import { useCategories } from '@/hooks';
-import { Loading } from '../Loading';
 
 export const CategoryList = () => {
-	const { data: categories, pending } = useCategories();
+	const { data: categories } = useCategories();
 
 	return (
-		<Loading isLoading={pending}>
-			<ul>
-				{categories!.map((category, i) => (
-					<li key={i}>{category}</li>
-				))}
-			</ul>
-		</Loading>
+		<ul>
+			{categories.map((category, i) => (
+				<li key={i}>{category}</li>
+			))}
+		</ul>
 	);
 };

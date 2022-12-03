@@ -1,20 +1,15 @@
-import { Loading } from '../Loading';
-import { List } from '../List';
+import * as React from 'react';
+import { List, ListProps } from '../List';
 
-export const FriendlyList = ({
-	isLoading,
-	items,
-	Card,
-	emptyLabel,
-	indexedBy,
-}) => {
-	return (
-		<Loading isLoading={isLoading}>
-			{items.length ? (
-				<List items={items} Card={Card} indexedBy={indexedBy} />
-			) : (
-				<p>{emptyLabel}</p>
-			)}
-		</Loading>
-	);
+export interface FriendlyListProps<T extends Record<string, any>>
+	extends ListProps<T> {
+	readonly isLoading: boolean;
+	readonly emptyLabel?: string;
+}
+
+export const FriendlyList = <T extends Record<string, any>>(
+	props: FriendlyListProps<T>
+): React.ReactElement => {
+	const { items, Component, indexedBy } = props;
+	return <List items={items} Component={Component} indexedBy={indexedBy} />;
 };

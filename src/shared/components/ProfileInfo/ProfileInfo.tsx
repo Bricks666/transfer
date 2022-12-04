@@ -1,8 +1,8 @@
 import * as React from 'react';
 import { useUnit } from 'effector-react';
+import { Balance } from '@/entities/web3';
 import { authModel } from '@/shared/models';
 import { UserInfo } from '../UserInfo';
-import { Balance } from '../Balance';
 
 export const ProfileInfo: React.FC = () => {
 	const info = useUnit(authModel.$user);

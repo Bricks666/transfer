@@ -1,8 +1,8 @@
-import { createMutation, createQuery } from '@farfetched/core';
 import { createDomain } from 'effector-logger';
 import { createGate } from 'effector-react';
-import { attachWithSender } from '../auth';
-import { CreateSampleParams, Sample } from './types';
+import { createMutation, createQuery } from '@farfetched/core';
+import { attachWithSender } from '@/entities/auth';
+import { Sample, CreateSampleParams } from '@/shared/api';
 
 const domain = createDomain();
 

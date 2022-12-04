@@ -4,7 +4,7 @@ import { useMutation } from '@farfetched/react';
 import { useUnit } from 'effector-react';
 import { authModel, Request, requestsModel } from '@/shared/models';
 import { CommonProps } from '@/shared/types';
-import { statusNames } from '@/shared/consts';
+import { statusNames } from '@/shared/configs';
 
 export interface RequestCardProps extends CommonProps, Request {}
 
@@ -26,11 +26,11 @@ export const RequestCard: React.FC<RequestCardProps> = (props) => {
 	const cancelVoterLabel =
 		hexToNumberString(cancelVoter) !== '0' ? cancelVoter : 'nobody';
 	const onAccept = () => {
-		accept.start({ id });
+		accept.start({ id, });
 	};
 
 	const onCancel = () => {
-		cancel.start({ id });
+		cancel.start({ id, });
 	};
 
 	return (

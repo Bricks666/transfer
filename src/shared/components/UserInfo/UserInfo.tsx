@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { Address, CommonProps, Roles } from '@/shared/types';
-import { roleNames } from '@/shared/consts';
+import { roleNames } from '@/shared/configs';
 
 export interface UserInfoProps extends CommonProps {
 	readonly login: Address;
@@ -10,7 +10,7 @@ export interface UserInfoProps extends CommonProps {
 export const UserInfo: React.FC<UserInfoProps> = React.memo(function UserInfo(
 	props
 ) {
-	const { login, role } = props;
+	const { login, role, } = props;
 	return (
 		<section>
 			<h3>Info</h3>

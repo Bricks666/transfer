@@ -1,9 +1,9 @@
 import * as React from 'react';
 import { Link } from 'atomic-router-react';
+import { RegistrationForm } from '@/features/auth';
 import { AuthLayout } from '@/shared/layouts';
 import { CommonProps } from '@/shared/types';
-import { routingModel } from '@/shared/models';
-import { RegistrationForm } from '@/shared/components/RegistrationForm';
+import { routes } from '@/shared/configs';
 
 export interface RegistrationPageProps extends CommonProps {}
 
@@ -12,7 +12,7 @@ const RegistrationPage: React.FC<RegistrationPageProps> = () => {
 		<AuthLayout>
 			<h2>Registration Page</h2>
 			<RegistrationForm />
-			<Link to={routingModel.loginRoute}>Login</Link>
+			<Link to={routes.login}>Login</Link>
 		</AuthLayout>
 	);
 };

@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { createRoutesView } from 'atomic-router-react';
-import { routingModel } from '@/shared/models';
+import { routes } from '@/shared/configs';
 
 const LoginPage = React.lazy(() => import('./login'));
 const RegistrationPage = React.lazy(() => import('./registration'));
@@ -14,37 +14,37 @@ const UsersPage = React.lazy(() => import('./users'));
 const Routes = createRoutesView({
 	routes: [
 		{
-			route: routingModel.loginRoute,
+			route: routes.login,
 			view: LoginPage,
 		},
 		{
-			route: routingModel.registrationRoute,
+			route: routes.registration,
 			view: RegistrationPage,
 		},
 		{
-			route: routingModel.transfersRoute,
+			route: routes.transfers,
 			view: TransfersPage,
 		},
 		{
-			route: routingModel.profileRoute,
+			route: routes.profile,
 			view: ProfilePage,
 		},
 		{
-			route: routingModel.categoriesRoute,
+			route: routes.categories,
 			view: CategoriesPage,
 		},
 		{
-			route: routingModel.samplesRoute,
+			route: routes.samples,
 			view: SamplesPage,
 		},
 		{
-			route: routingModel.requestsRoute,
+			route: routes.requests,
 			view: RequestsPage,
 		},
 		{
-			route: routingModel.usersRoute,
+			route: routes.users,
 			view: UsersPage,
-		},
+		}
 	],
 });
 

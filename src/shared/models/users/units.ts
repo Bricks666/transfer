@@ -1,7 +1,7 @@
 import { createQuery } from '@farfetched/core';
 import { createDomain } from 'effector-logger';
 import { createGate } from 'effector-react';
-import { User } from './types';
+import { User } from '@/shared/api';
 
 const domain = createDomain();
 

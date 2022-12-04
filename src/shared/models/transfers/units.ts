@@ -1,13 +1,13 @@
-import { createQuery, createMutation } from '@farfetched/core';
 import { createDomain } from 'effector-logger';
 import { createGate } from 'effector-react';
-import { attachWithSender } from '../auth';
+import { createQuery, createMutation } from '@farfetched/core';
+import { attachWithSender } from '@/entities/auth';
 import {
-	AcceptTransferParams,
-	CancelTransferParams,
-	CreateTransferParams,
 	Transfer,
-} from './types';
+	CreateTransferParams,
+	AcceptTransferParams,
+	CancelTransferParams
+} from '@/shared/api';
 
 const domain = createDomain();
 

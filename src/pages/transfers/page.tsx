@@ -3,7 +3,7 @@ import { MainLayout } from '@/shared/layouts';
 import { CommonProps } from '@/shared/types';
 import { TransferList } from '@/shared/components/TransferList';
 import { CreateTransferForm } from '@/shared/components/CreateTransferForm';
-import { Balance } from '@/shared/components/Balance';
+import { Balance } from '@/entities/web3/ui/Balance';
 
 export interface TransfersPageProps extends CommonProps {}
 

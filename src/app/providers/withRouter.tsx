@@ -2,54 +2,54 @@ import * as React from 'react';
 import { createHistoryRouter } from 'atomic-router';
 import { RouterProvider } from 'atomic-router-react';
 import { createBrowserHistory } from 'history';
-import { routingModel } from '@/shared/models';
+import { controls, routes } from '@/shared/configs';
 
 const router = createHistoryRouter({
 	routes: [
 		{
 			path: '/login',
-			route: routingModel.loginRoute,
+			route: routes.login,
 		},
 		{
 			path: '/registration',
-			route: routingModel.registrationRoute,
+			route: routes.registration,
 		},
 		{
 			path: '/transfers',
-			route: routingModel.transfersRoute,
+			route: routes.transfers,
 		},
 		{
 			path: '/profile/:address',
-			route: routingModel.profileRoute,
+			route: routes.profile,
 		},
 		{
 			path: '/categories',
-			route: routingModel.categoriesRoute,
+			route: routes.categories,
 		},
 		{
 			path: '/samples',
-			route: routingModel.samplesRoute,
+			route: routes.samples,
 		},
 		{
 			path: '/users',
-			route: routingModel.usersRoute,
+			route: routes.users,
 		},
 		{
 			path: '/requests',
-			route: routingModel.requestsRoute,
-		},
+			route: routes.requests,
+		}
 	],
-	controls: routingModel.controls,
+	controls,
 });
 
 router.setHistory(createBrowserHistory());
 
 export const withRouter =
 	(Component: React.ComponentType): React.ComponentType =>
-	(props) => {
-		return (
-			<RouterProvider router={router}>
-				<Component {...props} />
-			</RouterProvider>
-		);
-	};
+		(props) => {
+			return (
+				<RouterProvider router={router}>
+					<Component {...props} />
+				</RouterProvider>
+			);
+		};

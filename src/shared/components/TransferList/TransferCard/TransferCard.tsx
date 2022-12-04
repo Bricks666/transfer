@@ -2,7 +2,7 @@ import * as React from 'react';
 import cn from 'classnames';
 import { Transfer } from '@/shared/models';
 import { CommonProps, Status } from '@/shared/types';
-import { statusNames } from '@/shared/consts';
+import { statusNames } from '@/shared/configs';
 import { AcceptTransferForm } from './AcceptTransferForm';
 import { CancelTransfer } from './CancelTransfer';
 

@@ -3,7 +3,7 @@ import { useMutation } from '@farfetched/react';
 import {
 	useAddresses,
 	useCategories,
-	useForm,
+	useForm
 	/* useSamples, */
 } from '@/shared/hooks';
 import { CommonProps } from '@/shared/types';
@@ -13,10 +13,10 @@ export interface CreateTransferFormProps extends CommonProps {}
 
 export const CreateTransferForm: React.FC<CreateTransferFormProps> = React.memo(
 	function CreateTransferForm() {
-		const { data: addresses } = useAddresses();
-		const { data: categories } = useCategories();
+		const { data: addresses, } = useAddresses();
+		const { data: categories, } = useCategories();
 		const create = useMutation(transfersModel.addMutation);
-		const { onSubmit } = useForm(create.start);
+		const { onSubmit, } = useForm(create.start);
 		/* const samples = useSamples(); */
 
 		/**
@@ -41,7 +41,7 @@ export const CreateTransferForm: React.FC<CreateTransferFormProps> = React.memo(
 		return (
 			<form onSubmit={onSubmit}>
 				<select name='receiver' placeholder='receiver' required>
-					{addresses!.map((address) => (
+					{addresses.map((address) => (
 						<option value={address} key={address}>
 							{address}
 						</option>

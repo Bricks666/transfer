@@ -1,5 +1,3 @@
-export * from './categories';
-export * from './samples';
 export * from './transfers';
 export * from './users';
 export * from './requests';

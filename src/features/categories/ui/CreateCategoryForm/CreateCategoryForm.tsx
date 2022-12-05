@@ -1,12 +1,12 @@
 import * as React from 'react';
 import { useMutation } from '@farfetched/react';
-import { categoriesModel } from '@/shared/models';
-import { useForm } from '@/shared/hooks';
+import { useForm } from '@/shared/lib';
+import { createCategoryModel } from '../../model';
 
 export const CreateCategoryForm: React.FC = React.memo(
 	function CreateCategoryForm() {
-		const create = useMutation(categoriesModel.addMutation);
-		const { onSubmit } = useForm(create.start);
+		const create = useMutation(createCategoryModel.addMutation);
+		const { onSubmit, } = useForm(create.start);
 
 		return (
 			<form onSubmit={onSubmit}>

@@ -1,6 +1,6 @@
 import { useQuery } from '@farfetched/react';
 import { useGate } from 'effector-react';
-import { samplesModel } from '@/shared/models';
+import { samplesModel } from '../model';
 
 export const useSamples = () => {
 	useGate(samplesModel.SamplesGate);

@@ -1,7 +1,7 @@
 import * as React from 'react';
+import { CreateCategoryForm } from '@/features/categories';
 import { MainLayout } from '@/shared/layouts';
 import { CommonProps } from '@/shared/types';
-import { CreateCategoryForm } from '@/shared/components/CreateCategoryForm';
 import { CategoryList } from '@/shared/components/CategoryList';
 
 export interface CategoriesPageProps extends CommonProps {}

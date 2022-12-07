@@ -2,11 +2,11 @@ import * as React from 'react';
 import { useMutation } from '@farfetched/react';
 import { AddressesSelect } from '@/entities/web3';
 import { useForm } from '@/shared/lib';
-import { registrationMutation } from '../../model';
+import { registrationModel } from '../../model';
 
 export const RegistrationForm: React.FC = React.memo(
 	function RegistrationForm() {
-		const registration = useMutation(registrationMutation);
+		const registration = useMutation(registrationModel.registrationMutation);
 		const { onSubmit, } = useForm(registration.start);
 
 		return (

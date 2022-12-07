@@ -1,7 +1,7 @@
 import { createDomain, sample } from 'effector-logger';
 import { spread } from 'patronum';
 import { createMutation } from '@farfetched/core';
-import { setAddress, setRole } from '@/entities/auth';
+import { authModel } from '@/entities/auth';
 import { Auth, authApi, AuthParams } from '@/shared/api';
 
 const loginDomain = createDomain();
@@ -18,8 +18,8 @@ sample({
 	fn: ({ data, }) => data,
 	target: spread({
 		targets: {
-			login: setAddress,
-			role: setRole,
+			login: authModel.setAddress,
+			role: authModel.setRole,
 		},
 	}),
 });

@@ -1,7 +1,7 @@
 import * as React from 'react';
+import { RequestList } from '@/widgets/requests';
 import { MainLayout } from '@/shared/layouts';
 import { CommonProps } from '@/shared/types';
-import { RequestList } from '@/shared/components/RequestList';
 
 export interface RequestsPageProps extends CommonProps {}
 

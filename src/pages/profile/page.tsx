@@ -1,7 +1,7 @@
 import * as React from 'react';
+import { ProfileInfo } from '@/widgets/profile';
 import { MainLayout } from '@/shared/layouts';
 import { CommonProps } from '@/shared/types';
-import { ProfileInfo } from '@/shared/components/ProfileInfo';
 
 export interface ProfilePageProps extends CommonProps {}
 

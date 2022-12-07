@@ -1,5 +1,5 @@
 import { contract } from '../core';
-import { CreateRequestParams, ChangeRequestParams } from './types';
+import { CreateRequestParams, ChangeRequestParams, Request } from './types';
 
 export const getAll = async (): Promise<Request[]> => {
 	return contract.methods.get_requests().call();

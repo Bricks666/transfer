@@ -1,1 +1,1 @@
-export * from './auth';
+export * as authModel from './auth';

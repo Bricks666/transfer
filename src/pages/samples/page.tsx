@@ -1,8 +1,8 @@
 import * as React from 'react';
+import { SampleList } from '@/widgets/samples';
 import { CreateSampleForm } from '@/features/samples';
 import { MainLayout } from '@/shared/layouts';
 import { CommonProps } from '@/shared/types';
-import { SampleList } from '@/shared/components/SampleList';
 
 export interface SamplesPageProps extends CommonProps {}
 

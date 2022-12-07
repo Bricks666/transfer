@@ -33,11 +33,10 @@ const deploy = async () => {
 			});
 		const { address } = newContract.options;
 		writeFileSync(
-			resolve(__dirname, 'src', 'data', 'data.ts'),
-			`import { AbiItem } from 'web3-utils';
-\n
-export const address = '${address}';
-export const abi: AbiItem[] = ${JSON.stringify(abi)};`
+			resolve(__dirname, 'src', 'shared', 'configs', 'data.ts'),
+			`export const address = '${address}';\nexport const abi = ${JSON.stringify(
+				abi
+			)};`
 		);
 	} catch (error) {
 		console.error(error);

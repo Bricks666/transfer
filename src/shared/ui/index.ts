@@ -1,4 +1,4 @@
 export * from './FriendlyList';
-export * from './Header';
 export * from './List';
-export * from './Navigation';
+export * from './MainLayoutTemplate';
+export * from './AuthLayout';

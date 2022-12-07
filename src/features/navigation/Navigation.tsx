@@ -1,9 +1,9 @@
-import * as React from 'react';
-import { useUnit } from 'effector-react';
 import { Link, LinkProps } from 'atomic-router-react';
+import { useUnit } from 'effector-react';
+import * as React from 'react';
 import { authModel, OnlyAdmin } from '@/entities/auth';
 import { routes } from '@/shared/configs';
-import { List } from '../List';
+import { List } from '@/shared/ui';
 
 export const Navigation: React.FC = () => {
 	const address = useUnit(authModel.$address);

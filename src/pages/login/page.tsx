@@ -1,9 +1,9 @@
-import * as React from 'react';
 import { Link } from 'atomic-router-react';
+import * as React from 'react';
 import { LoginForm } from '@/features/auth';
-import { AuthLayout } from '@/shared/layouts';
-import { CommonProps } from '@/shared/types';
 import { routes } from '@/shared/configs';
+import { CommonProps } from '@/shared/types';
+import { AuthLayout } from '@/shared/ui';
 
 export interface LoginPageProps extends CommonProps {}
 

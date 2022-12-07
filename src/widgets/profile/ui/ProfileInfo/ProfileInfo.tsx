@@ -1,15 +1,15 @@
-import * as React from 'react';
 import { useUnit } from 'effector-react';
-import { Balance } from '@/entities/web3';
+import * as React from 'react';
 import { authModel } from '@/entities/auth';
 import { UserInfo } from '@/entities/users';
+import { Balance } from '@/entities/web3';
 
 export const ProfileInfo: React.FC = () => {
 	const info = useUnit(authModel.$user);
 	return (
 		<div>
 			<UserInfo {...info!} />
-			<Balance />
+			<Balance address={info.login!} />
 		</div>
 	);
 };

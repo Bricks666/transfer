@@ -1,18 +1,19 @@
 import * as React from 'react';
 import { CategoryList } from '@/widgets/categories';
+import { Header } from '@/widgets/header';
 import { CreateCategoryForm } from '@/features/categories';
-import { MainLayout } from '@/shared/layouts';
 import { CommonProps } from '@/shared/types';
+import { MainLayoutTemplate } from '@/shared/ui';
 
 export interface CategoriesPageProps extends CommonProps {}
 
 const CategoriesPage: React.FC<CategoriesPageProps> = () => {
 	return (
-		<MainLayout>
+		<MainLayoutTemplate header={<Header />}>
 			<h2>Categories Page</h2>
 			<CreateCategoryForm />
 			<CategoryList />
-		</MainLayout>
+		</MainLayoutTemplate>
 	);
 };
 

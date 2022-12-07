@@ -1,12 +1,13 @@
 import * as React from 'react';
+import { Header } from '@/widgets/header';
 import { UsersList } from '@/widgets/users';
-import { MainLayout } from '@/shared/layouts';
+import { MainLayoutTemplate } from '@/shared/ui';
 
 const UsersPage: React.FC = () => {
 	return (
-		<MainLayout>
+		<MainLayoutTemplate header={<Header />}>
 			<UsersList />
-		</MainLayout>
+		</MainLayoutTemplate>
 	);
 };
 

@@ -1,7 +1,7 @@
 import { useGate, useUnit } from 'effector-react';
-import { $balance, BalanceGate } from '../model';
+import { balanceModel } from '../model';
 
 export const useBalance = (address: string) => {
-	useGate(BalanceGate, address);
-	return useUnit($balance);
+	useGate(balanceModel.BalanceGate, address);
+	return useUnit(balanceModel.$balance);
 };

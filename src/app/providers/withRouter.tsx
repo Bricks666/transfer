@@ -1,7 +1,7 @@
-import * as React from 'react';
-import { createHistoryRouter } from 'atomic-router';
+import { createHistoryRouter, redirect } from 'atomic-router';
 import { RouterProvider } from 'atomic-router-react';
 import { createBrowserHistory } from 'history';
+import * as React from 'react';
 import { controls, routes } from '@/shared/configs';
 
 const router = createHistoryRouter({
@@ -39,10 +39,18 @@ const router = createHistoryRouter({
 			route: routes.requests,
 		}
 	],
+	notFoundRoute: routes.notFound,
 	controls,
 });
 
+redirect({
+	clock: router.initialized,
+	route: routes.login,
+});
+
 router.setHistory(createBrowserHistory());
+
+router.routeNotFound.watch(() => console.log('Now found'));
 
 export const withRouter =
 	(Component: React.ComponentType): React.ComponentType =>

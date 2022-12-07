@@ -9,6 +9,7 @@ export const profileRoute = createRoute<{ address: Address }>();
 export const categoriesRoute = createRoute();
 export const samplesRoute = createRoute();
 export const requestsRoute = createRoute();
+export const notFoundRoute = createRoute();
 export const controls = createRouterControls();
 
 export const routes = {
@@ -20,4 +21,5 @@ export const routes = {
 	samples: samplesRoute,
 	users: usersRoute,
 	requests: requestsRoute,
+	notFound: notFoundRoute,
 };

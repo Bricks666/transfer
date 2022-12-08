@@ -1,10 +1,10 @@
 import { Address, Status } from '@/shared/types';
 
 export interface Transfer {
-	readonly id: number;
+	readonly id: string;
 	readonly sender: Address;
 	readonly receiver: Address;
-	readonly category_id: number;
+	readonly category_id: string;
 	readonly money: string;
 	readonly description: string;
 	readonly keyword: string;

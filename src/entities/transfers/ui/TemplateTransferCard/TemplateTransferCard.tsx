@@ -15,6 +15,7 @@ import { CommonProps } from '@/shared/types';
 import styles from './TemplateTransferCard.module.css';
 
 export interface TemplateTransferCardProps extends CommonProps, Transfer {
+	readonly category: React.ReactElement;
 	readonly actions?: React.ReactElement | null;
 }
 
@@ -23,12 +24,12 @@ export const TemplateTransferCard: React.FC<TemplateTransferCardProps> =
 		const {
 			id,
 			status,
-			category_id: categoryId,
 			description,
 			money,
 			receiver,
 			sender,
 			className,
+			category,
 			actions = null,
 		} = props;
 
@@ -38,7 +39,7 @@ export const TemplateTransferCard: React.FC<TemplateTransferCardProps> =
 				<CardContent className={styles.content}>
 					<Typography>Sender: {sender}</Typography>
 					<Typography>Receiver: {receiver}</Typography>
-					<Typography>Category: {categoryId}</Typography>
+					<Typography>Category: {category}</Typography>
 					<Typography>Count: {fromWei(money, 'ether')} ETH</Typography>
 					<Typography>Description: {description}</Typography>
 					<Typography>Status: {statusNames[status]}</Typography>

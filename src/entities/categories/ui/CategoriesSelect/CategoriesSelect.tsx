@@ -11,7 +11,7 @@ export const CategoriesSelect: React.FC<CategoriesSelectProps> = (props) => {
 	const selectId = React.useId();
 
 	return (
-		<Field {...props} defaultValue={null} id={selectId} select>
+		<Field {...props} label='Category' defaultValue={null} id={selectId} select>
 			{categories.map(({ id, name, }) => (
 				<MenuItem value={id} key={id}>
 					{name}

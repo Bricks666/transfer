@@ -1,3 +1,4 @@
+import { Typography } from '@mui/material';
 import * as React from 'react';
 import { Header } from '@/widgets/header';
 import { SampleList } from '@/widgets/samples';
@@ -10,7 +11,9 @@ export interface SamplesPageProps extends CommonProps {}
 const SamplesPage: React.FC<SamplesPageProps> = () => {
 	return (
 		<MainLayoutTemplate header={<Header />}>
-			<h2>Samples Page</h2>
+			<Typography variant='h4' align='center' component='h1'>
+				Samples
+			</Typography>
 			<CreateSampleForm />
 			<SampleList />
 		</MainLayoutTemplate>

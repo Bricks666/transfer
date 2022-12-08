@@ -11,7 +11,7 @@ import { acceptTransferModel } from '../../model';
 import styles from './AcceptTransfer.module.css';
 
 export interface AcceptTransferProps extends CommonProps {
-	readonly id: number;
+	readonly id: string;
 }
 
 export const AcceptTransfer: React.FC<AcceptTransferProps> = (props) => {

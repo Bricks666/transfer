@@ -1,4 +1,5 @@
 .form {
-	display: flex;
+	display: grid;
+  grid-template-columns: 1fr max-content;
 	gap: 10px;
 }

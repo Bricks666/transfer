@@ -1,17 +1,20 @@
+import { List, ListItem } from '@mui/material';
 import * as React from 'react';
-import { SampleCard, useSamples } from '@/entities/samples';
-import { FriendlyList } from '@/shared/ui/FriendlyList';
+import { useSamples } from '@/entities/samples';
+import { SampleCard } from '../SampleCard';
+
+import styles from './SampleList.module.css';
 
 export const SampleList: React.FC = () => {
-	const { data: samples, pending, } = useSamples();
+	const { data: samples, } = useSamples();
 
 	return (
-		<FriendlyList
-			items={samples}
-			Component={SampleCard}
-			indexedBy='name'
-			isLoading={pending}
-			emptyLabel="There aren't any samples"
-		/>
+		<List className={styles.list}>
+			{samples.map((sample) => (
+				<ListItem className={styles.item} key={sample.id}>
+					<SampleCard className={styles.card} {...sample} />
+				</ListItem>
+			))}
+		</List>
 	);
 };

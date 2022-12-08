@@ -2,6 +2,7 @@ import { useUnit } from 'effector-react';
 import * as React from 'react';
 import { AcceptTransfer, CancelTransfer } from '@/features/transfers';
 import { authModel } from '@/entities/auth';
+import { CategoryLabel } from '@/entities/categories';
 import { TemplateTransferCard } from '@/entities/transfers';
 import { Transfer } from '@/shared/api';
 import { CommonProps, Status } from '@/shared/types';
@@ -10,12 +11,10 @@ export interface TransferCardProps extends CommonProps, Transfer {}
 
 export const TransferCard: React.FC<TransferCardProps> = React.memo(
 	function TransferCard(props) {
-		const { status, sender, id, receiver, } = props;
+		const { status, sender, id, category_id: categoryId, } = props;
 		const authAddress = useUnit(authModel.$address);
 		const isSender = authAddress === sender;
 		const isPending = status === Status.pending;
-
-		console.log(authAddress, sender, receiver);
 
 		let actions: React.ReactElement | null | undefined;
 		if (isPending) {
@@ -26,6 +25,10 @@ export const TransferCard: React.FC<TransferCardProps> = React.memo(
 			}
 		}
 
-		return <TemplateTransferCard {...props} actions={actions} />;
+		const category = <CategoryLabel id={categoryId} />;
+
+		return (
+			<TemplateTransferCard {...props} category={category} actions={actions} />
+		);
 	}
 );

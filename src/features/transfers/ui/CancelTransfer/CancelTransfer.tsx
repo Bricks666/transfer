@@ -6,7 +6,7 @@ import { CommonProps } from '@/shared/types';
 import { cancelTransferModel } from '../../model';
 
 export interface CancelTransferProps extends CommonProps {
-	readonly id: number;
+	readonly id: string;
 }
 
 export const CancelTransfer: React.FC<CancelTransferProps> = React.memo(

@@ -1,0 +1,14 @@
+.layout {
+	display: grid;
+	align-content: center;
+  gap: 15px;
+
+	max-width: 550px;
+
+	margin: 0 auto;
+}
+
+.link {
+	width: max-content;
+	justify-self: end;
+}

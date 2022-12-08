@@ -1,3 +1,4 @@
+import { CircularProgress } from '@mui/material';
 import { createHistoryRouter, redirect } from 'atomic-router';
 import { RouterProvider } from 'atomic-router-react';
 import { createBrowserHistory } from 'history';
@@ -57,7 +58,9 @@ export const withRouter =
 		(props) => {
 			return (
 				<RouterProvider router={router}>
-					<Component {...props} />
+					<React.Suspense fallback={<CircularProgress />}>
+						<Component {...props} />
+					</React.Suspense>
 				</RouterProvider>
 			);
 		};

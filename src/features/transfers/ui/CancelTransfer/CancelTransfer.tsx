@@ -1,5 +1,5 @@
 import { useMutation } from '@farfetched/react';
-import { Button } from 'antd';
+import { Button } from '@mui/material';
 import cn from 'classnames';
 import * as React from 'react';
 import { CommonProps } from '@/shared/types';

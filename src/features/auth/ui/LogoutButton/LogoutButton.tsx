@@ -1,4 +1,4 @@
-import { Button } from 'antd';
+import { Button } from '@mui/material';
 import { useUnit } from 'effector-react';
 import * as React from 'react';
 import { logoutModel } from '../../model';

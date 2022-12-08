@@ -1,19 +1,31 @@
 import { useMutation } from '@farfetched/react';
-import { Button } from 'antd';
+import { Button } from '@mui/material';
+import cn from 'classnames';
 import * as React from 'react';
 import { AddressesSelect } from '@/entities/web3';
 import { useForm } from '@/shared/lib';
+import { CommonProps } from '@/shared/types';
+import { Field } from '@/shared/ui';
 import { loginModel } from '../../model';
 
-export const LoginForm: React.FC = React.memo(function LoginForm() {
+import styles from './LoginForm.module.css';
+
+export const LoginForm: React.FC<CommonProps> = React.memo(function LoginForm(
+	props
+) {
+	const { className, } = props;
 	const login = useMutation(loginModel.loginMutation);
 	const { onSubmit, } = useForm(login.start);
 
 	return (
-		<form onSubmit={onSubmit}>
-			<AddressesSelect name='address' required />
-			<input name='password' type='password' required />
-			<Button htmlType='submit' type='primary' loading={login.pending}>
+		<form className={cn(styles.form, className)} onSubmit={onSubmit}>
+			<AddressesSelect label='Address' name='address' required />
+			<Field label='password' name='password' type='password' required />
+			<Button
+				className={styles.button}
+				type='submit'
+				variant='outlined'
+				disabled={login.pending}>
 				Login
 			</Button>
 		</form>

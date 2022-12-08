@@ -1,5 +1,5 @@
 import { useMutation } from '@farfetched/react';
-import { Button } from 'antd';
+import { Button } from '@mui/material';
 import * as React from 'react';
 import { useForm } from '@/shared/lib';
 import { createCategoryModel } from '../../model';

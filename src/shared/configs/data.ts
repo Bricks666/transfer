@@ -1,4 +1,4 @@
-export const address = '0x34be897574ed837944E696f89832a595d28DE0EF';
+export const address = '0x42e70d862523f8044eeC199700d4579C25Aeb3d2';
 export const abi = [
 	{
 		anonymous: false,
@@ -62,12 +62,21 @@ export const abi = [
 	{
 		anonymous: false,
 		inputs: [
-			{ indexed: false, internalType: 'string', name: 'name', type: 'string', }
+			{
+				components: [
+					{ internalType: 'uint256', name: 'id', type: 'uint256', },
+					{ internalType: 'string', name: 'name', type: 'string', }
+				],
+				indexed: false,
+				internalType: 'struct Categories.Category',
+				name: 'category',
+				type: 'tuple',
+			}
 		],
 		name: 'NewCategory',
 		type: 'event',
 		signature:
-			'0xb451ac0dcba38f6df1cb27b5d40f815659eb210a29f1628ced3186836ee2fa1c',
+			'0xa07bfee489b9c60f62fdd9d2f429b7ffe7a524d2c5d1f87e7195682435432526',
 	},
 	{
 		anonymous: false,
@@ -264,7 +273,17 @@ export const abi = [
 	{
 		inputs: [],
 		name: 'get_categories',
-		outputs: [{ internalType: 'string[]', name: '', type: 'string[]', }],
+		outputs: [
+			{
+				components: [
+					{ internalType: 'uint256', name: 'id', type: 'uint256', },
+					{ internalType: 'string', name: 'name', type: 'string', }
+				],
+				internalType: 'struct Categories.Category[]',
+				name: '',
+				type: 'tuple[]',
+			}
+		],
 		stateMutability: 'view',
 		type: 'function',
 		constant: true,

@@ -1,11 +1,11 @@
 import { cache, createQuery } from '@farfetched/core';
 import { createDomain, sample } from 'effector';
 import { createGate } from 'effector-react';
-import { categoriesApi } from '@/shared/api';
+import { categoriesApi, Category } from '@/shared/api';
 
 const categoriesDomain = createDomain();
 
-export const getAllFx = categoriesDomain.effect<void, string[]>();
+export const getAllFx = categoriesDomain.effect<void, Category[]>();
 getAllFx.use(categoriesApi.getAll);
 export const getAllQuery = createQuery({
 	effect: getAllFx,

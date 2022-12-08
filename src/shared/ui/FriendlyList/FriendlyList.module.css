@@ -1,3 +1,5 @@
 .item {
+	align-items: unset;
+
 	width: max-content;
 }

@@ -12,7 +12,7 @@ const TransfersPage: React.FC<TransfersPageProps> = () => {
 	return (
 		<MainLayoutTemplate header={<Header />}>
 			<Typography variant='h4' align='center' component='h1'>
-				Transactions
+				Transfers
 			</Typography>
 			<CreateTransferForm />
 			<TransferList />

@@ -114,9 +114,14 @@ contract Users is Shared {
 }
 
 contract Categories is Users {
-	string[] categories;
+	struct Category {
+		uint256 id;
+		string name;
+	}
 
-	event NewCategory(string name);
+	Category[] categories;
+
+	event NewCategory(Category category);
 
 	constructor() {
 		_create_category('Personal transfer');
@@ -124,7 +129,7 @@ contract Categories is Users {
 		_create_category('Personal repayment');
 	}
 
-	function get_categories() external view returns (string[] memory) {
+	function get_categories() external view returns (Category[] memory) {
 		return categories;
 	}
 
@@ -139,8 +144,10 @@ contract Categories is Users {
 		private
 		returns (string memory)
 	{
-		categories.push(name);
-		emit NewCategory(name);
+		uint256 id = categories.length;
+		Category memory category = Category({ id: id, name: name });
+		categories.push(category);
+		emit NewCategory(category);
 	}
 }
 
@@ -158,8 +165,8 @@ contract Samples is Users {
 
 	constructor() {
 		_create_sample('present10', 0, 10);
-		_create_sample('present10', 0, 30);
-		_create_sample('present10', 0, 50);
+		_create_sample('present30', 0, 30);
+		_create_sample('present50', 0, 50);
 		_create_sample('rent70', 1, 70);
 		_create_sample('rent90', 1, 90);
 		_create_sample('debtrepayment', 2, 100);

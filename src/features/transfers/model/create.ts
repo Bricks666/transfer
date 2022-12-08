@@ -1,5 +1,6 @@
 import { createMutation } from '@farfetched/core';
 import { createDomain, sample } from 'effector-logger';
+import { toWei } from 'web3-utils';
 import { authModel } from '@/entities/auth';
 import { transfersModel } from '@/entities/transfers';
 import { CreateTransferParams, Transfer, transfersApi } from '@/shared/api';
@@ -26,6 +27,11 @@ sample({
 	clock: addMutation.finished.success,
 	source: authModel.$address,
 	fn: (sender, { params, }) =>
-		({ ...params, status: Status.pending, sender, } as Transfer),
+		({
+			...params,
+			money: toWei(params.money, 'ether'),
+			status: Status.pending,
+			sender,
+		} as Transfer),
 	target: transfersModel.addTransfer,
 });

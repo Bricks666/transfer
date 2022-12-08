@@ -12,9 +12,9 @@ export const CategoriesSelect: React.FC<CategoriesSelectProps> = (props) => {
 
 	return (
 		<Field {...props} defaultValue={null} id={selectId} select>
-			{categories.map((category, i) => (
-				<MenuItem value={i} key={i}>
-					{category}
+			{categories.map(({ id, name, }) => (
+				<MenuItem value={id} key={id}>
+					{name}
 				</MenuItem>
 			))}
 		</Field>

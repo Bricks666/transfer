@@ -7,7 +7,7 @@ const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
 
 const deploy = async () => {
-	const web3 = new Web3('http://127.0.0.1:8545');
+	const web3 = new Web3('ws://127.0.0.1:8545');
 	/**
 	 * @type {Record<string, any>}
 	 */
@@ -38,6 +38,7 @@ const deploy = async () => {
 				abi
 			)};`
 		);
+    console.log('deploy success')
 	} catch (error) {
 		console.error(error);
 	}

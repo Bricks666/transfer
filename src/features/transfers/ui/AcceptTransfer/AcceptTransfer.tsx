@@ -8,6 +8,8 @@ import { CommonProps } from '@/shared/types';
 import { Field } from '@/shared/ui';
 import { acceptTransferModel } from '../../model';
 
+import styles from './AcceptTransfer.module.css';
+
 export interface AcceptTransferProps extends CommonProps {
 	readonly id: number;
 }
@@ -23,7 +25,7 @@ export const AcceptTransfer: React.FC<AcceptTransferProps> = (props) => {
 	const { onSubmit, } = useForm(submit);
 
 	return (
-		<form className={cn(className)} onSubmit={onSubmit}>
+		<form className={cn(styles.form, className)} onSubmit={onSubmit}>
 			<Field
 				name='keyword'
 				label='Keyword'

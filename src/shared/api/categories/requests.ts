@@ -1,7 +1,7 @@
 import { contract } from '../core';
-import { CreateCategoryParams } from './types';
+import { Category, CreateCategoryParams } from './types';
 
-export const getAll = (): Promise<string[]> => {
+export const getAll = (): Promise<Category[]> => {
 	return contract.methods.get_categories().call();
 };
 

@@ -19,10 +19,6 @@ const adminsNavigation: NavigationItem[] = [
 		label: 'Samples',
 	},
 	{
-		to: routes.transfers,
-		label: 'Transfers',
-	},
-	{
 		to: routes.requests,
 		label: 'Requests',
 	},
@@ -38,13 +34,13 @@ export const Navigation: React.FC<CommonProps> = (props) => {
 	const commonNavigation: NavigationItem[] = React.useMemo(
 		() => [
 			{
-				to: routes.transfers,
-				label: 'Transfers',
-			},
-			{
 				to: routes.profile,
 				params: { address, },
 				label: 'Profile',
+			},
+			{
+				to: routes.transfers,
+				label: 'Transfers',
 			}
 		],
 		[address]
@@ -54,7 +50,7 @@ export const Navigation: React.FC<CommonProps> = (props) => {
 			<ul className={styles.list}>
 				{commonNavigation.map((item) => (
 					<Button
-						className={styles.link}
+						className={styles.item}
 						{...item}
 						component={Link}
 						key={item.label}>
@@ -64,7 +60,7 @@ export const Navigation: React.FC<CommonProps> = (props) => {
 				<OnlyAdmin>
 					{adminsNavigation.map((item) => (
 						<Button
-							className={styles.link}
+							className={styles.item}
 							{...item}
 							component={Link}
 							key={item.label}>

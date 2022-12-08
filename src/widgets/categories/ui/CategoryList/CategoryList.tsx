@@ -1,14 +1,19 @@
 import * as React from 'react';
-import { useCategories } from '@/entities/categories';
+import { CategoryCard, useCategories } from '@/entities/categories';
+import { FriendlyList } from '@/shared/ui';
+
+import styles from './CategoryList.module.css';
 
 export const CategoryList: React.FC = () => {
-	const { data: categories, } = useCategories();
+	const { data: categories, pending, } = useCategories();
 
 	return (
-		<ul>
-			{categories.map((category, i) => (
-				<li key={i}>{category}</li>
-			))}
-		</ul>
+		<FriendlyList
+			className={styles.list}
+			items={categories}
+			Component={CategoryCard}
+			indexedBy='id'
+			isLoading={pending}
+		/>
 	);
 };

@@ -424,13 +424,13 @@ contract Requests is Users {
 			return _finish_request(id, Status.cancel);
 		}
 		if (requests[id].accept_voter.length == admin_count) {
+			_change_role(requests[id].candidate, Roles.admin);
 			return _finish_request(id, Status.accept);
 		}
 	}
 
 	function _finish_request(uint256 id, Status status) private {
 		requests[id].status = status;
-		_change_role(requests[id].candidate, Roles.admin);
 		users_on_request[requests[id].candidate] = false;
 		emit ChangeRequestStatus(id, status);
 	}

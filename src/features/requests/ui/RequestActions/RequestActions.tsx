@@ -1,5 +1,5 @@
 import { useMutation } from '@farfetched/react';
-import { Button } from '@mui/material';
+import { Button, ButtonGroup } from '@mui/material';
 import * as React from 'react';
 import { CommonProps } from '@/shared/types';
 import { requestActionsModel } from '../../model';
@@ -21,25 +21,24 @@ export const RequestActions: React.FC<RequestActionsProps> = (props) => {
 		cancel.start({ id, });
 	};
 
+	const isLoading = cancel.pending || accept.pending;
+
 	return (
-		<div>
+		<ButtonGroup variant='outlined'>
 			<Button
-				type='primary'
-				htmlType='button'
+				type='button'
+				color='success'
 				onClick={onAccept}
-				disabled={cancel.pending}
-				loading={accept.pending}>
+				disabled={isLoading}>
 				Approve
 			</Button>
 			<Button
-				type='primary'
-				htmlType='button'
+				type='button'
+				color='error'
 				onClick={onCancel}
-				disabled={accept.pending}
-				loading={cancel.pending}
-				danger>
+				disabled={isLoading}>
 				Reject
 			</Button>
-		</div>
+		</ButtonGroup>
 	);
 };

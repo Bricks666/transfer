@@ -1,3 +1,4 @@
+import { Card, CardActions, CardContent, Typography } from '@mui/material';
 import * as React from 'react';
 import { hexToNumberString } from 'web3-utils';
 import { Request } from '@/shared/api';
@@ -24,21 +25,21 @@ export const TemplateRequestCard: React.FC<TemplateRequestCardProps> = (
 		hexToNumberString(cancelVoter) !== '0' ? cancelVoter : 'nobody';
 
 	return (
-		<div className={className}>
-			<dl>
-				<dt>Candidate:</dt> <dd>{candidate}</dd>
-				<dt>Voters</dt>
-				<dd>
+		<Card className={className} component='article'>
+			<CardContent>
+				<Typography>Candidate: {candidate}</Typography>
+				<Typography>
+					Voters:{' '}
 					<ul>
 						{acceptVoter.map((voter) => (
 							<li key={voter}> {voter}</li>
 						))}
 					</ul>
-				</dd>
-				<dt>Against:</dt> <dd>{cancelVoterLabel}</dd>
-				<dt>Status:</dt> <dd>{statusNames[status]}</dd>
-			</dl>
-			{actions}
-		</div>
+				</Typography>
+				<Typography>Against: {cancelVoterLabel}</Typography>
+				<Typography>Status: {statusNames[status]}</Typography>
+			</CardContent>
+			{actions ? <CardActions>{actions}</CardActions> : null}
+		</Card>
 	);
 };

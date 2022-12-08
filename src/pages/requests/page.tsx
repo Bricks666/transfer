@@ -1,3 +1,4 @@
+import { Typography } from '@mui/material';
 import * as React from 'react';
 import { Header } from '@/widgets/header';
 import { RequestList } from '@/widgets/requests';
@@ -9,7 +10,9 @@ export interface RequestsPageProps extends CommonProps {}
 const RequestsPage: React.FC<RequestsPageProps> = () => {
 	return (
 		<MainLayoutTemplate header={<Header />}>
-			<h2>Offers Page</h2>
+			<Typography variant='h4' align='center' component='h1'>
+				Requests
+			</Typography>
 			<RequestList />
 		</MainLayoutTemplate>
 	);

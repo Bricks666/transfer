@@ -1,16 +1,21 @@
 import { useMutation } from '@farfetched/react';
 import { Button } from '@mui/material';
+import cn from 'classnames';
 import * as React from 'react';
 import { CategoriesSelect } from '@/entities/categories';
 import { AddressesSelect } from '@/entities/web3';
 import { useForm } from '@/shared/lib';
 import { CommonProps } from '@/shared/types';
+import { Field } from '@/shared/ui';
 import { createTransferModel } from '../../model';
+
+import styles from './CreateTransferForm.module.css';
 
 export interface CreateTransferFormProps extends CommonProps {}
 
 export const CreateTransferForm: React.FC<CreateTransferFormProps> = React.memo(
-	function CreateTransferForm() {
+	function CreateTransferForm(props) {
+		const { className, } = props;
 		const create = useMutation(createTransferModel.addMutation);
 		const { onSubmit, } = useForm(create.start);
 		/* const samples = useSamples(); */
@@ -35,11 +40,22 @@ export const CreateTransferForm: React.FC<CreateTransferFormProps> = React.memo(
 	); */
 
 		return (
-			<form onSubmit={onSubmit}>
-				<AddressesSelect name='receiver' placeholder='receiver' required />
-				<input name='money' type='number' min={0} required />
-				<input name='keyword' placeholder='keyword' required />
-				<CategoriesSelect name='category_id' placeholder='category' required />
+			<form className={cn(styles.form, className)} onSubmit={onSubmit}>
+				<AddressesSelect
+					className={styles.addresses}
+					name='receiver'
+					label='Receiver'
+					placeholder='receiver'
+					required
+				/>
+				<Field name='money' label='Money' type='number' required />
+				<Field name='keyword' label='Keyword' placeholder='keyword' required />
+				<CategoriesSelect
+					name='category_id'
+					label='Category'
+					placeholder='category'
+					required
+				/>
 				{/* 			<select placeholder='samples' value={sample} onChange={onSampleSelect}>
 				<option value={0} />
 				{samples.map(({ name }, i) => {
@@ -50,8 +66,16 @@ export const CreateTransferForm: React.FC<CreateTransferFormProps> = React.memo(
 					);
 				})}
 			</select> */}
-				<textarea name='description' placeholder='description' />
-				<Button type='primary' htmlType='submit'>
+				<Field
+					name='description'
+					label='Description'
+					placeholder='description'
+					multiline
+				/>
+				<Button
+					className={styles.button}
+					type='submit'
+					disabled={create.pending}>
 					Send
 				</Button>
 			</form>

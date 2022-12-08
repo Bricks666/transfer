@@ -19,9 +19,9 @@ export const CreateRequestButton: React.FC<CreateRequestButtonProps> = (
 	return (
 		<Button
 			onClick={onClick}
-			type='primary'
-			htmlType='button'
-			loading={createRequest.pending}>
+			type='button'
+			variant='outlined'
+			disabled={createRequest.pending}>
 			Set on request
 		</Button>
 	);

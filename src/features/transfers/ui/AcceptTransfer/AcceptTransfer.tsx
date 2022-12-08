@@ -5,6 +5,7 @@ import * as React from 'react';
 import { AcceptTransferParams } from '@/shared/api';
 import { useForm } from '@/shared/lib';
 import { CommonProps } from '@/shared/types';
+import { Field } from '@/shared/ui';
 import { acceptTransferModel } from '../../model';
 
 export interface AcceptTransferProps extends CommonProps {
@@ -23,8 +24,14 @@ export const AcceptTransfer: React.FC<AcceptTransferProps> = (props) => {
 
 	return (
 		<form className={cn(className)} onSubmit={onSubmit}>
-			<input name='keyword' placeholder='keyword' type='password' required />
-			<Button type='primary' htmlType='submit'>
+			<Field
+				name='keyword'
+				label='Keyword'
+				placeholder='keyword'
+				type='password'
+				required
+			/>
+			<Button type='submit' variant='outlined' color='success'>
 				Accept
 			</Button>
 		</form>

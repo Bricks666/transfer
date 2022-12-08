@@ -3,12 +3,12 @@
  */
 
 export enum Status {
-	pending,
-	accept,
-	cancel,
+	pending = '0',
+	accept = '1',
+	cancel = '2',
 }
 
 export enum Roles {
-	user,
-	admin,
+	user = '0',
+	admin = '1',
 }

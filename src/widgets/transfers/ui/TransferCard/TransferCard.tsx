@@ -10,10 +10,12 @@ export interface TransferCardProps extends CommonProps, Transfer {}
 
 export const TransferCard: React.FC<TransferCardProps> = React.memo(
 	function TransferCard(props) {
-		const { status, sender, id, } = props;
+		const { status, sender, id, receiver, } = props;
 		const authAddress = useUnit(authModel.$address);
 		const isSender = authAddress === sender;
 		const isPending = status === Status.pending;
+
+		console.log(authAddress, sender, receiver);
 
 		let actions: React.ReactElement | null | undefined;
 		if (isPending) {

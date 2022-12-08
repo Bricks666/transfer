@@ -1,3 +1,4 @@
+import { Typography } from '@mui/material';
 import * as React from 'react';
 import { Header } from '@/widgets/header';
 import { TransferList } from '@/widgets/transfers';
@@ -10,7 +11,9 @@ export interface TransfersPageProps extends CommonProps {}
 const TransfersPage: React.FC<TransfersPageProps> = () => {
 	return (
 		<MainLayoutTemplate header={<Header />}>
-			<h2>Transactions</h2>
+			<Typography variant='h4' align='center' component='h1'>
+				Transactions
+			</Typography>
 			<CreateTransferForm />
 			<TransferList />
 		</MainLayoutTemplate>

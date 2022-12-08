@@ -1,49 +1,78 @@
-import { Link, LinkProps } from 'atomic-router-react';
+import { Button } from '@mui/material';
+import { Link } from 'atomic-router-react';
+import cn from 'classnames';
 import { useUnit } from 'effector-react';
 import * as React from 'react';
 import { authModel, OnlyAdmin } from '@/entities/auth';
 import { routes } from '@/shared/configs';
-import { List } from '@/shared/ui';
+import { CommonProps } from '@/shared/types';
+import styles from './Navigation.module.css';
+import { NavigationItem } from './types';
 
-export const Navigation: React.FC = () => {
+const adminsNavigation: NavigationItem[] = [
+	{
+		to: routes.categories,
+		label: 'Categories',
+	},
+	{
+		to: routes.samples,
+		label: 'Samples',
+	},
+	{
+		to: routes.transfers,
+		label: 'Transfers',
+	},
+	{
+		to: routes.requests,
+		label: 'Requests',
+	},
+	{
+		to: routes.users,
+		label: 'Users',
+	}
+];
+
+export const Navigation: React.FC<CommonProps> = (props) => {
+	const { className, } = props;
 	const address = useUnit(authModel.$address);
-	const navigation: LinkProps<any>[] = React.useMemo(
+	const commonNavigation: NavigationItem[] = React.useMemo(
 		() => [
 			{
 				to: routes.transfers,
-				children: 'Transfers',
+				label: 'Transfers',
 			},
 			{
 				to: routes.profile,
 				params: { address, },
-				children: 'Profile',
+				label: 'Profile',
 			}
 		],
 		[address]
 	);
 	return (
-		<nav>
-			<List items={navigation} Component={Link} indexedBy='children' />
-			<OnlyAdmin>
-				<li>
-					<Link to={routes.categories}>Categories</Link>
-				</li>
-			</OnlyAdmin>
-			<OnlyAdmin>
-				<li>
-					<Link to={routes.samples}>Samples</Link>
-				</li>
-			</OnlyAdmin>
-			<OnlyAdmin>
-				<li>
-					<Link to={routes.requests}>Requests</Link>
-				</li>
-			</OnlyAdmin>
-			<OnlyAdmin>
-				<li>
-					<Link to={routes.users}>Users</Link>
-				</li>
-			</OnlyAdmin>
+		<nav className={cn(styles.nav, className)}>
+			<ul className={styles.list}>
+				{commonNavigation.map((item) => (
+					<Button
+						className={styles.link}
+						{...item}
+						component={Link}
+						key={item.label}>
+						{item.label}
+					</Button>
+				))}
+				<OnlyAdmin>
+					{adminsNavigation.map((item) => (
+						<Button
+							className={styles.link}
+							{...item}
+							component={Link}
+							key={item.label}>
+							{item.label}
+						</Button>
+					))}
+				</OnlyAdmin>
+			</ul>
 		</nav>
 	);
 };

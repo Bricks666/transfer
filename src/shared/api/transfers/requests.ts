@@ -26,12 +26,14 @@ export const create = (params: CreateTransferParams) => {
 	} = params;
 	return contract.methods
 		.create_transfer(receiver, categoryId, keccak256(keyword), description)
-		.send({ from: sender, value: toWei(money.toString(), 'wei'), });
+		.send({ from: sender, value: toWei(money, 'ether'), });
 };
 
 export const accept = (params: AcceptTransferParams) => {
 	const { sender, id, keyword, } = params;
-	return contract.methods.accept_transfer(id, keyword).send({ from: sender, });
+	return contract.methods
+		.accept_transfer(id, keccak256(keyword))
+		.send({ from: sender, });
 };
 
 export const cancel = (params: CancelTransferParams) => {

@@ -1,1 +1,1 @@
-export * from './categories-select';
+export * from './CategoriesSelect';

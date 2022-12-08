@@ -1,0 +1,12 @@
+.nav {
+	display: flex;
+	gap: 5px;
+}
+
+.list {
+	display: contents;
+}
+
+.item {
+	width: max-content;
+}

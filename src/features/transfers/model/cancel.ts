@@ -3,6 +3,7 @@ import { createDomain, sample } from 'effector-logger';
 import { authModel } from '@/entities/auth';
 import { transfersModel } from '@/entities/transfers';
 import { CancelTransferParams, transfersApi } from '@/shared/api';
+import { Status } from '@/shared/types';
 
 const cancelTransferDomain = createDomain();
 
@@ -18,5 +19,6 @@ export const cancelMutation = createMutation({
 
 sample({
 	clock: cancelMutation.finished.success,
-	target: transfersModel.getAllQuery.start,
+	fn: ({ params, }) => ({ id: params.id, status: Status.cancel, }),
+	target: transfersModel.finishedTransfer,
 });

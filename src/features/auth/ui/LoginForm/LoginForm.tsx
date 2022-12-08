@@ -19,7 +19,12 @@ export const LoginForm: React.FC<CommonProps> = React.memo(function LoginForm(
 
 	return (
 		<form className={cn(styles.form, className)} onSubmit={onSubmit}>
-			<AddressesSelect label='Address' name='address' required />
+			<AddressesSelect
+				label='Address'
+				name='address'
+				autoComplete='name'
+				required
+			/>
 			<Field label='password' name='password' type='password' required />
 			<Button
 				className={styles.button}

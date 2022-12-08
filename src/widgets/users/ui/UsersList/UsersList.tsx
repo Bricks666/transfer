@@ -4,6 +4,8 @@ import { CommonProps } from '@/shared/types';
 import { FriendlyList } from '@/shared/ui/FriendlyList';
 import { UserCard } from '../UserCard';
 
+import styles from './UsersList.module.css';
+
 export interface UsersListProps extends CommonProps {}
 
 export const UsersList: React.FC<UsersListProps> = () => {
@@ -11,6 +13,7 @@ export const UsersList: React.FC<UsersListProps> = () => {
 
 	return (
 		<FriendlyList
+			className={styles.list}
 			items={users}
 			Component={UserCard}
 			indexedBy='login'

@@ -3,6 +3,7 @@ import { createDomain, sample } from 'effector-logger';
 import { authModel } from '@/entities/auth';
 import { transfersModel } from '@/entities/transfers';
 import { AcceptTransferParams, transfersApi } from '@/shared/api';
+import { Status } from '@/shared/types';
 
 const acceptTransferDomain = createDomain();
 
@@ -18,5 +19,6 @@ export const acceptMutation = createMutation({
 
 sample({
 	clock: acceptMutation.finished.success,
-	target: transfersModel.getAllQuery.start,
+	fn: ({ params, }) => ({ id: params.id, status: Status.accept, }),
+	target: transfersModel.finishedTransfer,
 });

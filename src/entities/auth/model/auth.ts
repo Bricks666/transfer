@@ -25,7 +25,6 @@ sample({
 
 sample({
 	clock: setRole,
-	fn: Number,
 	target: $role,
 });
 

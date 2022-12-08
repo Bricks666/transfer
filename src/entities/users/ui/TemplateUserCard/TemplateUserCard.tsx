@@ -1,3 +1,4 @@
+import { Card, CardActions, CardContent } from '@mui/material';
 import * as React from 'react';
 import { User } from '@/shared/api';
 import { CommonProps } from '@/shared/types';
@@ -10,9 +11,11 @@ export interface TemplateUserCardProps extends CommonProps, User {
 export const TemplateUserCard: React.FC<TemplateUserCardProps> = (props) => {
 	const { login, role, className, actions, } = props;
 	return (
-		<article className={className}>
-			<UserInfo login={login} role={role} />
-			{actions}
-		</article>
+		<Card className={className}>
+			<CardContent>
+				<UserInfo login={login} role={role} />
+			</CardContent>
+			<CardActions>{actions}</CardActions>
+		</Card>
 	);
 };

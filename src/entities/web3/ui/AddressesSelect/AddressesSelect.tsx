@@ -7,12 +7,11 @@ import { useAddresses } from '../../lib';
 export type AddressesSelectProps = CommonProps & FieldProps;
 
 export const AddressesSelect: React.FC<AddressesSelectProps> = (props) => {
-	const { label, ...rest } = props;
 	const { data: addresses, } = useAddresses();
 	const inputId = React.useId();
 
 	return (
-		<Field {...rest} defaultValue={null} id={inputId} label={label} select>
+		<Field {...props} defaultValue={null} id={inputId} select>
 			{addresses.map((address) => (
 				<MenuItem value={address} key={address}>
 					{address}

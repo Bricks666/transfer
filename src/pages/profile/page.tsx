@@ -1,3 +1,4 @@
+import { Typography } from '@mui/material';
 import * as React from 'react';
 import { Header } from '@/widgets/header';
 import { ProfileInfo } from '@/widgets/profile';
@@ -9,7 +10,9 @@ export interface ProfilePageProps extends CommonProps {}
 const ProfilePage: React.FC<ProfilePageProps> = () => {
 	return (
 		<MainLayoutTemplate header={<Header />}>
-			<h2>Profile Page</h2>
+			<Typography variant='h4' align='center' component='h1'>
+				Profile
+			</Typography>
 			<ProfileInfo />
 		</MainLayoutTemplate>
 	);

@@ -1,3 +1,4 @@
+import { Typography } from '@mui/material';
 import * as React from 'react';
 import { roleNames } from '@/shared/lib';
 import { Address, CommonProps, Roles } from '@/shared/types';
@@ -13,9 +14,11 @@ export const UserInfo: React.FC<UserInfoProps> = React.memo(function UserInfo(
 	const { login, role, } = props;
 	return (
 		<section>
-			<h3>Info</h3>
-			<p>Login: {login}</p>
-			<p>Your role: {roleNames[role]}</p>
+			<Typography variant='h5' component='p'>
+				Info
+			</Typography>
+			<Typography>Login: {login}</Typography>
+			<Typography>Your role: {roleNames[role]}</Typography>
 		</section>
 	);
 });

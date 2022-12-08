@@ -6,7 +6,7 @@ import { routes } from '@/shared/configs';
 
 redirect({
 	clock: registrationModel.registrationMutation.finished.success,
-	route: routes.registration,
+	route: routes.login,
 });
 
 redirect({

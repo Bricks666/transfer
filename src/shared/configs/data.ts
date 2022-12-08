@@ -1,4 +1,4 @@
-export const address = '0x8Bc687e20AA0B79aC64f5937C4E9CD424dB6A2c6';
+export const address = '0x34be897574ed837944E696f89832a595d28DE0EF';
 export const abi = [
 	{
 		anonymous: false,
@@ -390,7 +390,7 @@ export const abi = [
 					{ internalType: 'enum Users.Roles', name: 'role', type: 'uint8', }
 				],
 				internalType: 'struct Users.User',
-				name: 'user',
+				name: '',
 				type: 'tuple',
 			}
 		],
@@ -410,7 +410,7 @@ export const abi = [
 					{ internalType: 'enum Users.Roles', name: 'role', type: 'uint8', }
 				],
 				internalType: 'struct Users.User[]',
-				name: 'users',
+				name: '',
 				type: 'tuple[]',
 			}
 		],
@@ -439,7 +439,7 @@ export const abi = [
 					{ internalType: 'enum Users.Roles', name: 'role', type: 'uint8', }
 				],
 				internalType: 'struct Users.User',
-				name: 'user',
+				name: '',
 				type: 'tuple',
 			}
 		],
@@ -459,7 +459,7 @@ export const abi = [
 					{ internalType: 'enum Users.Roles', name: 'role', type: 'uint8', }
 				],
 				internalType: 'struct Users.User',
-				name: 'user',
+				name: '',
 				type: 'tuple',
 			}
 		],

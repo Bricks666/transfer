@@ -5,7 +5,7 @@ export interface Transfer {
 	readonly sender: Address;
 	readonly receiver: Address;
 	readonly category_id: number;
-	readonly money: number;
+	readonly money: string;
 	readonly description: string;
 	readonly keyword: string;
 	readonly status: Status;

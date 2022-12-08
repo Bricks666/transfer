@@ -1,8 +1,8 @@
-import * as React from 'react';
 import cn from 'classnames';
-import { CommonProps } from '@/shared/types';
+import * as React from 'react';
 import { Transfer } from '@/shared/api';
 import { statusNames } from '@/shared/lib';
+import { CommonProps } from '@/shared/types';
 
 export interface TemplateTransferCardProps extends CommonProps, Transfer {
 	readonly actions?: React.ReactElement | null;

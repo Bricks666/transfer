@@ -1,6 +1,6 @@
 import * as React from 'react';
-import { CommonProps } from '@/shared/types';
 import { Sample } from '@/shared/api';
+import { CommonProps } from '@/shared/types';
 
 export interface SampleCardProps extends CommonProps, Sample {}
 

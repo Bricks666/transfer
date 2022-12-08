@@ -1,1 +1,1 @@
-export * from './create-samples-form';
+export * from './CreateSamplesForm';

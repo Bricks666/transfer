@@ -57,7 +57,7 @@ contract Users is Shared {
 		);
 	}
 
-	function get_users() external view returns (User[] memory users) {
+	function get_users() external view returns (User[] memory) {
 		return users;
 	}
 
@@ -65,7 +65,7 @@ contract Users is Shared {
 		external
 		view
 		is_reg(login)
-		returns (User memory user)
+		returns (User memory)
 	{
 		return users[user_ids[login]];
 	}
@@ -73,7 +73,7 @@ contract Users is Shared {
 	function registration(bytes32 password)
 		external
 		is_not_reg(msg.sender)
-		returns (User memory user)
+		returns (User memory)
 	{
 		return _create_user(msg.sender, password, Roles.user);
 	}
@@ -82,7 +82,7 @@ contract Users is Shared {
 		external
 		view
 		is_reg(msg.sender)
-		returns (User memory user)
+		returns (User memory)
 	{
 		require(
 			users[user_ids[msg.sender]].password == password,
@@ -95,7 +95,7 @@ contract Users is Shared {
 		address login,
 		bytes32 password,
 		Roles role
-	) private returns (User memory user) {
+	) private returns (User memory) {
 		users.push(User({ login: login, password: password, role: role }));
 		user_ids[login] = users.length - 1;
 		if (role == Roles.admin) {

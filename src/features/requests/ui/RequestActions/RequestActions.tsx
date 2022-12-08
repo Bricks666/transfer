@@ -1,5 +1,6 @@
-import * as React from 'react';
 import { useMutation } from '@farfetched/react';
+import { Button } from 'antd';
+import * as React from 'react';
 import { CommonProps } from '@/shared/types';
 import { requestActionsModel } from '../../model';
 
@@ -19,14 +20,26 @@ export const RequestActions: React.FC<RequestActionsProps> = (props) => {
 	const onCancel = () => {
 		cancel.start({ id, });
 	};
+
 	return (
 		<div>
-			<button type='button' onClick={onAccept}>
+			<Button
+				type='primary'
+				htmlType='button'
+				onClick={onAccept}
+				disabled={cancel.pending}
+				loading={accept.pending}>
 				Approve
-			</button>
-			<button type='button' onClick={onCancel}>
+			</Button>
+			<Button
+				type='primary'
+				htmlType='button'
+				onClick={onCancel}
+				disabled={accept.pending}
+				loading={cancel.pending}
+				danger>
 				Reject
-			</button>
+			</Button>
 		</div>
 	);
 };

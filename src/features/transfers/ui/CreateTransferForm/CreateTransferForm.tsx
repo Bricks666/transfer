@@ -1,9 +1,10 @@
-import * as React from 'react';
 import { useMutation } from '@farfetched/react';
+import { Button } from 'antd';
+import * as React from 'react';
 import { CategoriesSelect } from '@/entities/categories';
 import { AddressesSelect } from '@/entities/web3';
-import { CommonProps } from '@/shared/types';
 import { useForm } from '@/shared/lib';
+import { CommonProps } from '@/shared/types';
 import { createTransferModel } from '../../model';
 
 export interface CreateTransferFormProps extends CommonProps {}
@@ -50,7 +51,9 @@ export const CreateTransferForm: React.FC<CreateTransferFormProps> = React.memo(
 				})}
 			</select> */}
 				<textarea name='description' placeholder='description' />
-				<button type='submit'>Send</button>
+				<Button type='primary' htmlType='submit'>
+					Send
+				</Button>
 			</form>
 		);
 	}

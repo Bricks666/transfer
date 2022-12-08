@@ -1,6 +1,6 @@
 import { keccak256 } from 'web3-utils';
-import { web3Api } from '../web3';
 import { contract } from '../core';
+import { web3Api } from '../web3';
 import { Auth, AuthParams } from './types';
 
 export const registration = async (params: AuthParams) => {

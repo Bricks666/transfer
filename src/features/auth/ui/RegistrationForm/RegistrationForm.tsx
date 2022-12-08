@@ -1,4 +1,5 @@
 import { useMutation } from '@farfetched/react';
+import { Button } from 'antd';
 import * as React from 'react';
 import { AddressesSelect } from '@/entities/web3';
 import { useForm } from '@/shared/lib';
@@ -13,7 +14,9 @@ export const RegistrationForm: React.FC = React.memo(
 			<form onSubmit={onSubmit}>
 				<AddressesSelect name='address' />
 				<input name='password' type='password' />
-				<button type='submit'>Registration</button>
+				<Button type='primary' htmlType='submit' loading={registration.pending}>
+					Registration
+				</Button>
 			</form>
 		);
 	}

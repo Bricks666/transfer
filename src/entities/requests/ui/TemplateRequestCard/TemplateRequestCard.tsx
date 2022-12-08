@@ -1,8 +1,8 @@
 import * as React from 'react';
 import { hexToNumberString } from 'web3-utils';
-import { CommonProps } from '@/shared/types';
 import { Request } from '@/shared/api';
 import { statusNames } from '@/shared/lib';
+import { CommonProps } from '@/shared/types';
 
 export interface TemplateRequestCardProps extends CommonProps, Request {
 	readonly actions?: React.ReactElement | null;

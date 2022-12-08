@@ -1,5 +1,6 @@
-import * as React from 'react';
 import { useMutation } from '@farfetched/react';
+import { Button } from 'antd';
+import * as React from 'react';
 import { useForm } from '@/shared/lib';
 import { createCategoryModel } from '../../model';
 
@@ -17,7 +18,9 @@ export const CreateCategoryForm: React.FC = React.memo(
 					maxLength={32}
 					required
 				/>
-				<button type='submit'>Create category</button>
+				<Button type='primary' htmlType='submit' loading={create.pending}>
+					Create category
+				</Button>
 			</form>
 		);
 	}

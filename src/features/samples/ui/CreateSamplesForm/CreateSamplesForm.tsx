@@ -1,5 +1,6 @@
-import * as React from 'react';
 import { useMutation } from '@farfetched/react';
+import { Button } from 'antd';
+import * as React from 'react';
 import { CategoriesSelect } from '@/entities/categories';
 import { useForm } from '@/shared/lib';
 import { createSampleModel } from '../../model';
@@ -19,7 +20,9 @@ export const CreateSampleForm: React.FC = () => {
 				min={0}
 				required
 			/>
-			<button type='submit'>Create sample</button>
+			<Button type='primary' htmlType='submit'>
+				Create sample
+			</Button>
 		</form>
 	);
 };

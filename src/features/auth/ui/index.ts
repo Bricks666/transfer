@@ -1,3 +1,3 @@
-export * from './login-form';
-export * from './registration-form';
+export * from './LoginForm';
+export * from './RegistrationForm';
 export * from './LogoutButton';

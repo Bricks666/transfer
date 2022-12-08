@@ -1,6 +1,6 @@
+import { createMutation } from '@farfetched/core';
 import { createDomain, sample } from 'effector-logger';
 import { spread } from 'patronum';
-import { createMutation } from '@farfetched/core';
 import { authModel } from '@/entities/auth';
 import { Auth, authApi, AuthParams } from '@/shared/api';
 

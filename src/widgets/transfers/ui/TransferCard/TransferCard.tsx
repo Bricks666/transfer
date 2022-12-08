@@ -1,10 +1,10 @@
-import * as React from 'react';
 import { useUnit } from 'effector-react';
-import { CommonProps, Status } from '@/shared/types';
-import { Transfer } from '@/shared/api';
-import { TemplateTransferCard } from '@/entities/transfers';
-import { authModel } from '@/entities/auth';
+import * as React from 'react';
 import { AcceptTransfer, CancelTransfer } from '@/features/transfers';
+import { authModel } from '@/entities/auth';
+import { TemplateTransferCard } from '@/entities/transfers';
+import { Transfer } from '@/shared/api';
+import { CommonProps, Status } from '@/shared/types';
 
 export interface TransferCardProps extends CommonProps, Transfer {}
 

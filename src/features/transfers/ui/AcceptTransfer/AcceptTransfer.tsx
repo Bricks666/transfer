@@ -1,9 +1,10 @@
-import * as React from 'react';
-import cn from 'classnames';
 import { useMutation } from '@farfetched/react';
-import { CommonProps } from '@/shared/types';
+import { Button } from 'antd';
+import cn from 'classnames';
+import * as React from 'react';
 import { AcceptTransferParams } from '@/shared/api';
 import { useForm } from '@/shared/lib';
+import { CommonProps } from '@/shared/types';
 import { acceptTransferModel } from '../../model';
 
 export interface AcceptTransferProps extends CommonProps {
@@ -23,7 +24,9 @@ export const AcceptTransfer: React.FC<AcceptTransferProps> = (props) => {
 	return (
 		<form className={cn(className)} onSubmit={onSubmit}>
 			<input name='keyword' placeholder='keyword' type='password' required />
-			<button type='submit'>Accept</button>
+			<Button type='primary' htmlType='submit'>
+				Accept
+			</Button>
 		</form>
 	);
 };

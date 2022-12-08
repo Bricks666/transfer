@@ -1,6 +1,6 @@
 import * as React from 'react';
-import { CommonProps } from '@/shared/types';
 import { User } from '@/shared/api';
+import { CommonProps } from '@/shared/types';
 import { UserInfo } from '../UserInfo';
 
 export interface TemplateUserCardProps extends CommonProps, User {

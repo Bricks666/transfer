@@ -1,6 +1,6 @@
 import * as React from 'react';
-import { Address, CommonProps, Roles } from '@/shared/types';
 import { roleNames } from '@/shared/lib';
+import { Address, CommonProps, Roles } from '@/shared/types';
 
 export interface UserInfoProps extends CommonProps {
 	readonly login: Address | null;

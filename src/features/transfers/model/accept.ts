@@ -1,7 +1,7 @@
-import { createDomain, sample } from 'effector-logger';
 import { createMutation } from '@farfetched/core';
-import { transfersModel } from '@/entities/transfers';
+import { createDomain, sample } from 'effector-logger';
 import { authModel } from '@/entities/auth';
+import { transfersModel } from '@/entities/transfers';
 import { AcceptTransferParams, transfersApi } from '@/shared/api';
 
 const acceptTransferDomain = createDomain();

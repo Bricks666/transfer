@@ -1,8 +1,8 @@
 import * as React from 'react';
 import { CreateRequestButton } from '@/features/requests';
 import { TemplateUserCard } from '@/entities/users';
-import { CommonProps } from '@/shared/types';
 import { User } from '@/shared/api';
+import { CommonProps } from '@/shared/types';
 
 export interface UserCardProps extends CommonProps, User {}
 

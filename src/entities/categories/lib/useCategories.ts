@@ -1,5 +1,5 @@
-import { useGate } from 'effector-react';
 import { useQuery } from '@farfetched/react';
+import { useGate } from 'effector-react';
 import { categoriesModel } from '../model';
 
 export const useCategories = () => {

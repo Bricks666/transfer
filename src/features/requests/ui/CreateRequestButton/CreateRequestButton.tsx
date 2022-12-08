@@ -1,5 +1,6 @@
-import * as React from 'react';
 import { useMutation } from '@farfetched/react';
+import { Button } from 'antd';
+import * as React from 'react';
 import { Address, CommonProps } from '@/shared/types';
 import { createRequestModel } from '../../model';
 
@@ -16,8 +17,12 @@ export const CreateRequestButton: React.FC<CreateRequestButtonProps> = (
 		createRequest.start({ candidate, });
 	};
 	return (
-		<button onClick={onClick} type='button'>
+		<Button
+			onClick={onClick}
+			type='primary'
+			htmlType='button'
+			loading={createRequest.pending}>
 			Set on request
-		</button>
+		</Button>
 	);
 };

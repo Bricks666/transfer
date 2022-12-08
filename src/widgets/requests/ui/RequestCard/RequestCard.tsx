@@ -1,10 +1,10 @@
-import * as React from 'react';
 import { useUnit } from 'effector-react';
+import * as React from 'react';
 import { RequestActions } from '@/features/requests';
 import { authModel } from '@/entities/auth';
 import { TemplateRequestCard } from '@/entities/requests';
-import { CommonProps } from '@/shared/types';
 import { Request } from '@/shared/api';
+import { CommonProps } from '@/shared/types';
 
 export interface RequestCardProps extends CommonProps, Request {}
 

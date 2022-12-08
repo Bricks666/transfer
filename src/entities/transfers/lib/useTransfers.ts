@@ -1,6 +1,6 @@
-import { useMemo } from 'react';
 import { useQuery } from '@farfetched/react';
 import { useGate, useUnit } from 'effector-react';
+import { useMemo } from 'react';
 import { authModel } from '@/entities/auth';
 import { transfersModel } from '../model';
 

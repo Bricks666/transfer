@@ -1,6 +1,6 @@
+import { cache, createQuery } from '@farfetched/core';
 import { createDomain, sample } from 'effector-logger';
 import { createGate } from 'effector-react';
-import { cache, createQuery } from '@farfetched/core';
 import { Sample, samplesApi } from '@/shared/api';
 
 const samplesDomain = createDomain();

@@ -1,5 +1,5 @@
 import { createQuery, cache } from '@farfetched/core';
-import { createDomain, sample } from 'effector-logger';
+import { createDomain, sample } from 'effector';
 import { createGate } from 'effector-react';
 import { Transfer, transfersApi } from '@/shared/api';
 import { Status } from '@/shared/types';
@@ -11,7 +11,7 @@ getAllFx.use(transfersApi.getAll);
 export const invalidateCache = transfersDomain.event();
 export const addTransfer = transfersDomain.event<Transfer>();
 export const finishedTransfer = transfersDomain.event<{
-	id: number;
+	id: string;
 	status: Status;
 }>();
 

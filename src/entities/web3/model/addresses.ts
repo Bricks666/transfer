@@ -1,5 +1,5 @@
 import { cache, createQuery } from '@farfetched/core';
-import { createDomain, sample } from 'effector-logger';
+import { createDomain, sample } from 'effector';
 import { createGate } from 'effector-react';
 import { web3Api } from '@/shared/api';
 import { Address } from '@/shared/types';

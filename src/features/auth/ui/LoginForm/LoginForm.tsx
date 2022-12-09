@@ -1,9 +1,9 @@
-import { useMutation } from '@farfetched/react';
 import { Button } from '@mui/material';
 import cn from 'classnames';
+import { useUnit } from 'effector-react';
+import { useForm } from 'effector-react-form';
 import * as React from 'react';
 import { AddressesSelect } from '@/entities/web3';
-import { useForm } from '@/shared/lib';
 import { CommonProps } from '@/shared/types';
 import { Field } from '@/shared/ui';
 import { loginModel } from '../../model';
@@ -14,23 +14,32 @@ export const LoginForm: React.FC<CommonProps> = React.memo(function LoginForm(
 	props
 ) {
 	const { className, } = props;
-	const login = useMutation(loginModel.loginMutation);
-	const { onSubmit, } = useForm(login.start);
+	const { controller, handleSubmit, } = useForm({
+		form: loginModel.form,
+	});
+	const isSubmitting = useUnit(loginModel.loginMutation.$pending);
 
 	return (
-		<form className={cn(styles.form, className)} onSubmit={onSubmit}>
+		<form className={cn(styles.form, className)} onSubmit={handleSubmit}>
 			<AddressesSelect
 				label='Address'
-				name='address'
+				controller={controller({ name: loginModel.form.getNameStr('address'), })}
 				autoComplete='name'
 				required
 			/>
-			<Field label='password' name='password' type='password' required />
+			<Field
+				label='password'
+				controller={controller({
+					name: loginModel.form.getNameStr('password'),
+				})}
+				type='password'
+				required
+			/>
 			<Button
 				className={styles.button}
 				type='submit'
 				variant='outlined'
-				disabled={login.pending}>
+				disabled={isSubmitting}>
 				Login
 			</Button>
 		</form>

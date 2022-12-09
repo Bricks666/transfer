@@ -1,4 +1,4 @@
-import { createDomain, sample } from 'effector-logger';
+import { createDomain, sample } from 'effector';
 import { spread } from 'patronum';
 import { authModel } from '@/entities/auth';
 import { Roles } from '@/shared/types';

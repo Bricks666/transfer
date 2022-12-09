@@ -1,11 +1,10 @@
 import { useMutation } from '@farfetched/react';
-import { Button } from '@mui/material';
+import { Button, TextField } from '@mui/material';
 import cn from 'classnames';
 import * as React from 'react';
 import { AcceptTransferParams } from '@/shared/api';
 import { useForm } from '@/shared/lib';
 import { CommonProps } from '@/shared/types';
-import { Field } from '@/shared/ui';
 import { acceptTransferModel } from '../../model';
 
 import styles from './AcceptTransfer.module.css';
@@ -26,14 +25,18 @@ export const AcceptTransfer: React.FC<AcceptTransferProps> = (props) => {
 
 	return (
 		<form className={cn(styles.form, className)} onSubmit={onSubmit}>
-			<Field
+			<TextField
 				name='keyword'
 				label='Keyword'
 				placeholder='keyword'
 				type='password'
 				required
 			/>
-			<Button type='submit' variant='outlined' color='success'>
+			<Button
+				type='submit'
+				variant='outlined'
+				color='success'
+				disabled={accept.pending}>
 				Accept
 			</Button>
 		</form>

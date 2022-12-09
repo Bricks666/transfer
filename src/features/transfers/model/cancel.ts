@@ -1,5 +1,5 @@
 import { createMutation } from '@farfetched/core';
-import { createDomain, sample } from 'effector-logger';
+import { createDomain, sample } from 'effector';
 import { authModel } from '@/entities/auth';
 import { transfersModel } from '@/entities/transfers';
 import { CancelTransferParams, transfersApi } from '@/shared/api';

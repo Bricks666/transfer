@@ -1,5 +1,5 @@
 import { createQuery } from '@farfetched/core';
-import { createDomain, sample } from 'effector-logger';
+import { createDomain, sample } from 'effector';
 import { createGate } from 'effector-react';
 import { User, usersApi } from '@/shared/api';
 

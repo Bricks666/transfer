@@ -16,7 +16,7 @@ export const MainLayoutTemplate: React.FC<
 	return (
 		<Container>
 			{header}
-			<main className={cn(styles.content, className)}>{children}</main>
+			<main className={cn(styles.main, className)}>{children}</main>
 		</Container>
 	);
 };

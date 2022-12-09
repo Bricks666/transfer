@@ -25,7 +25,8 @@ export const CancelTransfer: React.FC<CancelTransferProps> = React.memo(
 				onClick={onClick}
 				type='button'
 				variant='outlined'
-				color='error'>
+				color='error'
+				disabled={cancel.pending}>
 				Cancel
 			</Button>
 		);

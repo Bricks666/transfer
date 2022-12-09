@@ -1,11 +1,4 @@
-import {
-	attach,
-	combine,
-	createDomain,
-	Effect,
-	sample,
-	Store
-} from 'effector-logger';
+import { attach, combine, createDomain, Effect, sample, Store } from 'effector';
 import { Address, Roles } from '@/shared/types';
 
 const authDomain = createDomain();

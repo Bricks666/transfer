@@ -11,7 +11,7 @@ redirect({
 
 redirect({
 	clock: loginModel.loginMutation.finished.success,
-	params: ({ data, }) => ({ address: data.login, }),
+	params: ({ result, }) => ({ address: result.login, }),
 	route: routes.profile,
 });
 

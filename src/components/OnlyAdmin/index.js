@@ -1,1 +1,0 @@
-export { OnlyAdmin } from "./OnlyAdmin";

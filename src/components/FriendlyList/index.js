@@ -1,1 +1,0 @@
-export { FriendlyList } from "./FriendlyList";

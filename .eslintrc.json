@@ -96,5 +96,5 @@
 		/* SONAR */
 		"sonarjs/no-duplicate-string": "warn"
 	},
-	"ignorePatterns": ["templates/**/*", "*.css.d.ts", "configs/*", "*.js"]
+	"ignorePatterns": ["*.css.d.ts", "configs/*", "*.js"]
 }

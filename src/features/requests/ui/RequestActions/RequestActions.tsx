@@ -1,5 +1,5 @@
-import { useMutation } from '@farfetched/react';
 import { Button, ButtonGroup } from '@mui/material';
+import { useUnit } from 'effector-react';
 import * as React from 'react';
 import { CommonProps } from '@/shared/types';
 import { requestActionsModel } from '../../model';
@@ -10,8 +10,8 @@ export interface RequestActionsProps extends CommonProps {
 
 export const RequestActions: React.FC<RequestActionsProps> = (props) => {
 	const { id, } = props;
-	const accept = useMutation(requestActionsModel.acceptMutation);
-	const cancel = useMutation(requestActionsModel.cancelMutation);
+	const accept = useUnit(requestActionsModel.acceptMutation);
+	const cancel = useUnit(requestActionsModel.cancelMutation);
 
 	const onAccept = () => {
 		accept.start({ id, });

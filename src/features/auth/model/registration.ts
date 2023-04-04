@@ -1,37 +1,38 @@
 import { createMutation } from '@farfetched/core';
 import { createDomain, sample } from 'effector';
-import { createForm } from 'effector-react-form';
+import { createForm } from 'effector-forms';
 import { addressesModel } from '@/entities/web3';
 import { Auth, authApi, AuthParams } from '@/shared/api';
 
-const registrationDomain = createDomain();
+const registration = createDomain();
 
-const registrationFx = registrationDomain.effect<AuthParams, Auth>();
-registrationFx.use(authApi.registration);
+const handlerFx = registration.effect<AuthParams, Auth>(authApi.registration);
 
-export const registrationMutation = createMutation({
-	effect: registrationFx,
+export const mutation = createMutation({
+	effect: handlerFx,
 });
 
 export const form = createForm<AuthParams>({
-	domain: registrationDomain,
-	name: 'registration',
-	initialValues: {
-		address: '',
-		password: '',
+	fields: {
+		address: {
+			init: '',
+		},
+		password: {
+			init: '',
+		},
 	},
-	onSubmit: ({ values, }) => registrationMutation.start(values),
+	domain: registration,
 });
 
 sample({
-	clock: addressesModel.getAllQuery.$data,
+	clock: addressesModel.query.$data,
 	fn: (addresses) => {
-		return { field: 'address', value: addresses[0], };
+		return addresses[0] ?? '';
 	},
-	target: form.setValue,
+	target: form.fields.address.set,
 });
 
 sample({
-	clock: registrationMutation.finished.success,
+	clock: mutation.finished.success,
 	target: form.reset,
 });

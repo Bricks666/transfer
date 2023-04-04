@@ -10,7 +10,7 @@ export const LogoutButton: React.FC<CommonProps> = React.memo(
 		const logout = useUnit(logoutModel.logoutFx);
 
 		return (
-			<Button className={className} onClick={() => logout()} type='button'>
+			<Button className={className} onClick={logout} type='button'>
 				Logout
 			</Button>
 		);

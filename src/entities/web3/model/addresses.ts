@@ -5,24 +5,23 @@ import { web3Api } from '@/shared/api';
 import { Address } from '@/shared/types';
 
 const addressesDomain = createDomain();
-export const getAllFx = addressesDomain.effect<unknown, Address[]>();
 
-getAllFx.use(web3Api.getAddresses);
+const handlerFx = addressesDomain.effect<unknown, Address[]>(
+	web3Api.getAddresses
+);
 
-export const getAllQuery = createQuery({
-	effect: getAllFx,
+export const query = createQuery({
 	initialData: [],
+	effect: handlerFx,
 });
 
-export const AddressesGate = createGate({
+export const Gate = createGate({
 	domain: addressesDomain,
 });
 
 sample({
-	clock: AddressesGate.open,
-	target: getAllQuery.start,
+	clock: Gate.open,
+	target: query.start,
 });
 
-cache(getAllQuery, {
-	staleAfter: '15min',
-});
+cache(query);

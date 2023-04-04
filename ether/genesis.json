@@ -15,13 +15,13 @@
 	"difficulty": "12",
 	"gasLimit": "2000000000000",
 	"alloc": {
-		"0xbc4619ca22f213aedf256a5f89891d57c2f54f48": {
+		"0xc30D662581716bf952F9c3c492eF5d1C740362bB": {
 			"balance": "10000000000000000000"
 		},
-		"0x2e247b3e5d7ebdfabd3ad2c89be7387996ba2551": {
+		"0xeEe8F234eF490bA3b98c9e05519A41D0e8C3FEBc": {
 			"balance": "10000000000000000000"
 		},
-		"0xbd9973b642974c79f6f0150cba69134cecce2159": {
+		"0x9086Ed7cC3a33e9C86bA3e99A41B0Cf249A46c58": {
 			"balance": "10000000000000000000"
 		}
 	}

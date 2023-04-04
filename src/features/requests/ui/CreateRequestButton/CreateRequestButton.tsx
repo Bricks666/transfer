@@ -1,5 +1,5 @@
-import { useMutation } from '@farfetched/react';
 import { Button } from '@mui/material';
+import { useUnit } from 'effector-react';
 import * as React from 'react';
 import { Address, CommonProps } from '@/shared/types';
 import { createRequestModel } from '../../model';
@@ -12,7 +12,7 @@ export const CreateRequestButton: React.FC<CreateRequestButtonProps> = (
 	props
 ) => {
 	const { candidate, } = props;
-	const createRequest = useMutation(createRequestModel.addMutation);
+	const createRequest = useUnit(createRequestModel.addMutation);
 	const onClick = () => {
 		createRequest.start({ candidate, });
 	};

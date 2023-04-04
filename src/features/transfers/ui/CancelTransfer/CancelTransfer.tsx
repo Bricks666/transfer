@@ -1,6 +1,6 @@
-import { useMutation } from '@farfetched/react';
 import { Button } from '@mui/material';
 import cn from 'classnames';
+import { useUnit } from 'effector-react';
 import * as React from 'react';
 import { CommonProps } from '@/shared/types';
 import { cancelTransferModel } from '../../model';
@@ -13,7 +13,7 @@ export const CancelTransfer: React.FC<CancelTransferProps> = React.memo(
 	function CancelTransfer(props) {
 		const { className, id, } = props;
 
-		const cancel = useMutation(cancelTransferModel.cancelMutation);
+		const cancel = useUnit(cancelTransferModel.cancelMutation);
 
 		const onClick = () => {
 			cancel.start({ id, });

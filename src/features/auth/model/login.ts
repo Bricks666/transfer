@@ -1,45 +1,51 @@
 import { createMutation } from '@farfetched/core';
 import { createDomain, sample } from 'effector';
-import { createForm } from 'effector-react-form';
-import { spread } from 'patronum';
+import { createForm } from 'effector-forms';
+import { debug, spread } from 'patronum';
 import { authModel } from '@/entities/auth';
 import { addressesModel } from '@/entities/web3';
 import { Auth, authApi, AuthParams } from '@/shared/api';
 
 const loginDomain = createDomain();
 
-export const loginFx = loginDomain.effect<AuthParams, Auth>();
-loginFx.use(authApi.login);
+const handlerFx = loginDomain.effect<AuthParams, Auth>(authApi.login);
 
-export const loginMutation = createMutation({
-	effect: loginFx,
+export const mutation = createMutation({
+	effect: handlerFx,
 });
 
 export const form = createForm<AuthParams>({
-	domain: loginDomain,
-	name: 'login',
-	initialValues: {
-		address: '',
-		password: '',
+	fields: {
+		address: {
+			init: '',
+		},
+		password: {
+			init: '',
+		},
 	},
-	onSubmit: ({ values, }) => loginMutation.start(values),
+	domain: loginDomain,
 });
 
 sample({
-	clock: loginMutation.finished.success,
+	clock: form.formValidated,
+	target: mutation.start,
+});
+
+sample({
+	clock: mutation.finished.success,
 	target: form.reset,
 });
 
 sample({
-	clock: addressesModel.getAllQuery.$data,
+	clock: addressesModel.query.$data,
 	fn: (addresses) => {
-		return { field: 'address', value: addresses[0], };
+		return addresses[0] ?? '';
 	},
-	target: form.setValue,
+	target: form.fields.address.set,
 });
 
 sample({
-	clock: loginMutation.finished.success,
+	clock: mutation.finished.success,
 	fn: ({ result, }) => result,
 	target: spread({
 		targets: {
@@ -48,3 +54,5 @@ sample({
 		},
 	}),
 });
+
+debug(mutation.start, mutation.finished.failure);

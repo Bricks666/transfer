@@ -1,6 +1,6 @@
 import { createMutation } from '@farfetched/core';
 import { createDomain, sample } from 'effector';
-import { createForm } from 'effector-react-form';
+import { createForm } from 'effector-forms';
 import { authModel } from '@/entities/auth';
 import { categoriesApi, CreateCategoryParams } from '@/shared/api';
 
@@ -18,11 +18,11 @@ export const addMutation = createMutation({
 
 export const form = createForm<Omit<CreateCategoryParams, 'sender'>>({
 	domain: createCategoryDomain,
-	name: 'create category',
-	initialValues: {
-		name: '',
+	fields: {
+		name: {
+			init: '',
+		},
 	},
-	onSubmit: ({ values, }) => addMutation.start(values),
 });
 
 sample({

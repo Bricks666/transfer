@@ -5,12 +5,12 @@ import { authModel } from '@/entities/auth';
 import { routes } from '@/shared/configs';
 
 redirect({
-	clock: registrationModel.registrationMutation.finished.success,
+	clock: registrationModel.mutation.finished.success,
 	route: routes.login,
 });
 
 redirect({
-	clock: loginModel.loginMutation.finished.success,
+	clock: loginModel.mutation.finished.success,
 	params: ({ result, }) => ({ address: result.login, }),
 	route: routes.profile,
 });

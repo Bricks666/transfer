@@ -1,6 +1,6 @@
-import { useMutation } from '@farfetched/react';
 import { Button, TextField } from '@mui/material';
 import cn from 'classnames';
+import { useUnit } from 'effector-react';
 import * as React from 'react';
 import { AcceptTransferParams } from '@/shared/api';
 import { useForm } from '@/shared/lib';
@@ -15,7 +15,7 @@ export interface AcceptTransferProps extends CommonProps {
 
 export const AcceptTransfer: React.FC<AcceptTransferProps> = (props) => {
 	const { id, className, } = props;
-	const accept = useMutation(acceptTransferModel.acceptMutation);
+	const accept = useUnit(acceptTransferModel.acceptMutation);
 	const submit = React.useCallback(
 		(data: Pick<AcceptTransferParams, 'keyword'>) =>
 			accept.start({ ...data, id, }),

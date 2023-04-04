@@ -51,7 +51,7 @@ contract Users is Shared {
 
 	constructor() {
 		_create_user(
-			0xbC4619cA22f213aEdF256A5f89891D57c2f54F48,
+			msg.sender,
 			hash('password'),
 			Roles.admin
 		);

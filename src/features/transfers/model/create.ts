@@ -1,6 +1,6 @@
 import { createMutation } from '@farfetched/core';
 import { createDomain, sample } from 'effector';
-import { createForm } from 'effector-react-form';
+import { createForm } from 'effector-forms';
 import { toWei } from 'web3-utils';
 import { authModel } from '@/entities/auth';
 import { transfersModel } from '@/entities/transfers';
@@ -21,25 +21,32 @@ export const addMutation = createMutation({
 });
 
 export const form = createForm<Omit<CreateTransferParams, 'sender'>>({
-	domain: createTransferDomain,
-	name: 'create transfer',
-	initialValues: {
-		category_id: '0',
-		description: '',
-		keyword: '',
-		money: '0',
-		receiver: '',
+	fields: {
+		category_id: {
+			init: '0',
+		},
+		description: {
+			init: '',
+		},
+		keyword: {
+			init: '',
+		},
+		money: {
+			init: '0',
+		},
+		receiver: {
+			init: '',
+		},
 	},
-	onSubmit: ({ values, }) => addMutation.start(values),
+	domain: createTransferDomain,
 });
 
 sample({
-	source: addressesModel.getAllQuery.$data,
-	fn: (addresses) => ({
-		field: form.getNameStr('receiver'),
-		value: addresses[0],
-	}),
-	target: form.setValue,
+	source: addressesModel.query.$data,
+	fn: (addresses) => {
+		return addresses[0] ?? '';
+	},
+	target: form.fields.receiver.set,
 });
 
 sample({

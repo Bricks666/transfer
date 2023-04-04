@@ -1,2 +1,1 @@
-export * from './useCategories';
-export * from './useCategory';
+export * from './use-category';

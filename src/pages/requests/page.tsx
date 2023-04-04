@@ -1,9 +1,10 @@
 import { Typography } from '@mui/material';
 import * as React from 'react';
 import { Header } from '@/widgets/header';
-import { RequestList } from '@/widgets/requests';
 import { CommonProps } from '@/shared/types';
 import { MainLayoutTemplate } from '@/shared/ui';
+import { pageModel } from './models';
+import { RequestList } from './ui';
 
 export interface RequestsPageProps extends CommonProps {}
 
@@ -17,5 +18,7 @@ const RequestsPage: React.FC<RequestsPageProps> = () => {
 		</MainLayoutTemplate>
 	);
 };
+
+pageModel.loaded();
 
 export default RequestsPage;

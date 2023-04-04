@@ -1,1 +1,1 @@
-export * as categoriesModel from './units';
+export * as categoriesModel from './categories';

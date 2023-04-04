@@ -1,6 +1,6 @@
 import { createMutation } from '@farfetched/core';
 import { createDomain, sample } from 'effector';
-import { authModel } from '@/entities/auth';
+import { attachWithSender } from '@/entities/auth';
 import { transfersModel } from '@/entities/transfers';
 import { CancelTransferParams, transfersApi } from '@/shared/api';
 import { Status } from '@/shared/types';
@@ -14,7 +14,7 @@ export const cancelFx = cancelTransferDomain.effect<
 cancelFx.use(transfersApi.cancel);
 
 export const cancelMutation = createMutation({
-	effect: authModel.attachWithSender(cancelFx),
+	effect: attachWithSender(cancelFx),
 });
 
 sample({

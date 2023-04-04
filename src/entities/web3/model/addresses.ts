@@ -1,6 +1,5 @@
 import { cache, createQuery } from '@farfetched/core';
-import { createDomain, sample } from 'effector';
-import { createGate } from 'effector-react';
+import { createDomain } from 'effector';
 import { web3Api } from '@/shared/api';
 import { Address } from '@/shared/types';
 
@@ -13,15 +12,6 @@ const handlerFx = addressesDomain.effect<unknown, Address[]>(
 export const query = createQuery({
 	initialData: [],
 	effect: handlerFx,
-});
-
-export const Gate = createGate({
-	domain: addressesDomain,
-});
-
-sample({
-	clock: Gate.open,
-	target: query.start,
 });
 
 cache(query);

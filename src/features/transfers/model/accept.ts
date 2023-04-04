@@ -1,6 +1,6 @@
 import { createMutation } from '@farfetched/core';
 import { createDomain, sample } from 'effector';
-import { authModel } from '@/entities/auth';
+import { attachWithSender } from '@/entities/auth';
 import { transfersModel } from '@/entities/transfers';
 import { AcceptTransferParams, transfersApi } from '@/shared/api';
 import { Status } from '@/shared/types';
@@ -14,7 +14,7 @@ export const acceptFx = acceptTransferDomain.effect<
 acceptFx.use(transfersApi.accept);
 
 export const acceptMutation = createMutation({
-	effect: authModel.attachWithSender(acceptFx),
+	effect: attachWithSender(acceptFx),
 });
 sample({
 	clock: acceptMutation.finished.success,

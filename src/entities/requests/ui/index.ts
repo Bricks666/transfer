@@ -1,1 +1,1 @@
-export * from './TemplateRequestCard';
+export * from './template-request-card';

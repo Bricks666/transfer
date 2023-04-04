@@ -4,15 +4,16 @@ import { interval } from 'patronum';
 import { web3Api } from '@/shared/api';
 import { Address } from '@/shared/types';
 
-const balanceDomain = createDomain();
+const balance = createDomain();
 
-export const $balance = balanceDomain.store<string>('0');
+export const $balance = balance.store<string>('0');
 
-export const fetchBalanceFx = balanceDomain.effect<Address, string>();
-fetchBalanceFx.use(web3Api.getBalance);
+export const fetchBalanceFx = balance.effect<Address, string>(
+	web3Api.getBalance
+);
 
 export const BalanceGate = createGate<Address>({
-	domain: balanceDomain,
+	domain: balance,
 });
 
 export const fetchBalance = interval({

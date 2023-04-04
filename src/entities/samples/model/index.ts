@@ -1,1 +1,1 @@
-export * as samplesModel from './units';
+export * as samplesModel from './samples';

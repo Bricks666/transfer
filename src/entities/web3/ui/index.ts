@@ -1,2 +1,2 @@
-export * from './Balance';
-export * from './AddressesSelect';
+export * from './balance';
+export * from './addresses-select';

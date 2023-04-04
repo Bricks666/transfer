@@ -1,3 +1,3 @@
-export * from './CategoriesSelect';
-export * from './CategoryCard';
-export * from './CategoryLabel';
+export * from './categories-select';
+export * from './category-card';
+export * from './category-label';

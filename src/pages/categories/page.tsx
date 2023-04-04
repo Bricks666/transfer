@@ -1,10 +1,11 @@
 import { Typography } from '@mui/material';
 import * as React from 'react';
-import { CategoryList } from '@/widgets/categories';
 import { Header } from '@/widgets/header';
 import { CreateCategoryForm } from '@/features/categories';
 import { CommonProps } from '@/shared/types';
 import { MainLayoutTemplate } from '@/shared/ui';
+import { pageModel } from './models';
+import { CategoryList } from './ui';
 
 export interface CategoriesPageProps extends CommonProps {}
 
@@ -19,5 +20,7 @@ const CategoriesPage: React.FC<CategoriesPageProps> = () => {
 		</MainLayoutTemplate>
 	);
 };
+
+pageModel.loaded();
 
 export default CategoriesPage;

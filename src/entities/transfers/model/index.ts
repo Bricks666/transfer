@@ -1,1 +1,1 @@
-export * as transfersModel from './units';
+export * as transfersModel from './transfers';

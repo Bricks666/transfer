@@ -1,7 +1,8 @@
 import * as React from 'react';
 import { Header } from '@/widgets/header';
-import { UsersList } from '@/widgets/users';
 import { MainLayoutTemplate } from '@/shared/ui';
+import { pageModel } from './models';
+import { UsersList } from './ui';
 
 const UsersPage: React.FC = () => {
 	return (
@@ -10,5 +11,7 @@ const UsersPage: React.FC = () => {
 		</MainLayoutTemplate>
 	);
 };
+
+pageModel.loaded();
 
 export default UsersPage;

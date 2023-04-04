@@ -2,7 +2,7 @@ import { createMutation } from '@farfetched/core';
 import { createDomain, sample } from 'effector';
 import { createForm } from 'effector-forms';
 import { toWei } from 'web3-utils';
-import { authModel } from '@/entities/auth';
+import { authModel, attachWithSender } from '@/entities/auth';
 import { transfersModel } from '@/entities/transfers';
 import { addressesModel } from '@/entities/web3';
 import { CreateTransferParams, Transfer, transfersApi } from '@/shared/api';
@@ -17,7 +17,7 @@ export const addFx = createTransferDomain.effect<
 addFx.use(transfersApi.create);
 
 export const addMutation = createMutation({
-	effect: authModel.attachWithSender(addFx),
+	effect: attachWithSender(addFx),
 });
 
 export const form = createForm<Omit<CreateTransferParams, 'sender'>>({

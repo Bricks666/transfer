@@ -1,10 +1,11 @@
 import { Typography } from '@mui/material';
 import * as React from 'react';
 import { Header } from '@/widgets/header';
-import { SampleList } from '@/widgets/samples';
 import { CreateSampleForm } from '@/features/samples';
 import { CommonProps } from '@/shared/types';
 import { MainLayoutTemplate } from '@/shared/ui';
+import { pageModel } from './models';
+import { SampleList } from './ui';
 
 export interface SamplesPageProps extends CommonProps {}
 
@@ -19,5 +20,7 @@ const SamplesPage: React.FC<SamplesPageProps> = () => {
 		</MainLayoutTemplate>
 	);
 };
+
+pageModel.loaded();
 
 export default SamplesPage;

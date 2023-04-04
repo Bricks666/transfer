@@ -1,1 +1,1 @@
-export * from './useIsAdmin';
+export * from './attach-with-sender';

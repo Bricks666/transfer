@@ -2,7 +2,7 @@ import { useUnit } from 'effector-react';
 import * as React from 'react';
 import { AcceptTransfer, CancelTransfer } from '@/features/transfers';
 import { authModel } from '@/entities/auth';
-import { CategoryLabel } from '@/entities/categories';
+import { CategoryLabel, useCategory } from '@/entities/categories';
 import { TemplateTransferCard } from '@/entities/transfers';
 import { Transfer } from '@/shared/api';
 import { CommonProps, Status } from '@/shared/types';
@@ -24,11 +24,16 @@ export const TransferCard: React.FC<TransferCardProps> = React.memo(
 				actions = <AcceptTransfer id={id} />;
 			}
 		}
+		const category = useCategory(categoryId);
 
-		const category = <CategoryLabel id={categoryId} />;
+		const categoryLabel = category ? <CategoryLabel {...category} /> : null;
 
 		return (
-			<TemplateTransferCard {...props} category={category} actions={actions} />
+			<TemplateTransferCard
+				{...props}
+				category={categoryLabel}
+				actions={actions}
+			/>
 		);
 	}
 );

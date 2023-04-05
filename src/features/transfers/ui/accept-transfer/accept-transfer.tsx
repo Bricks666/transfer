@@ -42,8 +42,9 @@ export const AcceptTransfer: React.FC<AcceptTransferProps> = (props) => {
 					required
 				/>
 				<Button
+					className={styles.button}
 					type='submit'
-					variant='outlined'
+					variant='contained'
 					color='success'
 					disabled={isSubmitting}>
 					Accept

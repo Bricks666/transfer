@@ -8,3 +8,5 @@ export const getParams = {
 export const popups = {
 	acceptTransfer: 'accept-t',
 } as const;
+
+export const SITE_NAME = 'TransEther';

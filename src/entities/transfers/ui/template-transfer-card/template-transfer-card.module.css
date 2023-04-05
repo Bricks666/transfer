@@ -1,4 +1,10 @@
 .content {
 	display: grid;
-	gap: 10px;
+	gap: 0.5em;
+}
+
+.actions {
+  display: flex;
+  justify-content: end;
+  gap: 1em;
 }

@@ -11,3 +11,7 @@ li,
 ol {
 	list-style: none;
 }
+
+a {
+  font-family: inherit;
+}

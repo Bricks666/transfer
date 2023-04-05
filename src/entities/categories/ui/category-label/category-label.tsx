@@ -9,7 +9,8 @@ export interface CategoryLabelProps
 		Category {}
 
 export const CategoryLabel: React.FC<CategoryLabelProps> = (props) => {
-	const { className, name, ...rest } = props;
+	// eslint-disable-next-line @typescript-eslint/no-unused-vars
+	const { className, name, id: _, ...rest } = props;
 
 	return (
 		<Typography className={className} component='span' {...rest}>

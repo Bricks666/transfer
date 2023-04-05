@@ -1,23 +1,16 @@
 import { createMutation } from '@farfetched/core';
 import { createDomain, sample } from 'effector';
 import { createForm } from 'effector-forms';
-import { toWei } from 'web3-utils';
-import { authModel, attachWithSender } from '@/entities/auth';
-import { transfersModel } from '@/entities/transfers';
+import { attachWithSender } from '@/entities/auth';
 import { addressesModel } from '@/entities/web3';
-import { CreateTransferParams, Transfer, transfersApi } from '@/shared/api';
-import { Status } from '@/shared/types';
+import { CreateTransferParams, transfersApi } from '@/shared/api';
 
-const createTransferDomain = createDomain();
+const createTransfer = createDomain();
 
-export const addFx = createTransferDomain.effect<
-	CreateTransferParams,
-	unknown
->();
-addFx.use(transfersApi.create);
+const handlerFx = createTransfer.effect(transfersApi.create);
 
-export const addMutation = createMutation({
-	effect: attachWithSender(addFx),
+export const mutation = createMutation({
+	effect: attachWithSender(handlerFx),
 });
 
 export const form = createForm<Omit<CreateTransferParams, 'sender'>>({
@@ -38,7 +31,7 @@ export const form = createForm<Omit<CreateTransferParams, 'sender'>>({
 			init: '',
 		},
 	},
-	domain: createTransferDomain,
+	domain: createTransfer,
 });
 
 sample({
@@ -50,19 +43,11 @@ sample({
 });
 
 sample({
-	clock: addMutation.finished.success,
-	target: [transfersModel.invalidateCache, form.reset],
+	clock: mutation.finished.success,
+	target: form.reset,
 });
 
 sample({
-	clock: addMutation.finished.success,
-	source: authModel.$address,
-	fn: (sender, { params, }) =>
-		({
-			...params,
-			money: toWei(params.money, 'ether'),
-			status: Status.pending,
-			sender,
-		} as Transfer),
-	target: transfersModel.addTransfer,
+	clock: form.formValidated,
+	target: mutation.start,
 });

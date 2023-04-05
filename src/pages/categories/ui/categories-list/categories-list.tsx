@@ -1,11 +1,12 @@
 import { List, ListItem } from '@mui/material';
+import { useUnit } from 'effector-react';
 import * as React from 'react';
-import { CategoryCard, useCategories } from '@/entities/categories';
+import { CategoryCard, categoriesModel } from '@/entities/categories';
 
 import styles from './categories-list.module.css';
 
 export const CategoryList: React.FC = () => {
-	const categories = useCategories();
+	const categories = useUnit(categoriesModel.query);
 
 	return (
 		<List className={styles.list}>

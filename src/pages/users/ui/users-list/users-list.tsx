@@ -5,7 +5,7 @@ import { UserCard } from '@/widgets/users';
 import { usersModel } from '@/entities/users';
 import { CommonProps } from '@/shared/types';
 
-import styles from './UsersList.module.css';
+import styles from './users-list.module.css';
 
 export interface UsersListProps extends CommonProps {}
 

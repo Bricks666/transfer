@@ -1,18 +1,17 @@
+.container {
+	display: grid;
+	gap: 2em;
+
+  padding: 1em;
+}
+
+.title {
+	font-weight: 700;
+	text-align: center;
+}
+
 .list {
-	display: flex;
-	flex-wrap: wrap;
-	gap: 15px;
-}
-
-.item {
-	flex-basis: 40%;
-	flex-grow: 1;
-
-	min-width: 420px;
-  max-width: 50%;
-}
-
-.card {
-	width: 100%;
-	height: 100%;
+	display: grid;
+	grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  gap: 1em;
 }

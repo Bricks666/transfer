@@ -34,17 +34,21 @@ export const TemplateTransferCard: React.FC<TemplateTransferCardProps> =
 		} = props;
 
 		return (
-			<Card className={cn(className)} component='article'>
-				<CardHeader title={`Number: ${id}`} />
+			<Card className={cn(className)} variant='outlined' component='article'>
+				<CardHeader title={`Номер перевода: ${id}`} />
 				<CardContent className={styles.content}>
-					<Typography>Sender: {sender}</Typography>
-					<Typography>Receiver: {receiver}</Typography>
-					<Typography>Category: {category}</Typography>
-					<Typography>Count: {fromWei(money, 'ether')} ETH</Typography>
-					<Typography>Description: {description}</Typography>
-					<Typography>Status: {statusNames[status]}</Typography>
+					<Typography>Отправитель: {sender}</Typography>
+					<Typography>Получатель: {receiver}</Typography>
+					<Typography>Категория: {category}</Typography>
+					<Typography>Сумма перевода: {fromWei(money, 'ether')} ETH</Typography>
+					{description ? (
+						<Typography>Описание: {description}</Typography>
+					) : null}
+					<Typography>Статус: {statusNames[status]}</Typography>
 				</CardContent>
-				{actions ? <CardActions>{actions}</CardActions> : null}
+				{actions ? (
+					<CardActions className={styles.actions}>{actions}</CardActions>
+				) : null}
 			</Card>
 		);
 	});

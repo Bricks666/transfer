@@ -1,0 +1,13 @@
+.nav {
+	display: flex;
+	gap: 1em;
+}
+
+.list {
+	display: contents;
+}
+
+.active {
+	font-weight: 700;
+	pointer-events: none;
+}

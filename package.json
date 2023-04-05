@@ -7,6 +7,7 @@
 		"@emotion/react": "^11.10.6",
 		"@emotion/styled": "^11.10.6",
 		"@farfetched/core": "^0.8.3",
+		"@mui/icons-material": "^5.11.16",
 		"@mui/material": "^5.11.15",
 		"atomic-router": "^0.8.0",
 		"atomic-router-react": "^0.8.1",

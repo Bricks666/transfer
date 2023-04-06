@@ -1,9 +1,9 @@
 FROM ethereum/client-go:latest
-WORKDIR /geth
+WORKDIR /root
 
 COPY genesis.json .
-COPY ./keystore ./keystore
+COPY ./keystore .ethereum/keystore
 
-RUN geth --datadir . init ./genesis.json
+RUN geth init ./genesis.json
 
 ENTRYPOINT [ "geth" ]

@@ -5,13 +5,11 @@ services:
       - .env
     build: .
     command:
-      --datadir .
       --http
       --http.api web3,eth,personal,admin,net,miner
       --http.addr 0.0.0.0
       --http.corsdomain *
       --nodiscover
-      --ipcdisable
       --ws
       --ws.api web3,eth,personal,admin,net,miner
       --ws.origins *
@@ -24,9 +22,9 @@ services:
       - 8546:8546
       - 30303:30303
     volumes:
-      - keystore:/geth/keystore
-      - geth:/geth/geth
+      - geth-data:/root
     container_name: geth
+    restart: always
     networks:
       geth-private-net:
 
@@ -38,5 +36,4 @@ networks:
       - subnet: 172.16.254.0/24
 
 volumes:
-  keystore:
-  geth:
+  geth-data:

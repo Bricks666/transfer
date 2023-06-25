@@ -24,7 +24,6 @@ export const TransferCard: React.FC<TransferCardProps> = React.memo(
 				actions = <CancelTransfer id={id} />;
 			} else {
 				const onClick = () => {
-					console.log();
 					openPopup(id);
 				};
 				actions = (

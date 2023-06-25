@@ -1,5 +1,5 @@
 import { Effect, Store, attach } from 'effector';
-import { Address } from '@/shared/types';
+import { Address } from 'web3';
 import { authModel } from '../model';
 
 export interface WithSender {

@@ -1,4 +1,5 @@
-import { Address, Roles } from '@/shared/types';
+import type { Address } from 'web3';
+import type { Roles } from '@/shared/types';
 
 export interface AuthParams {
 	readonly address: Address;

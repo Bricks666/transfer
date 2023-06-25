@@ -5,3 +5,4 @@ export * from './samples';
 export * from './transfers';
 export * from './users';
 export * from './web3';
+export * as coreApi from './core';

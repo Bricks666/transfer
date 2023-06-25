@@ -1,4 +1,4 @@
-import { Address } from '@/shared/types';
+import type { Address } from 'web3';
 
 export interface Sample {
 	readonly id: string;

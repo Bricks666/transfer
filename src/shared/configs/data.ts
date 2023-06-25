@@ -1,4 +1,3 @@
-export const address = '0x34be897574ed837944E696f89832a595d28DE0EF';
 export const abi = [
 	{
 		anonymous: false,
@@ -495,4 +494,4 @@ export const abi = [
 		constant: true,
 		signature: '0xcdcb030f',
 	}
-];
+] as const;

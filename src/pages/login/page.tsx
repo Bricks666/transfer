@@ -7,7 +7,6 @@ import { useTitle } from '@/shared/lib';
 import { CommonProps } from '@/shared/types';
 import { AuthLayout } from '@/shared/ui';
 
-import { pageModel } from './models';
 import styles from './page.module.css';
 
 export interface LoginPageProps extends CommonProps {}
@@ -27,7 +26,5 @@ const LoginPage: React.FC<LoginPageProps> = () => {
 		</AuthLayout>
 	);
 };
-
-pageModel.loaded();
 
 export default LoginPage;

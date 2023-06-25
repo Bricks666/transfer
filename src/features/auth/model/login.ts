@@ -1,10 +1,10 @@
 import { createMutation } from '@farfetched/core';
 import { createDomain, sample } from 'effector';
 import { createForm } from 'effector-forms';
-import { debug, spread } from 'patronum';
-import { authModel } from '@/entities/auth';
+import { debug } from 'patronum';
 import { addressesModel } from '@/entities/web3';
 import { Auth, authApi, AuthParams } from '@/shared/api';
+import { authModel } from '@/shared/models';
 
 const loginDomain = createDomain();
 
@@ -39,20 +39,15 @@ sample({
 sample({
 	clock: addressesModel.query.$data,
 	fn: (addresses) => {
-		return addresses[0] ?? '';
+		return { address: addresses[0] ?? '', };
 	},
-	target: form.fields.address.set,
+	target: form.setInitialForm,
 });
 
 sample({
 	clock: mutation.finished.success,
-	fn: ({ result, }) => result,
-	target: spread({
-		targets: {
-			login: authModel.setAddress,
-			role: authModel.setRole,
-		},
-	}),
+	fn: ({ result, }) => ({ address: result.login, role: result.role, }),
+	target: authModel.$user,
 });
 
 debug(mutation.start, mutation.finished.failure);

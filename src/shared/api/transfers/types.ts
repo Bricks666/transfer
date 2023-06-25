@@ -1,4 +1,5 @@
-import { Address, Status } from '@/shared/types';
+import type { Address } from 'web3';
+import type { Status } from '@/shared/types';
 
 export interface Transfer {
 	readonly id: string;

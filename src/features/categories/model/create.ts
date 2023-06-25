@@ -1,19 +1,15 @@
 import { createMutation } from '@farfetched/core';
 import { createDomain, sample } from 'effector';
 import { createForm } from 'effector-forms';
-import { attachWithSender } from '@/entities/auth';
 import { categoriesApi, CreateCategoryParams } from '@/shared/api';
+import { authModel } from '@/shared/models';
 
 const createCategoryDomain = createDomain();
 
-export const addFx = createCategoryDomain.effect<
-	CreateCategoryParams,
-	unknown
->();
-addFx.use(categoriesApi.create);
+const handlerFx = createCategoryDomain.effect(categoriesApi.create);
 
-export const addMutation = createMutation({
-	effect: attachWithSender(addFx),
+export const mutation = createMutation({
+	effect: authModel.attachWithSender(handlerFx),
 });
 
 export const form = createForm<Omit<CreateCategoryParams, 'sender'>>({
@@ -26,6 +22,6 @@ export const form = createForm<Omit<CreateCategoryParams, 'sender'>>({
 });
 
 sample({
-	clock: addMutation.finished.success,
+	clock: mutation.finished.success,
 	target: form.reset,
 });

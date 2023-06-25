@@ -1,17 +1,17 @@
 import { createMutation } from '@farfetched/core';
 import { createDomain, sample } from 'effector';
 import { createForm } from 'effector-forms';
-import { attachWithSender } from '@/entities/auth';
 import { CreateSampleParams, samplesApi } from '@/shared/api';
+import { authModel } from '@/shared/models';
 
 const createSampleDomain = createDomain();
 
-export const addFx = createSampleDomain.effect<CreateSampleParams, unknown>(
+const handlerFx = createSampleDomain.effect<CreateSampleParams, unknown>(
 	samplesApi.create
 );
 
-export const addMutation = createMutation({
-	effect: attachWithSender(addFx),
+export const mutation = createMutation({
+	effect: authModel.attachWithSender(handlerFx),
 });
 
 export const form = createForm<Omit<CreateSampleParams, 'sender'>>({
@@ -30,6 +30,6 @@ export const form = createForm<Omit<CreateSampleParams, 'sender'>>({
 });
 
 sample({
-	clock: addMutation.finished.success,
+	clock: mutation.finished.success,
 	target: form.reset,
 });

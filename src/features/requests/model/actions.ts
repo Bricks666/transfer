@@ -1,18 +1,16 @@
 import { createMutation } from '@farfetched/core';
 import { createDomain } from 'effector';
-import { attachWithSender } from '@/entities/auth';
-import { ChangeRequestParams, requestsApi } from '@/shared/api';
+import { requestsApi } from '@/shared/api';
+import { authModel } from '@/shared/models';
 
 const actionsDomain = createDomain();
 
-export const acceptFx = actionsDomain.effect<ChangeRequestParams, void>();
-export const cancelFx = actionsDomain.effect<ChangeRequestParams, void>();
-acceptFx.use(requestsApi.accept);
-cancelFx.use(requestsApi.cancel);
+const acceptFx = actionsDomain.effect(requestsApi.accept);
+const cancelFx = actionsDomain.effect(requestsApi.cancel);
 
 export const acceptMutation = createMutation({
-	effect: attachWithSender(acceptFx),
+	effect: authModel.attachWithSender(acceptFx),
 });
 export const cancelMutation = createMutation({
-	effect: attachWithSender(cancelFx),
+	effect: authModel.attachWithSender(cancelFx),
 });

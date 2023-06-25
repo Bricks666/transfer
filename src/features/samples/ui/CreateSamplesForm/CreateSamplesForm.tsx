@@ -14,7 +14,7 @@ import styles from './CreateSamplesForm.module.css';
 
 export const CreateSampleForm: React.FC<CommonProps> = (props) => {
 	const { className, } = props;
-	const isSubmitting = useUnit(createSampleModel.addMutation.$pending);
+	const isSubmitting = useUnit(createSampleModel.mutation.$pending);
 	const { submit, fields, } = useForm(createSampleModel.form);
 
 	const { category_id, money, name, } = fields;

@@ -1,10 +1,10 @@
 import { createMutation } from '@farfetched/core';
 import { createDomain, sample } from 'effector';
 import { createForm } from 'effector-forms';
-import { attachWithSender } from '@/entities/auth';
 import { createPopupControlModel } from '@/entities/popups';
 import { AcceptTransferParams, transfersApi } from '@/shared/api';
 import { controls, getParams, popups } from '@/shared/configs';
+import { authModel } from '@/shared/models';
 
 const acceptTransfer = createDomain();
 
@@ -19,7 +19,7 @@ export const popup = createPopupControlModel(popups.acceptTransfer, {
 });
 
 export const mutation = createMutation({
-	effect: attachWithSender(handlerFx),
+	effect: authModel.attachWithSender(handlerFx),
 });
 
 export const form = createForm<Omit<AcceptTransferParams, 'sender' | 'id'>>({

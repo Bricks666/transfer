@@ -13,7 +13,7 @@ import styles from './CreateCategoryForm.module.css';
 export const CreateCategoryForm: React.FC<CommonProps> = React.memo(
 	function CreateCategoryForm(props) {
 		const { className, } = props;
-		const isSubmitting = useUnit(createCategoryModel.addMutation.$pending);
+		const isSubmitting = useUnit(createCategoryModel.mutation.$pending);
 		const { fields, submit, } = useForm(createCategoryModel.form);
 
 		const { name, } = fields;

@@ -1,15 +1,25 @@
-import { useUnit } from 'effector-react';
-import { useMemo } from 'react';
-import { authModel } from '@/entities/auth';
+import { useStoreMap, useUnit } from 'effector-react';
 import { transfersModel } from '@/entities/transfers';
+import { authModel } from '@/shared/models';
 
 export const useTransfers = () => {
-	const address = useUnit(authModel.$address);
-	const { data: transfers, ...state } = useUnit(transfersModel.query);
-	const filteredTransfers = useMemo(() => {
-		return transfers.filter(
-			(transfer) => transfer.sender === address || transfer.receiver === address
-		);
-	}, [address, transfers]);
-	return { data: filteredTransfers, ...state, };
+	const user = useUnit(authModel.$user);
+	const query = useUnit(transfersModel.query);
+
+	const filteredTransfers = useStoreMap({
+		store: transfersModel.query.$data,
+		keys: [user?.address],
+		fn: (transfers, [address]) => {
+			if (!address) {
+				return;
+			}
+
+			return transfers.filter(
+				(transfer) =>
+					transfer.sender === address || transfer.receiver === address
+			);
+		},
+		defaultValue: [],
+	});
+	return { ...query, data: filteredTransfers, };
 };

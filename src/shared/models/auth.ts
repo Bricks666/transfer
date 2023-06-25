@@ -4,7 +4,15 @@ import {
 	RouteParamsAndQuery,
 	chainRoute
 } from 'atomic-router';
-import { Event, createDomain, createEvent, sample } from 'effector';
+import {
+	Effect,
+	Event,
+	Store,
+	attach,
+	createDomain,
+	createEvent,
+	sample
+} from 'effector';
 import { equals } from 'patronum';
 import { Address } from 'web3';
 import { ChainRouteOptions, ExtractValueType, Roles } from '@/shared/types';
@@ -118,5 +126,27 @@ export const chainAnonymous = <Params extends RouteParams>(
 		beforeOpen: startChecking,
 		openOn: alreadyAnonymous,
 		cancelOn: alreadyAuthorized,
+	});
+};
+
+export interface WithSender {
+	readonly sender: Address;
+}
+
+export const attachWithSender = <Params extends WithSender, Done, Fail = Error>(
+	effect: Effect<Params, Done, Fail>
+) => {
+	return attach<
+		Omit<Params, keyof WithSender>,
+		Store<AuthUser | null>,
+		Effect<Params, Done, Fail>
+	>({
+		source: $user,
+		effect,
+		mapParams: (params, user) =>
+			({
+				...params,
+				sender: user?.address ?? '',
+			} as Params),
 	});
 };

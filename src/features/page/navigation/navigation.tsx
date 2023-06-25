@@ -3,8 +3,9 @@ import { Link } from 'atomic-router-react';
 import cn from 'classnames';
 import { useUnit } from 'effector-react';
 import * as React from 'react';
-import { authModel, OnlyAdmin } from '@/entities/auth';
+import { OnlyAdmin } from '@/entities/auth';
 import { routes } from '@/shared/configs';
+import { authModel } from '@/shared/models';
 import { CommonProps } from '@/shared/types';
 import styles from './navigation.module.css';
 import { NavigationItem } from './types';
@@ -30,12 +31,12 @@ const adminsNavigation: NavigationItem[] = [
 
 export const Navigation: React.FC<CommonProps> = (props) => {
 	const { className, } = props;
-	const address = useUnit(authModel.$address);
+	const user = useUnit(authModel.$user);
 	const commonNavigation: NavigationItem[] = React.useMemo(
 		() => [
 			{
 				to: routes.profile,
-				params: { address, },
+				params: { address: user?.address, },
 				label: 'Профиль',
 			},
 			{
@@ -43,7 +44,7 @@ export const Navigation: React.FC<CommonProps> = (props) => {
 				label: 'Переводы',
 			}
 		],
-		[address]
+		[user?.address]
 	);
 	return (
 		<nav className={cn(styles.nav, className)}>

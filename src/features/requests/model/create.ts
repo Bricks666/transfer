@@ -1,13 +1,12 @@
 import { createMutation } from '@farfetched/core';
 import { createDomain } from 'effector';
-import { attachWithSender } from '@/entities/auth';
-import { CreateRequestParams, requestsApi } from '@/shared/api';
+import { requestsApi } from '@/shared/api';
+import { authModel } from '@/shared/models';
 
 const createRequestDomain = createDomain();
 
-export const addFx = createRequestDomain.effect<CreateRequestParams, void>();
-addFx.use(requestsApi.create);
+const handlerFx = createRequestDomain.effect(requestsApi.create);
 
-export const addMutation = createMutation({
-	effect: attachWithSender(addFx),
+export const mutation = createMutation({
+	effect: authModel.attachWithSender(handlerFx),
 });

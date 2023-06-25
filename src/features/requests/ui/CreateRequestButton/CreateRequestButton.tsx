@@ -12,7 +12,7 @@ export const CreateRequestButton: React.FC<CreateRequestButtonProps> = (
 	props
 ) => {
 	const { candidate, } = props;
-	const createRequest = useUnit(createRequestModel.addMutation);
+	const createRequest = useUnit(createRequestModel.mutation);
 	const onClick = () => {
 		createRequest.start({ candidate, });
 	};

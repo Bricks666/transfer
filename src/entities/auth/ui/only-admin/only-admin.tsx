@@ -1,6 +1,6 @@
 import { useUnit } from 'effector-react';
 import * as React from 'react';
-import { authModel } from '../../model';
+import { authModel } from '@/shared/models';
 
 export const OnlyAdmin: React.FC<React.PropsWithChildren> = (props) => {
 	const { children, } = props;

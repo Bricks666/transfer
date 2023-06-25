@@ -1,16 +1,16 @@
 import { createMutation } from '@farfetched/core';
 import { createDomain, sample } from 'effector';
 import { createForm } from 'effector-forms';
-import { attachWithSender } from '@/entities/auth';
 import { addressesModel } from '@/entities/web3';
 import { CreateTransferParams, transfersApi } from '@/shared/api';
+import { authModel } from '@/shared/models';
 
 const createTransfer = createDomain();
 
 const handlerFx = createTransfer.effect(transfersApi.create);
 
 export const mutation = createMutation({
-	effect: attachWithSender(handlerFx),
+	effect: authModel.attachWithSender(handlerFx),
 });
 
 export const form = createForm<Omit<CreateTransferParams, 'sender'>>({

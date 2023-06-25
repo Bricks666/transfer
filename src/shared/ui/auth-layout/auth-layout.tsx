@@ -2,8 +2,7 @@ import { Container } from '@mui/material';
 import cn from 'classnames';
 import * as React from 'react';
 import { CommonProps } from '@/shared/types';
-
-import styles from './auth-layout.module.css';
+import { Center } from '../center';
 
 export interface AuthLayoutProps extends CommonProps {}
 
@@ -12,8 +11,10 @@ export const AuthLayout: React.FC<React.PropsWithChildren<AuthLayoutProps>> = (
 ) => {
 	const { className, children, } = props;
 	return (
-		<Container className={styles.container}>
-			<main className={cn(className)}>{children}</main>
+		<Container>
+			<Center fullHeight>
+				<main className={cn(className)}>{children}</main>
+			</Center>
 		</Container>
 	);
 };

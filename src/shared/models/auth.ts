@@ -59,6 +59,12 @@ export const chainAuthorized = <Params extends RouteParams>(
 	const alreadyAnonymous = createEvent<RouteParamsAndQuery<Params>>();
 
 	sample({
+		clock: $user,
+		source: { params: route.$params, query: route.$query, },
+		target: startChecking,
+	});
+
+	sample({
 		clock: startChecking,
 		filter: equals($status, STATUSES.AUTHORIZED),
 		target: alreadyAuthorized,

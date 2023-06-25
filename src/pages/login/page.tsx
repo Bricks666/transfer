@@ -1,4 +1,4 @@
-import { Button, Typography } from '@mui/material';
+import { Link as MUILink, Card, CardContent, Typography } from '@mui/material';
 import { Link } from 'atomic-router-react';
 import * as React from 'react';
 import { LoginForm } from '@/features/auth';
@@ -16,13 +16,22 @@ const LoginPage: React.FC<LoginPageProps> = () => {
 
 	return (
 		<AuthLayout className={styles.layout}>
-			<Typography variant='h4' component='h1' align='center'>
-				Login
+			<Typography className={styles.title} variant='h4' component='h1'>
+				Добро пожаловать назад!
 			</Typography>
-			<LoginForm />
-			<Button className={styles.link} to={routes.registration} component={Link}>
-				Registration
-			</Button>
+			<Card className={styles.card} variant='outlined'>
+				<CardContent className={styles.content}>
+					<LoginForm />
+					<Typography className={styles.link}>
+						<span className={styles.question}>Еще нет аккаунта?</span>
+						<br /> Тогда{' '}
+						<MUILink to={routes.registration} component={Link}>
+							создайте его
+						</MUILink>{' '}
+						прямо сейчас
+					</Typography>
+				</CardContent>
+			</Card>
 		</AuthLayout>
 	);
 };

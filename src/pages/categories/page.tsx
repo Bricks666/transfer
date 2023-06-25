@@ -6,7 +6,6 @@ import { SITE_NAME } from '@/shared/configs';
 import { useTitle } from '@/shared/lib';
 import { CommonProps } from '@/shared/types';
 import { MainLayout } from '@/shared/ui';
-import { pageModel } from './models';
 import { CategoryList } from './ui';
 
 export interface CategoriesPageProps extends CommonProps {}
@@ -24,7 +23,5 @@ const CategoriesPage: React.FC<CategoriesPageProps> = () => {
 		</MainLayout>
 	);
 };
-
-pageModel.loaded();
 
 export default CategoriesPage;

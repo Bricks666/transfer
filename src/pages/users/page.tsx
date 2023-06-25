@@ -3,7 +3,6 @@ import { Header } from '@/widgets/page';
 import { SITE_NAME } from '@/shared/configs';
 import { useTitle } from '@/shared/lib';
 import { MainLayout } from '@/shared/ui';
-import { pageModel } from './models';
 import { UsersList } from './ui';
 
 const UsersPage: React.FC = () => {
@@ -15,7 +14,5 @@ const UsersPage: React.FC = () => {
 		</MainLayout>
 	);
 };
-
-pageModel.loaded();
 
 export default UsersPage;

@@ -6,7 +6,6 @@ import { SITE_NAME, popups } from '@/shared/configs';
 import { useTitle } from '@/shared/lib';
 import { CommonProps } from '@/shared/types';
 import { MainLayout } from '@/shared/ui';
-import { pageModel } from './models';
 import { TransferList } from './ui';
 
 export interface TransfersPageProps extends CommonProps {}
@@ -29,7 +28,5 @@ const TransfersPage: React.FC<TransfersPageProps> = () => {
 		</MainLayout>
 	);
 };
-
-pageModel.loaded();
 
 export default TransfersPage;

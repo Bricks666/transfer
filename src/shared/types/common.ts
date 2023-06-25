@@ -1,4 +1,3 @@
-import { RouteParams, RouteParamsAndQuery } from 'atomic-router';
 import { Effect, Event } from 'effector';
 
 export type VoidFunction = () => void;
@@ -12,8 +11,6 @@ export type ExtractValueType<T extends Record<any, any>> = T extends Record<
 	? R
 	: never;
 
-export interface ChainRouteOptions<Params extends RouteParams> {
-	readonly otherwise?:
-		| Effect<RouteParamsAndQuery<Params>, any, any>
-		| Event<RouteParamsAndQuery<Params>>;
+export interface ChainRouteOptions {
+	readonly otherwise?: Effect<void, any, any> | Event<void>;
 }

@@ -44,7 +44,7 @@ sample({
 
 export const chainAuthorized = <Params extends RouteParams>(
 	route: RouteInstance<Params>,
-	options: ChainRouteOptions<Params> = {}
+	options: ChainRouteOptions = {}
 ): RouteInstance<Params> => {
 	const startChecking = createEvent<RouteParamsAndQuery<Params>>();
 	const alreadyAuthorized = createEvent<RouteParamsAndQuery<Params>>();
@@ -65,7 +65,8 @@ export const chainAuthorized = <Params extends RouteParams>(
 	if (options.otherwise) {
 		sample({
 			clock: alreadyAnonymous,
-			target: options.otherwise as Event<RouteParamsAndQuery<Params>>,
+			fn: () => undefined,
+			target: options.otherwise as Event<void>,
 		});
 	}
 
@@ -79,11 +80,18 @@ export const chainAuthorized = <Params extends RouteParams>(
 
 export const chainAnonymous = <Params extends RouteParams>(
 	route: RouteInstance<Params>,
-	options: ChainRouteOptions<Params> = {}
+	options: ChainRouteOptions = {}
 ): RouteInstance<Params> => {
 	const startChecking = createEvent<RouteParamsAndQuery<Params>>();
 	const alreadyAuthorized = createEvent<RouteParamsAndQuery<Params>>();
 	const alreadyAnonymous = createEvent<RouteParamsAndQuery<Params>>();
+
+	// For dynamic redirect after change user
+	sample({
+		clock: $user,
+		source: { params: route.$params, query: route.$query, },
+		target: startChecking,
+	});
 
 	sample({
 		clock: startChecking,
@@ -100,7 +108,8 @@ export const chainAnonymous = <Params extends RouteParams>(
 	if (options.otherwise) {
 		sample({
 			clock: alreadyAuthorized,
-			target: options.otherwise as Event<RouteParamsAndQuery<Params>>,
+			fn: () => undefined,
+			target: options.otherwise as Event<void>,
 		});
 	}
 

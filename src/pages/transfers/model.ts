@@ -5,15 +5,29 @@ import {
 	cancelTransferModel,
 	createTransferModel
 } from '@/features/transfers';
-import { authModel } from '@/entities/auth';
+import { categoriesModel } from '@/entities/categories';
 import { transfersModel } from '@/entities/transfers';
+import { addressesModel } from '@/entities/web3';
 import { Transfer } from '@/shared/api';
+import { routes } from '@/shared/configs';
+import { authModel, contractModel } from '@/shared/models';
 import { Status } from '@/shared/types';
-import { currentRoute, loadedWithRouteState } from './page';
+
+export const currentRoute = routes.transfers;
+export const contractInitiatedRoute =
+	contractModel.chainContractInitiated(currentRoute);
+export const authorizedRoute = authModel.chainAuthorized(
+	contractInitiatedRoute,
+	{ otherwise: routes.login.open, }
+);
 
 sample({
-	clock: [currentRoute.opened, loadedWithRouteState],
-	target: transfersModel.query.start,
+	clock: authorizedRoute.opened,
+	target: [
+		categoriesModel.query.start,
+		addressesModel.query.start,
+		transfersModel.query.start
+	],
 });
 
 update(transfersModel.query, {
@@ -103,7 +117,7 @@ update(transfersModel.query, {
 						id,
 						status: Status.pending,
 						// eslint-disable-next-line effector/no-getState
-						sender: authModel.$address.getState(),
+						sender: authModel.$user.getState()?.address,
 						sended_at: (Date.now() / 1000).toString(),
 						finished_at: '',
 					} as Transfer

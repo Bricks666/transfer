@@ -5,7 +5,6 @@ import { SITE_NAME } from '@/shared/configs';
 import { useTitle } from '@/shared/lib';
 import { CommonProps } from '@/shared/types';
 import { MainLayout } from '@/shared/ui';
-import { pageModel } from './models';
 import { RequestList } from './ui';
 
 export interface RequestsPageProps extends CommonProps {}
@@ -22,7 +21,5 @@ const RequestsPage: React.FC<RequestsPageProps> = () => {
 		</MainLayout>
 	);
 };
-
-pageModel.loaded();
 
 export default RequestsPage;

@@ -6,7 +6,6 @@ import { SITE_NAME } from '@/shared/configs';
 import { useTitle } from '@/shared/lib';
 import { CommonProps } from '@/shared/types';
 import { MainLayout } from '@/shared/ui';
-import { pageModel } from './models';
 import { SampleList } from './ui';
 
 export interface SamplesPageProps extends CommonProps {}
@@ -24,7 +23,5 @@ const SamplesPage: React.FC<SamplesPageProps> = () => {
 		</MainLayout>
 	);
 };
-
-pageModel.loaded();
 
 export default SamplesPage;

@@ -3,12 +3,12 @@ import { addressesModel } from '@/entities/web3';
 import { routes } from '@/shared/configs';
 import { authModel, contractModel } from '@/shared/models';
 
-const otherwise = createEvent();
+const otherwise = createEvent<any>();
 
-export const currentRoute = routes.login;
+export const currentRoute = routes.registration;
 export const contractInitiatedRoute =
 	contractModel.chainContractInitiated(currentRoute);
-export const anonymousRoute = authModel.chainAnonymous(currentRoute, {
+export const anonymousRoute = authModel.chainAnonymous(contractInitiatedRoute, {
 	otherwise,
 });
 

@@ -46,7 +46,7 @@ sample({
 
 export const chainContractInitiated = <Params extends RouteParams>(
 	route: RouteInstance<Params>,
-	options: ChainRouteOptions<Params> = {}
+	options: ChainRouteOptions = {}
 ): RouteInstance<Params> => {
 	const startChecking = createEvent<RouteParamsAndQuery<Params>>();
 
@@ -88,7 +88,10 @@ export const chainContractInitiated = <Params extends RouteParams>(
 	if (options.otherwise) {
 		sample({
 			clock: initiatedFailure,
-			target: options.otherwise as Event<RouteParamsAndQuery<Params>>,
+			fn: () => {
+				return undefined;
+			},
+			target: options.otherwise as Event<void>,
 		});
 	}
 

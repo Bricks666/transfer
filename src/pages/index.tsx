@@ -1,51 +1,31 @@
 import { createRoutesView } from 'atomic-router-react';
 import * as React from 'react';
-import { routes } from '@/shared/configs';
+import { CategoriesPage } from './categories';
 import { LoginPage } from './login';
-
-const RegistrationPage = React.lazy(() => import('./registration'));
-const TransfersPage = React.lazy(() => import('./transfers'));
-const ProfilePage = React.lazy(() => import('./profile'));
-const CategoriesPage = React.lazy(() => import('./categories'));
-const SamplesPage = React.lazy(() => import('./samples'));
-const RequestsPage = React.lazy(() => import('./requests'));
-const UsersPage = React.lazy(() => import('./users'));
+import { ProfilePage } from './profile';
+import { RegistrationPage } from './registration';
+import { RequestsPage } from './requests';
+import { SamplesPage } from './samples';
+import { TransfersPage } from './transfers';
+import { UsersPage } from './users';
 
 const Routes = createRoutesView({
 	routes: [
 		LoginPage,
-
-		{
-			route: routes.registration,
-			view: RegistrationPage,
-		},
-		{
-			route: routes.transfers,
-			view: TransfersPage,
-		},
-		{
-			route: routes.profile,
-			view: ProfilePage,
-		},
-		{
-			route: routes.categories,
-			view: CategoriesPage,
-		},
-		{
-			route: routes.samples,
-			view: SamplesPage,
-		},
-		{
-			route: routes.requests,
-			view: RequestsPage,
-		},
-		{
-			route: routes.users,
-			view: UsersPage,
-		}
+		RegistrationPage,
+		TransfersPage,
+		ProfilePage,
+		CategoriesPage,
+		SamplesPage,
+		RequestsPage,
+		UsersPage
 	],
 });
 
 export const Pages: React.FC = () => {
-	return <Routes />;
+	return (
+		<React.Suspense>
+			<Routes />
+		</React.Suspense>
+	);
 };

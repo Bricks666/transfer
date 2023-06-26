@@ -10,33 +10,33 @@ import { form, mutation } from './model';
 
 import styles from './ui.module.css';
 
-export const LoginForm: React.FC<CommonProps> = React.memo(function LoginForm(
-	props
-) {
-	const { className, } = props;
-	const submit = useUnit(form.submit);
-	const isSubmitting = useUnit(mutation.$pending);
+export const RegistrationForm: React.FC<CommonProps> = React.memo(
+	function RegistrationForm(props) {
+		const { className, } = props;
+		const submit = useUnit(form.submit);
+		const isSubmitting = useUnit(mutation.$pending);
 
-	const onSubmit = useSubmit(submit);
+		const onSubmit = useSubmit(submit);
 
-	return (
-		<form className={cn(styles.form, className)} onSubmit={onSubmit}>
-			<ErrorAlert />
-			<Address />
-			<Password />
-			<Button
-				className={styles.button}
-				type='submit'
-				variant='contained'
-				disabled={isSubmitting}
-				disableElevation>
-				Войти
-			</Button>
-		</form>
-	);
-});
+		return (
+			<form className={cn(styles.form, className)} onSubmit={onSubmit}>
+				<ErrorAlert />
+				<Address />
+				<Password />
+				<Button
+					className={styles.button}
+					type='submit'
+					variant='contained'
+					disabled={isSubmitting}
+					disableElevation>
+					Зарегистрироваться
+				</Button>
+			</form>
+		);
+	}
+);
 
-const Address: React.FC = React.memo(() => {
+const Address: React.FC = () => {
 	const address = useUnit(form.fields.address);
 	return (
 		<AddressesSelect
@@ -47,13 +47,12 @@ const Address: React.FC = React.memo(() => {
 			isValid={address.isValid}
 			name='address'
 			label='Адрес кошелька'
-			autoComplete='name'
 			required
 		/>
 	);
-});
+};
 
-const Password: React.FC = React.memo(() => {
+const Password: React.FC = () => {
 	const password = useUnit(form.fields.password);
 	return (
 		<Field
@@ -68,7 +67,7 @@ const Password: React.FC = React.memo(() => {
 			required
 		/>
 	);
-});
+};
 
 const ErrorAlert: React.FC = React.memo(() => {
 	const hasError = useUnit(mutation.$failed);
@@ -80,7 +79,7 @@ const ErrorAlert: React.FC = React.memo(() => {
 	return (
 		<Alert severity='error'>
 			<AlertTitle>Ошибка</AlertTitle>
-			Неверный логин или пароль
+			Аккаунт с таким кошельком уже зарегистрирован
 		</Alert>
 	);
 });

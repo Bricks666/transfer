@@ -1,4 +1,4 @@
-import type { Address } from '@/shared/types';
+import type { Address } from 'web3';
 import { createContractRequest } from '../core';
 import type { User } from './types';
 

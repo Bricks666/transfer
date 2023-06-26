@@ -1,8 +1,9 @@
 import { Button } from '@mui/material';
 import { Link } from 'atomic-router-react';
 import * as React from 'react';
+import type { Address } from 'web3';
 import { routes } from '@/shared/configs';
-import { Address, CommonProps } from '@/shared/types';
+import type { CommonProps } from '@/shared/types';
 
 export interface ViewUserProfileProps extends CommonProps {
 	readonly address: Address;

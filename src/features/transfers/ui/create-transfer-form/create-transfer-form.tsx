@@ -5,7 +5,7 @@ import { useForm } from 'effector-forms';
 import { useUnit } from 'effector-react';
 import * as React from 'react';
 import { CategoriesSelect } from '@/entities/categories';
-import { AddressesSelect } from '@/entities/web3';
+import { Web3AddressesSearch } from '@/entities/web3';
 import { useSubmit } from '@/shared/lib';
 import { CommonProps } from '@/shared/types';
 import { Field } from '@/shared/ui';
@@ -36,7 +36,7 @@ export const CreateTransferForm: React.FC<CreateTransferFormProps> = React.memo(
 				<Typography className={styles.title} variant='h4' component='p'>
 					Создание перевода
 				</Typography>
-				<AddressesSelect
+				<Web3AddressesSearch
 					value={receiver.value}
 					onChange={receiver.onChange}
 					onBlur={receiver.onBlur}

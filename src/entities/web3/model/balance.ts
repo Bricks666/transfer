@@ -1,8 +1,8 @@
 import { createDomain, sample } from 'effector';
 import { createGate } from 'effector-react';
 import { interval } from 'patronum';
+import { Address } from 'web3';
 import { web3Api } from '@/shared/api';
-import { Address } from '@/shared/types';
 
 const balance = createDomain();
 

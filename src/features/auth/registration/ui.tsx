@@ -2,7 +2,7 @@ import { Alert, AlertTitle, Button } from '@mui/material';
 import cn from 'classnames';
 import { useUnit } from 'effector-react';
 import * as React from 'react';
-import { AddressesSelect } from '@/entities/web3';
+import { Web3AddressesSearch } from '@/entities/web3';
 import { useSubmit } from '@/shared/lib';
 import { CommonProps } from '@/shared/types';
 import { Field } from '@/shared/ui';
@@ -39,7 +39,7 @@ export const RegistrationForm: React.FC<CommonProps> = React.memo(
 const Address: React.FC = () => {
 	const address = useUnit(form.fields.address);
 	return (
-		<AddressesSelect
+		<Web3AddressesSearch
 			value={address.value}
 			onChange={address.onChange}
 			onBlur={address.onBlur}

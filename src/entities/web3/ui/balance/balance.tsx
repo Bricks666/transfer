@@ -1,7 +1,8 @@
 import { Typography } from '@mui/material';
 import * as React from 'react';
+import type { Address } from 'web3';
 import { fromWei } from 'web3-utils';
-import { Address, CommonProps } from '@/shared/types';
+import type { CommonProps } from '@/shared/types';
 import { useBalance } from '../../lib';
 
 export interface BalanceProps extends CommonProps {

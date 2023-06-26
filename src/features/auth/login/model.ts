@@ -1,7 +1,7 @@
 import { createMutation } from '@farfetched/core';
 import { createDomain, sample } from 'effector';
 import { createForm } from 'effector-forms';
-import { addressesModel } from '@/entities/web3';
+import type { Address } from 'web3';
 import { Auth, authApi, AuthParams } from '@/shared/api';
 import { authModel } from '@/shared/models';
 
@@ -13,10 +13,15 @@ export const mutation = createMutation({
 	effect: handlerFx,
 });
 
-export const form = createForm<AuthParams>({
+interface FormOptions {
+	readonly address: Address | null;
+	readonly password: string;
+}
+
+export const form = createForm<FormOptions>({
 	fields: {
 		address: {
-			init: '',
+			init: null,
 		},
 		password: {
 			init: '',
@@ -27,20 +32,15 @@ export const form = createForm<AuthParams>({
 
 sample({
 	clock: form.formValidated,
+	filter: (params): params is AuthParams => {
+		return !!params.address && !!params.password;
+	},
 	target: mutation.start,
 });
 
 sample({
 	clock: mutation.finished.success,
 	target: form.reset,
-});
-
-sample({
-	clock: addressesModel.query.$data,
-	fn: (addresses) => {
-		return { address: addresses[0] ?? '', };
-	},
-	target: form.setInitialForm,
 });
 
 sample({

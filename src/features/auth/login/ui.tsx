@@ -5,7 +5,7 @@ import * as React from 'react';
 import { Web3AddressesSearch } from '@/entities/web3';
 import { useSubmit } from '@/shared/lib';
 import { CommonProps } from '@/shared/types';
-import { Field } from '@/shared/ui';
+import { PasswordField } from '@/shared/ui';
 import { form, mutation } from './model';
 
 import styles from './ui.module.css';
@@ -56,7 +56,7 @@ const Address: React.FC = React.memo(() => {
 const Password: React.FC = React.memo(() => {
 	const password = useUnit(form.fields.password);
 	return (
-		<Field
+		<PasswordField
 			value={password.value}
 			onChange={password.onChange}
 			onBlur={password.onBlur}
@@ -64,7 +64,6 @@ const Password: React.FC = React.memo(() => {
 			isValid={password.isValid}
 			name='password'
 			label='Пароль'
-			type='password'
 			required
 		/>
 	);

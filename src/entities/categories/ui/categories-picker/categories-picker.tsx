@@ -55,5 +55,5 @@ const isSelected = (
 		return selected.includes(value.id);
 	}
 
-	return !!selected && selected === value.id;
+	return selected !== null && selected === value.id;
 };

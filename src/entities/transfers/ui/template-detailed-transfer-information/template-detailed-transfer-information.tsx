@@ -1,28 +1,24 @@
-import {
-	Card,
-	CardActions,
-	CardContent,
-	CardHeader,
-	Typography
-} from '@mui/material';
+/* eslint-disable camelcase */
+import { Card, CardActions, CardContent, Typography } from '@mui/material';
 import cn from 'classnames';
 import * as React from 'react';
 import { fromWei } from 'web3-utils';
 import { Transfer } from '@/shared/api';
-import { statusNames } from '@/shared/lib';
+import { statusNames, toDatetimeString } from '@/shared/lib';
 import type { CommonProps } from '@/shared/types';
 
-import styles from './template-transfer-card.module.css';
+import styles from './template-detailed-transfer-information.module.css';
 
-export interface TemplateTransferCardProps extends CommonProps, Transfer {
+export interface TemplateDetailedTransferInformationProps
+	extends CommonProps,
+		Omit<Transfer, 'id' | 'keyword' | 'category_id'> {
 	readonly category: React.ReactElement | null;
 	readonly actions?: React.ReactElement | null;
 }
 
-export const TemplateTransferCard: React.FC<TemplateTransferCardProps> =
+export const TemplateDetailedTransferInformation: React.FC<TemplateDetailedTransferInformationProps> =
 	React.memo(function TransferCard(props) {
 		const {
-			id,
 			status,
 			description,
 			money,
@@ -30,8 +26,15 @@ export const TemplateTransferCard: React.FC<TemplateTransferCardProps> =
 			sender,
 			className,
 			category,
+			finished_at,
+			sended_at,
 			actions = null,
 		} = props;
+
+		const createdAt = toDatetimeString(sended_at);
+		const finishedAt = finished_at
+			? toDatetimeString(finished_at)
+			: 'Не завершено';
 
 		return (
 			<Card
@@ -39,12 +42,6 @@ export const TemplateTransferCard: React.FC<TemplateTransferCardProps> =
 				variant='outlined'
 				elevation={0}
 				component='article'>
-				<CardHeader
-					title={`Номер перевода: ${id + 1}`}
-					titleTypographyProps={{
-						className: styles.title,
-					}}
-				/>
 				<CardContent className={styles.content}>
 					<Typography>
 						<span className={styles.item}>Отправитель:</span> {sender}
@@ -58,6 +55,12 @@ export const TemplateTransferCard: React.FC<TemplateTransferCardProps> =
 					<Typography>
 						<span className={styles.item}>Сумма перевода:</span>{' '}
 						{fromWei(money, 'ether')} ETH
+					</Typography>
+					<Typography>
+						<span className={styles.item}>Отправлено:</span> {createdAt}
+					</Typography>
+					<Typography>
+						<span className={styles.item}>Завершено:</span> {finishedAt}
 					</Typography>
 					{description ? (
 						<Typography>

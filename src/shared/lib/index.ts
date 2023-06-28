@@ -5,3 +5,4 @@ export * from './use-toggle';
 export * from './use-title';
 export * from './use-prepare-picker';
 export * from './normalize-web3-response';
+export * from './web3';

@@ -1,0 +1,7 @@
+.expand {
+	transition: transform 150ms ease-in-out;
+}
+
+.expand__opened {
+	transform: rotate(180deg);
+}

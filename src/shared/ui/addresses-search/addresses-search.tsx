@@ -1,7 +1,7 @@
 import { Autocomplete, InputAdornment } from '@mui/material';
 import * as React from 'react';
 import type { Address } from 'web3';
-import { usePreparePicker } from '@/shared/lib';
+import { removeHexBeginning, usePreparePicker } from '@/shared/lib';
 import type { CommonProps, PickerProps } from '@/shared/types';
 import { Field, type FieldProps } from '@/shared/ui';
 
@@ -37,7 +37,7 @@ export const AddressesSearch: React.FC<AddressesSearchProps> = (props) => {
 			className={className}
 			options={addresses}
 			loading={pending}
-			getOptionLabel={removeHexBegin}
+			getOptionLabel={removeHexBeginning}
 			renderInput={(params) => {
 				return (
 					<Field
@@ -57,10 +57,6 @@ export const AddressesSearch: React.FC<AddressesSearchProps> = (props) => {
 			{...(options as any)}
 		/>
 	);
-};
-
-const removeHexBegin = (address: Address): string => {
-	return address.replace('0x', '');
 };
 
 const isSelected = (

@@ -24,10 +24,11 @@ export const CancelTransfer: React.FC<CancelTransferProps> = React.memo(
 				className={cn(className)}
 				onClick={onClick}
 				type='button'
-				variant='outlined'
+				variant='contained'
 				color='error'
-				disabled={cancel.pending}>
-				Отменить
+				disabled={cancel.pending}
+				disableElevation>
+				Отклонить
 			</Button>
 		);
 	}

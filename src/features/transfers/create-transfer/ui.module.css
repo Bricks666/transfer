@@ -20,4 +20,7 @@
 .button {
 	grid-column: 2;
 	align-self: end;
+  justify-self: end;
+
+  max-width: max-content;
 }

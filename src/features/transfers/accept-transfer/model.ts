@@ -108,7 +108,11 @@ update(transfersModel.query, {
 			return {
 				result: query.result.map((transfer) =>
 					transfer.id === mutation.params.id
-						? { ...transfer, status: Status.accept, }
+						? {
+							...transfer,
+							status: Status.accept,
+							finished_at: Date.now() / 1000,
+						  }
 						: transfer
 				),
 			};

@@ -1,1 +1,2 @@
-export * from './template-transfer-card';
+export * from './template-transfer-item';
+export * from './template-detailed-transfer-information';

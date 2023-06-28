@@ -1,20 +1,21 @@
+import { List, Paper } from '@mui/material';
 import cn from 'classnames';
 import { useUnit } from 'effector-react';
 import * as React from 'react';
-import { TransferCard } from '@/widgets/transfers';
+import { TransferItemWithInformation } from '@/widgets/transfers';
 import { transfersModel } from '@/entities/transfers';
 import type { CommonProps } from '@/shared/types';
-
-import styles from './transfers-list.module.css';
 
 export const TransferList: React.FC<CommonProps> = (props) => {
 	const { className, } = props;
 	const transfers = useUnit(transfersModel.$userTransfers);
 	return (
-		<section className={cn(styles.container, className)}>
-			{transfers.map((transfer) => (
-				<TransferCard {...transfer} key={transfer.id} />
-			))}
-		</section>
+		<Paper variant='outlined' elevation={0}>
+			<List className={cn(className)}>
+				{transfers.map((transfer) => (
+					<TransferItemWithInformation {...transfer} key={transfer.id} />
+				))}
+			</List>
+		</Paper>
 	);
 };

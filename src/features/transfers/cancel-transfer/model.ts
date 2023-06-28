@@ -34,7 +34,11 @@ update(transfersModel.query, {
 			return {
 				result: query.result.map((transfer) =>
 					transfer.id === mutation.params.id
-						? { ...transfer, status: Status.cancel, }
+						? {
+							...transfer,
+							status: Status.cancel,
+							finished_at: Date.now() / 1000,
+						  }
 						: transfer
 				),
 			};

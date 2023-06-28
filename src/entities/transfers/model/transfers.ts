@@ -1,7 +1,8 @@
 import { createQuery, cache } from '@farfetched/core';
-import { combine, createDomain } from 'effector';
+import { type Store, combine, createDomain } from 'effector';
 import { transfersApi } from '@/shared/api';
 import { authModel } from '@/shared/models';
+import { type IdentifiedTransfer, TRANSFER_TYPE } from './types';
 
 const transfers = createDomain();
 
@@ -12,9 +13,7 @@ export const query = createQuery({
 	initialData: [],
 });
 
-cache(query);
-
-export const $userTransfers = combine(
+export const $userTransfers: Store<IdentifiedTransfer[]> = combine(
 	authModel.$user,
 	query.$data,
 	(user, transfers) => {
@@ -22,11 +21,21 @@ export const $userTransfers = combine(
 			return [];
 		}
 
-		return transfers.filter(
-			(transfer) =>
-				transfer.sender === user.address || transfer.receiver === user.address
-		);
+		return transfers
+			.filter(
+				(transfer) =>
+					transfer.sender === user.address || transfer.receiver === user.address
+			)
+			.map((transfer) => ({
+				...transfer,
+				type:
+					transfer.sender === user.address
+						? TRANSFER_TYPE.OUTGOING
+						: TRANSFER_TYPE.INCOMING,
+			}));
 	}
 );
 
 export const $empty = $userTransfers.map((data) => !data.length);
+
+cache(query);

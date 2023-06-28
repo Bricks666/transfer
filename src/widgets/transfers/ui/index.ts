@@ -1,1 +1,1 @@
-export * from './transfer-card';
+export * from './transfer-item-with-information';

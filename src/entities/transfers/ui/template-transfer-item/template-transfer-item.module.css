@@ -1,0 +1,17 @@
+.item {
+	gap: 2em;
+
+  padding-right: 4em;;
+}
+
+.short_text {
+	max-width: max-content;
+}
+
+.incoming {
+	background-color: var(--mui-palette-success-light);
+}
+
+.outgoing {
+	background-color: var(--mui-palette-info-light);
+}

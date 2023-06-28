@@ -1,7 +1,6 @@
 import { createMutation, update } from '@farfetched/core';
 import { createDomain, sample } from 'effector';
 import { createForm } from 'effector-forms';
-import { debug } from 'patronum';
 import { transfersModel } from '@/entities/transfers';
 import { CreateTransferParams, Transfer, transfersApi } from '@/shared/api';
 import { authModel } from '@/shared/models';
@@ -95,5 +94,3 @@ update(transfersModel.query, {
 		},
 	},
 });
-
-debug(mutation.finished);

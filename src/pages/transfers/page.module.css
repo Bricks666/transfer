@@ -4,11 +4,22 @@
 	gap: 1em;
 }
 
+.title {
+	font-weight: 700;
+}
+
 .form {
 	grid-column: 1 /-1;
 }
 
-.title {
-	text-align: center;
-	font-weight: 700;
+.icon {
+	transition: transform 150ms ease-in-out;
+}
+
+.icon__active {
+	transform: rotate(45deg) scale(1.2);
+}
+
+.empty_label {
+	font-weight: 500;
 }

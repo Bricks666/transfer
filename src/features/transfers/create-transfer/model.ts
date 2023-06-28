@@ -1,6 +1,7 @@
 import { createMutation, update } from '@farfetched/core';
 import { createDomain, sample } from 'effector';
 import { createForm } from 'effector-forms';
+import { debug } from 'patronum';
 import { transfersModel } from '@/entities/transfers';
 import { CreateTransferParams, Transfer, transfersApi } from '@/shared/api';
 import { authModel } from '@/shared/models';
@@ -47,7 +48,7 @@ sample({
 
 sample({
 	clock: form.formValidated,
-	fn: (values): values is CreateTransferParams => {
+	filter: (values): values is CreateTransferParams => {
 		return !!values.receiver;
 	},
 	target: mutation.start as any,
@@ -94,3 +95,5 @@ update(transfersModel.query, {
 		},
 	},
 });
+
+debug(mutation.finished);

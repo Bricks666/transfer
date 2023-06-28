@@ -1,10 +1,12 @@
-import { createMutation } from '@farfetched/core';
+import { createMutation, update } from '@farfetched/core';
 import { createDomain, sample } from 'effector';
 import { createForm } from 'effector-forms';
 import { createPopupControlModel } from '@/entities/popups';
+import { transfersModel } from '@/entities/transfers';
 import { AcceptTransferParams, transfersApi } from '@/shared/api';
 import { controls, getParams, popups } from '@/shared/configs';
 import { authModel } from '@/shared/models';
+import { Status } from '@/shared/types';
 
 const acceptTransfer = createDomain();
 
@@ -51,7 +53,7 @@ sample({
 	clock: form.formValidated,
 	source: $id,
 	filter: Boolean,
-	fn: (id, { keyword, }) => ({ id, keyword, }),
+	fn: (id, { keyword, }) => ({ id: Number(id), keyword, }),
 	target: mutation.start,
 });
 
@@ -83,4 +85,33 @@ sample({
 		};
 	},
 	target: controls.$query,
+});
+
+update(transfersModel.query, {
+	on: mutation,
+	by: {
+		success: ({ query, mutation, }) => {
+			if (!query) {
+				return {
+					result: [],
+					refetch: true,
+				};
+			}
+
+			if ('error' in query) {
+				return {
+					error: query.error,
+					refetch: true,
+				};
+			}
+
+			return {
+				result: query.result.map((transfer) =>
+					transfer.id === mutation.params.id
+						? { ...transfer, status: Status.accept, }
+						: transfer
+				),
+			};
+		},
+	},
 });

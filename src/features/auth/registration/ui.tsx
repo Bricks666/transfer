@@ -47,6 +47,7 @@ const Address: React.FC = () => {
 			isValid={address.isValid}
 			name='address'
 			label='Адрес кошелька'
+			autoComplete='username'
 			required
 		/>
 	);
@@ -63,6 +64,7 @@ const Password: React.FC = () => {
 			isValid={password.isValid}
 			name='password'
 			label='Пароль'
+			autoComplete='new-password'
 			required
 		/>
 	);

@@ -42,6 +42,6 @@ sample({
 
 sample({
 	clock: mutation.finished.success,
-	fn: ({ result, }) => ({ address: result.login, role: Number(result.role), }),
+	fn: ({ result, }) => ({ address: result.login, role: result.role, }),
 	target: authModel.$user,
 });

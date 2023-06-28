@@ -9,10 +9,10 @@ import styles from './transfers-list.module.css';
 
 export const TransferList: React.FC<CommonProps> = (props) => {
 	const { className, } = props;
-	const transfers = useUnit(transfersModel.query);
+	const transfers = useUnit(transfersModel.$userTransfers);
 	return (
 		<section className={cn(styles.container, className)}>
-			{transfers.data.map((transfer) => (
+			{transfers.map((transfer) => (
 				<TransferCard {...transfer} key={transfer.id} />
 			))}
 		</section>

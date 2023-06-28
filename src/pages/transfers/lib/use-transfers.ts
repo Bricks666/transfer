@@ -5,6 +5,7 @@ import { authModel } from '@/shared/models';
 export const useTransfers = () => {
 	const user = useUnit(authModel.$user);
 	const query = useUnit(transfersModel.query);
+	console.log(user);
 
 	const filteredTransfers = useStoreMap({
 		store: transfersModel.query.$data,

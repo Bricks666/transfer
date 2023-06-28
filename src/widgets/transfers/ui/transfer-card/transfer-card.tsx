@@ -18,16 +18,20 @@ export const TransferCard: React.FC<TransferCardProps> = React.memo(
 		const isSender = user?.address === sender;
 		const isPending = status === Status.pending;
 
-		let actions: React.ReactElement | null | undefined;
+		let actions: React.ReactElement | null = null;
 		if (isPending) {
 			if (isSender) {
-				actions = <CancelTransfer id={id} />;
+				actions = <CancelTransfer id={id.toString()} />;
 			} else {
 				const onClick = () => {
-					openPopup(id);
+					openPopup(id.toString());
 				};
 				actions = (
-					<Button onClick={onClick} variant='contained' color='success'>
+					<Button
+						onClick={onClick}
+						variant='contained'
+						color='success'
+						disableElevation>
 						Принять
 					</Button>
 				);

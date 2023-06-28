@@ -2,18 +2,18 @@ import { Button } from '@mui/material';
 import cn from 'classnames';
 import { useUnit } from 'effector-react';
 import * as React from 'react';
-import { CommonProps } from '@/shared/types';
-import { cancelTransferModel } from '../../model';
+import type { CommonProps } from '@/shared/types';
+import { mutation } from './model';
 
 export interface CancelTransferProps extends CommonProps {
-	readonly id: string;
+	readonly id: number;
 }
 
 export const CancelTransfer: React.FC<CancelTransferProps> = React.memo(
 	function CancelTransfer(props) {
 		const { className, id, } = props;
 
-		const cancel = useUnit(cancelTransferModel.mutation);
+		const cancel = useUnit(mutation);
 
 		const onClick = () => {
 			cancel.start({ id, });

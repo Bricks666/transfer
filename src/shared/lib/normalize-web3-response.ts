@@ -1,3 +1,5 @@
+import { isHexString } from 'web3-validator';
+
 export type NumericPrimitive = number | bigint | `${number}`;
 export type Primitive =
 	| string
@@ -37,7 +39,10 @@ const normalizePrimitive = <T extends Primitive>(
 			return Number(primitive) as NormalizedPrimitiveType<T>;
 
 		case 'string':
-			if (Number.isNaN(Number.parseFloat(primitive))) {
+			if (
+				Number.isNaN(Number.parseFloat(primitive)) ||
+				isHexString(primitive)
+			) {
 				return primitive as NormalizedPrimitiveType<T>;
 			}
 

@@ -47,7 +47,7 @@ const Address: React.FC = React.memo(() => {
 			isValid={address.isValid}
 			name='address'
 			label='Адрес кошелька'
-			autoComplete='name'
+			autoComplete='username'
 			required
 		/>
 	);
@@ -64,6 +64,7 @@ const Password: React.FC = React.memo(() => {
 			isValid={password.isValid}
 			name='password'
 			label='Пароль'
+			autoComplete='current-password'
 			required
 		/>
 	);

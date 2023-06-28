@@ -1,21 +1,25 @@
 import {
-	RouteInstance,
-	RouteParams,
-	RouteParamsAndQuery,
+	type RouteInstance,
+	type RouteParams,
+	type RouteParamsAndQuery,
 	chainRoute
 } from 'atomic-router';
 import {
-	Effect,
-	Event,
-	Store,
+	type Effect,
+	type Event,
+	type Store,
 	attach,
 	createDomain,
 	createEvent,
 	sample
 } from 'effector';
 import { equals } from 'patronum';
-import { Address } from 'web3';
-import { ChainRouteOptions, ExtractValueType, Roles } from '@/shared/types';
+import type { Address } from 'web3';
+import {
+	type ChainRouteOptions,
+	type ExtractValueType,
+	Roles
+} from '@/shared/types';
 
 const authDomain = createDomain();
 
@@ -149,10 +153,11 @@ export const attachWithSender = <Params extends WithSender, Done, Fail = Error>(
 	>({
 		source: $user,
 		effect,
-		mapParams: (params, user) =>
-			({
+		mapParams: (params, user) => {
+			return {
 				...params,
 				sender: user?.address ?? '',
-			} as Params),
+			} as Params;
+		},
 	});
 };

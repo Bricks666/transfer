@@ -15,5 +15,9 @@ export const Balance: React.FC<BalanceProps> = React.memo(function Balance(
 	const { address, } = props;
 	const balance = useBalance(address);
 
-	return <Typography>Balance: {fromWei(balance, 'ether')} ETH</Typography>;
+	return (
+		<Typography>
+			Баланс пользователя: {fromWei(balance, 'ether')} ETH
+		</Typography>
+	);
 });

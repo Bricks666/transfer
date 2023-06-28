@@ -1,7 +1,7 @@
 import { useStoreMap } from 'effector-react';
 import { categoriesModel } from '../model';
 
-export const useCategory = (id: string) => {
+export const useCategory = (id: number) => {
 	return useStoreMap({
 		store: categoriesModel.query.$data,
 		fn: (categories, [id]) => categories.find((category) => category.id === id),

@@ -1,6 +1,7 @@
 /* eslint-disable no-redeclare */
 import Web3, { type Contract, type Address } from 'web3';
 import { CONTRACT_NAME, PROVIDER_ADDRESS, abi } from '../configs';
+import { type NormalizedType, normalizeWeb3Response } from '../lib';
 import type { Callback } from '../types';
 import { contractsServiceRequest } from './request';
 
@@ -26,20 +27,20 @@ type ParamsWithContracts<P extends Record<string, any>> = P & {
 
 export function createContractRequest<R>(
 	cb: Callback<ParamsWithContracts<Record<string, never>>, R>
-): Callback<void, R>;
+): Callback<void, NormalizedType<R>>;
 
 export function createContractRequest<P extends Record<string, any>, R>(
 	cb: Callback<ParamsWithContracts<P>, R>
-): Callback<P, R>;
+): Callback<P, NormalizedType<R>>;
 
-export function createContractRequest<P extends Record<string, any>, R>(
-	cb: any
-): Callback<P, R> {
-	return (params: any = {}) => {
+export function createContractRequest(cb: any) {
+	return async (params: any = {}) => {
 		if (!contract) {
 			throw new Error("Contract wasn't initialized");
 		}
 
-		return cb({ ...params, contract, });
+		const response = await cb({ ...params, contract, });
+
+		return normalizeWeb3Response(response);
 	};
 }

@@ -1,9 +1,9 @@
 import { createMutation } from '@farfetched/core';
 import { createDomain, sample } from 'effector';
 import { createForm } from 'effector-forms';
-import type { Address } from 'web3';
 import { Auth, authApi, AuthParams } from '@/shared/api';
 import { authModel } from '@/shared/models';
+import { FieldsWithNullable } from '@/shared/types';
 
 const loginDomain = createDomain();
 
@@ -13,10 +13,7 @@ export const mutation = createMutation({
 	effect: handlerFx,
 });
 
-interface FormOptions {
-	readonly address: Address | null;
-	readonly password: string;
-}
+type FormOptions = FieldsWithNullable<AuthParams, 'address'>;
 
 export const form = createForm<FormOptions>({
 	fields: {
@@ -45,6 +42,6 @@ sample({
 
 sample({
 	clock: mutation.finished.success,
-	fn: ({ result, }) => ({ address: result.login, role: result.role, }),
+	fn: ({ result, }) => ({ address: result.login, role: Number(result.role), }),
 	target: authModel.$user,
 });

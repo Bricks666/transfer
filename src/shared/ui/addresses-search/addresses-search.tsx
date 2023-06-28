@@ -2,8 +2,8 @@ import { Autocomplete, InputAdornment } from '@mui/material';
 import * as React from 'react';
 import type { Address } from 'web3';
 import { usePreparePicker } from '@/shared/lib';
-import { CommonProps, PickerProps } from '@/shared/types';
-import { Field, FieldProps } from '@/shared/ui';
+import type { CommonProps, PickerProps } from '@/shared/types';
+import { Field, type FieldProps } from '@/shared/ui';
 
 export type AddressesSearchProps = CommonProps &
 	Omit<FieldProps, 'value' | 'onChange' | 'multiline' | 'select'> &

@@ -1,4 +1,4 @@
-import { AppBar, Toolbar } from '@mui/material';
+import { AppBar, Container, Toolbar } from '@mui/material';
 import { useUnit } from 'effector-react';
 import { LogoutButton } from '@/features/auth';
 import { Navigation } from '@/features/page';
@@ -10,10 +10,12 @@ export const Header = () => {
 	const isAuth = useUnit(authModel.$isAuth);
 	return (
 		<AppBar position='static' color='default' variant='outlined'>
-			<Toolbar>
-				<Navigation />
-				{isAuth ? <LogoutButton className={styles.button} /> : null}
-			</Toolbar>
+			<Container>
+				<Toolbar>
+					<Navigation />
+					{isAuth ? <LogoutButton className={styles.button} /> : null}
+				</Toolbar>
+			</Container>
 		</AppBar>
 	);
 };

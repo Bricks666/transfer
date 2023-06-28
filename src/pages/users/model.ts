@@ -3,7 +3,7 @@ import { usersModel } from '@/entities/users';
 import { routes } from '@/shared/configs';
 import { authModel, contractModel } from '@/shared/models';
 
-export const currentRoute = routes.samples;
+export const currentRoute = routes.users;
 export const contractInitiatedRoute =
 	contractModel.chainContractInitiated(currentRoute);
 export const authorizedRoute = authModel.chainAuthorized(

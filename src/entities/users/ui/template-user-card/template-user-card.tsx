@@ -13,7 +13,7 @@ export const TemplateUserCard: React.FC<TemplateUserCardProps> = (props) => {
 	return (
 		<Card className={className}>
 			<CardContent>
-				<UserInfo login={login} role={role} />
+				<UserInfo address={login} role={role} />
 			</CardContent>
 			{actions ? <CardActions>{actions}</CardActions> : null}
 		</Card>

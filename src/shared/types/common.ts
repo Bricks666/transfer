@@ -14,3 +14,10 @@ export type ExtractValueType<T extends Record<any, any>> = T extends Record<
 export interface ChainRouteOptions {
 	readonly otherwise?: Effect<void, any, any> | Event<void>;
 }
+
+export type FieldsWithNullable<
+	T extends Record<string, any>,
+	Keys extends keyof T
+> = {
+	[Key in keyof T]: Keys extends Key ? T[Key] | null : T[Key];
+};

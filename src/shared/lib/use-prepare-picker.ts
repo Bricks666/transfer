@@ -60,7 +60,7 @@ export function usePreparePicker<Label, Stored>(
 	return {
 		onChange: changeHandler,
 		value: selected,
-		multiple,
+		multiple: multiple ?? false,
 	} as const;
 }
 

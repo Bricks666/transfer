@@ -1,11 +1,9 @@
 import { createContractRequest } from '../core';
 import type { CreateSampleParams, Sample } from './types';
 
-export const getAll = createContractRequest(
-	({ contract, }): Promise<Sample[]> => {
-		return contract.methods.get_samples().call();
-	}
-);
+export const getAll = createContractRequest(({ contract, }) => {
+	return contract.methods.get_samples().call<Sample[]>();
+});
 
 export const create = createContractRequest<CreateSampleParams, unknown>(
 	(params) => {

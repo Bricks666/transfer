@@ -1,7 +1,7 @@
 import type { Address } from 'web3';
 
 export interface Category {
-	readonly id: string;
+	readonly id: number;
 	readonly name: string;
 }
 

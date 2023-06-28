@@ -2,16 +2,16 @@ import type { Address } from 'web3';
 import type { Status } from '@/shared/types';
 
 export interface Transfer {
-	readonly id: string;
+	readonly id: number;
 	readonly sender: Address;
 	readonly receiver: Address;
-	readonly category_id: string;
-	readonly money: string;
+	readonly category_id: number;
+	readonly money: number;
 	readonly description: string;
 	readonly keyword: string;
 	readonly status: Status;
-	readonly sended_at: string;
-	readonly finished_at: string;
+	readonly sended_at: number;
+	readonly finished_at: number;
 }
 
 export interface CreateTransferParams

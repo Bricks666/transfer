@@ -1,5 +1,5 @@
 import { sample } from 'effector';
-import { requestsModel } from '@/entities/requests';
+import { categoriesModel } from '@/entities/categories';
 import { samplesModel } from '@/entities/samples';
 import { routes } from '@/shared/configs';
 import { authModel, contractModel } from '@/shared/models';
@@ -14,5 +14,5 @@ export const authorizedRoute = authModel.chainAuthorized(
 
 sample({
 	clock: authorizedRoute.opened,
-	target: [requestsModel.query.start, samplesModel.query.start],
+	target: [categoriesModel.query.start, samplesModel.query.start],
 });

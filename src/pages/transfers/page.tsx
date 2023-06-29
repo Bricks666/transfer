@@ -78,7 +78,7 @@ const Result: React.FC = () => {
 	if (empty) {
 		return (
 			<Center>
-				<Typography className={styles.empty_label} variant='h6' component='p'>
+				<Typography className={styles.empty_label} component='p'>
 					У вас еще нет ни одного перевода
 				</Typography>
 			</Center>

@@ -1,0 +1,13 @@
+.form {
+	display: grid;
+	grid-template-columns: repeat(3, 1fr);
+	gap: 1em;
+}
+
+.button {
+	grid-row: 2;
+	grid-column: 3;
+  justify-self: end;
+
+  width: max-content
+}

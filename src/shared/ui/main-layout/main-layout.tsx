@@ -13,6 +13,7 @@ export const MainLayout: React.FC<React.PropsWithChildren<MainLayoutProps>> = (
 	props
 ) => {
 	const { className, children, header, } = props;
+
 	return (
 		<div className={styles.container}>
 			{header}

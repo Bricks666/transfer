@@ -6,14 +6,17 @@ import { CommonProps } from '@/shared/types';
 export interface CategoryLabelProps
 	extends CommonProps,
 		Omit<TypographyProps, 'id'>,
-		Category {}
+		Omit<Category, 'id'> {}
 
 export const CategoryLabel: React.FC<CategoryLabelProps> = (props) => {
-	// eslint-disable-next-line @typescript-eslint/no-unused-vars
-	const { className, name, id: _, ...rest } = props;
+	const { className, name, ...rest } = props;
 
 	return (
-		<Typography className={className} component='span' {...rest}>
+		<Typography
+			className={className}
+			variant='inherit'
+			component='span'
+			{...rest}>
 			{name}
 		</Typography>
 	);

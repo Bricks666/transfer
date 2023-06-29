@@ -24,3 +24,13 @@
 
   max-width: max-content;
 }
+
+@media (width < 640px) {
+  .form {
+    grid-template-columns: 1fr;
+  }
+
+  .title, .description, .button {
+    grid-column: 1;
+  }
+}

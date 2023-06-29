@@ -1,7 +1,17 @@
 .item {
-	gap: 2em;
+	padding-right: 4em;
+}
 
-  padding-right: 4em;;
+.text {
+	width: max-content;
+
+	flex: none;
+	margin-right: auto;
+}
+
+.info {
+	display: flex;
+	gap: 2em;
 }
 
 .short_text {
@@ -14,4 +24,28 @@
 
 .outgoing {
 	background-color: var(--mui-palette-info-light);
+}
+
+@media (width < 800px) {
+	.category {
+		display: none;
+	}
+}
+
+@media (width < 600px) {
+	.status {
+		display: none;
+	}
+}
+
+@media (width < 480px) {
+	.address {
+		font-size: 14px;
+	}
+}
+
+@media (width < 460px) {
+	.info {
+		display: none;
+	}
 }

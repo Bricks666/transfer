@@ -1,4 +1,4 @@
-import { Tooltip } from '@mui/material';
+import { Tooltip, Typography, TypographyProps } from '@mui/material';
 import * as React from 'react';
 import type { Address } from 'web3';
 import { shortAddress } from '@/shared/lib';
@@ -6,6 +6,7 @@ import type { CommonProps } from '@/shared/types';
 
 export interface AddressLabelProps extends CommonProps {
 	readonly address: Address;
+	readonly TypographyProps?: TypographyProps;
 	readonly short?: boolean;
 	readonly prefix?: React.ReactNode | null;
 	readonly postfix?: React.ReactNode | null;
@@ -13,15 +14,16 @@ export interface AddressLabelProps extends CommonProps {
 }
 
 export const AddressLabel: React.FC<AddressLabelProps> = (props) => {
-	const { className, address, short, title, postfix, prefix, } = props;
+	const { className, address, short, title, postfix, prefix, TypographyProps, } =
+		props;
 	const preparedAddress = short ? shortAddress(address) : address;
 	return (
 		<Tooltip className={className} title={title ?? address}>
-			<span>
+			<Typography {...TypographyProps}>
 				{prefix}
 				{preparedAddress}
 				{postfix}
-			</span>
+			</Typography>
 		</Tooltip>
 	);
 };

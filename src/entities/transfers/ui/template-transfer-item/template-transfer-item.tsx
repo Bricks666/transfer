@@ -50,10 +50,20 @@ export const TemplateTransferItem: React.FC<TemplateTransferItemProps> =
 		const transferIcon = isIncoming ? <AddIcon /> : <RemoveIcon />;
 
 		const senderLabel = (
-			<AddressLabel prefix='Отправитель: ' address={sender} short />
+			<AddressLabel
+				className={styles.address}
+				prefix='Отправитель: '
+				address={sender}
+				short
+			/>
 		);
 		const receiverLabel = (
-			<AddressLabel prefix='Получатель: ' address={receiver} short />
+			<AddressLabel
+				className={styles.address}
+				prefix='Получатель: '
+				address={receiver}
+				short
+			/>
 		);
 		const primaryText = isIncoming ? senderLabel : receiverLabel;
 		const secondaryText = isIncoming ? receiverLabel : senderLabel;
@@ -66,13 +76,18 @@ export const TemplateTransferItem: React.FC<TemplateTransferItemProps> =
 					<Avatar className={avatarClasses}>{transferIcon}</Avatar>
 				</ListItemAvatar>
 				<ListItemText primary={primaryText} secondary={secondaryText} />
-				<ListItemText className={styles.short_text}>{category}</ListItemText>
-				<ListItemText className={styles.short_text}>
-					{statusNames[status]}
-				</ListItemText>
-				<ListItemText className={styles.short_text}>
-					{fromWei(money, 'ether')} ETH
-				</ListItemText>
+				<div className={styles.info}>
+					<ListItemText className={cn(styles.short_text, styles.category)}>
+						{category}
+					</ListItemText>
+					<ListItemText className={cn(styles.short_text, styles.status)}>
+						{statusNames[status]}
+					</ListItemText>
+					<ListItemText className={cn(styles.short_text)}>
+						{fromWei(money, 'ether')} ETH
+					</ListItemText>
+				</div>
+
 				{actions ? (
 					<ListItemSecondaryAction>{actions}</ListItemSecondaryAction>
 				) : null}

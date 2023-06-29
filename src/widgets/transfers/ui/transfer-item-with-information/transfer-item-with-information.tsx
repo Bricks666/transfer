@@ -1,5 +1,5 @@
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
-import { Button, Collapse, IconButton } from '@mui/material';
+import { Button, Collapse, IconButton, Tooltip } from '@mui/material';
 import cn from 'classnames';
 import { useUnit } from 'effector-react';
 import * as React from 'react';
@@ -61,11 +61,15 @@ export const TransferItemWithInformation: React.FC<
 	const categoryLabel = category ? <CategoryLabel {...category} /> : null;
 
 	const expandClasses = cn(styles.expand, { [styles.expand__opened]: opened, });
-
+	const openInfoTitle = opened
+		? 'Свернуть дополнительную информацию'
+		: 'Открыть дополнительную информацию о переводу';
 	const openDetailedInfo = (
-		<IconButton onClick={handlers.toggle}>
-			<ExpandMoreIcon className={expandClasses} />
-		</IconButton>
+		<Tooltip title={openInfoTitle}>
+			<IconButton onClick={handlers.toggle}>
+				<ExpandMoreIcon className={expandClasses} />
+			</IconButton>
+		</Tooltip>
 	);
 
 	return (
@@ -78,7 +82,7 @@ export const TransferItemWithInformation: React.FC<
 				actions={openDetailedInfo}
 				category={categoryLabel}
 			/>
-			<Collapse in={opened}>
+			<Collapse in={opened} mountOnEnter unmountOnExit>
 				<TemplateDetailedTransferInformation
 					{...rest}
 					sender={sender}

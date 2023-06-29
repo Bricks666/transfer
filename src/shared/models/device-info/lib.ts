@@ -1,7 +1,7 @@
 import type { Devices } from './types';
 
 export const calculateDeviceInfo = (x: number): Devices => {
-	if (x < 350) {
+	if (x < 400) {
 		return 'mobile';
 	}
 	if (x < 560) {

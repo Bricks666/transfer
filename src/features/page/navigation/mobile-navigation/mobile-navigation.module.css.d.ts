@@ -1,6 +1,6 @@
 declare const styles: {
-	readonly nav: string;
 	readonly list: string;
 	readonly active: string;
+	readonly text: string;
 };
 export = styles;

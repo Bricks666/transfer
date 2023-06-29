@@ -11,7 +11,7 @@ export const TransferList: React.FC<CommonProps> = (props) => {
 	const transfers = useUnit(transfersModel.$userTransfers);
 	return (
 		<Paper variant='outlined' elevation={0}>
-			<List className={cn(className)}>
+			<List className={cn(className)} disablePadding>
 				{transfers.map((transfer) => (
 					<TransferItemWithInformation {...transfer} key={transfer.id} />
 				))}

@@ -57,7 +57,7 @@ const Form: React.FC = () => {
 				</IconButton>
 			</Tooltip>
 
-			<Collapse className={styles.form} in={opened}>
+			<Collapse className={styles.form} in={opened} mountOnEnter unmountOnExit>
 				<CreateTransferForm />
 			</Collapse>
 		</>

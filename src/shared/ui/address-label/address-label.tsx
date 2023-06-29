@@ -6,18 +6,20 @@ import type { CommonProps } from '@/shared/types';
 
 export interface AddressLabelProps extends CommonProps {
 	readonly address: Address;
+	readonly short?: boolean;
 	readonly prefix?: React.ReactNode | null;
 	readonly postfix?: React.ReactNode | null;
 	readonly title?: React.ReactNode | null;
 }
 
 export const AddressLabel: React.FC<AddressLabelProps> = (props) => {
-	const { className, address, title, postfix, prefix, } = props;
+	const { className, address, short, title, postfix, prefix, } = props;
+	const preparedAddress = short ? shortAddress(address) : address;
 	return (
 		<Tooltip className={className} title={title ?? address}>
 			<span>
 				{prefix}
-				{shortAddress(address)}
+				{preparedAddress}
 				{postfix}
 			</span>
 		</Tooltip>

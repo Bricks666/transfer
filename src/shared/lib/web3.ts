@@ -16,5 +16,5 @@ export const shortAddress = (address: Address): ShortAddress => {
 };
 
 export const toDatetimeString = (date: number): string => {
-	return dayjs(date * 1000).format('mm:HH DD.MM.YYYY');
+	return dayjs(date * 1000).format('HH:mm DD.MM.YYYY');
 };

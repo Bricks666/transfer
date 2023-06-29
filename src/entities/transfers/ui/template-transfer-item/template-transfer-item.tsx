@@ -50,10 +50,10 @@ export const TemplateTransferItem: React.FC<TemplateTransferItemProps> =
 		const transferIcon = isIncoming ? <AddIcon /> : <RemoveIcon />;
 
 		const senderLabel = (
-			<AddressLabel prefix='Отправитель: ' address={sender} />
+			<AddressLabel prefix='Отправитель: ' address={sender} short />
 		);
 		const receiverLabel = (
-			<AddressLabel prefix='Получатель: ' address={receiver} />
+			<AddressLabel prefix='Получатель: ' address={receiver} short />
 		);
 		const primaryText = isIncoming ? senderLabel : receiverLabel;
 		const secondaryText = isIncoming ? receiverLabel : senderLabel;

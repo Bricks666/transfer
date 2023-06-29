@@ -1,5 +1,5 @@
 .item {
-	padding-right: 4em;
+	row-gap: 0.5em;
 }
 
 .text {
@@ -24,6 +24,12 @@
 
 .outgoing {
 	background-color: var(--mui-palette-info-light);
+}
+
+.actions {
+	align-self: center;
+
+	margin-left: auto;
 }
 
 @media (width < 800px) {

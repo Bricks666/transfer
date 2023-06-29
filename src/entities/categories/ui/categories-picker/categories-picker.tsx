@@ -32,7 +32,13 @@ export const CategoriesPicker: React.FC<CategoriesPickerProps> = (props) => {
 			options={categories.data}
 			loading={categories.pending}
 			getOptionLabel={getOptionLabel}
-			renderInput={(params) => <Field {...rest} {...params} />}
+			renderInput={(params) => (
+				<Field
+					{...rest}
+					{...params}
+					InputProps={{ ...rest.InputProps, ...params.InputProps, }}
+				/>
+			)}
 			{...(options as any)}
 			limitTags={limitTags}
 		/>

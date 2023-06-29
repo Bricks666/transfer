@@ -8,5 +8,6 @@ declare const styles: {
 	readonly category: string;
 	readonly status: string;
 	readonly address: string;
+	readonly actions: string;
 };
 export = styles;

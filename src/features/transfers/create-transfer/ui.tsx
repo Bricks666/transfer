@@ -60,6 +60,7 @@ const Receiver: React.FC = () => {
 			isValid={receiver.isValid}
 			name='receiver'
 			label='Получатель'
+			autoComplete='off'
 			required
 		/>
 	);
@@ -77,6 +78,7 @@ const Category: React.FC = () => {
 			isValid={category.isValid}
 			name='Category'
 			label='Категория перевода'
+			InputProps={{ autoComplete: 'off', }}
 			required
 		/>
 	);
@@ -94,6 +96,7 @@ const Money: React.FC = () => {
 			name='Money'
 			label='Сумма перевода'
 			type='number'
+			autoComplete='transaction-amount'
 			required
 		/>
 	);
@@ -111,6 +114,7 @@ const Keyword: React.FC = () => {
 			isValid={keyword.isValid}
 			name='keyword'
 			label='Ключевое слово'
+			autoComplete='new-password'
 			required
 		/>
 	);
@@ -130,6 +134,7 @@ const Description: React.FC = () => {
 			name='description'
 			label='Описание'
 			minRows={2}
+			autoComplete='off'
 			multiline
 		/>
 	);

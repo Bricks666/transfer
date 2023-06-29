@@ -1,12 +1,6 @@
 import AddIcon from '@mui/icons-material/Add';
 import RemoveIcon from '@mui/icons-material/Remove';
-import {
-	Avatar,
-	ListItem,
-	ListItemAvatar,
-	ListItemSecondaryAction,
-	ListItemText
-} from '@mui/material';
+import { Avatar, ListItem, ListItemAvatar, ListItemText } from '@mui/material';
 import cn from 'classnames';
 import * as React from 'react';
 import { fromWei } from 'web3-utils';
@@ -28,8 +22,9 @@ export interface TemplateTransferItemProps
 			| 'category_id'
 			| 'keyword'
 		> {
-	readonly actions?: React.ReactElement;
+	readonly actions?: React.ReactElement | null;
 	readonly category?: React.ReactElement | null;
+	readonly extra?: React.ReactElement | null;
 }
 
 export const TemplateTransferItem: React.FC<TemplateTransferItemProps> =
@@ -43,6 +38,7 @@ export const TemplateTransferItem: React.FC<TemplateTransferItemProps> =
 			category,
 			type,
 			actions,
+			extra,
 		} = props;
 
 		const isIncoming = type === TRANSFER_TYPE.INCOMING;
@@ -87,10 +83,8 @@ export const TemplateTransferItem: React.FC<TemplateTransferItemProps> =
 						{fromWei(money, 'ether')} ETH
 					</ListItemText>
 				</div>
-
-				{actions ? (
-					<ListItemSecondaryAction>{actions}</ListItemSecondaryAction>
-				) : null}
+				{actions ? <div className={styles.actions}>{actions}</div> : null}
+				{extra}
 			</ListItem>
 		);
 	});

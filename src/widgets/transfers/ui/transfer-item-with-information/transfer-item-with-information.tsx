@@ -73,24 +73,28 @@ export const TransferItemWithInformation: React.FC<
 	);
 
 	return (
-		<>
-			<TemplateTransferItem
-				className={className}
-				{...rest}
-				sender={sender}
-				status={status}
-				actions={openDetailedInfo}
-				category={categoryLabel}
-			/>
-			<Collapse in={opened} mountOnEnter unmountOnExit>
-				<TemplateDetailedTransferInformation
-					{...rest}
-					sender={sender}
-					status={status}
-					category={categoryLabel}
-					actions={actions}
-				/>
-			</Collapse>
-		</>
+		<TemplateTransferItem
+			className={cn(styles.item, className)}
+			{...rest}
+			sender={sender}
+			status={status}
+			actions={openDetailedInfo}
+			category={categoryLabel}
+			extra={
+				<Collapse
+					className={styles.info}
+					in={opened}
+					mountOnEnter
+					unmountOnExit>
+					<TemplateDetailedTransferInformation
+						{...rest}
+						sender={sender}
+						status={status}
+						category={categoryLabel}
+						actions={actions}
+					/>
+				</Collapse>
+			}
+		/>
 	);
 };

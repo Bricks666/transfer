@@ -15,7 +15,7 @@ import { transfersModel } from '@/entities/transfers';
 import { SITE_NAME, popups } from '@/shared/configs';
 import { useTitle, useToggle } from '@/shared/lib';
 import { CommonProps } from '@/shared/types';
-import { Center, MainLayout } from '@/shared/ui';
+import { Center, MainLayout, PageTitle } from '@/shared/ui';
 import styles from './page.module.css';
 import { TransferList } from './ui';
 
@@ -30,12 +30,7 @@ const TransfersPage: React.FC<TransfersPageProps> = () => {
 
 	return (
 		<MainLayout header={<Header />}>
-			<div className={styles.header}>
-				<Typography className={styles.title} variant='h4' component='h1'>
-					Переводы
-				</Typography>
-				<Form />
-			</div>
+			<PageTitle title='Переводы' extra={<Form />} />
 			<Result />
 			<Popups popupMap={popupMap} />
 		</MainLayout>

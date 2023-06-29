@@ -1,22 +1,25 @@
-import { Typography } from '@mui/material';
+import { useUnit } from 'effector-react';
 import * as React from 'react';
 import { Header } from '@/widgets/page';
 import { ProfileInfo } from '@/widgets/profile';
 import { SITE_NAME } from '@/shared/configs';
-import { useTitle } from '@/shared/lib';
+import { shortAddress, useTitle } from '@/shared/lib';
 import { CommonProps } from '@/shared/types';
-import { MainLayout } from '@/shared/ui';
+import { MainLayout, PageTitle } from '@/shared/ui';
+import { $currentProfile } from './model';
 
 export interface ProfilePageProps extends CommonProps {}
 
 const ProfilePage: React.FC<ProfilePageProps> = () => {
-	useTitle(`${SITE_NAME} - Профиль`);
+	const address = useUnit($currentProfile);
+	const preparedAddress = shortAddress(address);
+	const title = `Профиль пользователя ${preparedAddress}`;
+
+	useTitle(`${SITE_NAME} - ${title}`);
 
 	return (
 		<MainLayout header={<Header />}>
-			<Typography variant='h4' align='center' component='h1'>
-				Profile
-			</Typography>
+			<PageTitle title={title} />
 			<ProfileInfo />
 		</MainLayout>
 	);

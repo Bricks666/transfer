@@ -8,3 +8,7 @@ export const authorizedRoute = authModel.chainAuthorized(
 	contractInitiatedRoute,
 	{ otherwise: routes.login.open, }
 );
+
+export const $currentProfile = currentRoute.$params.map(
+	(params) => params.address
+);

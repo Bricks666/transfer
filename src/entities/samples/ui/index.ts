@@ -1,1 +1,1 @@
-export * from './template-sample-card';
+export * from './template-sample-item';

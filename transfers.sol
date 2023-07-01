@@ -156,7 +156,7 @@ contract Samples is Users {
 		uint256 id;
 		string name;
 		uint256 category_id;
-		uint256 money;
+		uint256 money; //In wei
 	}
 
 	Sample[] samples;
@@ -164,12 +164,12 @@ contract Samples is Users {
 	event NewSample(Sample sample);
 
 	constructor() {
-		_create_sample('present10', 0, 10);
-		_create_sample('present30', 0, 30);
-		_create_sample('present50', 0, 50);
-		_create_sample('rent70', 1, 70);
-		_create_sample('rent90', 1, 90);
-		_create_sample('debtrepayment', 2, 100);
+		_create_sample('present10', 0, 10 ether);
+		_create_sample('present30', 0, 30 ether);
+		_create_sample('present50', 0, 50 ether);
+		_create_sample('rent70', 1, 70 ether);
+		_create_sample('rent90', 1, 90 ether);
+		_create_sample('debtrepayment', 2, 100 ether);
 	}
 
 	function get_samples() external view returns (Sample[] memory) {

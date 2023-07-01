@@ -1,8 +1,9 @@
 import { createMutation, update } from '@farfetched/core';
 import { createDomain, sample } from 'effector';
 import { createForm } from 'effector-forms';
+import { toWei } from 'web3-utils';
 import { transfersModel } from '@/entities/transfers';
-import { CreateTransferParams, Transfer, transfersApi } from '@/shared/api';
+import { CreateTransferParams, transfersApi } from '@/shared/api';
 import { authModel } from '@/shared/models';
 import { FieldsWithNullable, Status } from '@/shared/types';
 
@@ -85,8 +86,9 @@ update(transfersModel.query, {
 							status: Status.pending,
 							sender: sender!.address,
 							sended_at: Date.now() / 1000,
+							money: toWei(mutation.params.money, 'ether') as unknown as number,
 							finished_at: 0,
-						} as Transfer
+						}
 					],
 					refetch: true,
 				};

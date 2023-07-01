@@ -3,8 +3,7 @@ import RemoveIcon from '@mui/icons-material/Remove';
 import { Avatar, ListItem, ListItemAvatar, ListItemText } from '@mui/material';
 import cn from 'classnames';
 import * as React from 'react';
-import { fromWei } from 'web3-utils';
-import { statusNames } from '@/shared/lib';
+import { prepareMoney, statusNames } from '@/shared/lib';
 import type { CommonProps } from '@/shared/types';
 import { AddressLabel } from '@/shared/ui';
 import { type IdentifiedTransfer, TRANSFER_TYPE } from '../../model';
@@ -65,6 +64,10 @@ export const TemplateTransferItem: React.FC<TemplateTransferItemProps> =
 		const secondaryText = isIncoming ? receiverLabel : senderLabel;
 
 		const avatarClasses = isIncoming ? styles.incoming : styles.outgoing;
+		const { money: preparedMoney, unitName, } = prepareMoney({
+			money,
+			precision: 6,
+		});
 
 		return (
 			<ListItem className={cn(styles.item, className)}>
@@ -73,14 +76,12 @@ export const TemplateTransferItem: React.FC<TemplateTransferItemProps> =
 				</ListItemAvatar>
 				<ListItemText primary={primaryText} secondary={secondaryText} />
 				<div className={styles.info}>
-					<ListItemText className={cn(styles.short_text, styles.category)}>
-						{category}
-					</ListItemText>
-					<ListItemText className={cn(styles.short_text, styles.status)}>
+					<ListItemText className={styles.category}>{category}</ListItemText>
+					<ListItemText className={styles.status}>
 						{statusNames[status]}
 					</ListItemText>
-					<ListItemText className={cn(styles.short_text)}>
-						{fromWei(money, 'ether')} ETH
+					<ListItemText className={styles.money}>
+						{preparedMoney} {unitName}
 					</ListItemText>
 				</div>
 				{actions ? <div className={styles.actions}>{actions}</div> : null}

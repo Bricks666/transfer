@@ -3,13 +3,12 @@ import { Card, CardActions, CardContent, Typography } from '@mui/material';
 import cn from 'classnames';
 import { useUnit } from 'effector-react';
 import * as React from 'react';
-import { fromWei } from 'web3-utils';
 import { Transfer } from '@/shared/api';
-import { statusNames, toDatetimeString } from '@/shared/lib';
+import { prepareMoney, statusNames, toDatetimeString } from '@/shared/lib';
 import { deviceInfoModel } from '@/shared/models';
 import type { CommonProps } from '@/shared/types';
-
 import { AddressLabel } from '@/shared/ui';
+
 import styles from './template-detailed-transfer-information.module.css';
 
 export interface TemplateDetailedTransferInformationProps
@@ -46,6 +45,11 @@ export const TemplateDetailedTransferInformation: React.FC<TemplateDetailedTrans
 			? toDatetimeString(finished_at)
 			: 'Не завершено';
 
+		const { money: preparedMoney, unitName, } = prepareMoney({
+			money,
+			precision: 6,
+		});
+
 		return (
 			<Card
 				className={cn(className)}
@@ -70,8 +74,8 @@ export const TemplateDetailedTransferInformation: React.FC<TemplateDetailedTrans
 						<span className={styles.item}>Категория:</span> {category}
 					</Typography>
 					<Typography className={styles.row}>
-						<span className={styles.item}>Сумма перевода:</span>{' '}
-						{fromWei(money, 'ether')} ETH
+						<span className={styles.item}>Сумма перевода:</span> {preparedMoney}{' '}
+						{unitName}
 					</Typography>
 					<Typography className={styles.row}>
 						<span className={styles.item}>Отправлено:</span> {createdAt}

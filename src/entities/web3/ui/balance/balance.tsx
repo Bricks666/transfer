@@ -1,23 +1,32 @@
-import { Typography } from '@mui/material';
+import { Tooltip, Typography } from '@mui/material';
+import cn from 'classnames';
 import * as React from 'react';
 import type { Address } from 'web3';
-import { fromWei } from 'web3-utils';
+import { prepareMoney } from '@/shared/lib';
 import type { CommonProps } from '@/shared/types';
+
 import { useBalance } from '../../lib';
+import styles from './balance.module.css';
 
 export interface BalanceProps extends CommonProps {
-	readonly address: Address;
+	readonly address: Address | null;
 }
 
 export const Balance: React.FC<BalanceProps> = React.memo(function Balance(
 	props
 ) {
-	const { address, } = props;
-	const balance = useBalance(address);
+	const { className, address, } = props;
+	const balance = useBalance({ address, });
 
+	const { money: preparedBalance, unitName, } = prepareMoney({
+		money: balance,
+		precision: 3,
+	});
 	return (
-		<Typography>
-			Баланс пользователя: {fromWei(balance, 'ether')} ETH
-		</Typography>
+		<Tooltip title='Текущий баланс пользователя'>
+			<Typography className={cn(styles.wrapper, className)}>
+				{preparedBalance} <span className={styles.currency}>{unitName}</span>
+			</Typography>
+		</Tooltip>
 	);
 });

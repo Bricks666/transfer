@@ -3,10 +3,9 @@ import { authModel } from '@/shared/models';
 
 const logoutDomain = createDomain();
 
-export const logoutFx = logoutDomain.effect<void, void>(console.log);
+export const logoutFx = logoutDomain.effect<void, null>(() => null);
 
 sample({
-	clock: logoutFx.done,
-	fn: () => null,
+	clock: logoutFx.doneData,
 	target: authModel.$user,
 });

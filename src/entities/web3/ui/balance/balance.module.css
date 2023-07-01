@@ -1,0 +1,9 @@
+.wrapper {
+	text-overflow: ellipsis;
+	white-space: nowrap;
+	overflow: hidden;
+}
+
+.currency {
+	font-weight: 700;
+}

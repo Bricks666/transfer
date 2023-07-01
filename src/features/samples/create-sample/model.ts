@@ -3,7 +3,7 @@ import { createDomain, sample } from 'effector';
 import { createForm } from 'effector-forms';
 import { samplesModel } from '@/entities/samples';
 import { CreateSampleParams, samplesApi } from '@/shared/api';
-import { authModel } from '@/shared/models';
+import { authModel, notificationsModel } from '@/shared/models';
 import { FieldsWithNullable } from '@/shared/types';
 
 const createSampleDomain = createDomain();
@@ -47,6 +47,15 @@ sample({
 sample({
 	clock: mutation.finished.success,
 	target: form.reset,
+});
+
+notificationsModel.withNotifications({
+	operation: mutation,
+	messages: {
+		send: 'Запрос на создание шаблона отправлен',
+		success: 'Шаблон создан',
+		error: 'Шаблон не был создан',
+	},
 });
 
 update(samplesModel.query, {

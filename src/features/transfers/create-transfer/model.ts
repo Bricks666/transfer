@@ -4,7 +4,7 @@ import { createForm } from 'effector-forms';
 import { toWei } from 'web3-utils';
 import { transfersModel } from '@/entities/transfers';
 import { CreateTransferParams, transfersApi } from '@/shared/api';
-import { authModel } from '@/shared/models';
+import { authModel, notificationsModel } from '@/shared/models';
 import { FieldsWithNullable, Status } from '@/shared/types';
 
 const createTransfer = createDomain();
@@ -52,6 +52,15 @@ sample({
 		return !!values.receiver;
 	},
 	target: mutation.start as any,
+});
+
+notificationsModel.withNotifications({
+	operation: mutation,
+	messages: {
+		send: 'Запрос на перевод отправлен',
+		success: 'Перевод отправлен',
+		error: 'Перевод не был отправлен',
+	},
 });
 
 update(transfersModel.query, {

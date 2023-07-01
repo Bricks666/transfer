@@ -5,7 +5,7 @@ import { createPopupControlModel } from '@/entities/popups';
 import { transfersModel } from '@/entities/transfers';
 import { AcceptTransferParams, transfersApi } from '@/shared/api';
 import { controls, getParams, popups } from '@/shared/configs';
-import { authModel } from '@/shared/models';
+import { authModel, notificationsModel } from '@/shared/models';
 import { Status } from '@/shared/types';
 
 const acceptTransfer = createDomain();
@@ -55,6 +55,15 @@ sample({
 	filter: Boolean,
 	fn: (id, { keyword, }) => ({ id: Number(id), keyword, }),
 	target: mutation.start,
+});
+
+notificationsModel.withNotifications({
+	operation: mutation,
+	messages: {
+		send: 'Принятие перевода',
+		success: 'Перевод был принят',
+		error: 'Перевод не был принят',
+	},
 });
 
 sample({

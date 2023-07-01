@@ -3,6 +3,7 @@ import {
 	StyledEngineProvider
 } from '@mui/material';
 import * as React from 'react';
+import 'effector-mui-snacks/dist/style.css';
 
 export const withStyles =
 	(Component: React.ComponentType): React.ComponentType =>

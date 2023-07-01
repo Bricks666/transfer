@@ -1,4 +1,4 @@
-import { Button } from '@mui/material';
+import { Button, Paper } from '@mui/material';
 import cn from 'classnames';
 import { useUnit } from 'effector-react';
 import * as React from 'react';
@@ -18,7 +18,12 @@ export const CreateSampleForm: React.FC<CommonProps> = (props) => {
 	const onSubmit = useSubmit(submit);
 
 	return (
-		<form className={cn(styles.form, className)} onSubmit={onSubmit}>
+		<Paper
+			className={cn(styles.form, className)}
+			onSubmit={onSubmit}
+			variant='outlined'
+			elevation={0}
+			component='form'>
 			<Name />
 			<Category />
 			<Money />
@@ -28,9 +33,9 @@ export const CreateSampleForm: React.FC<CommonProps> = (props) => {
 				variant='contained'
 				disabled={isSubmitting}
 				disableElevation>
-				Create sample
+				Добавить
 			</Button>
-		</form>
+		</Paper>
 	);
 };
 const Name: React.FC = () => {

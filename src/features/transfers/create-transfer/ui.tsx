@@ -21,7 +21,7 @@ export const CreateTransferForm: React.FC<CreateTransferFormProps> = React.memo(
 
 		const onSubmit = useSubmit(submit);
 		/**
-		 * TODO: Добавить менеджер форм и сделать заполнение по шаблону
+		 * TODO: Сделать заполнение по шаблону
 		 */
 
 		return (

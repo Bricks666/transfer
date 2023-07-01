@@ -1,13 +1,13 @@
 declare const styles: {
 	readonly item: string;
 	readonly text: string;
+	readonly address: string;
 	readonly info: string;
-	readonly short_text: string;
+	readonly status: string;
+	readonly money: string;
 	readonly incoming: string;
 	readonly outgoing: string;
-	readonly category: string;
-	readonly status: string;
-	readonly address: string;
 	readonly actions: string;
+	readonly category: string;
 };
 export = styles;

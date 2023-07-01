@@ -8,3 +8,4 @@ export * from './addresses-search';
 export * from './password-field';
 export * from './address-label';
 export * from './page-title';
+export * from './collapsed-form';

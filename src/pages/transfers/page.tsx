@@ -1,21 +1,15 @@
 import AddIcon from '@mui/icons-material/Add';
-import {
-	CircularProgress,
-	Collapse,
-	IconButton,
-	Tooltip,
-	Typography
-} from '@mui/material';
-import cn from 'classnames';
+import CloseIcon from '@mui/icons-material/Close';
+import { CircularProgress, Typography } from '@mui/material';
 import { useUnit } from 'effector-react';
 import * as React from 'react';
 import { Header, Popups } from '@/widgets/page';
 import { AcceptTransfer, CreateTransferForm } from '@/features/transfers';
 import { transfersModel } from '@/entities/transfers';
 import { SITE_NAME, popups } from '@/shared/configs';
-import { useTitle, useToggle } from '@/shared/lib';
-import { CommonProps } from '@/shared/types';
-import { Center, MainLayout, PageTitle } from '@/shared/ui';
+import { useTitle } from '@/shared/lib';
+import type { CommonProps } from '@/shared/types';
+import { Center, CollapsedForm, MainLayout, PageTitle } from '@/shared/ui';
 import styles from './page.module.css';
 import { TransferList } from './ui';
 
@@ -30,32 +24,22 @@ const TransfersPage: React.FC<TransfersPageProps> = () => {
 
 	return (
 		<MainLayout header={<Header />}>
-			<PageTitle title='Переводы' extra={<Form />} />
+			<PageTitle
+				title='Переводы'
+				extra={
+					<CollapsedForm
+						title='Создать перевод'
+						openedTitle='Закрыть форму'
+						collapseClassName={styles.form}
+						form={<CreateTransferForm />}
+						closedIcon={<AddIcon />}
+						openedIcon={<CloseIcon />}
+					/>
+				}
+			/>
 			<Result />
 			<Popups popupMap={popupMap} />
 		</MainLayout>
-	);
-};
-
-const Form: React.FC = () => {
-	const [opened, handlers] = useToggle(false);
-
-	const iconClasses = cn(styles.icon, { [styles.icon__active]: opened, });
-
-	const title = opened ? 'Закрыть форму' : 'Создать перевод';
-
-	return (
-		<>
-			<Tooltip title={title}>
-				<IconButton onClick={handlers.toggle}>
-					<AddIcon className={iconClasses} />
-				</IconButton>
-			</Tooltip>
-
-			<Collapse className={styles.form} in={opened} mountOnEnter unmountOnExit>
-				<CreateTransferForm />
-			</Collapse>
-		</>
 	);
 };
 

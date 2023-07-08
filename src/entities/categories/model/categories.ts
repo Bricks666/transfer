@@ -11,3 +11,5 @@ export const query = createQuery({
 });
 
 cache(query);
+
+export const $empty = query.$data.map((data) => !data.length);

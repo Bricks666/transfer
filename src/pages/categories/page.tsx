@@ -1,12 +1,15 @@
 import AddIcon from '@mui/icons-material/Add';
 import CloseIcon from '@mui/icons-material/Close';
+import { CircularProgress, Typography } from '@mui/material';
+import { useUnit } from 'effector-react';
 import * as React from 'react';
 import { Header } from '@/widgets/page';
 import { CreateCategoryForm } from '@/features/categories';
+import { categoriesModel } from '@/entities/categories';
 import { SITE_NAME } from '@/shared/configs';
 import { useTitle } from '@/shared/lib';
 import { CommonProps } from '@/shared/types';
-import { CollapsedForm, MainLayout, PageTitle } from '@/shared/ui';
+import { Center, CollapsedForm, MainLayout, PageTitle } from '@/shared/ui';
 import styles from './page.module.css';
 import { CategoryList } from './ui';
 
@@ -19,12 +22,12 @@ const CategoriesPage: React.FC<CategoriesPageProps> = () => {
 	return (
 		<MainLayout header={<Header />}>
 			<PageTitle title='Категории' extra={<Form />} />
-			<CategoryList />
+			<Result />
 		</MainLayout>
 	);
 };
 
-const Form: React.FC = React.memo(() => {
+const Form: React.FC = () => {
 	return (
 		<CollapsedForm
 			title='Создать категорию'
@@ -35,6 +38,30 @@ const Form: React.FC = React.memo(() => {
 			openedIcon={<CloseIcon />}
 		/>
 	);
-});
+};
+
+const Result: React.FC = () => {
+	const loading = useUnit(categoriesModel.query.$pending);
+	const empty = useUnit(categoriesModel.$empty);
+
+	if (loading) {
+		return (
+			<Center>
+				<CircularProgress size={60} />
+			</Center>
+		);
+	}
+	if (empty) {
+		return (
+			<Center>
+				<Typography className={styles.empty_label} component='p'>
+					У вас еще нет ни одного перевода
+				</Typography>
+			</Center>
+		);
+	}
+
+	return <CategoryList />;
+};
 
 export default CategoriesPage;

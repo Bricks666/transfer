@@ -8,7 +8,7 @@ export const CategoryList: React.FC = () => {
 
 	return (
 		<Paper variant='outlined' elevation={0}>
-			<List>
+			<List disablePadding>
 				{categories.data.map((category) => (
 					<TemplateCategoryItem {...category} divider key={category.id} />
 				))}

@@ -6,6 +6,7 @@ import { usePreparePicker } from '@/shared/lib';
 import type { PickerProps } from '@/shared/types';
 import { Field, type FieldProps } from '@/shared/ui';
 import { categoriesModel } from '../../model';
+import { TemplateCategoryItem } from '../template-category-item';
 
 export type CategoriesPickerProps = Omit<
 	FieldProps,
@@ -39,6 +40,9 @@ export const CategoriesPicker: React.FC<CategoriesPickerProps> = (props) => {
 					InputProps={{ ...rest.InputProps, ...params.InputProps, }}
 				/>
 			)}
+			renderOption={(props, option) => {
+				return <TemplateCategoryItem {...props} {...(option as Category)} />;
+			}}
 			{...(options as any)}
 			limitTags={limitTags}
 		/>

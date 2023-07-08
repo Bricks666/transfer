@@ -1,20 +1,18 @@
-import { List, ListItem } from '@mui/material';
+import { List, Paper } from '@mui/material';
 import { useUnit } from 'effector-react';
 import * as React from 'react';
-import { CategoryCard, categoriesModel } from '@/entities/categories';
-
-import styles from './categories-list.module.css';
+import { TemplateCategoryItem, categoriesModel } from '@/entities/categories';
 
 export const CategoryList: React.FC = () => {
 	const categories = useUnit(categoriesModel.query);
 
 	return (
-		<List className={styles.list}>
-			{categories.data.map((category) => (
-				<ListItem className={styles.item} key={category.id}>
-					<CategoryCard className={styles.card} {...category} />
-				</ListItem>
-			))}
-		</List>
+		<Paper variant='outlined' elevation={0}>
+			<List>
+				{categories.data.map((category) => (
+					<TemplateCategoryItem {...category} divider key={category.id} />
+				))}
+			</List>
+		</Paper>
 	);
 };

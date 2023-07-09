@@ -6,13 +6,11 @@ import type { Address } from 'web3';
 import { CommonProps } from '@/shared/types';
 import { createRequestModel } from '../../model';
 
-export interface CreateRequestButtonProps extends CommonProps {
+export interface SetOnRequestProps extends CommonProps {
 	readonly candidate: Address;
 }
 
-export const CreateRequestButton: React.FC<CreateRequestButtonProps> = (
-	props
-) => {
+export const SetOnRequest: React.FC<SetOnRequestProps> = (props) => {
 	const { candidate, } = props;
 	const createRequest = useUnit(createRequestModel.mutation);
 

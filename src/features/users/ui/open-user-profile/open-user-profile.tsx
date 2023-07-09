@@ -6,11 +6,11 @@ import type { Address } from 'web3';
 import { routes } from '@/shared/configs';
 import type { CommonProps } from '@/shared/types';
 
-export interface ViewUserProfileProps extends CommonProps {
+export interface OpenUserProfileProps extends CommonProps {
 	readonly address: Address;
 }
 
-export const ViewUserProfile: React.FC<ViewUserProfileProps> = (props) => {
+export const OpenUserProfile: React.FC<OpenUserProfileProps> = (props) => {
 	const { className, address, } = props;
 
 	return (

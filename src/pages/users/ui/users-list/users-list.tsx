@@ -14,7 +14,7 @@ export const UsersList: React.FC<UsersListProps> = (props) => {
 	return (
 		<BorderedList className={className} variant='outlined' elevation={0}>
 			{users.data.map((user) => (
-				<UserItem {...user} key={user.login} />
+				<UserItem {...user} divider key={user.login} />
 			))}
 		</BorderedList>
 	);

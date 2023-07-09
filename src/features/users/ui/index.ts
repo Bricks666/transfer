@@ -1,1 +1,1 @@
-export * from './ViewUserProfile';
+export * from './open-user-profile';

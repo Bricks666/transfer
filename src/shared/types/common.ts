@@ -1,8 +1,6 @@
-import { Effect, Event } from 'effector';
+import type { Effect, Event } from 'effector';
 
 export type VoidFunction = () => void;
-
-export type Callback<P, R> = (params: P) => R;
 
 export type ExtractValueType<T extends Record<any, any>> = T extends Record<
 	any,

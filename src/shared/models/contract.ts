@@ -12,7 +12,7 @@ import type { ChainRouteOptions, ExtractValueType } from '../types';
 
 const contractDomain = createDomain();
 
-const handlerFx = contractDomain.effect(coreApi.initContract);
+const handlerFx = contractDomain.effect(coreApi.fetch);
 
 const STATUSES = {
 	INIT: 'init',

@@ -8,14 +8,14 @@ import { SITE_NAME } from '@/shared/configs';
 import { shortAddress, useTitle } from '@/shared/lib';
 import type { CommonProps } from '@/shared/types';
 import { Center, MainLayout, PageTitle } from '@/shared/ui';
-import { $currentProfile, $profile } from './model';
+import { $currentProfileAddress, $profile } from './model';
 
 import styles from './page.module.css';
 
 export interface ProfilePageProps extends CommonProps {}
 
 const ProfilePage: React.FC<ProfilePageProps> = () => {
-	const address = useUnit($currentProfile);
+	const address = useUnit($currentProfileAddress);
 	const preparedAddress = shortAddress(address);
 	const title = `Профиль пользователя ${preparedAddress}`;
 

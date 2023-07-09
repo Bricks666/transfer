@@ -1,6 +1,7 @@
 import { Mutation, Query } from '@farfetched/core';
 import { sample } from 'effector';
 import { createSnackbarStackModel } from 'effector-mui-snacks';
+import { $isAuth } from './auth';
 
 export const snacks = createSnackbarStackModel({
 	variant: 'filled',
@@ -8,9 +9,9 @@ export const snacks = createSnackbarStackModel({
 });
 
 interface Messages {
-	readonly send: string;
-	readonly success: string;
-	readonly error: string;
+	readonly send?: string;
+	readonly success?: string;
+	readonly error?: string;
 }
 
 interface WithNotificationsParams {
@@ -20,33 +21,42 @@ interface WithNotificationsParams {
 
 export const attachNotifications = (params: WithNotificationsParams) => {
 	const { messages, operation, } = params;
-	sample({
-		clock: operation.start,
-		fn: () =>
-			({
-				message: messages.send,
-				color: 'info',
-			} as const),
-		target: snacks.create,
-	});
+	if (messages.send) {
+		sample({
+			clock: operation.start,
+			filter: $isAuth,
+			fn: () =>
+				({
+					message: messages.send!,
+					color: 'info',
+				} as const),
+			target: snacks.create,
+		});
+	}
 
-	sample({
-		clock: operation.finished.success,
-		fn: () =>
-			({
-				message: messages.success,
-				color: 'success',
-			} as const),
-		target: snacks.create,
-	});
+	if (messages.success) {
+		sample({
+			clock: operation.finished.success,
+			filter: $isAuth,
+			fn: () =>
+				({
+					message: messages.success!,
+					color: 'success',
+				} as const),
+			target: snacks.create,
+		});
+	}
 
-	sample({
-		clock: operation.finished.failure,
-		fn: () =>
-			({
-				message: messages.error,
-				color: 'error',
-			} as const),
-		target: snacks.create,
-	});
+	if (messages.error) {
+		sample({
+			clock: operation.finished.failure,
+			filter: $isAuth,
+			fn: () =>
+				({
+					message: messages.error!,
+					color: 'error',
+				} as const),
+			target: snacks.create,
+		});
+	}
 };

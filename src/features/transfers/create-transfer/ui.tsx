@@ -3,7 +3,7 @@ import cn from 'classnames';
 import { useUnit } from 'effector-react';
 import * as React from 'react';
 import { CategoriesPicker } from '@/entities/categories';
-import { Web3AddressesSearch } from '@/entities/web3';
+import { UsersPicker } from '@/entities/users';
 import { useSubmit } from '@/shared/lib';
 import { CommonProps } from '@/shared/types';
 import { Field, PasswordField } from '@/shared/ui';
@@ -30,6 +30,7 @@ export const CreateTransferForm: React.FC<CreateTransferFormProps> = React.memo(
 				onSubmit={onSubmit}
 				variant='outlined'
 				elevation={0}
+				autoComplete='off'
 				component='form'>
 				<Receiver />
 				<Category />
@@ -52,7 +53,7 @@ export const CreateTransferForm: React.FC<CreateTransferFormProps> = React.memo(
 const Receiver: React.FC = () => {
 	const receiver = useUnit(form.fields.receiver);
 	return (
-		<Web3AddressesSearch
+		<UsersPicker
 			value={receiver.value}
 			onChange={receiver.onChange}
 			onBlur={receiver.onBlur}
@@ -60,7 +61,7 @@ const Receiver: React.FC = () => {
 			isValid={receiver.isValid}
 			name='receiver'
 			label='Получатель'
-			autoComplete='off'
+			InputProps={{ autoComplete: 'off', }}
 			required
 		/>
 	);

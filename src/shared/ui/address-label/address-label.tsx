@@ -4,6 +4,8 @@ import type { Address } from 'web3';
 import { shortAddress } from '@/shared/lib';
 import type { CommonProps } from '@/shared/types';
 
+import styles from './address-lable.module.css';
+
 export interface AddressLabelProps extends CommonProps {
 	readonly address: Address;
 	readonly TypographyProps?: TypographyProps;
@@ -19,7 +21,7 @@ export const AddressLabel: React.FC<AddressLabelProps> = (props) => {
 	const preparedAddress = short ? shortAddress(address) : address;
 	return (
 		<Tooltip className={className} title={title ?? address}>
-			<Typography {...TypographyProps}>
+			<Typography className={styles.text} {...TypographyProps}>
 				{prefix}
 				{preparedAddress}
 				{postfix}

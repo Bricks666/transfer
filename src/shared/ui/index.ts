@@ -10,3 +10,5 @@ export * from './address-label';
 export * from './page-title';
 export * from './collapsed-form';
 export * from './contract-error';
+export * from './form';
+export * from './bordered-list';

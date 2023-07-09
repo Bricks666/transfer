@@ -1,4 +1,4 @@
-import { Button, Paper } from '@mui/material';
+import { Button } from '@mui/material';
 import cn from 'classnames';
 import { useUnit } from 'effector-react';
 import * as React from 'react';
@@ -6,7 +6,7 @@ import { CategoriesPicker } from '@/entities/categories';
 import { UsersPicker } from '@/entities/users';
 import { useSubmit } from '@/shared/lib';
 import { CommonProps } from '@/shared/types';
-import { Field, PasswordField } from '@/shared/ui';
+import { Field, Form, PasswordField } from '@/shared/ui';
 import { form, mutation } from './model';
 
 import styles from './ui.module.css';
@@ -25,13 +25,10 @@ export const CreateTransferForm: React.FC<CreateTransferFormProps> = React.memo(
 		 */
 
 		return (
-			<Paper
+			<Form
 				className={cn(styles.form, className)}
 				onSubmit={onSubmit}
-				variant='outlined'
-				elevation={0}
-				autoComplete='off'
-				component='form'>
+				autoComplete='off'>
 				<Receiver />
 				<Category />
 				<Money />
@@ -45,7 +42,7 @@ export const CreateTransferForm: React.FC<CreateTransferFormProps> = React.memo(
 					disableElevation>
 					Отправить
 				</Button>
-			</Paper>
+			</Form>
 		);
 	}
 );

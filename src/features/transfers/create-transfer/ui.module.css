@@ -1,15 +1,11 @@
 .form {
-	display: grid;
-	gap: 1em;
 	grid-template-columns: repeat(2, 1fr);
-
-	padding: 1em;
 }
 
 .title {
 	grid-column: span 2;
 
-  text-align: center;
+	text-align: center;
 	font-weight: 700;
 }
 
@@ -20,17 +16,19 @@
 .button {
 	grid-column: 2;
 	align-self: end;
-  justify-self: end;
+	justify-self: end;
 
-  max-width: max-content;
+	max-width: max-content;
 }
 
 @media (width < 640px) {
-  .form {
-    grid-template-columns: 1fr;
-  }
+	.form {
+		grid-template-columns: 1fr;
+	}
 
-  .title, .description, .button {
-    grid-column: 1;
-  }
+	.title,
+	.description,
+	.button {
+		grid-column: 1;
+	}
 }

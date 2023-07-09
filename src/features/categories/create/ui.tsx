@@ -1,10 +1,9 @@
-import { Button, Paper } from '@mui/material';
-import cn from 'classnames';
+import { Button } from '@mui/material';
 import { useUnit } from 'effector-react';
 import * as React from 'react';
 import { useSubmit } from '@/shared/lib';
 import type { CommonProps } from '@/shared/types';
-import { Field } from '@/shared/ui';
+import { Field, Form } from '@/shared/ui';
 import { form, mutation } from './model';
 
 import styles from './ui.module.css';
@@ -18,12 +17,7 @@ export const CreateCategoryForm: React.FC<CommonProps> = React.memo(
 		const onSubmit = useSubmit(submit);
 
 		return (
-			<Paper
-				className={cn(styles.form, className)}
-				onSubmit={onSubmit}
-				variant='outlined'
-				elevation={0}
-				component='form'>
+			<Form className={className} onSubmit={onSubmit}>
 				<Name />
 				<Button
 					className={styles.button}
@@ -33,7 +27,7 @@ export const CreateCategoryForm: React.FC<CommonProps> = React.memo(
 					disableElevation>
 					Создать
 				</Button>
-			</Paper>
+			</Form>
 		);
 	}
 );

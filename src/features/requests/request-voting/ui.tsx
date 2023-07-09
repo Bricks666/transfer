@@ -2,7 +2,7 @@ import { Button, ButtonGroup } from '@mui/material';
 import { useUnit } from 'effector-react';
 import * as React from 'react';
 import { CommonProps } from '@/shared/types';
-import { requestActionsModel } from '../../model';
+import { acceptMutation, cancelMutation } from './model';
 
 export interface RequestVotingProps extends CommonProps {
 	readonly id: number;
@@ -10,8 +10,8 @@ export interface RequestVotingProps extends CommonProps {
 
 export const RequestVoting: React.FC<RequestVotingProps> = (props) => {
 	const { id, } = props;
-	const accept = useUnit(requestActionsModel.acceptMutation);
-	const cancel = useUnit(requestActionsModel.cancelMutation);
+	const accept = useUnit(acceptMutation);
+	const cancel = useUnit(cancelMutation);
 
 	const onAccept = () => {
 		accept.start({ id, });

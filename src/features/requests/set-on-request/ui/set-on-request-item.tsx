@@ -4,7 +4,7 @@ import { useUnit } from 'effector-react';
 import * as React from 'react';
 import type { Address } from 'web3';
 import { CommonProps } from '@/shared/types';
-import { createRequestModel } from '../../model';
+import { mutation } from '../model';
 
 export interface SetOnRequestItemProps extends CommonProps {
 	readonly candidate: Address;
@@ -13,7 +13,7 @@ export interface SetOnRequestItemProps extends CommonProps {
 
 export const SetOnRequestItem: React.FC<SetOnRequestItemProps> = (props) => {
 	const { candidate, disabled, className, } = props;
-	const createRequest = useUnit(createRequestModel.mutation);
+	const createRequest = useUnit(mutation);
 
 	const onClick = () => {
 		createRequest.start({ candidate, });

@@ -9,3 +9,4 @@ export * from './web3';
 export * from './create-toggler';
 export * from './string-to-color';
 export * from './prepare-money';
+export * from './id-sorts';

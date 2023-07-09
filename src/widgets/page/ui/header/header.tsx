@@ -1,4 +1,3 @@
-
 import { AppBar, Avatar, Container, IconButton, Toolbar } from '@mui/material';
 import { useUnit } from 'effector-react';
 import * as React from 'react';
@@ -19,7 +18,7 @@ export const Header: React.FC = () => {
 	const showDesktopNavigation = isDesktop || isSmallDesktop;
 
 	return (
-		<AppBar position='static' color='default' variant='outlined'>
+		<AppBar position='static' color='default' variant='outlined' elevation={0}>
 			<Container>
 				<Toolbar>
 					{showDesktopNavigation ? <DesktopNavigation /> : <MobileNavigation />}

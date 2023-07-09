@@ -10,12 +10,13 @@ import styles from './balance.module.css';
 
 export interface BalanceProps extends CommonProps {
 	readonly address: Address | null;
+	readonly title?: string;
 }
 
 export const Balance: React.FC<BalanceProps> = React.memo(function Balance(
 	props
 ) {
-	const { className, address, } = props;
+	const { className, address, title = 'Текущий баланс пользователя', } = props;
 	const balance = useBalance({ address, });
 
 	const { money: preparedBalance, unitName, } = prepareMoney({
@@ -23,8 +24,8 @@ export const Balance: React.FC<BalanceProps> = React.memo(function Balance(
 		precision: 3,
 	});
 	return (
-		<Tooltip title='Текущий баланс пользователя'>
-			<Typography className={cn(styles.wrapper, className)}>
+		<Tooltip title={title}>
+			<Typography className={cn(styles.wrapper, className)} component='span'>
 				{preparedBalance} <span className={styles.currency}>{unitName}</span>
 			</Typography>
 		</Tooltip>

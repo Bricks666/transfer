@@ -57,6 +57,9 @@ const normalizeRecord = <T extends Record<string, any>>(
 	object: T
 ): NormalizedRecordType<T> => {
 	return Object.entries(object).reduce((acc, [key, value]) => {
+		if (!Number.isNaN(Number(key))) {
+			return acc;
+		}
 		acc[key as keyof T] = normalizeWeb3Response(value);
 		return acc;
 	}, {} as NormalizedRecordType<T>);

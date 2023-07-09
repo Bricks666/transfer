@@ -1,6 +1,7 @@
 import { createQuery, cache } from '@farfetched/core';
 import { type Store, combine, createDomain } from 'effector';
 import { transfersApi } from '@/shared/api';
+import { descending } from '@/shared/lib';
 import { authModel } from '@/shared/models';
 import { type IdentifiedTransfer, TRANSFER_TYPE } from './types';
 
@@ -11,6 +12,7 @@ const handlerFx = transfers.effect(transfersApi.getAll);
 export const query = createQuery({
 	effect: handlerFx,
 	initialData: [],
+	mapData: ({ result, }) => result.sort(descending),
 });
 
 export const $userTransfers: Store<IdentifiedTransfer[]> = combine(

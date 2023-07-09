@@ -1,4 +1,5 @@
-import { Button } from '@mui/material';
+import AccountCircleIcon from '@mui/icons-material/AccountCircle';
+import { IconButton, Tooltip } from '@mui/material';
 import { Link } from 'atomic-router-react';
 import * as React from 'react';
 import type { Address } from 'web3';
@@ -11,13 +12,16 @@ export interface ViewUserProfileProps extends CommonProps {
 
 export const ViewUserProfile: React.FC<ViewUserProfileProps> = (props) => {
 	const { className, address, } = props;
+
 	return (
-		<Button
-			className={className}
-			to={routes.profile as any}
-			params={{ address, }}
-			component={Link}>
-			View user profile
-		</Button>
+		<Tooltip title='Открыть профиль пользователя'>
+			<IconButton
+				className={className}
+				to={routes.profile as any}
+				params={{ address, }}
+				component={Link}>
+				<AccountCircleIcon />
+			</IconButton>
+		</Tooltip>
 	);
 };

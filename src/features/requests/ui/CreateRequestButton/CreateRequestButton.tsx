@@ -1,4 +1,5 @@
-import { Button } from '@mui/material';
+import BallotIcon from '@mui/icons-material/Ballot';
+import { IconButton, Tooltip } from '@mui/material';
 import { useUnit } from 'effector-react';
 import * as React from 'react';
 import type { Address } from 'web3';
@@ -14,16 +15,19 @@ export const CreateRequestButton: React.FC<CreateRequestButtonProps> = (
 ) => {
 	const { candidate, } = props;
 	const createRequest = useUnit(createRequestModel.mutation);
+
 	const onClick = () => {
 		createRequest.start({ candidate, });
 	};
+
 	return (
-		<Button
-			onClick={onClick}
-			type='button'
-			variant='outlined'
-			disabled={createRequest.pending}>
-			Set on request
-		</Button>
+		<Tooltip title='Выставить пользователя на голосование'>
+			<IconButton
+				onClick={onClick}
+				type='button'
+				disabled={createRequest.pending}>
+				<BallotIcon />
+			</IconButton>
+		</Tooltip>
 	);
 };

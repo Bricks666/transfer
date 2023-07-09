@@ -1,2 +1,2 @@
-export * from './template-user-card';
 export * from './user-info';
+export * from './template-user-item';

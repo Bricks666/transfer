@@ -1,24 +1,23 @@
-import { List, ListItem } from '@mui/material';
+import { List, Paper } from '@mui/material';
 import { useUnit } from 'effector-react';
 import * as React from 'react';
-import { UserCard } from '@/widgets/users';
+import { UserItem } from '@/widgets/users';
 import { usersModel } from '@/entities/users';
 import { CommonProps } from '@/shared/types';
 
-import styles from './users-list.module.css';
-
 export interface UsersListProps extends CommonProps {}
 
-export const UsersList: React.FC<UsersListProps> = () => {
+export const UsersList: React.FC<UsersListProps> = (props) => {
+	const { className, } = props;
 	const users = useUnit(usersModel.query);
 
 	return (
-		<List className={styles.list}>
-			{users.data.map((user) => (
-				<ListItem className={styles.item} key={user.login}>
-					<UserCard className={styles.card} {...user} />
-				</ListItem>
-			))}
-		</List>
+		<Paper className={className} variant='outlined' elevation={0}>
+			<List disablePadding>
+				{users.data.map((user) => (
+					<UserItem {...user} key={user.login} />
+				))}
+			</List>
+		</Paper>
 	);
 };

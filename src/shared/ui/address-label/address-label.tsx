@@ -21,7 +21,7 @@ export const AddressLabel: React.FC<AddressLabelProps> = (props) => {
 	const preparedAddress = short ? shortAddress(address) : address;
 	return (
 		<Tooltip className={className} title={title ?? address}>
-			<Typography className={styles.text} {...TypographyProps}>
+			<Typography className={styles.text} {...TypographyProps} component='span'>
 				{prefix}
 				{preparedAddress}
 				{postfix}

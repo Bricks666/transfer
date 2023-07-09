@@ -4,11 +4,11 @@ import * as React from 'react';
 import { CommonProps } from '@/shared/types';
 import { requestActionsModel } from '../../model';
 
-export interface RequestActionsProps extends CommonProps {
+export interface RequestVotingProps extends CommonProps {
 	readonly id: number;
 }
 
-export const RequestActions: React.FC<RequestActionsProps> = (props) => {
+export const RequestVoting: React.FC<RequestVotingProps> = (props) => {
 	const { id, } = props;
 	const accept = useUnit(requestActionsModel.acceptMutation);
 	const cancel = useUnit(requestActionsModel.cancelMutation);
@@ -28,16 +28,20 @@ export const RequestActions: React.FC<RequestActionsProps> = (props) => {
 			<Button
 				type='button'
 				color='success'
+				variant='contained'
 				onClick={onAccept}
-				disabled={isLoading}>
-				Approve
+				disabled={isLoading}
+				disableElevation>
+				За
 			</Button>
 			<Button
 				type='button'
 				color='error'
+				variant='contained'
 				onClick={onCancel}
-				disabled={isLoading}>
-				Reject
+				disabled={isLoading}
+				disableElevation>
+				Против
 			</Button>
 		</ButtonGroup>
 	);

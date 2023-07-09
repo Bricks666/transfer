@@ -1,1 +1,1 @@
-export * from './RequestCard';
+export * from './request-item-with-information';

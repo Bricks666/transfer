@@ -1,3 +1,5 @@
+import { ReactNode } from 'react';
+
 export interface CommonProps {
 	className?: string;
 }
@@ -21,3 +23,7 @@ export interface MultiplePickerProps<T> {
 }
 
 export type PickerProps<T> = SinglePickerProps<T> | MultiplePickerProps<T>;
+
+export type Slots<Keys extends string> = {
+	[Key in Keys]?: NonNullable<ReactNode> | null;
+};

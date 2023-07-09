@@ -19,6 +19,9 @@ export interface CollapsedFormProps extends CommonProps {
 	readonly CollapseProps?: CollapseProps;
 }
 
+/**
+ * @question Maybe should rename?
+ */
 export const CollapsedForm: React.FC<CollapsedFormProps> = (props) => {
 	const {
 		closedIcon,
@@ -44,11 +47,11 @@ export const CollapsedForm: React.FC<CollapsedFormProps> = (props) => {
 				</IconButton>
 			</Tooltip>
 			<Collapse
-				{...CollapseProps}
 				className={collapseClassName}
 				in={opened}
 				mountOnEnter
-				unmountOnExit>
+				unmountOnExit
+				{...CollapseProps}>
 				{form}
 			</Collapse>
 		</>

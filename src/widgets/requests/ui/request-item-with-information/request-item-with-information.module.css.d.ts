@@ -1,6 +1,5 @@
 declare const styles: {
-	readonly list: string;
 	readonly item: string;
-	readonly card: string;
+	readonly info: string;
 };
 export = styles;

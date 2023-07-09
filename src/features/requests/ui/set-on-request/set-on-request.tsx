@@ -1,4 +1,4 @@
-import BallotIcon from '@mui/icons-material/Ballot';
+import HowToVoteIcon from '@mui/icons-material/HowToVote';
 import { IconButton, Tooltip } from '@mui/material';
 import { useUnit } from 'effector-react';
 import * as React from 'react';
@@ -24,7 +24,7 @@ export const SetOnRequest: React.FC<SetOnRequestProps> = (props) => {
 				onClick={onClick}
 				type='button'
 				disabled={createRequest.pending}>
-				<BallotIcon />
+				<HowToVoteIcon />
 			</IconButton>
 		</Tooltip>
 	);

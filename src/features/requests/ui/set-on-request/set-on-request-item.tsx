@@ -1,4 +1,4 @@
-import BallotIcon from '@mui/icons-material/Ballot';
+import HowToVoteIcon from '@mui/icons-material/HowToVote';
 import { ListItemIcon, MenuItem } from '@mui/material';
 import { useUnit } from 'effector-react';
 import * as React from 'react';
@@ -22,7 +22,7 @@ export const SetOnRequestItem: React.FC<SetOnRequestItemProps> = (props) => {
 	return (
 		<MenuItem className={className} onClick={onClick} disabled={disabled}>
 			<ListItemIcon>
-				<BallotIcon />
+				<HowToVoteIcon />
 			</ListItemIcon>
 			На голосование
 		</MenuItem>

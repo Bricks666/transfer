@@ -11,7 +11,7 @@ import {
 } from '@/entities/requests';
 import type { Request } from '@/shared/api';
 import { authModel } from '@/shared/models';
-import type { CommonProps } from '@/shared/types';
+import { Status, type CommonProps } from '@/shared/types';
 
 import { CollapsedForm } from '@/shared/ui';
 import styles from './request-item-with-information.module.css';
@@ -36,8 +36,10 @@ export const RequestItemWithInformation: React.FC<
 	const isVote =
 		authUser?.address === cancelVoter ||
 		acceptVoter.includes(authUser?.address as string);
+	const isEnded = status !== Status.pending;
 
-	const detailedActions = !isVote ? <RequestVoting id={id} /> : null;
+	const detailedActions =
+		!isVote && !isEnded ? <RequestVoting id={id} /> : null;
 
 	const extra = (
 		<CollapsedForm

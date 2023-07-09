@@ -3,7 +3,6 @@ import { createDomain } from 'effector';
 import { requestsModel } from '@/entities/requests';
 import { requestsApi } from '@/shared/api';
 import { authModel, notificationsModel } from '@/shared/models';
-import { Status } from '@/shared/types';
 
 const actionsDomain = createDomain();
 
@@ -57,10 +56,10 @@ update(requestsModel.query, {
 							? {
 								...request,
 								accept_voter: [...request.accept_voter, user.address],
-								status: Status.accept,
 							  }
 							: request
 					),
+					refetch: true,
 				};
 			},
 		},
@@ -90,10 +89,10 @@ update(requestsModel.query, {
 							? {
 								...request,
 								cancel_voter: user.address,
-								status: Status.cancel,
 							  }
 							: request
 					),
+					refetch: true,
 				};
 			},
 		},

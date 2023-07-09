@@ -1,5 +1,6 @@
 import { createMutation, update } from '@farfetched/core';
 import { createDomain } from 'effector';
+import { toHex } from 'web3-utils';
 import { requestsModel } from '@/entities/requests';
 import { requestsApi } from '@/shared/api';
 import { authModel, notificationsModel } from '@/shared/models';
@@ -44,7 +45,7 @@ update(requestsModel.query, {
 					{
 						id,
 						accept_voter: [],
-						cancel_voter: '',
+						cancel_voter: toHex(0),
 						candidate: mutation.params.candidate,
 						status: Status.pending,
 					},

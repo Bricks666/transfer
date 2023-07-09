@@ -40,7 +40,7 @@ export const TemplateDetailedRequestInformation: React.FC<TemplateDetailedReques
 		const hasCancelVoter = hexToNumberString(cancelVoter) !== '0';
 
 		const acceptVotersLabel = hasAcceptVoters ? (
-			<>
+			<span className={styles.addresses}>
 				{acceptVoter.map((address) => (
 					<AddressLabel
 						className={styles.address}
@@ -49,7 +49,7 @@ export const TemplateDetailedRequestInformation: React.FC<TemplateDetailedReques
 						key={address}
 					/>
 				))}
-			</>
+			</span>
 		) : (
 			'Никто не голосовал'
 		);

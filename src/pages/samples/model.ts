@@ -1,4 +1,5 @@
 import { sample } from 'effector';
+import { createSampleModel } from '@/features/samples';
 import { categoriesModel } from '@/entities/categories';
 import { samplesModel } from '@/entities/samples';
 import { routes } from '@/shared/configs';
@@ -15,4 +16,9 @@ export const authorizedRoute = authModel.chainAuthorized(
 sample({
 	clock: authorizedRoute.opened,
 	target: [categoriesModel.query.start, samplesModel.query.start],
+});
+
+sample({
+	clock: authorizedRoute.opened,
+	target: createSampleModel.form.reset,
 });

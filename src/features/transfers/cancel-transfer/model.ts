@@ -13,7 +13,7 @@ export const mutation = createMutation({
 	effect: authModel.attachWithSender(handlerFx),
 });
 
-notificationsModel.withNotifications({
+notificationsModel.attachNotifications({
 	operation: mutation,
 	messages: {
 		send: 'Отмена перевода',

@@ -54,7 +54,7 @@ sample({
 	target: mutation.start as any,
 });
 
-notificationsModel.withNotifications({
+notificationsModel.attachNotifications({
 	operation: mutation,
 	messages: {
 		send: 'Запрос на перевод отправлен',

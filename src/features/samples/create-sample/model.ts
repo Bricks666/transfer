@@ -49,7 +49,7 @@ sample({
 	target: form.reset,
 });
 
-notificationsModel.withNotifications({
+notificationsModel.attachNotifications({
 	operation: mutation,
 	messages: {
 		send: 'Запрос на создание шаблона отправлен',

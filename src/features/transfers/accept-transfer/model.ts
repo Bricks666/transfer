@@ -57,7 +57,7 @@ sample({
 	target: mutation.start,
 });
 
-notificationsModel.withNotifications({
+notificationsModel.attachNotifications({
 	operation: mutation,
 	messages: {
 		send: 'Принятие перевода',

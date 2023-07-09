@@ -3,6 +3,7 @@ import { createDomain, sample } from 'effector';
 import { createForm } from 'effector-forms';
 import type { Address } from 'web3';
 import { authApi, AuthParams } from '@/shared/api';
+import { notificationsModel } from '@/shared/models';
 
 const registration = createDomain();
 
@@ -42,4 +43,13 @@ sample({
 sample({
 	clock: mutation.finished.success,
 	target: form.reset,
+});
+
+notificationsModel.attachNotifications({
+	operation: mutation,
+	messages: {
+		send: 'Попытка регистрации',
+		success: 'Регистрация успешна',
+		error: 'Не удалось зарегистрироваться',
+	},
 });

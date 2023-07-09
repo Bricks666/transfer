@@ -18,7 +18,7 @@ interface WithNotificationsParams {
 	readonly operation: Query<any, any, any> | Mutation<any, any, any>;
 }
 
-export const withNotifications = (params: WithNotificationsParams) => {
+export const attachNotifications = (params: WithNotificationsParams) => {
 	const { messages, operation, } = params;
 	sample({
 		clock: operation.start,

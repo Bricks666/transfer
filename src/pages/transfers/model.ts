@@ -1,8 +1,8 @@
 import { sample } from 'effector';
+import { createTransferModel } from '@/features/transfers';
 import { categoriesModel } from '@/entities/categories';
 import { transfersModel } from '@/entities/transfers';
 import { usersModel } from '@/entities/users';
-import { addressesModel } from '@/entities/web3';
 import { routes } from '@/shared/configs';
 import { authModel, contractModel } from '@/shared/models';
 
@@ -18,8 +18,12 @@ sample({
 	clock: authorizedRoute.opened,
 	target: [
 		categoriesModel.query.start,
-		addressesModel.query.start,
 		transfersModel.query.start,
 		usersModel.query.start
 	],
+});
+
+sample({
+	clock: authorizedRoute.closed,
+	target: [createTransferModel.form.reset],
 });

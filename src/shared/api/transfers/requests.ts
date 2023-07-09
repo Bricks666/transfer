@@ -1,4 +1,4 @@
-import { keccak256, toWei } from 'web3-utils';
+import { keccak256 } from 'web3-utils';
 import { createRequest } from '../core';
 import {
 	Transfer,
@@ -29,7 +29,7 @@ export const create = createRequest<CreateTransferParams, unknown>((params) => {
 	} = params;
 	return contract.methods
 		.create_transfer(receiver, categoryId, keccak256(keyword), description)
-		.send({ from: sender, value: toWei(money, 'ether'), });
+		.send({ from: sender, value: money, });
 });
 
 export const accept = createRequest<AcceptTransferParams, unknown>((params) => {

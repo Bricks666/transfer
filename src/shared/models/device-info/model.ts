@@ -1,5 +1,5 @@
 import { createDomain, sample } from 'effector';
-import { debug, equals, not } from 'patronum';
+import { equals, not } from 'patronum';
 import { createToggler } from '@/shared/lib';
 import { started } from '../app';
 import { calculateDeviceInfo } from './lib';
@@ -68,5 +68,3 @@ sample({
 	clock: unsubscribeFx,
 	target: subscribed.toggleOff,
 });
-
-debug($device);

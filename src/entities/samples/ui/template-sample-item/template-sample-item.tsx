@@ -1,5 +1,11 @@
 import FeaturedPlayListIcon from '@mui/icons-material/FeaturedPlayList';
-import { Avatar, ListItem, ListItemAvatar, ListItemText } from '@mui/material';
+import {
+	Avatar,
+	ListItem,
+	ListItemAvatar,
+	ListItemProps,
+	ListItemText
+} from '@mui/material';
 import cn from 'classnames';
 import * as React from 'react';
 import { Sample } from '@/shared/api';
@@ -10,15 +16,15 @@ import styles from './template-sample-item.module.css';
 
 export interface TemplateSampleItemProps
 	extends CommonProps,
-		Omit<Sample, 'category_id'> {
+		Omit<Sample, 'category_id'>,
+		Omit<ListItemProps, keyof Sample | keyof CommonProps> {
 	readonly category: React.ReactElement | null;
-	readonly divider?: boolean;
 }
 
 export const TemplateSampleItem: React.FC<TemplateSampleItemProps> = (
 	props
 ) => {
-	const { name, category, money, className, divider, } = props;
+	const { name, category, money, className, ...rest } = props;
 
 	const { money: preparedMoney, unitName, } = prepareMoney({ money, });
 
@@ -26,7 +32,7 @@ export const TemplateSampleItem: React.FC<TemplateSampleItemProps> = (
 	const secondaryText = <span>Категория: {category}</span>;
 
 	return (
-		<ListItem className={cn(className)} divider={divider}>
+		<ListItem className={cn(className)} {...rest}>
 			<ListItemAvatar>
 				<Avatar sx={{ bgcolor: stringToColor(name), }}>
 					<FeaturedPlayListIcon />

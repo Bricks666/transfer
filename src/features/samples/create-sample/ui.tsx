@@ -3,6 +3,7 @@ import cn from 'classnames';
 import { useUnit } from 'effector-react';
 import * as React from 'react';
 import { CategoriesPicker } from '@/entities/categories';
+import { MoneyField } from '@/entities/web3';
 import { useSubmit } from '@/shared/lib';
 import type { CommonProps } from '@/shared/types';
 import { Field, Form } from '@/shared/ui';
@@ -69,7 +70,7 @@ const Category: React.FC = () => {
 const Money: React.FC = () => {
 	const money = useUnit(form.fields.money);
 	return (
-		<Field
+		<MoneyField
 			value={money.value}
 			onChange={money.onChange}
 			onBlur={money.onBlur}
@@ -77,7 +78,6 @@ const Money: React.FC = () => {
 			isValid={money.isValid}
 			label='Сумма'
 			name='money'
-			type='number'
 			required
 		/>
 	);

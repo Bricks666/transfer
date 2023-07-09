@@ -1,39 +1,20 @@
-import { fromWei, type EtherUnits } from 'web3-utils';
+import { fromWei } from 'web3-utils';
+import type { ExtractKeyType } from '../types';
 
-const etherUnitsNamesMap: Record<EtherUnits, string> = {
-	Gwei: 'GWEI',
-	babbage: 'BAB',
+export const ETHER_UNITS_MAP = {
 	ether: 'ETH',
-	femtoether: 'FETH',
 	finney: 'FIN',
-	gether: 'GETH',
-	grand: 'GRN',
 	gwei: 'GWEI',
-	kether: 'KETH',
-	Kwei: 'KWEI',
 	kwei: 'KWEI',
-	lovelace: 'LOV',
-	mether: 'METH',
-	micro: 'MIC',
-	microether: 'mETH',
-	milli: 'MIL',
-	milliether: 'miETH',
-	Mwei: 'MWEI',
-	mwei: 'MWEI',
-	nano: 'NANO',
-	nanoether: 'NETH',
-	noether: 'NoETH',
-	picoether: 'PETH',
-	shannon: 'SHN',
-	szabo: 'SZA',
-	tether: 'TETH',
 	wei: 'WEI',
-};
+} as const;
+
+export type UsingEtherUnits = ExtractKeyType<typeof ETHER_UNITS_MAP>;
 
 export interface PrepareMoneyParams {
 	readonly money: string | number | bigint;
 	readonly precision?: number;
-	readonly unit?: EtherUnits;
+	readonly unit?: UsingEtherUnits;
 }
 
 export interface PrepareMoneyResult {
@@ -55,6 +36,6 @@ export const prepareMoney = (
 
 	return {
 		money: castPrecision,
-		unitName: etherUnitsNamesMap[unit],
+		unitName: ETHER_UNITS_MAP[unit],
 	};
 };

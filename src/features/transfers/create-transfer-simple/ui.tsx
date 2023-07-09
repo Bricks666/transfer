@@ -4,6 +4,7 @@ import { useUnit } from 'effector-react';
 import * as React from 'react';
 import { CategoriesPicker } from '@/entities/categories';
 import { UsersPicker } from '@/entities/users';
+import { MoneyField } from '@/entities/web3';
 import { useSubmit } from '@/shared/lib';
 import { CommonProps } from '@/shared/types';
 import { Field, Form, PasswordField } from '@/shared/ui';
@@ -11,18 +12,15 @@ import { form, mutation } from './model';
 
 import styles from './ui.module.css';
 
-export interface CreateTransferFormProps extends CommonProps {}
+export interface CreateTransferSimpleFormProps extends CommonProps {}
 
-export const CreateTransferForm: React.FC<CreateTransferFormProps> = React.memo(
-	function CreateTransferForm(props) {
+export const CreateTransferSimpleForm: React.FC<CreateTransferSimpleFormProps> =
+	React.memo(function CreateTransferForm(props) {
 		const { className, } = props;
 		const isSubmitting = useUnit(mutation.$pending);
 		const submit = useUnit(form.submit);
 
 		const onSubmit = useSubmit(submit);
-		/**
-		 * TODO: Сделать заполнение по шаблону
-		 */
 
 		return (
 			<Form
@@ -44,8 +42,7 @@ export const CreateTransferForm: React.FC<CreateTransferFormProps> = React.memo(
 				</Button>
 			</Form>
 		);
-	}
-);
+	});
 
 const Receiver: React.FC = () => {
 	const receiver = useUnit(form.fields.receiver);
@@ -85,7 +82,7 @@ const Category: React.FC = () => {
 const Money: React.FC = () => {
 	const money = useUnit(form.fields.money);
 	return (
-		<Field
+		<MoneyField
 			value={money.value}
 			onChange={money.onChange}
 			onBlur={money.onBlur}
@@ -93,7 +90,6 @@ const Money: React.FC = () => {
 			isValid={money.isValid}
 			name='Money'
 			label='Сумма перевода'
-			type='number'
 			autoComplete='transaction-amount'
 			required
 		/>

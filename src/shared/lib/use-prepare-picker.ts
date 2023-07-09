@@ -1,5 +1,9 @@
 import { useCallback, useMemo } from 'react';
-import { MultiplePickerProps, PickerProps, SinglePickerProps } from '../types';
+import type {
+	CombinePickerProps,
+	MultiplePickerProps,
+	SinglePickerProps
+} from '../types';
 
 interface BaseUsePreparePickerConfig<Label, Stored> {
 	readonly options: Label[];
@@ -17,7 +21,7 @@ type UsePrepareMultiplePickerConfig<Label, Stored> = {
 };
 
 type UsePreparePickerConfig<Label, Stored> = Omit<
-	PickerProps<Stored>,
+	CombinePickerProps<Stored>,
 	'limitTags'
 > &
 	BaseUsePreparePickerConfig<Label, Stored> &
@@ -40,13 +44,17 @@ export function usePreparePicker<Label, Stored>(
 
 	const changeHandler = useCallback(
 		(_: unknown, value: Label[] | Label | null) => {
-			if (Array.isArray(value)) {
-				return (onChange as MultiplePickerProps<Stored>['onChange'])(
-					value.map(mapBeforeChange)
-				);
+			if (!onChange) {
+				return;
 			}
 
-			return (onChange as SinglePickerProps<Stored>['onChange'])(
+			if (Array.isArray(value)) {
+				return (
+					onChange as NonNullable<MultiplePickerProps<Stored>['onChange']>
+				)(value.map(mapBeforeChange));
+			}
+
+			return (onChange as NonNullable<SinglePickerProps<Stored>['onChange']>)(
 				value ? mapBeforeChange(value) : null
 			);
 		},
@@ -54,7 +62,16 @@ export function usePreparePicker<Label, Stored>(
 	);
 
 	const selected = useMemo(() => {
-		return options.find((option) => isSelected(option, value as any)) ?? null;
+		if (multiple) {
+			return options.filter((option) =>
+				isSelected(option, (value ?? []) as Stored[])
+			);
+		}
+
+		return (
+			options.find((option) => isSelected(option, value ?? (null as any))) ??
+			null
+		);
 	}, [multiple, options, value]);
 
 	return {

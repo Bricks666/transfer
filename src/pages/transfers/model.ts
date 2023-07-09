@@ -1,6 +1,10 @@
 import { sample } from 'effector';
-import { createTransferModel } from '@/features/transfers';
+import {
+	createTransferBySampleModel,
+	createTransferSimpleModel
+} from '@/features/transfers';
 import { categoriesModel } from '@/entities/categories';
+import { samplesModel } from '@/entities/samples';
 import { transfersModel } from '@/entities/transfers';
 import { usersModel } from '@/entities/users';
 import { routes } from '@/shared/configs';
@@ -19,11 +23,15 @@ sample({
 	target: [
 		categoriesModel.query.start,
 		transfersModel.query.start,
-		usersModel.query.start
+		usersModel.query.start,
+		samplesModel.query.start
 	],
 });
 
 sample({
 	clock: authorizedRoute.closed,
-	target: [createTransferModel.form.reset],
+	target: [
+		createTransferSimpleModel.form.reset,
+		createTransferBySampleModel.form.reset
+	],
 });

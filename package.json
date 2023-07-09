@@ -9,6 +9,7 @@
 		"@emotion/styled": "^11.11.0",
 		"@farfetched/core": "^0.8.12",
 		"@mui/icons-material": "^5.11.16",
+		"@mui/lab": "^5.0.0-alpha.135",
 		"@mui/material": "^5.13.6",
 		"atomic-router": "^0.8.0",
 		"atomic-router-react": "^0.8.3",

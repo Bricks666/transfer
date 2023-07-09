@@ -4,18 +4,25 @@ import * as React from 'react';
 import type { Category } from '@/shared/api';
 import { usePreparePicker } from '@/shared/lib';
 import type { PickerProps } from '@/shared/types';
-import { Field, type FieldProps } from '@/shared/ui';
+import { Field } from '@/shared/ui';
 import { categoriesModel } from '../../model';
 import { TemplateCategoryItem } from '../template-category-item';
 
-export type CategoriesPickerProps = Omit<
-	FieldProps,
-	keyof PickerProps<number> | 'multiline' | 'select' | 'type'
-> &
-	PickerProps<number>;
+export type CategoriesPickerProps = PickerProps<number> & {
+	readonly readOnly?: boolean;
+};
 
 export const CategoriesPicker: React.FC<CategoriesPickerProps> = (props) => {
-	const { onChange, value, multiple, limitTags, className, ...rest } = props;
+	const {
+		onChange,
+		value,
+		multiple,
+		limitTags,
+		className,
+		readOnly,
+		disabled,
+		...rest
+	} = props;
 	const categories = useUnit(categoriesModel.query);
 
 	const options = usePreparePicker({
@@ -45,6 +52,8 @@ export const CategoriesPicker: React.FC<CategoriesPickerProps> = (props) => {
 			}}
 			{...(options as any)}
 			limitTags={limitTags}
+			readOnly={readOnly}
+			disabled={disabled}
 		/>
 	);
 };

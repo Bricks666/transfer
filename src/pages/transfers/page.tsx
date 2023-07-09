@@ -4,7 +4,8 @@ import { CircularProgress, Typography } from '@mui/material';
 import { useUnit } from 'effector-react';
 import * as React from 'react';
 import { Header, Popups } from '@/widgets/page';
-import { AcceptTransfer, CreateTransferForm } from '@/features/transfers';
+import { CreateTransfer } from '@/widgets/transfers';
+import { AcceptTransfer } from '@/features/transfers';
 import { transfersModel } from '@/entities/transfers';
 import { SITE_NAME, popups } from '@/shared/configs';
 import { useTitle } from '@/shared/lib';
@@ -31,7 +32,7 @@ const TransfersPage: React.FC<TransfersPageProps> = () => {
 						title='Создать перевод'
 						openedTitle='Закрыть форму'
 						collapseClassName={styles.form}
-						form={<CreateTransferForm />}
+						form={<CreateTransfer />}
 						closedIcon={<AddIcon />}
 						openedIcon={<CloseIcon />}
 					/>

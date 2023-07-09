@@ -1,5 +1,4 @@
 import { combine, sample } from 'effector';
-import { debug } from 'patronum';
 import { usersModel } from '@/entities/users';
 import { routes } from '@/shared/configs';
 import { authModel, contractModel } from '@/shared/models';
@@ -28,5 +27,3 @@ sample({
 	clock: authorizedRoute.opened,
 	target: usersModel.query.start,
 });
-
-debug(usersModel.query.$data);

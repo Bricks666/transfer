@@ -3,6 +3,7 @@ declare const styles: {
 	readonly item: string;
 	readonly content: string;
 	readonly actions: string;
+	readonly addresses: string;
 	readonly address: string;
 	readonly row: string;
 };

@@ -1,15 +1,21 @@
 import { Typography, TypographyProps } from '@mui/material';
 import * as React from 'react';
-import { Category } from '@/shared/api';
 import { CommonProps } from '@/shared/types';
+import { useCategory } from '../../lib';
 
 export interface CategoryLabelProps
 	extends CommonProps,
-		Omit<TypographyProps, 'id'>,
-		Omit<Category, 'id'> {}
+		Omit<TypographyProps, 'id'> {
+	readonly id: number;
+}
 
 export const CategoryLabel: React.FC<CategoryLabelProps> = (props) => {
-	const { className, name, ...rest } = props;
+	const { className, id, ...rest } = props;
+	const category = useCategory(id);
+
+	if (!category) {
+		return null;
+	}
 
 	return (
 		<Typography
@@ -17,7 +23,7 @@ export const CategoryLabel: React.FC<CategoryLabelProps> = (props) => {
 			variant='inherit'
 			component='span'
 			{...rest}>
-			{name}
+			{category.name}
 		</Typography>
 	);
 };

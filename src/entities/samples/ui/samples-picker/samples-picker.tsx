@@ -8,10 +8,14 @@ import { Field } from '@/shared/ui';
 import { samplesModel } from '../../model';
 import { TemplateSampleItem } from '../template-sample-item';
 
-export type SamplesPickerProps = CommonProps & PickerProps<number>;
+export type SamplesPickerProps = CommonProps &
+	PickerProps<number> & {
+		readonly Category: React.ComponentType<{ id: number }>;
+	};
 
 export const SamplesPicker: React.FC<SamplesPickerProps> = (props) => {
-	const { value, onChange, multiple, limitTags, className, ...rest } = props;
+	const { value, onChange, multiple, limitTags, className, Category, ...rest } =
+		props;
 
 	const samples = useUnit(samplesModel.query);
 
@@ -40,7 +44,13 @@ export const SamplesPicker: React.FC<SamplesPickerProps> = (props) => {
 				);
 			}}
 			renderOption={(props, option) => {
-				return <TemplateSampleItem {...props} {...option} category={null} />;
+				return (
+					<TemplateSampleItem
+						{...props}
+						{...option}
+						category={<Category id={option.category_id} />}
+					/>
+				);
 			}}
 			{...options}
 			limitTags={limitTags}

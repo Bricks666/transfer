@@ -4,7 +4,7 @@ import cn from 'classnames';
 import { useUnit } from 'effector-react';
 import * as React from 'react';
 import { acceptTransferModel, CancelTransfer } from '@/features/transfers';
-import { useCategory, CategoryLabel } from '@/entities/categories';
+import { CategoryLabel } from '@/entities/categories';
 import {
 	IdentifiedTransfer,
 	TemplateDetailedTransferInformation,
@@ -57,8 +57,7 @@ export const TransferItemWithInformation: React.FC<
 		}
 	}
 
-	const category = useCategory(categoryId);
-	const categoryLabel = category ? <CategoryLabel {...category} /> : null;
+	const category = <CategoryLabel id={categoryId} />;
 
 	const expandClasses = cn(styles.expand, { [styles.expand__opened]: opened, });
 	const openInfoTitle = opened
@@ -79,7 +78,7 @@ export const TransferItemWithInformation: React.FC<
 			sender={sender}
 			status={status}
 			actions={openDetailedInfo}
-			category={categoryLabel}
+			category={category}
 			extra={
 				<Collapse
 					className={styles.info}
@@ -90,7 +89,7 @@ export const TransferItemWithInformation: React.FC<
 						{...rest}
 						sender={sender}
 						status={status}
-						category={categoryLabel}
+						category={category}
 						actions={actions}
 					/>
 				</Collapse>

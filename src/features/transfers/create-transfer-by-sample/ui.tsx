@@ -2,7 +2,7 @@ import { Button, Paper, Typography } from '@mui/material';
 import cn from 'classnames';
 import { useUnit } from 'effector-react';
 import * as React from 'react';
-import { CategoriesPicker } from '@/entities/categories';
+import { CategoriesPicker, CategoryLabel } from '@/entities/categories';
 import { SamplesPicker } from '@/entities/samples';
 import { UsersPicker } from '@/entities/users';
 import { MoneyField } from '@/entities/web3';
@@ -76,6 +76,7 @@ const Sample: React.FC = () => {
 			name='sample'
 			label='Шаблон'
 			InputProps={{ autoComplete: 'off', }}
+			Category={CategoryLabel}
 			required
 		/>
 	);
@@ -93,15 +94,15 @@ const SelectedSampleInfo: React.FC = () => {
 			className={styles.selected}
 			variant='outlined'
 			elevation={0}
-			component='legend'>
+			component='fieldset'>
 			<Typography
 				className={styles.legend}
 				variant='subtitle2'
 				component='legend'>
-				Данное поле взято из шаблона и не может быть изменено
+				Данные поля взяты из шаблона и не могут быть изменены
 			</Typography>
 			<CategoriesPicker
-				value={sample.id}
+				value={sample.category_id}
 				InputProps={{ readOnly: true, }}
 				focused={false}
 				readOnly

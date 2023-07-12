@@ -1,12 +1,12 @@
-import { Alert, AlertTitle, Button } from '@mui/material';
+import { Alert, AlertTitle, Button, Collapse } from '@mui/material';
 import cn from 'classnames';
 import { useUnit } from 'effector-react';
 import * as React from 'react';
 import { Web3AddressesSearch } from '@/entities/web3';
 import { useSubmit } from '@/shared/lib';
-import { CommonProps } from '@/shared/types';
+import type { CommonProps } from '@/shared/types';
 import { PasswordField } from '@/shared/ui';
-import { form, mutation } from './model';
+import { $addressSelected, form, mutation } from './model';
 
 import styles from './ui.module.css';
 
@@ -23,6 +23,7 @@ export const LoginForm: React.FC<CommonProps> = React.memo(function LoginForm(
 		<form className={cn(styles.form, className)} onSubmit={onSubmit}>
 			<ErrorAlert />
 			<Address />
+			<WalletPassword />
 			<Password />
 			<Button
 				className={styles.button}
@@ -50,6 +51,27 @@ const Address: React.FC = React.memo(() => {
 			autoComplete='username'
 			required
 		/>
+	);
+});
+
+const WalletPassword: React.FC = React.memo(() => {
+	const addressSelected = useUnit($addressSelected);
+	const walletPassword = useUnit(form.fields.walletPassword);
+	return (
+		<Collapse in={addressSelected} mountOnEnter unmountOnExit>
+			<PasswordField
+				className={styles.walletPassword}
+				value={walletPassword.value}
+				onChange={walletPassword.onChange}
+				onBlur={walletPassword.onBlur}
+				helperText={walletPassword.errorText}
+				isValid={walletPassword.isValid}
+				name='wallet-password'
+				label='Пароль от кошелька'
+				autoComplete='new-password'
+				required
+			/>
+		</Collapse>
 	);
 });
 

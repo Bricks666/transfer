@@ -2,7 +2,7 @@ import { Menu, MenuItem } from '@mui/material';
 import { useUnit } from 'effector-react';
 import * as React from 'react';
 import type { CommonProps, VoidFunction } from '@/shared/types';
-import { logoutFx } from './model';
+import { mutation } from './model';
 
 export interface AvatarMenuProps extends CommonProps {
 	readonly anchorEl: HTMLElement | null;
@@ -14,7 +14,7 @@ export interface AvatarMenuProps extends CommonProps {
 export const AvatarMenu: React.FC<AvatarMenuProps> = (props) => {
 	const { className, anchorEl, opened, onClose, id, } = props;
 
-	const logout = useUnit(logoutFx);
+	const logout = useUnit(mutation);
 
 	return (
 		<Menu
@@ -25,7 +25,7 @@ export const AvatarMenu: React.FC<AvatarMenuProps> = (props) => {
 			anchorEl={anchorEl}
 			anchorOrigin={{ horizontal: 'right', vertical: 'bottom', }}
 			transformOrigin={{ horizontal: 'right', vertical: 'top', }}>
-			<MenuItem onClick={logout}>Выйти</MenuItem>
+			<MenuItem onClick={logout.start}>Выйти</MenuItem>
 		</Menu>
 	);
 };

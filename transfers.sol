@@ -50,40 +50,28 @@ contract Users is Shared {
 	}
 
 	constructor() {
-		_create_user(
-			msg.sender,
-			hash('password'),
-			Roles.admin
-		);
+		_create_user(msg.sender, hash('password'), Roles.admin);
 	}
 
 	function get_users() external view returns (User[] memory) {
 		return users;
 	}
 
-	function get_user(address login)
-		external
-		view
-		is_reg(login)
-		returns (User memory)
-	{
+	function get_user(
+		address login
+	) external view is_reg(login) returns (User memory) {
 		return users[user_ids[login]];
 	}
 
-	function registration(bytes32 password)
-		external
-		is_not_reg(msg.sender)
-		returns (User memory)
-	{
+	function registration(
+		bytes32 password
+	) external is_not_reg(msg.sender) returns (User memory) {
 		return _create_user(msg.sender, password, Roles.user);
 	}
 
-	function login(bytes32 password)
-		external
-		view
-		is_reg(msg.sender)
-		returns (User memory)
-	{
+	function login(
+		bytes32 password
+	) external view is_reg(msg.sender) returns (User memory) {
 		require(
 			users[user_ids[msg.sender]].password == password,
 			'Password is incorrect'
@@ -133,17 +121,15 @@ contract Categories is Users {
 		return categories;
 	}
 
-	function create_category(string memory name)
-		external
-		role_guard(msg.sender, Roles.admin)
-	{
+	function create_category(
+		string memory name
+	) external role_guard(msg.sender, Roles.admin) {
 		_create_category(name);
 	}
 
-	function _create_category(string memory name)
-		private
-		returns (string memory)
-	{
+	function _create_category(
+		string memory name
+	) private returns (string memory) {
 		uint256 id = categories.length;
 		Category memory category = Category({ id: id, name: name });
 		categories.push(category);
@@ -224,8 +210,11 @@ contract Transfers is Users {
 		uint256 id
 	);
 
-	modifier is_sender(uint256 id, address caller) {
-		require(transfers[id].sender == caller, 'You are not a sender');
+	modifier is_sender_or_receiver(uint256 id, address caller) {
+		require(
+			transfers[id].sender == caller || transfers[id].receiver == caller,
+			'You are not a sender'
+		);
 		_;
 	}
 
@@ -269,25 +258,26 @@ contract Transfers is Users {
 			);
 	}
 
-	function accept_transfer(uint256 id, bytes32 keyword)
+	function accept_transfer(
+		uint256 id,
+		bytes32 keyword
+	)
 		external
 		is_reg(msg.sender)
 		is_receiver(id, msg.sender)
 		is_not_finished_transfer(id)
 	{
-		if (keyword == transfers[id].keyword) {
-			transfers[id].receiver.transfer(transfers[id].money);
-			_finish_transfer(id, Status.accept);
-		} else {
-			transfers[id].sender.transfer(transfers[id].money);
-			_finish_transfer(id, Status.cancel);
-		}
+		require(keyword == transfers[id].keyword, 'Incorrect keyword');
+		transfers[id].receiver.transfer(transfers[id].money);
+		_finish_transfer(id, Status.accept);
 	}
 
-	function cancel_transfer(uint256 id)
+	function cancel_transfer(
+		uint256 id
+	)
 		external
 		is_reg(msg.sender)
-		is_sender(id, msg.sender)
+		is_sender_or_receiver(id, msg.sender)
 		is_not_finished_transfer(id)
 	{
 		transfers[id].sender.transfer(transfers[id].money);
@@ -373,7 +363,9 @@ contract Requests is Users {
 		return requests;
 	}
 
-	function create_request(address candidate)
+	function create_request(
+		address candidate
+	)
 		external
 		role_guard(msg.sender, Roles.admin)
 		is_reg(candidate)
@@ -384,7 +376,9 @@ contract Requests is Users {
 		_check_request(request.id);
 	}
 
-	function accept_request(uint256 id)
+	function accept_request(
+		uint256 id
+	)
 		external
 		role_guard(msg.sender, Roles.admin)
 		is_not_finished_request(id)
@@ -394,7 +388,9 @@ contract Requests is Users {
 		_check_request(id);
 	}
 
-	function cancel_request(uint256 id)
+	function cancel_request(
+		uint256 id
+	)
 		external
 		role_guard(msg.sender, Roles.admin)
 		is_not_finished_request(id)

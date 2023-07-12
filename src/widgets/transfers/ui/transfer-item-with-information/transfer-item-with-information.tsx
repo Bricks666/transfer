@@ -1,5 +1,11 @@
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
-import { Button, Collapse, IconButton, Tooltip } from '@mui/material';
+import {
+	Button,
+	ButtonGroup,
+	Collapse,
+	IconButton,
+	Tooltip
+} from '@mui/material';
 import cn from 'classnames';
 import { useUnit } from 'effector-react';
 import * as React from 'react';
@@ -46,13 +52,16 @@ export const TransferItemWithInformation: React.FC<
 				openPopup(id.toString());
 			};
 			actions = (
-				<Button
-					onClick={onClick}
-					variant='contained'
-					color='success'
-					disableElevation>
-					Принять
-				</Button>
+				<ButtonGroup>
+					<Button
+						onClick={onClick}
+						variant='contained'
+						color='success'
+						disableElevation>
+						Принять
+					</Button>
+					<CancelTransfer id={id} />
+				</ButtonGroup>
 			);
 		}
 	}

@@ -20,6 +20,9 @@ export const form = createForm<FormOptions>({
 		address: {
 			init: null,
 		},
+		walletPassword: {
+			init: '',
+		},
 		password: {
 			init: '',
 		},
@@ -27,10 +30,12 @@ export const form = createForm<FormOptions>({
 	domain: loginDomain,
 });
 
+export const $addressSelected = form.fields.address.$value.map(Boolean);
+
 sample({
 	clock: form.formValidated,
 	filter: (params): params is AuthParams => {
-		return !!params.address && !!params.password;
+		return !!params.address && !!params.password && !!params.walletPassword;
 	},
 	target: mutation.start,
 });
@@ -44,6 +49,19 @@ sample({
 	clock: mutation.finished.success,
 	fn: ({ result, }) => ({ address: result.login, role: result.role, }),
 	target: authModel.$user,
+});
+
+sample({
+	clock: form.fields.address.changed,
+	target: form.fields.walletPassword.resetValue,
+});
+
+sample({
+	clock: mutation.finished.failure,
+	target: [
+		form.fields.password.resetValue,
+		form.fields.walletPassword.resetValue
+	],
 });
 
 notificationsModel.attachNotifications({

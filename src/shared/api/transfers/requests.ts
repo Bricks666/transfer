@@ -29,7 +29,7 @@ export const create = createRequest<CreateTransferParams, unknown>((params) => {
 	} = params;
 	return contract.methods
 		.create_transfer(receiver, categoryId, keccak256(keyword), description)
-		.send({ from: sender, value: money, });
+		.send({ from: sender, value: money.toString(), });
 });
 
 export const accept = createRequest<AcceptTransferParams, unknown>((params) => {

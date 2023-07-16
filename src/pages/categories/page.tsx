@@ -13,7 +13,6 @@ import { Center, CollapsedForm, MainLayout, PageTitle } from '@/shared/ui';
 import styles from './page.module.css';
 import { CategoryList } from './ui';
 
-
 export interface CategoriesPageProps extends CommonProps {}
 
 const CategoriesPage: React.FC<CategoriesPageProps> = () => {
@@ -54,9 +53,7 @@ const Result: React.FC = () => {
 	if (empty) {
 		return (
 			<Center>
-				<Typography className={styles.empty_label} component='p'>
-					У вас еще нет ни одного перевода
-				</Typography>
+				<Typography component='p'>У вас еще нет ни одного перевода</Typography>
 			</Center>
 		);
 	}

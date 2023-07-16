@@ -1,8 +1,7 @@
-/* eslint-disable import/no-extraneous-dependencies */
-import { defineConfig, splitVendorChunkPlugin } from 'vite';
-import react from '@vitejs/plugin-react';
+import * as path from 'node:path';
 import { babel } from '@rollup/plugin-babel';
-import * as path from 'path';
+import react from '@vitejs/plugin-react';
+import { defineConfig, splitVendorChunkPlugin } from 'vite';
 
 // https://vitejs.dev/config/
 export default defineConfig({
@@ -11,6 +10,9 @@ export default defineConfig({
 		cors: true,
 		open: true,
 		hmr: true,
+	},
+	build: {
+		minify: false,
 	},
 	resolve: {
 		alias: {
@@ -31,6 +33,6 @@ export default defineConfig({
 			babelHelpers: 'bundled',
 			extensions: ['.ts', '.tsx'],
 		}),
-		splitVendorChunkPlugin(),
+		splitVendorChunkPlugin()
 	],
 });

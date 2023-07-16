@@ -1,5 +1,5 @@
 import { createContractsIntegration } from '@bricks-ether/contracts-integration';
-import Web3 from 'web3';
+import Web3, { HttpProvider } from 'web3';
 import {
 	CONTRACTS_SERVICE,
 	CONTRACT_NAME,
@@ -7,13 +7,17 @@ import {
 	abi
 } from '../configs';
 
-export const web3 = new Web3(PROVIDER_ADDRESS);
+const provider = new HttpProvider(
+	`${window.location.origin}${PROVIDER_ADDRESS}`
+);
+
+export const web3 = new Web3(provider);
 export const personal = new Web3.modules.Personal(web3.provider);
 
 export const { fetch, createRequest, } = createContractsIntegration({
 	abi,
 	contractName: CONTRACT_NAME,
-	providerHost: PROVIDER_ADDRESS,
+	providerHost: provider,
 	contractsServiceHost: CONTRACTS_SERVICE,
 	normalizeResponse: true,
 });

@@ -16,7 +16,7 @@ import styles from './template-sample-item.module.css';
 
 export interface TemplateSampleItemProps
 	extends CommonProps,
-		Omit<Sample, 'category_id'>,
+		Omit<Sample, 'category_id' | 'id'>,
 		Omit<ListItemProps, keyof Sample | keyof CommonProps> {
 	readonly category: React.ReactElement | null;
 }

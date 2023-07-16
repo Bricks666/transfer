@@ -4,7 +4,7 @@
 	"private": true,
 	"type": "module",
 	"dependencies": {
-		"@bricks-ether/contracts-integration": "^1.0.3",
+		"@bricks-ether/contracts-integration": "^1.0.4",
 		"@emotion/react": "^11.11.1",
 		"@emotion/styled": "^11.11.0",
 		"@farfetched/core": "^0.8.12",

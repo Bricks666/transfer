@@ -1,0 +1,65 @@
+.item {
+	row-gap: 0.5em;
+}
+
+.text {
+	width: max-content;
+
+	flex: none;
+	margin-right: auto;
+}
+
+.address {
+	width: max-content;
+}
+
+.info {
+	display: flex;
+	gap: 2em;
+}
+
+.status {
+	width: 100px;
+}
+
+.money {
+	width: 100px;
+}
+
+.incoming {
+	background-color: var(--mui-palette-success-light);
+}
+
+.outgoing {
+	background-color: var(--mui-palette-info-light);
+}
+
+.actions {
+	align-self: center;
+
+	margin-left: auto;
+}
+
+@media (width < 800px) {
+	.category {
+		display: none;
+	}
+}
+
+@media (width < 600px) {
+	.status {
+		display: none;
+	}
+}
+
+@media (width < 480px) {
+	.address {
+		font-size: 14px;
+	}
+}
+
+@media (width < 460px) {
+	.info {
+		display: none;
+	}
+}

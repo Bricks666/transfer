@@ -1,0 +1,15 @@
+.item {
+	flex-wrap: wrap;
+}
+
+.info {
+	flex-basis: 100%;
+}
+
+.expand {
+	transition: transform 150ms ease-in-out;
+}
+
+.expand__opened {
+	transform: rotate(180deg);
+}

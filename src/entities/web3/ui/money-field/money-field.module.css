@@ -1,0 +1,7 @@
+.wrapper {
+	display: grid;
+	grid-template-columns: 1fr minmax(100px, max-content);
+	gap: 0.5em;
+
+  border: none;
+}

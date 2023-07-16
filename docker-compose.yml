@@ -1,0 +1,17 @@
+version: '3.5'
+services:
+  client:
+    build: .
+    ports:
+      - 89:80
+    environment:
+      - VITE_API_PROVIDER=http://network:8545
+      - VITE_CONTRACT_NAME=transfers
+      - VITE_CONTRACTS_SERVICE_HOST=http://proxy:81/api/contracts
+    networks:
+      geth:
+    restart: always
+networks:
+    geth:
+      external:
+        name: geth-net

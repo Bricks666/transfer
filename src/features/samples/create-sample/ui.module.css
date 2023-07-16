@@ -1,0 +1,32 @@
+.form {
+	grid-template-columns: repeat(3, 1fr);
+}
+
+.button {
+	grid-row: 2;
+	grid-column: 3;
+	justify-self: end;
+
+	width: max-content;
+}
+
+@media (width < 800px) {
+	.form {
+		grid-template-columns: repeat(2, 1fr);
+	}
+
+	.button {
+		grid-column: 2;
+	}
+}
+
+@media (width < 500px) {
+	.form {
+		grid-template-columns: 1fr;
+	}
+
+	.button {
+		grid-column: auto;
+		grid-row: auto;
+	}
+}

@@ -1,0 +1,10 @@
+.money {
+	margin-left: auto;
+	flex: none;
+}
+
+@media (width < 500px) {
+	.money__label {
+		display: none;
+	}
+}

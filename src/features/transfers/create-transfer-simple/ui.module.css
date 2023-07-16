@@ -1,0 +1,34 @@
+.form {
+	grid-template-columns: repeat(2, 1fr);
+}
+
+.title {
+	grid-column: span 2;
+
+	text-align: center;
+	font-weight: 700;
+}
+
+.description {
+	grid-column: span 2;
+}
+
+.button {
+	grid-column: 2;
+	align-self: end;
+	justify-self: end;
+
+	max-width: max-content;
+}
+
+@media (width < 640px) {
+	.form {
+		grid-template-columns: 1fr;
+	}
+
+	.title,
+	.description,
+	.button {
+		grid-column: 1;
+	}
+}

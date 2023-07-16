@@ -1,0 +1,32 @@
+.item {
+	row-gap: 0.5em;
+}
+
+.avatar__pending {
+	background-color: var(--mui-palette-primary-light);
+}
+
+.avatar__accept {
+	background-color: var(--mui-palette-success-light);
+}
+
+.avatar__cancel {
+	background-color: var(--mui-palette-error-light);
+}
+
+.info {
+	display: inherit;
+	gap: inherit;
+
+	margin-left: auto;
+}
+
+.actions {
+	align-self: center;
+}
+
+@media (width < 480px) {
+	.info {
+		display: none;
+	}
+}

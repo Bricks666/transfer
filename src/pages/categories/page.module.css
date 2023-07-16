@@ -1,0 +1,7 @@
+.title {
+	font-weight: 700;
+}
+
+.form {
+	grid-column: 1 /-1;
+}

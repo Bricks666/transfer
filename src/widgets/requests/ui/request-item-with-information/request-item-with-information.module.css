@@ -1,0 +1,7 @@
+.item {
+	flex-wrap: wrap;
+}
+
+.info {
+	flex-basis: 100%;
+}

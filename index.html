@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html class="page" lang="ru">
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<meta name="theme-color" content="#000000" />
+		<meta
+			name="description"
+			content="Web site created using create-react-app" />
+		<!-- web3 setup (for Vitejs react project only) -->
+		<script>
+			window.global = window; // https://github.com/vitejs/vite/issues/3817#issuecomment-864450199
+		</script>
+		<script type="module">
+			import process from 'process';
+			import { Buffer } from 'buffer';
+			import EventEmitter from 'events';
+			window.Buffer = Buffer;
+			window.process = process;
+			window.EventEmitter = EventEmitter;
+		</script>
+		<title>TransEther</title>
+	</head>
+	<body class="page__body">
+		<div id="root" class="page__root"></div>
+		<script type="module" src="/src/index.tsx"></script>
+	</body>
+</html>

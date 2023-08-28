@@ -20,8 +20,8 @@ COPY ./src  ./src
 
 RUN npm run build
 
-FROM antoine/ethereum-nginx-proxy
-COPY ./nginx.conf /opt/nginx/conf/nginx.conf
+FROM nginx:alpine
+COPY ./nginx.conf /etc/nginx/nginx.conf
 COPY --from=builder /static/dist/ /usr/share/nginx/html
 EXPOSE 80
-CMD ["/opt/nginx/sbin/nginx", "-g", "daemon off;"]
+CMD ["nginx", "-g", "daemon off;"]
